@@ -1,4 +1,4 @@
-# Free Pascal Compiler for the Sinclair QL
+# A *Free Pascal* Cross Compiler for the Sinclair QL
 This repository is for a PDF document describing how anyone can set up and build the Free Pascal Compiler for the Sinclair QL. The document will be updated as and when required, the latest version will always be found at:
 
 https://github.com/NormanDunbar/FPC-CrossCompiler-QL/releases/latest/.
