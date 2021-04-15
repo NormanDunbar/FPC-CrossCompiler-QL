@@ -1,0 +1,5858 @@
+#LyX 2.3 created this file. For more info see http://www.lyx.org/
+\lyxformat 544
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass scrreprt
+\begin_preamble
+% Required for the setup of the listings.
+\usepackage{xcolor}
+%\definecolor{ocre}{RGB}{243,102,25}
+%\definecolor{wwwDarkGreen}{HTML}{006400}
+%\definecolor{wwwDarkOrchid}{HTML}{9932CC}
+%\definecolor{wwwDarkOrange}{HTML}{FF8C00}
+\definecolor{mayablue}{rgb}{0.45, 0.76, 0.98}
+\definecolor{amber}{rgb}{1.0, 0.49, 0.0}
+\definecolor{mintgreen}{rgb}{0.6, 1.0, 0.6}
+\definecolor{mustard}{rgb}{1.0, 0.86, 0.35}
+\definecolor{periwinkle}{rgb}{0.8, 0.8, 1.0}
+\colorlet{codeColour}{mintgreen}
+\colorlet{outputColour}{mustard}
+\colorlet{textfileColour}{periwinkle}
+
+
+
+% Boxes
+\usepackage{tcolorbox}
+
+% WARNING
+\newtcbox{\warningbox}{colback=red!5!white,colframe=red!75!black,fonttitle=\bfseries,title=Warning}
+\newcommand{\warning}[1]{\warningbox{\vbox{#1}}}
+
+% IMPORTANT
+\definecolor{amber}{rgb}{1.0, 0.75, 0.0}
+\newtcbox{\importantbox}{colback=amber!5!white,colframe=amber!75!black,fonttitle=\bfseries,title=Important}
+\newcommand{\important}[1]{\importantbox{\vbox{#1}}}
+
+%NOTE
+\newtcbox{\notebox}{colback=blue!5!white,colframe=blue!75!black,fonttitle=\bfseries,title=Note}
+\newcommand{\note}[1]{\notebox{\vbox{#1}}}
+
+%TIP
+\newtcbox{\tipbox}{colback=green!5!white,colframe=green!75!black,fonttitle=\bfseries,title=Tip}
+\newcommand{\tip}[1]{\tipbox{\vbox{#1}}}
+\end_preamble
+\use_default_options true
+\begin_modules
+theorems-ams
+eqs-within-sections
+figs-within-sections
+tcolorbox
+\end_modules
+\maintain_unincluded_children false
+\begin_local_layout
+Format 60
+    InsetLayout Flex:RegisterName
+    LyxType          charstyle
+    LabelString    RegisterName
+    LatexType      command
+    LatexName    registername
+    Preamble
+        \newcommand*{\registername}[1]{{\ttfamily #1}}
+    EndPreamble
+    Font
+        Family        Typewriter
+    EndFont
+    ResetsFont  true
+End
+    InsetLayout Flex:FileName
+    LyxType          charstyle
+    LabelString    FileName
+    LatexType      command
+    LatexName    filename
+    Preamble
+        \newcommand*{\filename}[1]{{\ttfamily #1}}
+    EndPreamble
+    Font
+        Family        Typewriter
+    EndFont
+    ResetsFont  true
+End
+    InsetLayout Flex:DirectoryName
+    LyxType          charstyle
+    LabelString    DirectoryName
+    LatexType      command
+    LatexName    filename
+    Preamble
+        \newcommand*{\dirname}[1]{{\ttfamily #1}}
+    EndPreamble
+    Font
+        Family        Typewriter
+    EndFont
+    ResetsFont  true
+End
+    InsetLayout Flex:FunctionName
+    LyxType          charstyle
+    LabelString    FunctionName
+    LatexType      command
+    LatexName    functionname
+    Preamble
+        \newcommand*{\functionname}[1]{{\ttfamily #1}}
+    EndPreamble
+    Font
+        Family        Typewriter
+    EndFont
+    ResetsFont  true
+End
+    InsetLayout Flex:VariableName
+    LyxType          charstyle
+    LabelString    VariableName
+    LatexType      command
+    LatexName    varname
+    Preamble
+        \newcommand*{\varname}[1]{{\ttfamily #1}}
+    EndPreamble
+    Font
+        Family        Typewriter
+    EndFont
+    ResetsFont  true
+End    InsetLayout Flex:EnvVar
+    LyxType          charstyle
+    LabelString    EnvVar
+    LatexType      command
+    LatexName    envvar
+    Preamble
+        \newcommand*{\envvar}[1]{{\ttfamily #1}}
+    EndPreamble
+    Font
+        Family        Typewriter
+    EndFont
+    ResetsFont  true
+End
+    InsetLayout Flex:ClassName
+    LyxType          charstyle
+    LabelString    ClassName
+    LatexType      command
+    LatexName    classname
+    Preamble
+        \newcommand*{\classname}[1]{{\ttfamily #1}}
+    EndPreamble
+    Font
+        Family        Typewriter
+    EndFont
+    ResetsFont  true
+End
+    InsetLayout Flex:CommandName
+    LyxType          charstyle
+    LabelString    CommandName
+    LatexType      command
+    LatexName    commandname
+    Preamble
+        \newcommand*{\commandname}[1]{{\ttfamily #1}}
+    EndPreamble
+    Font
+        Family        Typewriter
+    EndFont
+    ResetsFont  true
+End
+    InsetLayout Flex:LibraryName
+    LyxType          charstyle
+    LabelString    LibraryName
+    LatexType      command
+    LatexName    libraryname
+    Preamble
+        \newcommand*{\libraryname}[1]{{\ttfamily #1}}
+    EndPreamble
+    Font
+        Family        Typewriter
+    EndFont
+    ResetsFont  true
+End
+    InsetLayout Flex:OptionName
+    LyxType          charstyle
+    LabelString    OptionName
+    LatexType      command
+    LatexName    optionname
+    Preamble
+        \newcommand*{\optionname}[1]{{\ttfamily #1}}
+    EndPreamble
+    Font
+        Family        Typewriter
+    EndFont
+    ResetsFont  true
+End
+    InsetLayout Flex:ConstantName
+    LyxType          charstyle
+    LabelString    ConstantName
+    LatexType      command
+    LatexName    constantname
+    Preamble
+        \newcommand*{\constantname}[1]{{\ttfamily #1}}
+    EndPreamble
+    Font
+        Family        Typewriter
+    EndFont
+    ResetsFont  true
+End
+    InsetLayout Flex:ApplicationName
+    LyxType          charstyle
+    LabelString    ApplicationName
+    LatexType      command
+    LatexName    appname
+    Preamble
+        \newcommand*{\appname}[1]{{\textit{#1}}}
+    EndPreamble
+    Font
+        Family        Typewriter
+    EndFont
+    ResetsFont  true
+End
+    InsetLayout Flex:UnitName
+    LyxType          charstyle
+    LabelString    UnitName
+    LatexType      command
+    LatexName    unitname
+    Preamble
+        \newcommand*{\unitname}[1]{{\textit{#1}}}
+    EndPreamble
+    Font
+        Family        Typewriter
+    EndFont
+    ResetsFont  true
+End
+\end_local_layout
+\language british
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman "default" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\use_microtype false
+\use_dash_ligatures true
+\graphics default
+\default_output_format pdf2
+\output_sync 0
+\bibtex_command default
+\index_command default
+\float_placement !h
+\paperfontsize 11
+\spacing single
+\use_hyperref true
+\pdf_title "QL Pascal Cross Compiler"
+\pdf_author "Norman Dunbar"
+\pdf_subject "Building a Free Pascal Cross Compiler for the Sinclair QL"
+\pdf_keywords "Pascal, Sinclair, QL, QDOS, SMSQ"
+\pdf_bookmarks true
+\pdf_bookmarksnumbered false
+\pdf_bookmarksopen false
+\pdf_bookmarksopenlevel 1
+\pdf_breaklinks true
+\pdf_pdfborder true
+\pdf_colorlinks true
+\pdf_backref false
+\pdf_pdfusetitle true
+\papersize a4paper
+\use_geometry false
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification false
+\use_refstyle 1
+\use_minted 0
+\fontcolor #00007f
+\boxbgcolor #ff557f
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation skip
+\defskip medskip
+\is_math_indent 0
+\math_numbering_side default
+\quotes_style english
+\dynamic_quotes 0
+\papercolumns 1
+\papersides 2
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Title
+Building a 
+\emph on
+Free Pascal
+\emph default
+ Cross Compiler for the Sinclair QL
+\end_layout
+
+\begin_layout Author
+Norman Dunbar
+\end_layout
+
+\begin_layout Date
+5th April 2021
+\end_layout
+
+\begin_layout Chapter
+Introduction
+\end_layout
+
+\begin_layout Standard
+I already had the 
+\emph on
+Free Pascal Compiler
+\emph default
+ (FPC) installed on my Linux laptop, however, I don't use it that often
+ – I'm not very good at remembering how to write Pascal code – so I decided
+ that for this experiment in getting the bare bones of the Sinclair QL version
+ of the 
+\emph on
+Free Pascal Compiler
+\emph default
+ I would set up a brand spanking new VM running the same Linux version as
+ my laptop.
+ This is Linux Mint 20.1, the 64 bit version.
+\end_layout
+
+\begin_layout Standard
+The process of setting up the VM will not be discussed here, normally I
+ would have used 
+\emph on
+VirtualBox
+\emph default
+ but as I had just done my 10 yearly wipe and refresh of the laptop, I hadn't
+ yet installed it and I wanted to try out the 
+\begin_inset Flex LibraryName
+status open
+
+\begin_layout Plain Layout
+libVirt
+\end_layout
+
+\end_inset
+
+ system using 
+\emph on
+QEMU
+\emph default
+ and the kernel's KVM 
+\emph on
+stuff
+\emph default
+
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+That's a technical term.
+\end_layout
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+The upshot of all this is, I had made things a little more complicated than
+ they needed to be, but that's how I wanted it.
+ If I messed things up really badly, I could easily wipe the VM and start
+ again with little or no problem, whereas if I tried to do everything on
+ the laptop, and messed up, I might need to be sorting things out for a
+ while to get back to where I was.
+ Experiments don't always work out fine!
+\end_layout
+
+\begin_layout Section
+Code Conventions
+\end_layout
+
+\begin_layout Subsection
+Line Numbers and Continuations
+\end_layout
+
+\begin_layout Standard
+There are three main listing types in this document:
+\end_layout
+
+\begin_layout Itemize
+Commands typed at a prompt, either the system prompt or a application's
+ prompt;
+\end_layout
+
+\begin_layout Itemize
+Output from commands;
+\end_layout
+
+\begin_layout Itemize
+Text files, configuration files or source code files.
+\end_layout
+
+\begin_layout Standard
+In the document, listings showing commands lines will have line numbers.
+ Hopefully you will see that the numbers are outside of the code block in
+ the document, and you don't have to type in the numbers.
+ Keep an eye out for long lines which have wrapped around.
+ They will not have line numbers on the continuation lines and those will
+ be indented to show that they are continued from above.
+ This is a (contrived) example of a set of commands to be types at the prompt:
+\end_layout
+
+\begin_layout Standard
+\begin_inset listings
+lstparams "language=bash,numbers=left,basicstyle={\ttfamily},breaklines=true,showstringspaces=false,backgroundcolor={\color{codeColour}},breakautoindent=true"
+inline false
+status open
+
+\begin_layout Plain Layout
+
+echo 
+\begin_inset Quotes eld
+\end_inset
+
+This is a short line.
+\begin_inset Quotes erd
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+echo 
+\begin_inset Quotes eld
+\end_inset
+
+This is a long line of what should be code and it is all on a single line,
+ but has wrapped around.
+\begin_inset Quotes erd
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+echo 
+\begin_inset Quotes eld
+\end_inset
+
+This is another short line.
+\begin_inset Quotes erd
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Output from commands will be shown thus:
+\end_layout
+
+\begin_layout Standard
+\begin_inset listings
+lstparams "basicstyle={\ttfamily},breaklines=true,showstringspaces=false,backgroundcolor={\color{outputColour}},breakautoindent=true"
+inline false
+status open
+
+\begin_layout Plain Layout
+
+Hello World!
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+There will not be any line numbers, unless absolutely necessary, and long
+ lines will be split and indented as before.
+\end_layout
+
+\begin_layout Standard
+Source code, text or configuration files will be shown in this style:
+\end_layout
+
+\begin_layout Standard
+\begin_inset listings
+lstparams "numbers=left,basicstyle={\ttfamily},breaklines=true,showstringspaces=false,backgroundcolor={\color{textfileColour}},breakautoindent=true"
+inline false
+status open
+
+\begin_layout Plain Layout
+
+#IFDEF CPUM68K
+\end_layout
+
+\begin_layout Plain Layout
+
+-Fu/where/I/have/installed/the/compiler/lib/fpc/$fpcversion/units/$fpccpu-$fpcos
+\end_layout
+
+\begin_layout Plain Layout
+
+-Fu/where/I/have/installed/the/compiler/lib/fpc/$fpcversion/units/$fpccpu-$fpcos
+/*
+\end_layout
+
+\begin_layout Plain Layout
+
+#IFDEF SINCLAIRQL
+\end_layout
+
+\begin_layout Plain Layout
+
+-FD</path/to/vasm-and-vlink>
+\end_layout
+
+\begin_layout Plain Layout
+
+-XPm68k-sinclairql-
+\end_layout
+
+\begin_layout Plain Layout
+
+#ENDIF
+\end_layout
+
+\begin_layout Plain Layout
+
+#ENDIF
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Line numbering will usually be present and long lines will be split and
+ indented.
+\end_layout
+
+\begin_layout Subsection
+Privileges
+\end_layout
+
+\begin_layout Standard
+Unless otherwise noted, all commands will be executed as my local user,
+ 
+\emph on
+norman
+\emph default
+, and not as 
+\emph on
+root
+\emph default
+.
+ I may need to obtain root privileges from time to time, and to do that,
+ I'll prefix the appropriate commands with 
+\family typewriter
+
+\begin_inset Flex CommandName
+status open
+
+\begin_layout Plain Layout
+
+\family typewriter
+sudo
+\end_layout
+
+\end_inset
+
+
+\family default
+ rather than logging in as the root user.
+ When using 
+\begin_inset Flex CommandName
+status open
+
+\begin_layout Plain Layout
+sudo
+\end_layout
+
+\end_inset
+
+, you are initially prompted for a password and that password will be cached
+ for a short period of time.
+ During this time, any other 
+\begin_inset Flex CommandName
+status open
+
+\begin_layout Plain Layout
+sudo
+\end_layout
+
+\end_inset
+
+ commands will not prompt.
+\end_layout
+
+\begin_layout Subsection
+Free Pascal Compiler Versions
+\end_layout
+
+\begin_layout Standard
+As I worked on this document, there were many changes made to the sources
+ of the 
+\emph on
+Free Pascal Compiler
+\emph default
+, this included the occasional version number change.
+ I started at version 3.2.0 and at some point, it had risen to 3.3.1.
+ To avoid confusion, I have avoided hard coding the version numbers into
+ paths where it is included.
+ Those file and directory names will be noted as 
+\begin_inset Quotes eld
+\end_inset
+
+n.n.n
+\begin_inset Quotes erd
+\end_inset
+
+ regardless of the version in question.
+\end_layout
+
+\begin_layout Section
+Building the Development VM
+\end_layout
+
+\begin_layout Standard
+The plan of action, after installing the VM and Linux, is to:
+\end_layout
+
+\begin_layout Itemize
+Install any development software required.
+\end_layout
+
+\begin_layout Itemize
+Install the 
+\emph on
+Free Pascal Compiler
+\emph default
+ (FPC) for Linux 64 bit.
+\end_layout
+
+\begin_layout Itemize
+Install the FPC Source Code.
+\end_layout
+
+\begin_layout Itemize
+Install and build the required assembler, 
+\emph on
+vasm
+\emph default
+.
+\end_layout
+
+\begin_layout Itemize
+Install and build the required linker, 
+\emph on
+vlink
+\emph default
+.
+\end_layout
+
+\begin_layout Itemize
+Build and install the QL version of FPC.
+\end_layout
+
+\begin_layout Standard
+That would, hopefully, give me a working cross compiler so that I could
+ try and write QL programs, compile them under Linux, copy them to my QL
+ then test them.
+ Easy stuff, no? My own QL system is Marcel's excellent 
+\emph on
+QPC
+\emph default
+ so I'm able to run the cross compiled programs without any problems.
+ However, if you are using an actual QL, then you may need to compile the
+ Pascal programs using the option to add an XTcc trailer record, and use
+ my little 
+\begin_inset Flex FileName
+status open
+
+\begin_layout Plain Layout
+XTcc_bin
+\end_layout
+
+\end_inset
+
+ utility to convert the files to executable on the QL.
+\end_layout
+
+\begin_layout Standard
+As I worked through the experiment, it became obvious that some work would
+ be needed on the existing, brief, system Unit for the QL, so I will also
+ need to be able to edit and recompile the Sinclair QL Runtime Library (RTL)
+ for FPC.
+\end_layout
+
+\begin_layout Chapter
+Development Software
+\end_layout
+
+\begin_layout Standard
+Once the VM is created and Linux Mint installed, we need to install the
+ software tools and packages which will allow us the ability to build the
+ cross compiler.
+\end_layout
+
+\begin_layout Section
+Installing the Software
+\end_layout
+
+\begin_layout Standard
+The following software is the minimum required to build the cross compiler
+ and build Pascal programs for the QL:
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+Subversion
+\emph default
+; the version control system used by the FPC developers.
+ We need this to be able to download the source code for the compiler, and
+ to keep the software up to date.
+ We could avoid this step and just download a zip file, if necessary.
+ 
+\emph on
+Subversion
+\emph default
+ comes in handy when changing the RTL as it allows a patch kit to be created
+ to update the source code for others to use.
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+Build-essential
+\emph default
+; a package on Mint that installs the various compiler tools and libraries
+ necessary to compile stuff
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+Another technical term!
+\end_layout
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+The 
+\emph on
+ssh server
+\emph default
+; to allow me to connect a terminal session from my laptop to the VM to
+ do development work, and to copy down compiled programs.
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+Git
+\emph default
+; which is not strictly necessary, but I use it myself and I wanted it installed
+, just in case.
+ Feel free to leave it off if you don't use it.
+\end_layout
+
+\begin_layout Standard
+\begin_inset listings
+lstparams "language=bash,numbers=left,basicstyle={\ttfamily},breaklines=true,showstringspaces=false,backgroundcolor={\color{codeColour}},breakautoindent=true"
+inline false
+status open
+
+\begin_layout Plain Layout
+
+# Update the Mint software database.
+\end_layout
+
+\begin_layout Plain Layout
+
+sudo apt update
+\end_layout
+
+\begin_layout Plain Layout
+
+[sudo] password for norman: 
+\end_layout
+
+\begin_layout Plain Layout
+
+...
+ lots of output here.
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+# Patch the Mint system.
+\end_layout
+
+\begin_layout Plain Layout
+
+sudo apt upgrade
+\end_layout
+
+\begin_layout Plain Layout
+
+...
+ lots of output here.
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+# Install development tools and packages.
+\end_layout
+
+\begin_layout Plain Layout
+
+sudo apt install build-essential subversion git
+\end_layout
+
+\begin_layout Plain Layout
+
+...
+ lots more output here,
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+As I mentioned, I need to install and enable the ssh server, so that it
+ runs now, and at startup:
+\end_layout
+
+\begin_layout Standard
+\begin_inset listings
+lstparams "language=bash,numbers=left,basicstyle={\ttfamily},breaklines=true,showstringspaces=false,backgroundcolor={\color{codeColour}},breakautoindent=true"
+inline false
+status open
+
+\begin_layout Plain Layout
+
+# Install SSH server.
+\end_layout
+
+\begin_layout Plain Layout
+
+sudo apt install openssh-server
+\end_layout
+
+\begin_layout Plain Layout
+
+...
+ More output here.
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+# Start ssh server now.
+\end_layout
+
+\begin_layout Plain Layout
+
+sudo systemctl start ssh
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+# Start ssh server at system startup.
+\end_layout
+
+\begin_layout Plain Layout
+
+sudo systemctl enable ssh
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+I need the current IP address of the VM to allow me to use 
+\begin_inset Flex CommandName
+status open
+
+\begin_layout Plain Layout
+scp
+\end_layout
+
+\end_inset
+
+ to copy the file to my laptop from the VM, and upload it to QPC:
+\end_layout
+
+\begin_layout Standard
+\begin_inset listings
+lstparams "language=bash,numbers=left,basicstyle={\ttfamily},breaklines=true,showstringspaces=false,backgroundcolor={\color{codeColour}},breakautoindent=true"
+inline false
+status open
+
+\begin_layout Plain Layout
+
+# What's my VM's IP address?
+\end_layout
+
+\begin_layout Plain Layout
+
+hostname -I
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset listings
+lstparams "basicstyle={\ttfamily},breaklines=true,showstringspaces=false,backgroundcolor={\color{outputColour}},breakautoindent=true"
+inline false
+status open
+
+\begin_layout Plain Layout
+
+192.168.2.225
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The above list sets up the VM ready to compile code.
+ In addition to the above, I also need:
+\end_layout
+
+\begin_layout Itemize
+To install FPC for the Linux host; the compiler is used to compile a Sinclair
+ QL cross compiler version of itself, so it is required to be present.
+\end_layout
+
+\begin_layout Itemize
+To build the QL version, we also need to install the source code for the
+ compiler.
+\end_layout
+
+\begin_layout Chapter
+Installing the Host Compiler
+\end_layout
+
+\begin_layout Standard
+The 
+\begin_inset Quotes eld
+\end_inset
+
+host
+\begin_inset Quotes erd
+\end_inset
+
+ is my Linux VM.
+ It requires that a version of FPC be installed to compile and run programs
+ for Linux 64 bit systems.
+ Once installed it will be used to build the QL specific version of FPC
+ that will run on the host, but create executables for the 
+\begin_inset Quotes eld
+\end_inset
+
+target
+\begin_inset Quotes erd
+\end_inset
+
+, the QL.
+ Cross compiling can get a little bit confusing at times.
+\end_layout
+
+\begin_layout Section
+Download FPC
+\end_layout
+
+\begin_layout Standard
+Point your favourite browser at 
+\begin_inset CommandInset href
+LatexCommand href
+target "https://www.freepascal.org/download.html"
+
+\end_inset
+
+ and on that page, scroll down to where you find your particular system.
+ Mine is X86-64 Linux, so I clicked that link.
+ 
+\end_layout
+
+\begin_layout Standard
+On the next page, select a mirror – I used Source Forge – and click the
+ link.
+ If you click on one of the other mirrors, you get different options.
+ Source Forge is 
+\emph on
+amusing
+\emph default
+ in that you have to choose your required version, again.
+ There are quite a few and some are pre-build cross compilers, so be careful
+ in what you choose.
+ I required 
+\begin_inset Flex FileName
+status open
+
+\begin_layout Plain Layout
+fpc-n.n.n-x86_64-linux.tar
+\end_layout
+
+\end_inset
+
+ and that just happens to be the version that Source Forge decided was ideal
+ for me and selected it as the 
+\begin_inset Quotes eld
+\end_inset
+
+Download Latest Version
+\begin_inset Quotes erd
+\end_inset
+
+ option, right at the top in a big green box.
+\end_layout
+
+\begin_layout Standard
+Let the download run, it's about 85 Mb, and when completed, make a note
+ of where you saved it, then in a file explorer session, navigate to the
+ downloaded file, and extract it.
+ Once extracted, it's a simple case of making sure that the file 
+\begin_inset Flex FileName
+status open
+
+\begin_layout Plain Layout
+install.sh
+\end_layout
+
+\end_inset
+
+ is executable, and running it.
+ The extraction process is as follows:
+\end_layout
+
+\begin_layout Standard
+\begin_inset listings
+lstparams "language=bash,numbers=left,basicstyle={\ttfamily},breaklines=true,showstringspaces=false,backgroundcolor={\color{codeColour}},breakautoindent=true"
+inline false
+status open
+
+\begin_layout Plain Layout
+
+# Switch to downloads and extract the compiler.
+\end_layout
+
+\begin_layout Plain Layout
+
+cd ~/Downloads
+\end_layout
+
+\begin_layout Plain Layout
+
+tar -xvf fpc-n.n.n-x86-64-linux.tar
+\end_layout
+
+\begin_layout Plain Layout
+
+...
+ Some filenames whizz by here
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Installing FPC
+\end_layout
+
+\begin_layout Standard
+\begin_inset listings
+lstparams "language=bash,numbers=left,basicstyle={\ttfamily},breaklines=true,showstringspaces=false,backgroundcolor={\color{codeColour}},breakautoindent=true"
+inline false
+status open
+
+\begin_layout Plain Layout
+
+# Install the compiler.
+\end_layout
+
+\begin_layout Plain Layout
+
+cd fpc-n.n.n-x86_64-linux
+\end_layout
+
+\begin_layout Plain Layout
+
+chmod ug+x install.sh
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+sudo ./install.sh
+\end_layout
+
+\begin_layout Plain Layout
+
+[sudo] password for norman: 
+\end_layout
+
+\end_inset
+
+The first prompt from the installer is for a location to install FPC and
+ the RTL.
+ This location should be on your path which invariably means that you will
+ need root privileges, which is why we need use 
+\begin_inset Flex CommandName
+status open
+
+\begin_layout Plain Layout
+sudo
+\end_layout
+
+\end_inset
+
+ to run the installer.
+ I chose 
+\begin_inset Flex DirectoryName
+status open
+
+\begin_layout Plain Layout
+/usr/loca
+\end_layout
+
+\end_inset
+
+l as my install location, as follows:
+\end_layout
+
+\begin_layout Standard
+\begin_inset listings
+lstparams "basicstyle={\ttfamily},breaklines=true,showstringspaces=false,backgroundcolor={\color{outputColour}},breakautoindent=true"
+inline false
+status open
+
+\begin_layout Plain Layout
+
+This shell script will attempt to install the Free Pascal Compiler 
+\end_layout
+
+\begin_layout Plain Layout
+
+version n.n.n with the items you select
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+Install prefix (/usr or /usr/local) [/usr] :  /usr/local
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+Installing compiler and RTL for x86_64-linux...
+ 
+\end_layout
+
+\begin_layout Plain Layout
+
+...
+ Lots more here.
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+Running on linux
+\end_layout
+
+\begin_layout Plain Layout
+
+Write permission in /etc.
+\end_layout
+
+\begin_layout Plain Layout
+
+Writing sample configuration file to /etc/fpc.cfg
+\end_layout
+
+\begin_layout Plain Layout
+
+Writing sample configuration file to /usr/local/lib/fpc/n.n.n/ide/text/fp.cfg
+\end_layout
+
+\begin_layout Plain Layout
+
+Writing sample configuration file to /usr/local/lib/fpc/n.n.n/ide/text/fp.ini
+\end_layout
+
+\begin_layout Plain Layout
+
+Writing sample configuration file to /etc/fppkg.cfg
+\end_layout
+
+\begin_layout Plain Layout
+
+Writing sample configuration file to /etc/fppkg/default
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+End of installation.
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+Refer to the documentation for more information.
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+You may wish to make a note of those locations for the various configuration
+ files, in case you need or want to change things.
+ They should be fine for the host system – I didn't have to change mine.
+\end_layout
+
+\begin_layout Standard
+After installing the compiler, we are then prompted to install the documentation
+ and demonstration files.
+ I chose not to, but if you wish to do so:
+\end_layout
+
+\begin_layout Standard
+\begin_inset listings
+lstparams "basicstyle={\ttfamily},breaklines=true,showstringspaces=false,backgroundcolor={\color{outputColour}},breakautoindent=true"
+inline false
+status open
+
+\begin_layout Plain Layout
+
+Install documentation (Y/n) ? Y
+\end_layout
+
+\begin_layout Plain Layout
+
+Installing documentation in /usr/local/share/doc/fpc-n.n.n ...
+\end_layout
+
+\begin_layout Plain Layout
+
+Done.
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+# For the demos location, just press ENTER.
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+Install demos (Y/n) ? Y
+\end_layout
+
+\begin_layout Plain Layout
+
+Install demos in [/usr/local/share/doc/fpc-n.n.n/examples] : 
+\end_layout
+
+\begin_layout Plain Layout
+
+Installing demos in /usr/local/share/doc/fpc-n.n.n/examples ...
+\end_layout
+
+\begin_layout Plain Layout
+
+Done.
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+...
+ Lots of extra text here.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Testing the Host Compiler
+\end_layout
+
+\begin_layout Standard
+We now need to make sure that the compiler works.
+ I created myself a 
+\begin_inset Flex DirectoryName
+status open
+
+\begin_layout Plain Layout
+SourceCode
+\end_layout
+
+\end_inset
+
+ directory tree for all my source code, then changed into it ready for action:
+\end_layout
+
+\begin_layout Standard
+\begin_inset listings
+lstparams "language=bash,numbers=left,basicstyle={\ttfamily},breaklines=true,showstringspaces=false,backgroundcolor={\color{codeColour}},breakautoindent=true"
+inline false
+status open
+
+\begin_layout Plain Layout
+
+mkdir -p ~/SourceCode/Pascal
+\end_layout
+
+\begin_layout Plain Layout
+
+cd ~/SourceCode/Pascal
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Create the following 
+\begin_inset Flex FileName
+status open
+
+\begin_layout Plain Layout
+hello.pp
+\end_layout
+
+\end_inset
+
+ file:
+\end_layout
+
+\begin_layout Standard
+\begin_inset listings
+lstparams "language=Pascal,numbers=left,basicstyle={\ttfamily},breaklines=true,showstringspaces=false,backgroundcolor={\color{textfileColour}},breakautoindent=true"
+inline false
+status open
+
+\begin_layout Plain Layout
+
+program hello;
+\end_layout
+
+\begin_layout Plain Layout
+
+const
+\end_layout
+
+\begin_layout Plain Layout
+
+    helloText = 'Hello FPC World!';
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+begin
+\end_layout
+
+\begin_layout Plain Layout
+
+    writeln(helloText);
+\end_layout
+
+\begin_layout Plain Layout
+
+end.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Compile the test code:
+\end_layout
+
+\begin_layout Standard
+\begin_inset listings
+lstparams "language=bash,numbers=left,basicstyle={\ttfamily},breaklines=true,showstringspaces=false,backgroundcolor={\color{codeColour}},breakautoindent=true"
+inline false
+status open
+
+\begin_layout Plain Layout
+
+fpc hello.pp
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset listings
+lstparams "basicstyle={\ttfamily},breaklines=true,showstringspaces=false,backgroundcolor={\color{outputColour}},breakautoindent=true"
+inline false
+status open
+
+\begin_layout Plain Layout
+
+Free Pascal Compiler version n.n.n [2020/06/09] for X86-64
+\end_layout
+
+\begin_layout Plain Layout
+
+Copyright (c) 1993-2020 by Florian Klaempfl and others
+\end_layout
+
+\begin_layout Plain Layout
+
+Target OS: Linux for i386
+\end_layout
+
+\begin_layout Plain Layout
+
+Compiling hello.pp
+\end_layout
+
+\begin_layout Plain Layout
+
+Linking hello
+\end_layout
+
+\begin_layout Plain Layout
+
+8 lines compiled, 0.2 sec
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Looks good, now test it:
+\end_layout
+
+\begin_layout Standard
+\begin_inset listings
+lstparams "language=bash,numbers=left,basicstyle={\ttfamily},breaklines=true,showstringspaces=false,backgroundcolor={\color{codeColour}},breakautoindent=true"
+inline false
+status open
+
+\begin_layout Plain Layout
+
+./hello
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset listings
+lstparams "basicstyle={\ttfamily},breaklines=true,showstringspaces=false,backgroundcolor={\color{outputColour}},breakautoindent=true"
+inline false
+status open
+
+\begin_layout Plain Layout
+
+Hello FPC World!
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+So far the host compiler is looking good and can at least compile a simple
+ Pascal program.
+ We are ready to use FPC to rebuild itself as a Sinclair QL cross compiler.
+\end_layout
+
+\begin_layout Chapter
+Installing the Compiler Source Code
+\end_layout
+
+\begin_layout Standard
+Once we have the host compiler working, we can get hold of the compiler's
+ own source code and use the host to build a cross compiler for the Sinclair
+ QL.
+ The first step is to grab the source code and to do this we need to use
+ 
+\emph on
+subversion
+\emph default
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset listings
+lstparams "language=bash,numbers=left,basicstyle={\ttfamily},breaklines=true,showstringspaces=false,backgroundcolor={\color{codeColour}},breakautoindent=true"
+inline false
+status open
+
+\begin_layout Plain Layout
+
+cd ~/SourceCode
+\end_layout
+
+\begin_layout Plain Layout
+
+svn checkout https://svn.freepascal.org/svn/fpc/trunk fpc 
+\end_layout
+
+\begin_layout Plain Layout
+
+...
+ lots and lots of stuff scrolling past here!
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+These commands will create a new directory, 
+\begin_inset Flex DirectoryName
+status open
+
+\begin_layout Plain Layout
+SourceCode/fpc
+\end_layout
+
+\end_inset
+
+, then checkout the main trunk of the FPC source code into the new directory.
+\end_layout
+
+\begin_layout Chapter
+Building the Cross Compiler
+\end_layout
+
+\begin_layout Section
+Build the Assembler and Linker
+\end_layout
+
+\begin_layout Standard
+We need a certified assembler and a linker first.
+ We must use the 
+\emph on
+vasm
+\emph default
+ assembler and the 
+\emph on
+vlink
+\emph default
+ linker, or things won't work.
+ The two URLs where the source code for these utilities is to be found,
+ are:
+\end_layout
+
+\begin_layout Itemize
+\begin_inset CommandInset href
+LatexCommand href
+target "http://sun.hasenbraten.de/vasm/index.php?view=relsrc"
+
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Itemize
+\begin_inset CommandInset href
+LatexCommand href
+target "http://sun.hasenbraten.de/vlink/index.php?view=relsrc"
+
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Standard
+You need to get the latest sources and 
+\emph on
+vasm
+\emph default
+ version 1.8 or higher, and 
+\emph on
+vlink
+\emph default
+ version 0.16c are required.
+\end_layout
+
+\begin_layout Standard
+In Linux, I was able to use the 
+\begin_inset Flex CommandName
+status open
+
+\begin_layout Plain Layout
+wget
+\end_layout
+
+\end_inset
+
+ command, but it's a simple task to open the two URLs above, and click the
+ link to download the source files.
+ However you do it, it's probably wise to save the files into your 
+\begin_inset Flex DirectoryName
+status open
+
+\begin_layout Plain Layout
+SourceCode
+\end_layout
+
+\end_inset
+
+ directory along with all the other source we are building.
+\end_layout
+
+\begin_layout Standard
+\begin_inset listings
+lstparams "language=bash,numbers=left,basicstyle={\ttfamily},breaklines=true,showstringspaces=false,backgroundcolor={\color{codeColour}},breakautoindent=true"
+inline false
+status open
+
+\begin_layout Plain Layout
+
+cd ~/SourceCode
+\end_layout
+
+\begin_layout Plain Layout
+
+wget http://sun.hasenbraten.de/vasm/release/vasm.tar.gz
+\end_layout
+
+\begin_layout Plain Layout
+
+...
+\end_layout
+
+\begin_layout Plain Layout
+
+tar -xvzf vasm.tar.gz
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+wget http://sun.hasenbraten.de/vlink/release/vlink.tar.gz
+\end_layout
+
+\begin_layout Plain Layout
+
+...
+\end_layout
+
+\begin_layout Plain Layout
+
+tar -xvzf vlink.tar.gz
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Now we need to extract and compile both utilities and copy the executable
+ into a location on the path, first 
+\emph on
+vasm
+\emph default
+:
+\end_layout
+
+\begin_layout Standard
+\begin_inset listings
+lstparams "language=bash,numbers=left,basicstyle={\ttfamily},breaklines=true,showstringspaces=false,backgroundcolor={\color{codeColour}},breakautoindent=true"
+inline false
+status open
+
+\begin_layout Plain Layout
+
+tar -xzf vasm.tar.gz
+\end_layout
+
+\begin_layout Plain Layout
+
+cd vasm
+\end_layout
+
+\begin_layout Plain Layout
+
+make CPU=m68k SYNTAX=std
+\end_layout
+
+\begin_layout Plain Layout
+
+...
+\end_layout
+
+\begin_layout Plain Layout
+
+sudo cp vasmm68k_std /usr/local/bin/
+\end_layout
+
+\begin_layout Plain Layout
+
+cd ..
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The build process will create an assembler binary named 
+\begin_inset Flex FileName
+status open
+
+\begin_layout Plain Layout
+vasmm68k_std
+\end_layout
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Next, the 
+\emph on
+vlink
+\emph default
+ linker:
+\end_layout
+
+\begin_layout Standard
+\begin_inset listings
+lstparams "language=bash,numbers=left,basicstyle={\ttfamily},breaklines=true,showstringspaces=false,backgroundcolor={\color{codeColour}},breakautoindent=true"
+inline false
+status open
+
+\begin_layout Plain Layout
+
+tar -xzf vlink.tar.gz
+\end_layout
+
+\begin_layout Plain Layout
+
+cd vlink
+\end_layout
+
+\begin_layout Plain Layout
+
+make
+\end_layout
+
+\begin_layout Plain Layout
+
+...
+\end_layout
+
+\begin_layout Plain Layout
+
+sudo cp vlink /usr/local/bin/
+\end_layout
+
+\begin_layout Plain Layout
+
+cd ..
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Rename the Assembler and Linker
+\end_layout
+
+\begin_layout Standard
+After this, both files must be either renamed or sym-linked (on Linux) as
+ follows.
+ If you are on Windows then a rename should be sufficient.
+ 
+\end_layout
+
+\begin_layout Itemize
+The assembler must be named 
+\begin_inset Flex FileName
+status open
+
+\begin_layout Plain Layout
+m68k-sinclairql-vasmm68k_std
+\end_layout
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+The linker must be named 
+\begin_inset Flex FileName
+status open
+
+\begin_layout Plain Layout
+m68k-sinclairql-vlink
+\end_layout
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset listings
+lstparams "language=bash,numbers=left,basicstyle={\ttfamily},breaklines=true,showstringspaces=false,backgroundcolor={\color{codeColour}},breakautoindent=true"
+inline false
+status open
+
+\begin_layout Plain Layout
+
+cd /usr/local/bin
+\end_layout
+
+\begin_layout Plain Layout
+
+sudo ln -s vlink m68k-sinclairql-vlink
+\end_layout
+
+\begin_layout Plain Layout
+
+sudo ln -s vasmm68k_std m68k-sinclairql-vasmm68k_std
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+# Optional, just rename:
+\end_layout
+
+\begin_layout Plain Layout
+
+#sudo mv vlink m68k-sinclairql-vlink
+\end_layout
+
+\begin_layout Plain Layout
+
+#sudo mv vasmm68k_std m68k-sinclairql-vasmm68k_std
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Build the Sinclair QL Cross Compiler
+\end_layout
+
+\begin_layout Standard
+Now we can build and install the cross compiler.
+ I'm creating a new directory, named 
+\begin_inset Flex DirectoryName
+status open
+
+\begin_layout Plain Layout
+bin
+\end_layout
+
+\end_inset
+
+, in my home directory, for the installation.
+ This will need to be added to my 
+\begin_inset Flex EnvVar
+status open
+
+\begin_layout Plain Layout
+$PATH
+\end_layout
+
+\end_inset
+
+
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+On Linux Mint, and probably Ubuntu as well, when using the 
+\emph on
+bash
+\emph default
+ shell, if a user's 
+\begin_inset Flex EnvVar
+status open
+
+\begin_layout Plain Layout
+$HOME
+\end_layout
+
+\end_inset
+
+ directory includes a directory named 
+\begin_inset Flex FileName
+status open
+
+\begin_layout Plain Layout
+bin
+\end_layout
+
+\end_inset
+
+, it is automatically added to 
+\begin_inset Flex EnvVar
+status open
+
+\begin_layout Plain Layout
+$PATH
+\end_layout
+
+\end_inset
+
+ at login time.
+\end_layout
+
+\end_inset
+
+ at some point:
+\end_layout
+
+\begin_layout Standard
+\begin_inset listings
+lstparams "language=bash,numbers=left,basicstyle={\ttfamily},breaklines=true,showstringspaces=false,backgroundcolor={\color{codeColour}},breakautoindent=true"
+inline false
+status open
+
+\begin_layout Plain Layout
+
+# Create a new bin directory for the cross compiler.
+\end_layout
+
+\begin_layout Plain Layout
+
+mkdir -p ~/bin
+\end_layout
+
+\begin_layout Plain Layout
+
+export PATH=~/bin:$PATH
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+# Get back to the source.
+\end_layout
+
+\begin_layout Plain Layout
+
+cd ~/SourceCode/fpc
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+# Clean everything  out.
+\end_layout
+
+\begin_layout Plain Layout
+
+make clean OS_TARGET=sinclairql CPU_TARGET=m68k
+\end_layout
+
+\begin_layout Plain Layout
+
+...
+ Huge piles of scrolling stuff here!
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+# Build the cross compiler.
+\end_layout
+
+\begin_layout Plain Layout
+
+make crossall OS_TARGET=sinclairql CPU_TARGET=m68k
+\end_layout
+
+\begin_layout Plain Layout
+
+...
+ More huge piles of scrolling stuff here!
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+# Install the cross compiler.
+\end_layout
+
+\begin_layout Plain Layout
+
+make crossinstall OS_TARGET=sinclairql CPU_TARGET=m68k INSTALL_PREFIX="/home/nor
+man/bin"
+\end_layout
+
+\begin_layout Plain Layout
+
+...
+ Guess what happens here!
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+This will create a file named 
+\begin_inset Flex FileName
+status open
+
+\begin_layout Plain Layout
+/home/norman/bin/lib/fpc/n.n.n/ppcross68k
+\end_layout
+
+\end_inset
+
+, but I prefer to call mine 
+\begin_inset Flex FileName
+status open
+
+\begin_layout Plain Layout
+fpc-ql
+\end_layout
+
+\end_inset
+
+, so:
+\end_layout
+
+\begin_layout Standard
+\begin_inset listings
+lstparams "language=bash,numbers=left,basicstyle={\ttfamily},breaklines=true,showstringspaces=false,backgroundcolor={\color{codeColour}},breakautoindent=true"
+inline false
+status open
+
+\begin_layout Plain Layout
+
+cd ~/bin
+\end_layout
+
+\begin_layout Plain Layout
+
+ln -s /lib/fpc/n.n.n/ppcross68k fpc-ql
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+I've got a sym-link set up but on Windows you can easily copy or rename
+ it.
+ Now we can test it.
+\end_layout
+
+\begin_layout Standard
+\begin_inset listings
+lstparams "language=bash,numbers=left,basicstyle={\ttfamily},breaklines=true,showstringspaces=false,backgroundcolor={\color{codeColour}},breakautoindent=true"
+inline false
+status open
+
+\begin_layout Plain Layout
+
+fpc-ql
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset listings
+lstparams "basicstyle={\ttfamily},breaklines=true,showstringspaces=false,backgroundcolor={\color{outputColour}},breakautoindent=true"
+inline false
+status open
+
+\begin_layout Plain Layout
+
+Free Pascal Compiler version n.n.n [2021/04/05] for m68k
+\end_layout
+
+\begin_layout Plain Layout
+
+...
+\end_layout
+
+\begin_layout Plain Layout
+
+CTRL-C
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+We can see that we have a compiler for the M68K CPU.
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+NOTE
+\series default
+: You should be aware that any time you update the source code by running
+ 
+\begin_inset Flex CommandName
+status open
+
+\begin_layout Plain Layout
+svn update
+\end_layout
+
+\end_inset
+
+, there will be a need for you to clean and rebuild the cross compiler.
+ When you do this, be aware that the version number may change.
+ If, like me, you have sym-links to the complied cross compiler, then you
+ will find those links becoming invalid.
+ You will need to recreate them, pointing at the new version.
+\end_layout
+
+\begin_layout Section
+Create the Configuration File
+\end_layout
+
+\begin_layout Standard
+We need to create a configuration file for the cross compiler.
+ 
+\end_layout
+
+\begin_layout Standard
+\begin_inset listings
+lstparams "language=bash,numbers=left,basicstyle={\ttfamily},breaklines=true,showstringspaces=false,backgroundcolor={\color{codeColour}},breakautoindent=true"
+inline false
+status open
+
+\begin_layout Plain Layout
+
+cd ~/bin/lib/fpc
+\end_layout
+
+\begin_layout Plain Layout
+
+mkdir etc
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+cd etc
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+You may have to create the 
+\begin_inset Flex DirectoryName
+status open
+
+\begin_layout Plain Layout
+etc
+\end_layout
+
+\end_inset
+
+ directory, I did.
+ A file named 
+\begin_inset Flex FileName
+status open
+
+\begin_layout Plain Layout
+fpc.cfg
+\end_layout
+
+\end_inset
+
+ is required with the following content:
+\end_layout
+
+\begin_layout Standard
+\begin_inset listings
+lstparams "numbers=left,basicstyle={\ttfamily},breaklines=true,showstringspaces=false,backgroundcolor={\color{textfileColour}},breakautoindent=true"
+inline false
+status open
+
+\begin_layout Plain Layout
+
+#IFDEF CPUM68K
+\end_layout
+
+\begin_layout Plain Layout
+
+-Fu<path/to/install>/lib/fpc/$fpcversion/units/$fpccpu-$fpcos
+\end_layout
+
+\begin_layout Plain Layout
+
+-Fu<path/to/install>/lib/fpc/$fpcversion/units/$fpccpu-$fpcos/*
+\end_layout
+
+\begin_layout Plain Layout
+
+#IFDEF SINCLAIRQL
+\end_layout
+
+\begin_layout Plain Layout
+
+-FD</path/to/vasm-and-vlink>
+\end_layout
+
+\begin_layout Plain Layout
+
+-XPm68k-sinclairql-
+\end_layout
+
+\begin_layout Plain Layout
+
+#ENDIF
+\end_layout
+
+\begin_layout Plain Layout
+
+#ENDIF
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+You will note the use of place markers for the installation directories.
+ As my installation directory was the 
+\begin_inset Flex DirectoryName
+status open
+
+\begin_layout Plain Layout
+bin
+\end_layout
+
+\end_inset
+
+ directory in my home folder, my file looks like this:
+\end_layout
+
+\begin_layout Standard
+\begin_inset listings
+lstparams "numbers=left,basicstyle={\ttfamily},breaklines=true,showstringspaces=false,backgroundcolor={\color{textfileColour}},breakautoindent=true"
+inline false
+status open
+
+\begin_layout Plain Layout
+
+#IFDEF CPUM68K
+\end_layout
+
+\begin_layout Plain Layout
+
+-Fu/home/norman/bin/lib/fpc/$fpcversion/units/$fpccpu-$fpcos
+\end_layout
+
+\begin_layout Plain Layout
+
+-Fu/home/norman/bin/lib/fpc/$fpcversion/units/$fpccpu-$fpcos/*
+\end_layout
+
+\begin_layout Plain Layout
+
+#IFDEF SINCLAIRQL
+\end_layout
+
+\begin_layout Plain Layout
+
+-FD/usr/local/bin
+\end_layout
+
+\begin_layout Plain Layout
+
+-XPm68k-sinclairql-
+\end_layout
+
+\begin_layout Plain Layout
+
+#ENDIF
+\end_layout
+
+\begin_layout Plain Layout
+
+#ENDIF
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+If you are only interested in building Pascal programs for an 
+\emph on
+actual
+\emph default
+ QL, and have no intention of developing anything for Windows or Linux,
+ then this config file is an excellent option:
+\end_layout
+
+\begin_layout Standard
+\begin_inset listings
+lstparams "numbers=left,basicstyle={\ttfamily},breaklines=true,showstringspaces=false,backgroundcolor={\color{textfileColour}},breakautoindent=true"
+inline false
+status open
+
+\begin_layout Plain Layout
+
+#IFDEF CPUM68K
+\end_layout
+
+\begin_layout Plain Layout
+
+-Tsinclairql
+\end_layout
+
+\begin_layout Plain Layout
+
+-Fu/home/norman/bin/lib/fpc/$fpcversion/units/$fpccpu-$fpcos
+\end_layout
+
+\begin_layout Plain Layout
+
+-Fu/home/norman/bin/lib/fpc/$fpcversion/units/$fpccpu-$fpcos/*
+\end_layout
+
+\begin_layout Plain Layout
+
+#IFDEF SINCLAIRQL
+\end_layout
+
+\begin_layout Plain Layout
+
+-FD/usr/local/bin
+\end_layout
+
+\begin_layout Plain Layout
+
+-XPm68k-sinclairql-
+\end_layout
+
+\begin_layout Plain Layout
+
+-WQxtcc
+\end_layout
+
+\begin_layout Plain Layout
+
+#ENDIF
+\end_layout
+
+\begin_layout Plain Layout
+
+#ENDIF
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+You may have noticed that I added the 
+\begin_inset Flex OptionName
+status open
+
+\begin_layout Plain Layout
+-WQxtcc
+\end_layout
+
+\end_inset
+
+ option? This is the option that tells the cross compiler to add an XTcc
+ trailer record to the end of the compiled binary, this holds the data space
+ required by the program.
+ You can use this on a normal QL to convert the file into an executable
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+Using my own excellent(!) utility, Xtcc_bin
+\begin_inset Flex FileName
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+.
+ 
+\begin_inset CommandInset href
+LatexCommand href
+name "Issue_6"
+target "https://github.com/NormanDunbar/QLAssemblyLanguageMagazine/releases/tag/Issue_6"
+literal "false"
+
+\end_inset
+
+ of my eMagazine has all the details.
+ 
+\end_layout
+
+\end_inset
+
+.
+ The default is to write a special header at the start of the file and most/all
+ the QL emulators understand this and can execute the file directly.
+ If you are running on an emulator, like me, then omit the 
+\begin_inset Flex OptionName
+status open
+
+\begin_layout Plain Layout
+-WQxtcc
+\end_layout
+
+\end_inset
+
+ option.
+\end_layout
+
+\begin_layout Section
+Building Your First QL Program
+\end_layout
+
+\begin_layout Standard
+Now, test the build.
+ In the following, I've used the 
+\begin_inset Flex OptionName
+status open
+
+\begin_layout Plain Layout
+-Tsinclairql
+\end_layout
+
+\end_inset
+
+ option to tell the compiler to compile for a QL.
+ If you added the option to the config file, there's no need to use it here.
+\end_layout
+
+\begin_layout Standard
+\begin_inset listings
+lstparams "language=bash,numbers=left,basicstyle={\ttfamily},breaklines=true,showstringspaces=false,backgroundcolor={\color{codeColour}},breakautoindent=true"
+inline false
+status open
+
+\begin_layout Plain Layout
+
+cd ~/SourceCode/Pascal
+\end_layout
+
+\begin_layout Plain Layout
+
+fpc-ql -Tsinclairql hello.pp
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset listings
+lstparams "basicstyle={\ttfamily},breaklines=true,showstringspaces=false,backgroundcolor={\color{outputColour}},breakautoindent=true"
+inline false
+status open
+
+\begin_layout Plain Layout
+
+Warning 22: Attributes of section .text were changed from r-x- in Linker
+ Script <link15795.res> to rwx- in hello.o.
+ 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+You can safely ignore the warning.
+ On Linux it's easy to determine if the correct file has been created provided
+ the option to use an XTcc trailer was specified in the config file, or
+ at compile time with the 
+\begin_inset Flex OptionName
+status open
+
+\begin_layout Plain Layout
+-WQxtcc
+\end_layout
+
+\end_inset
+
+ option:
+\end_layout
+
+\begin_layout Standard
+\begin_inset listings
+lstparams "language=bash,numbers=left,basicstyle={\ttfamily},breaklines=true,showstringspaces=false,backgroundcolor={\color{codeColour}},breakautoindent=true"
+inline false
+status open
+
+\begin_layout Plain Layout
+
+file hello.exe
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset listings
+lstparams "basicstyle={\ttfamily},breaklines=true,showstringspaces=false,backgroundcolor={\color{outputColour}},breakautoindent=true"
+inline false
+status open
+
+\begin_layout Plain Layout
+
+hello.exe: QDOS executable 'FPC' 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The executable is 
+\begin_inset Flex FileName
+status open
+
+\begin_layout Plain Layout
+hello.exe
+\end_layout
+
+\end_inset
+
+, it's a QDOS executable and since FPC version 3.3.1, the job name is 
+\begin_inset Quotes eld
+\end_inset
+
+Program
+\begin_inset Quotes erd
+\end_inset
+
+ unless you give the code a 
+\begin_inset Quotes eld
+\end_inset
+
+Program xxxx
+\begin_inset Quotes erd
+\end_inset
+
+ statement in which case the job name will be 
+\begin_inset Quotes eld
+\end_inset
+
+xxxx
+\begin_inset Quotes erd
+\end_inset
+
+
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+Ok, confusion! In FPC you do not have to give a program a name unlike standard
+ Pascal, so the 
+\begin_inset Quotes eld
+\end_inset
+
+Program
+\begin_inset Quotes erd
+\end_inset
+
+ line can be left out.
+ This gives the QL executables a default program name of 
+\begin_inset Quotes eld
+\end_inset
+
+Program
+\begin_inset Quotes erd
+\end_inset
+
+.
+ If you do include the 
+\begin_inset Quotes eld
+\end_inset
+
+Program program_name
+\begin_inset Quotes erd
+\end_inset
+
+ line in your source code, the QL executable gets the supplied program name
+ as its job name.
+ However, you can change the job name on the fly, if you wish, using the
+ QL specific functions 
+\begin_inset Flex FunctionName
+status open
+
+\begin_layout Plain Layout
+SetQLJobName()
+\end_layout
+
+\end_inset
+
+, and retrieve the job name with 
+\begin_inset Flex FunctionName
+status open
+
+\begin_layout Plain Layout
+GetQLJobName()
+\end_layout
+
+\end_inset
+
+ which returns a string or 
+\begin_inset Flex FunctionName
+status open
+
+\begin_layout Plain Layout
+GetQLJobNamePtr()
+\end_layout
+
+\end_inset
+
+ which returns a pointer.
+\end_layout
+
+\begin_layout Plain Layout
+See 
+\begin_inset CommandInset href
+LatexCommand href
+target "https://wiki.freepascal.org/Sinclair_QL#Job_Name"
+
+\end_inset
+
+ for details.
+\end_layout
+
+\end_inset
+
+.
+ All we have to do now is get it over to a QL and try it out.
+\end_layout
+
+\begin_layout Chapter
+Compiling QL Pascal programs
+\end_layout
+
+\begin_layout Standard
+When writing your source code, standard Pascal requires that the first 
+\begin_inset Quotes eld
+\end_inset
+
+executable
+\begin_inset Quotes erd
+\end_inset
+
+ line in the file be the 
+\begin_inset listings
+lstparams "language=bash,basicstyle={\ttfamily},showstringspaces=false,backgroundcolor={\color{mayablue}},breakautoindent=true"
+inline true
+status open
+
+\begin_layout Plain Layout
+
+Program ProgramName( ...
+ )
+\end_layout
+
+\end_inset
+
+, however, FPC doesn't require you to have this line at all.
+ On the QL, the executable's job name will be determined from the 
+\begin_inset listings
+lstparams "language=bash,basicstyle={\ttfamily},showstringspaces=false,backgroundcolor={\color{mayablue}},breakautoindent=true"
+inline true
+status open
+
+\begin_layout Plain Layout
+
+Program
+\end_layout
+
+\end_inset
+
+ line.
+ If one is present, the job name will be as per the given program name,
+ if that line is not present, the default job name will be 
+\begin_inset Quotes eld
+\end_inset
+
+Program
+\begin_inset Quotes erd
+\end_inset
+
+.
+ There are some special QL functions that can be used to set or retrieve
+ the job name.
+ This may be useful if you are writing a file processing task of some kind,
+ and you wish to add the current filename to the job's name.
+ You are limited to 48 characters maximum though, so don't go too overboard!
+\end_layout
+
+\begin_layout Standard
+The functions are:
+\end_layout
+
+\begin_layout Itemize
+\begin_inset listings
+lstparams "language=Pascal,basicstyle={\ttfamily},showstringspaces=false"
+inline true
+status open
+
+\begin_layout Plain Layout
+
+Function SetQLJobName(const s: string): longint;
+\end_layout
+
+\end_inset
+
+ This function sets the job's name from a Pascal string and returns the
+ number of characters successfully set as the Job name, or -1 if there was
+ an error.
+\end_layout
+
+\begin_layout Itemize
+\begin_inset listings
+lstparams "language=Pascal,basicstyle={\ttfamily},showstringspaces=false"
+inline true
+status open
+
+\begin_layout Plain Layout
+
+Function GetQLJobName: string;
+\end_layout
+
+\end_inset
+
+ This function returns the current job name as a Pascal string, or empty
+ string if there was an error.
+\end_layout
+
+\begin_layout Itemize
+\begin_inset listings
+lstparams "language=Pascal,basicstyle={\ttfamily},showstringspaces=false"
+inline true
+status open
+
+\begin_layout Plain Layout
+
+Function GetQLJobNamePtr: pointer;
+\end_layout
+
+\end_inset
+
+ This function returns a pointer to the Job name stored as a QL string (2
+ byte length + series of characters), or nil if there was an error.
+\end_layout
+
+\begin_layout Standard
+To compile a QL program, all you have to do is:
+\end_layout
+
+\begin_layout Standard
+\begin_inset listings
+lstparams "language=bash,numbers=left,basicstyle={\ttfamily},breaklines=true,showstringspaces=false,backgroundcolor={\color{codeColour}},breakautoindent=true"
+inline false
+status open
+
+\begin_layout Plain Layout
+
+cd ~/SourceCode/Pascal
+\end_layout
+
+\begin_layout Plain Layout
+
+fpc-ql -Tsinclairql hello.pp
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset listings
+lstparams "basicstyle={\ttfamily},breaklines=true,showstringspaces=false,backgroundcolor={\color{outputColour}},breakautoindent=true"
+inline false
+status open
+
+\begin_layout Plain Layout
+
+Warning 22: Attributes of section .text were changed from r-x- in Linker
+ Script <link15795.res> to rwx- in hello.o.
+ 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+As mentioned, if you added the 
+\begin_inset Flex OptionName
+status open
+
+\begin_layout Plain Layout
+-Tsinclairql
+\end_layout
+
+\end_inset
+
+ option to the config file, you don't have to specify it here.
+ I need to compile code for both Linux and the QL.
+ I test my dodgy Pascal code on Linux first to be sure it compiles and runs
+ correctly, then I repeat the operation for the QL.
+ At least then I know that if it worked on Linux but doesn't on the QL,
+ then it's the QL RTL that's most likely to be the cause.
+\end_layout
+
+\begin_layout Standard
+You can safely ignore the warning about the attributes at the end of the
+ compilation output.
+ 
+\end_layout
+
+\begin_layout Standard
+The executable file for the QL will be created as 
+\begin_inset Flex FileName
+status open
+
+\begin_layout Plain Layout
+hello.exe
+\end_layout
+
+\end_inset
+
+ and will have a built in file header with details of the data space required
+ unless you specified the 
+\begin_inset Flex OptionName
+status open
+
+\begin_layout Plain Layout
+-WQxtcc
+\end_layout
+
+\end_inset
+
+ option either on the command line or in the config file.
+ There are two options which control how the executable file for the QL
+ gets it's data space information:
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Flex OptionName
+status open
+
+\begin_layout Plain Layout
+-WQqhdr
+\end_layout
+
+\end_inset
+
+ Set metadata to QDOS File Header style.
+ A header record will be added to the file and QPC or other emulators can
+ use this to execute the file directly, even from a 
+\begin_inset Flex DirectoryName
+status open
+
+\begin_layout Plain Layout
+dos_
+\end_layout
+
+\end_inset
+
+ device.
+ This option is the default and doesn't need to be specified.
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Flex OptionName
+status open
+
+\begin_layout Plain Layout
+-WQxtcc
+\end_layout
+
+\end_inset
+
+ Set metadata to XTcc style.
+ This will be needed on an actual QL and you will need a utility to convert
+ the file to an executable.
+\end_layout
+
+\begin_layout Standard
+To compile the example program, there are a number of options:
+\end_layout
+
+\begin_layout Itemize
+\begin_inset listings
+lstparams "basicstyle={\ttfamily},showstringspaces=false,numbers=none"
+inline true
+status open
+
+\begin_layout Plain Layout
+
+fpc-ql hello.pp
+\end_layout
+
+\end_inset
+
+ this assumes that the 
+\begin_inset Flex OptionName
+status open
+
+\begin_layout Plain Layout
+-Tsinclairql
+\end_layout
+
+\end_inset
+
+ option is to be found in the config file, if not, it will fail to compile.
+ The executable will be created with header details embedded into the executable
+ file ready for use on various QL Emulators.
+\end_layout
+
+\begin_layout Itemize
+\begin_inset listings
+lstparams "basicstyle={\ttfamily},showstringspaces=false,numbers=none"
+inline true
+status open
+
+\begin_layout Plain Layout
+
+fpc-ql -WQqhdr hello.pp
+\end_layout
+
+\end_inset
+
+ This is exactly the same as the variant above, however, it will override
+ any 
+\begin_inset Flex OptionName
+status open
+
+\begin_layout Plain Layout
+-WQ
+\end_layout
+
+\end_inset
+
+ option in the config file and force an embedded header to be used.
+\end_layout
+
+\begin_layout Itemize
+\begin_inset listings
+lstparams "basicstyle={\ttfamily},showstringspaces=false,numbers=none"
+inline true
+status open
+
+\begin_layout Plain Layout
+
+fpc-ql -Tsinclairql hello.pp
+\end_layout
+
+\end_inset
+
+ this variant explicitly specifies that the file must be compiled for the
+ Sinclair QL and will overwrite any existing 
+\begin_inset Flex OptionName
+status open
+
+\begin_layout Plain Layout
+-T
+\end_layout
+
+\end_inset
+
+ option in the config file.
+ The executable will be created with header details embedded into the executable
+ file ready for use on various QL Emulators.
+\end_layout
+
+\begin_layout Itemize
+\begin_inset listings
+lstparams "basicstyle={\ttfamily},showstringspaces=false,numbers=none"
+inline true
+status open
+
+\begin_layout Plain Layout
+
+fpc-ql -Tsinclairql -WQqhdr hello.pp
+\end_layout
+
+\end_inset
+
+ This is exactly the same as the variant above, however, it will override
+ any 
+\begin_inset Flex OptionName
+status open
+
+\begin_layout Plain Layout
+-WQ
+\end_layout
+
+\end_inset
+
+ option in the config file and force an embedded header to be used.
+\end_layout
+
+\begin_layout Itemize
+\begin_inset listings
+lstparams "basicstyle={\ttfamily},showstringspaces=false,numbers=none"
+inline true
+status open
+
+\begin_layout Plain Layout
+
+fpc-ql -WQxtcc hello.pp
+\end_layout
+
+\end_inset
+
+ The executable will be created with an XTCC trailer record holding dataspace
+ details.
+ This variant is suitable for use on an actual QL after the executable has
+ been processed by an XTcc utility.
+\end_layout
+
+\begin_layout Itemize
+\begin_inset listings
+lstparams "basicstyle={\ttfamily},showstringspaces=false,numbers=none"
+inline true
+status open
+
+\begin_layout Plain Layout
+
+fpc-ql -Tsinclairql -WQxtcc hello.pp
+\end_layout
+
+\end_inset
+
+ This is exactly the same as the variant above, however, it will override
+ any 
+\begin_inset Flex OptionName
+status open
+
+\begin_layout Plain Layout
+-WQ
+\end_layout
+
+\end_inset
+
+ option in the config file and force an XTCC trailer record to be used.
+\end_layout
+
+\begin_layout Chapter
+Running Compiled Programs on the QL
+\end_layout
+
+\begin_layout Section
+Programs Compiled with 
+\begin_inset Flex OptionName
+status open
+
+\begin_layout Plain Layout
+-WQqhdr
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+These programs are best suited to the various QL emulators which know about
+ the embedded header with the dataspace details.
+ I use QPC and it copes happily with me executing these programs directly
+ from the 
+\begin_inset Flex DirectoryName
+status open
+
+\begin_layout Plain Layout
+dos_
+\end_layout
+
+\end_inset
+
+ drive.
+ I don't have to make any changes, or somehow tell QPC that although the
+ file is executing from a non-QL device, it still works perfectly.
+ 
+\end_layout
+
+\begin_layout Standard
+\begin_inset listings
+lstparams "numbers=left,basicstyle={\ttfamily},breaklines=true,showstringspaces=false,backgroundcolor={\color{codeColour}},breakautoindent=true"
+inline false
+status open
+
+\begin_layout Plain Layout
+
+ex dos1_hello.exe
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+And that's all there is to it! A 512 by 256 window will open and display
+ the following:
+\end_layout
+
+\begin_layout Standard
+\begin_inset listings
+lstparams "basicstyle={\ttfamily},breaklines=true,showstringspaces=false,backgroundcolor={\color{outputColour}},breakautoindent=true"
+inline false
+status open
+
+\begin_layout Plain Layout
+
+Hello FPC World!
+\end_layout
+
+\begin_layout Plain Layout
+
+Press any key to exit.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Programs Compiled with -WQxtcc
+\end_layout
+
+\begin_layout Standard
+The executable file which the cross compiler created can be copied over
+ to a QL (or QPC or other emulator) and converted into a 
+\emph on
+proper
+\emph default
+ QDOS executable.
+ In my case I can use my XTCC utility from my somewhat irregular Assembly
+ Language eMagazine, Issue 6 – available from 
+\begin_inset CommandInset href
+LatexCommand href
+name "My GitHub"
+target "https://github.com/NormanDunbar/QLAssemblyLanguageMagazine/releases/tag/Issue_6"
+literal "false"
+
+\end_inset
+
+
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+\begin_inset CommandInset href
+LatexCommand href
+target "https://github.com/NormanDunbar/QLAssemblyLanguageMagazine/releases/tag/Issue_6"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+, to read the details and write out an executable file.
+\end_layout
+
+\begin_layout Standard
+\begin_inset listings
+lstparams "numbers=left,basicstyle={\ttfamily},breaklines=true,showstringspaces=false,backgroundcolor={\color{codeColour}},breakautoindent=true"
+inline false
+status open
+
+\begin_layout Plain Layout
+
+ex win1_source_xtcc_xtcc_bin,ram1_hello.exe
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The file, 
+\begin_inset Flex FileName
+status open
+
+\begin_layout Plain Layout
+hello.exe
+\end_layout
+
+\end_inset
+
+ is now ready to be executed.
+\end_layout
+
+\begin_layout Standard
+\begin_inset listings
+lstparams "numbers=left,basicstyle={\ttfamily},breaklines=true,showstringspaces=false,backgroundcolor={\color{codeColour}},breakautoindent=true"
+inline false
+status open
+
+\begin_layout Plain Layout
+
+ex ram1_hello.exe
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+A 512 by 256 window will open and display the following:
+\end_layout
+
+\begin_layout Standard
+\begin_inset listings
+lstparams "basicstyle={\ttfamily},breaklines=true,showstringspaces=false,backgroundcolor={\color{outputColour}},breakautoindent=true"
+inline false
+status open
+
+\begin_layout Plain Layout
+
+Hello FPC World!
+\end_layout
+
+\begin_layout Plain Layout
+
+Press any key to exit.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Success!
+\end_layout
+
+\begin_layout Chapter
+Amending the Run Time Library
+\end_layout
+
+\begin_layout Standard
+The system unit lives in the run time library and is responsible for all
+ the various startup needs of a compiled Pascal program.
+ It opens the standard files, sets the program name and so forth.
+ Sometimes it may be necessary to edit and recompile the RTL especially
+ as the ability to cross compile programs for the QL only recently arose
+ as a fun exercise for the November 2020 
+\begin_inset Quotes eld
+\end_inset
+
+
+\emph on
+QLvember
+\emph default
+
+\begin_inset Quotes erd
+\end_inset
+
+ thingy!
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+I have no idea what it was actually called, so 
+\emph on
+thingy
+\emph default
+ it remains!
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Editing Source Code
+\end_layout
+
+\begin_layout Standard
+The source for the RTL for the QL, lives in the 
+\begin_inset Flex DirectoryName
+status open
+
+\begin_layout Plain Layout
+rtl/sinclairql
+\end_layout
+
+\end_inset
+
+ directory which you will find beneath the 
+\begin_inset Flex DirectoryName
+status open
+
+\begin_layout Plain Layout
+fpc
+\end_layout
+
+\end_inset
+
+ directory created when you installed the source code previously.
+ In my case, 
+\begin_inset Flex DirectoryName
+status open
+
+\begin_layout Plain Layout
+SourceCode/fpc/rtl/sinclairql
+\end_layout
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+The main files of interest here are:
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Flex FileName
+status open
+
+\begin_layout Plain Layout
+System.pp
+\end_layout
+
+\end_inset
+
+ which contains the main system unit code.
+ This unit is always included in all compiled programs and doesn't need
+ to be specifically included with a 
+\begin_inset listings
+lstparams "language=Pascal,basicstyle={\ttfamily},showstringspaces=false,backgroundcolor={\color{mayablue}},breakautoindent=true"
+inline true
+status open
+
+\begin_layout Plain Layout
+
+uses system
+\end_layout
+
+\end_inset
+
+ program line.
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Flex FileName
+status open
+
+\begin_layout Plain Layout
+sysfile.inc
+\end_layout
+
+\end_inset
+
+ which contains the source code for QL file handling.
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Flex FileName
+status open
+
+\begin_layout Plain Layout
+sysdir.inc
+\end_layout
+
+\end_inset
+
+ which contains the source code for QL directory handling.
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Flex FileName
+status open
+
+\begin_layout Plain Layout
+qdosfuncs.inc
+\end_layout
+
+\end_inset
+
+ which contains various Pascal headers linking the QL specific code to the
+ RTL.
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Flex FileName
+status open
+
+\begin_layout Plain Layout
+qdos.inc
+\end_layout
+
+\end_inset
+
+ which contains interface functions for the QL's RTL.
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Flex FileName
+status open
+
+\begin_layout Plain Layout
+sysos.inc
+\end_layout
+
+\end_inset
+
+ which contains an implementation of all the base types etc required for
+ a minimal POSIX compliant subset required to port the compiler to a new
+ OS.
+ At present, it contains only the code to convert a QL error code to a,
+ FPC error code.
+\end_layout
+
+\begin_layout Subsection
+Parameter Passing
+\end_layout
+
+\begin_layout Standard
+You really need to beware of this because it has risen up and bitten me
+ a couple of times! The default method of passing parameters around in Pascal
+ is named 
+\emph on
+register
+\emph default
+.
+ This passed parameters using registers where it can, as follows:
+\end_layout
+
+\begin_layout Itemize
+The first ordinal number (ie, a numeric value) is passed in register 
+\begin_inset Flex RegisterName
+status open
+
+\begin_layout Plain Layout
+D0
+\end_layout
+
+\end_inset
+
+;
+\end_layout
+
+\begin_layout Itemize
+The second ordinal number (ie, a numeric value) is passed in register 
+\begin_inset Flex RegisterName
+status open
+
+\begin_layout Plain Layout
+D1
+\end_layout
+
+\end_inset
+
+;
+\end_layout
+
+\begin_layout Itemize
+The first pointer or reference is passed in register 
+\begin_inset Flex RegisterName
+status open
+
+\begin_layout Plain Layout
+A0
+\end_layout
+
+\end_inset
+
+;
+\end_layout
+
+\begin_layout Itemize
+The first pointer or reference is passed in register 
+\begin_inset Flex RegisterName
+status open
+
+\begin_layout Plain Layout
+A1
+\end_layout
+
+\end_inset
+
+;
+\end_layout
+
+\begin_layout Standard
+So, when you see a Pascal procedure or function header that looks like the
+ 
+\begin_inset Flex FunctionName
+status open
+
+\begin_layout Plain Layout
+mt_rechp
+\end_layout
+
+\end_inset
+
+ example from 
+\begin_inset Flex FileName
+status open
+
+\begin_layout Plain Layout
+qdos.inc
+\end_layout
+
+\end_inset
+
+:
+\end_layout
+
+\begin_layout Standard
+\begin_inset listings
+lstparams "language=Pascal,numbers=left,basicstyle={\ttfamily},breaklines=true,showstringspaces=false,backgroundcolor={\color{textfileColour}},breakautoindent=true"
+inline false
+status open
+
+\begin_layout Plain Layout
+
+procedure mt_rechp(area: pointer); assembler; nostackframe; public name
+ '_mt_rechp';
+\end_layout
+
+\begin_layout Plain Layout
+
+asm
+\end_layout
+
+\begin_layout Plain Layout
+
+  movem.l d2-d3/a2-a3,-(sp)
+\end_layout
+
+\begin_layout Plain Layout
+
+  move.l area,a0
+\end_layout
+
+\begin_layout Plain Layout
+
+  moveq.l #_MT_RECHP,d0
+\end_layout
+
+\begin_layout Plain Layout
+
+  trap #1
+\end_layout
+
+\begin_layout Plain Layout
+
+  movem.l (sp)+,d2-d3/a2-a3
+\end_layout
+
+\begin_layout Plain Layout
+
+end;
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+You need to be aware that the 
+\begin_inset Flex VariableName
+status open
+
+\begin_layout Plain Layout
+area
+\end_layout
+
+\end_inset
+
+ parameter, which is a pointer, will be passed in register 
+\begin_inset Flex RegisterName
+status open
+
+\begin_layout Plain Layout
+A0
+\end_layout
+
+\end_inset
+
+.
+ This means that the 
+\family typewriter
+move.l area,a0
+\family default
+ instruction will be disassembled as 
+\family typewriter
+move,l a0,a0
+\family default
+ and may appear redundant, but there are options to change the way that
+ parameters are passed, so don't miss the line out!
+\end_layout
+
+\begin_layout Standard
+In addition, if you are anything like me, I tend to almost always set my
+ registers up in order, 
+\begin_inset Flex RegisterName
+status open
+
+\begin_layout Plain Layout
+D0
+\end_layout
+
+\end_inset
+
+-
+\begin_inset Flex RegisterName
+status open
+
+\begin_layout Plain Layout
+D7
+\end_layout
+
+\end_inset
+
+ then 
+\begin_inset Flex RegisterName
+status open
+
+\begin_layout Plain Layout
+A0
+\end_layout
+
+\end_inset
+
+- 
+\begin_inset Flex RegisterName
+status open
+
+\begin_layout Plain Layout
+A7
+\end_layout
+
+\end_inset
+
+ as required when making calls to QDOSMSQ, that's fine in Assembly Language,
+ but not so fine in Pascal when 
+\begin_inset Flex RegisterName
+status open
+
+\begin_layout Plain Layout
+D0
+\end_layout
+
+\end_inset
+
+ and 
+\begin_inset Flex RegisterName
+status open
+
+\begin_layout Plain Layout
+D1
+\end_layout
+
+\end_inset
+
+ are used for passing numeric parameter values.
+ This code contains a hideous bug which took me a while to track down:
+\end_layout
+
+\begin_layout Standard
+\begin_inset listings
+lstparams "language=Pascal,numbers=left,basicstyle={\ttfamily},breaklines=true,showstringspaces=false,backgroundcolor={\color{textfileColour}},breakautoindent=true"
+inline false
+status open
+
+\begin_layout Plain Layout
+
+function fs_posab(chan: Tchanid; new_pos: dword):longint; assembler; nostackfram
+e; public name '_fs_posab';
+\end_layout
+
+\begin_layout Plain Layout
+
+asm
+\end_layout
+
+\begin_layout Plain Layout
+
+    move.l d3,-(sp)
+\end_layout
+
+\begin_layout Plain Layout
+
+    moveq #_FS_POSAB,d0
+\end_layout
+
+\begin_layout Plain Layout
+
+    move.l new_pos,d1
+\end_layout
+
+\begin_layout Plain Layout
+
+    moveq #-1,d3
+\end_layout
+
+\begin_layout Plain Layout
+
+    move.l chan,a0
+\end_layout
+
+\begin_layout Plain Layout
+
+    trap #3
+\end_layout
+
+\begin_layout Plain Layout
+
+    tst.l d0
+\end_layout
+
+\begin_layout Plain Layout
+
+    bne.s @quit
+\end_layout
+
+\begin_layout Plain Layout
+
+    move.l d1,d0
+\end_layout
+
+\begin_layout Plain Layout
+
+@quit:
+\end_layout
+
+\begin_layout Plain Layout
+
+    move.l (sp)+,d3
+\end_layout
+
+\begin_layout Plain Layout
+
+end;
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The problem is the 
+\begin_inset Flex VariableName
+status open
+
+\begin_layout Plain Layout
+chan
+\end_layout
+
+\end_inset
+
+ variable is passed in register 
+\begin_inset Flex RegisterName
+status open
+
+\begin_layout Plain Layout
+D0
+\end_layout
+
+\end_inset
+
+, but before we copy 
+\begin_inset Flex VariableName
+status open
+
+\begin_layout Plain Layout
+chan
+\end_layout
+
+\end_inset
+
+ into 
+\begin_inset Flex RegisterName
+status open
+
+\begin_layout Plain Layout
+A0
+\end_layout
+
+\end_inset
+
+, we have already overwritten it with the value for 
+\begin_inset Flex ConstantName
+status open
+
+\begin_layout Plain Layout
+_FS_POSAB
+\end_layout
+
+\end_inset
+
+.
+ This, as you can imagine, caused various channel not open errors.
+\end_layout
+
+\begin_layout Subsection
+Debugging
+\end_layout
+
+\begin_layout Standard
+When compiling, you can see the assembly language that is created by the
+ compiler if you use the 
+\begin_inset Flex OptionName
+status open
+
+\begin_layout Plain Layout
+-al
+\end_layout
+
+\end_inset
+
+ (lower case 'a', lower case ell) command line option.
+ This prevents FPC from deleting the Assembly Language source file(s) after
+ the compilation is complete.
+ If you use this option with the source file 
+\begin_inset Flex FileName
+status open
+
+\begin_layout Plain Layout
+hello.pas
+\end_layout
+
+\end_inset
+
+, then your Assembly source will be found in the file 
+\begin_inset Flex FileName
+status open
+
+\begin_layout Plain Layout
+hello.s
+\end_layout
+
+\end_inset
+
+ afterwards.
+\end_layout
+
+\begin_layout Standard
+Sometimes this is enough to give you a clue, other times may require debugging
+ on the QL.
+ 
+\end_layout
+
+\begin_layout Standard
+Over on the QL, however, you can debug a compiled Pascal program using 
+\emph on
+QMON2
+\emph default
+.
+ When I was debugging the 
+\begin_inset Flex FunctionName
+status open
+
+\begin_layout Plain Layout
+fs_posab
+\end_layout
+
+\end_inset
+
+ function listed above, I needed to jump into 
+\emph on
+QMON2
+\emph default
+ whenever I hit that particular section of code.
+ I didn't want to have to trace through the entire program until I reached
+ it, that would have been a nightmare as we (still) don't have a source
+ level debugger for the QL.
+ Yet! 
+\end_layout
+
+\begin_layout Standard
+What I did was simple.
+ At the start of 
+\begin_inset Flex FunctionName
+status open
+
+\begin_layout Plain Layout
+fs_posab
+\end_layout
+
+\end_inset
+
+, I added a 
+\family typewriter
+trap #15
+\family default
+ instruction and recompiled and reinstalled the RTL as described later.
+ On the QL, it was this easy:
+\end_layout
+
+\begin_layout Standard
+\begin_inset listings
+lstparams "language=Pascal,numbers=left,basicstyle={\ttfamily},breaklines=true,showstringspaces=false,backgroundcolor={\color{codeColour}},breakautoindent=true"
+inline false
+status open
+
+\begin_layout Plain Layout
+
+lrespr win1_qmon2_qmon_bin
+\end_layout
+
+\begin_layout Plain Layout
+
+qmon dos1_test.exe
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+This loads up the executable, in my case from 
+\begin_inset Flex FileName
+status open
+
+\begin_layout Plain Layout
+dos1_test.exe
+\end_layout
+
+\end_inset
+
+, and then stops to allow me the ability to enter commands:
+\end_layout
+
+\begin_layout Standard
+\begin_inset listings
+lstparams "language=Pascal,numbers=left,basicstyle={\ttfamily},breaklines=true,showstringspaces=false,backgroundcolor={\color{codeColour}},breakautoindent=true"
+inline false
+status open
+
+\begin_layout Plain Layout
+
+tl 14
+\end_layout
+
+\begin_layout Plain Layout
+
+g
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+This neat pair of instructions says to 
+\begin_inset Flex ApplicationName
+status open
+
+\begin_layout Plain Layout
+QMON2
+\end_layout
+
+\end_inset
+
+, whenever you hit a trap higher than 
+\family typewriter
+trap #14
+\family default
+, break at that point and jump into the monitor.
+ Now when the Pascal code reaches the 
+\begin_inset Flex FunctionName
+status open
+
+\begin_layout Plain Layout
+fs_posab
+\end_layout
+
+\end_inset
+
+ function, I get the ability to trace it, or set breakpoints etc and see
+ if I can track down what is happening to make things not work.
+\end_layout
+
+\begin_layout Standard
+It was through tracing this that I discovered that the 
+\family typewriter
+move.l chan,a0
+\family default
+ was actually 
+\family typewriter
+move.l d0,a0
+\family default
+ and as 
+\begin_inset Flex RegisterName
+status open
+
+\begin_layout Plain Layout
+D0
+\end_layout
+
+\end_inset
+
+ was already set to 
+\begin_inset Flex ConstantName
+status open
+
+\begin_layout Plain Layout
+_FS_POSAB
+\end_layout
+
+\end_inset
+
+, I could see what was wrong.
+ After reading up on FPC's default parameter passing methods of course!
+\end_layout
+
+\begin_layout Chapter
+Building the Run Time Library
+\end_layout
+
+\begin_layout Standard
+In a similar manner to the Units (coming soon) , you cannot just compile
+ a couple of code files that you changed.
+ You have to make sure that all code files are recompiled any time you make
+ a change.
+ If you don't do this, you'll get warnings at program compilation times
+ that some files cannot be found.
+ 
+\end_layout
+
+\begin_layout Section
+Compiling the RTL
+\end_layout
+
+\begin_layout Standard
+Once any amendments have been made to the RTL source files, the whole lot
+ needs to be recompiled and relinked.
+ I should point out that the following compilation invocation
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+Ie, magic spell!
+\end_layout
+
+\end_inset
+
+ was extracted from the system by Marcel Kilgus when I was having troubles
+ getting things to compile properly.
+ I do not know if this is the official invocation or not, but it does seem
+ to work.
+\end_layout
+
+\begin_layout Standard
+The compilation should be done from the top level of the source tree, in
+ my case this is the directory created by 
+\emph on
+Subversion
+\emph default
+ when I first downloaded the code, 
+\begin_inset Flex DirectoryName
+status open
+
+\begin_layout Plain Layout
+SourceCode/fpc
+\end_layout
+
+\end_inset
+
+.
+ The process is simple:
+\end_layout
+
+\begin_layout Itemize
+Change into the appropriate directory;
+\end_layout
+
+\begin_layout Itemize
+Invoke the compiler;
+\end_layout
+
+\begin_layout Itemize
+Install the newly compiled RTL.
+\end_layout
+
+\begin_layout Standard
+The last step is covered in the following section and the first two are
+ as simple as executing the following:
+\end_layout
+
+\begin_layout Standard
+\begin_inset listings
+lstparams "language=bash,numbers=left,basicstyle={\ttfamily},breaklines=true,showstringspaces=false,backgroundcolor={\color{codeColour}},breakautoindent=true"
+inline false
+status open
+
+\begin_layout Plain Layout
+
+cd ~/SourceCode/fpc
+\end_layout
+
+\begin_layout Plain Layout
+
+make rtl_cleanall
+\end_layout
+
+\begin_layout Plain Layout
+
+make rtl_all RELEASE=1 FPC=fpc-ql OS_TARGET=sinclairql CPU_TARGET=m68k
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+You will need to watch out for error messages scrolling up the screen.
+ On Linux, I have enough scrollback in my terminal session that I can review
+ the entire compilation easily.
+ If I remember correctly, on Windows, scrollback is limited unless yo set
+ the properties for the command line session.
+\end_layout
+
+\begin_layout Section
+Installing the RTL
+\end_layout
+
+\begin_layout Standard
+Once we have a clean compilation, we can install the new RTL.
+ This is where it gets slightly complicated as your RTL might not be installed
+ where mine is.
+ If you remember way back when we created and installed the cross compiler
+ for the QL, I used an installation location of 
+\begin_inset Flex DirectoryName
+status open
+
+\begin_layout Plain Layout
+/home/norman/bin
+\end_layout
+
+\end_inset
+
+, that is my installation directory, yours will be whatever you used.
+ You might wish to export that as an environment variable:
+\end_layout
+
+\begin_layout Standard
+\begin_inset listings
+lstparams "language=bash,numbers=left,basicstyle={\ttfamily},breaklines=true,showstringspaces=false,backgroundcolor={\color{codeColour}},breakautoindent=true"
+inline false
+status open
+
+\begin_layout Plain Layout
+
+export FPC_INSTALL_DIR=/home/norman/bin
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Now you can use that in the code that follows to be sure you have the correct
+ locations for the RTL.
+\end_layout
+
+\begin_layout Standard
+\begin_inset listings
+lstparams "language=bash,numbers=left,basicstyle={\ttfamily},breaklines=true,showstringspaces=false,backgroundcolor={\color{codeColour}},breakautoindent=true"
+inline false
+status open
+
+\begin_layout Plain Layout
+
+cd ${FPC_INSTALL_DIR}/bin/lib/fpc/n.n.n/units/m68k-sinclairql/rtl
+\end_layout
+
+\begin_layout Plain Layout
+
+cp -v ${HOME}/SourceCode/fpc/rtl/units/m68k-sinclairql/* ./
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+That makes sure that everything is copied across to the correct location.
+\end_layout
+
+\begin_layout Standard
+Whenever you change the RTL, unless what you changed isn't used by any existing
+ QL Pascal code that you have already cross compiled, you will be best to
+ recompile and test the programs.
+ Mistakes happen – even though the compiler doesn't catch them, ask me how
+ I know this?
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+NOTE
+\series default
+: You may be wondering why there isn't a 
+\begin_inset Flex ApplicationName
+status open
+
+\begin_layout Plain Layout
+make
+\end_layout
+
+\end_inset
+
+ target to install the RTL? Well, there appears to be a target 
+\begin_inset Flex OptionName
+status open
+
+\begin_layout Plain Layout
+rtl_install
+\end_layout
+
+\end_inset
+
+, and it appears to do what I want: 
+\begin_inset listings
+lstparams "language=bash,numbers=left,basicstyle={\ttfamily},breaklines=true,showstringspaces=false,backgroundcolor={\color{codeColour}},breakautoindent=true"
+inline false
+status open
+
+\begin_layout Plain Layout
+
+cd ~/SourceCode/fpc
+\end_layout
+
+\begin_layout Plain Layout
+
+make rtl_install OS_TARGET=sinclairql CPU_TARGET=m68k
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Unfortunately, it always errors out.
+ I'll hopefully be looking into this at some point soon:
+\end_layout
+
+\begin_layout Standard
+\begin_inset listings
+lstparams "basicstyle={\ttfamily},breaklines=true,showstringspaces=false,backgroundcolor={\color{outputColour}},breakautoindent=true"
+inline false
+status open
+
+\begin_layout Plain Layout
+
+make -C rtl install
+\end_layout
+
+\begin_layout Plain Layout
+
+make[1]: Entering directory '/home/norman/SourceCode/fpc/rtl'
+\end_layout
+
+\begin_layout Plain Layout
+
+make -C sinclairql all
+\end_layout
+
+\begin_layout Plain Layout
+
+make[2]: Entering directory '/home/norman/SourceCode/fpc/rtl/sinclairql'
+\end_layout
+
+\begin_layout Plain Layout
+
+make[2]: Leaving directory '/home/norman/SourceCode/fpc/rtl/sinclairql'
+\end_layout
+
+\begin_layout Plain Layout
+
+/usr/local/bin/fpcmake -p -Tm68k-sinclairql Makefile.fpc
+\end_layout
+
+\begin_layout Plain Layout
+
+Processing Makefile.fpc
+\end_layout
+
+\begin_layout Plain Layout
+
+Error: No targets set
+\end_layout
+
+\begin_layout Plain Layout
+
+make[1]: *** [Makefile:1649: fpc_install] Error 1
+\end_layout
+
+\begin_layout Plain Layout
+
+make[1]: Leaving directory '/home/norman/SourceCode/fpc/rtl'
+\end_layout
+
+\begin_layout Plain Layout
+
+make: *** [Makefile:2936: rtl_install] Error 2
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+A Useful Build Script
+\end_layout
+
+\begin_layout Standard
+Rather than having to remember all those commands, I built myself a small
+ script in the top level directory, 
+\begin_inset Flex DirectoryName
+status open
+
+\begin_layout Plain Layout
+SourceCode/fpc
+\end_layout
+
+\end_inset
+
+, and I use that to build and install everything as and when required.
+ The code is:
+\end_layout
+
+\begin_layout Standard
+\begin_inset listings
+lstparams "language=bash,numbers=left,basicstyle={\ttfamily},breaklines=true,showstringspaces=false,backgroundcolor={\color{textfileColour}},breakautoindent=true"
+inline false
+status open
+
+\begin_layout Plain Layout
+
+#!/bin/bash
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+#
+\end_layout
+
+\begin_layout Plain Layout
+
+# Variables:
+\end_layout
+
+\begin_layout Plain Layout
+
+#
+\end_layout
+
+\begin_layout Plain Layout
+
+FPC_INSTALL_DIR=/home/norman/bin
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+#
+\end_layout
+
+\begin_layout Plain Layout
+
+# Builds the sinclair ql RTL for free pascal.
+\end_layout
+
+\begin_layout Plain Layout
+
+#
+\end_layout
+
+\begin_layout Plain Layout
+
+make rtl_cleanall
+\end_layout
+
+\begin_layout Plain Layout
+
+make rtl_all RELEASE=1 FPC=fpc-ql OS_TARGET=sinclairql CPU_TARGET=m68k
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+#
+\end_layout
+
+\begin_layout Plain Layout
+
+# Wipe out the existing stuff and copy the new stuff over.
+\end_layout
+
+\begin_layout Plain Layout
+
+#
+\end_layout
+
+\begin_layout Plain Layout
+
+cd ${FPC_INSTALL_DIR}lib/fpc/3.3.1/units/m68k-sinclairql/rtl
+\end_layout
+
+\begin_layout Plain Layout
+
+cp -v ${HOME}/SourceCode/fpc/rtl/units/m68k-sinclairql/* ./
+\end_layout
+
+\begin_layout Plain Layout
+
+cd -
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Distributing Changes to the RTL
+\end_layout
+
+\begin_layout Section
+Creating a Patch File
+\end_layout
+
+\begin_layout Standard
+So, you have done a lot of work in the RTL, and now you need to get this
+ distributed to 
+\begin_inset Quotes eld
+\end_inset
+
+all and sundry
+\begin_inset Quotes erd
+\end_inset
+
+ so that they can take advantage of your hard work.
+ How do you go about doing this? 
+\emph on
+Subversion
+\emph default
+ to the rescue.
+\end_layout
+
+\begin_layout Standard
+It's a simple task to change into the top level directory and use Subversion
+ to create a patch file that others can apply, easily, to bring their code
+ up to the same state as yours.
+ The process is:
+\end_layout
+
+\begin_layout Standard
+\begin_inset listings
+lstparams "language=bash,numbers=left,basicstyle={\ttfamily},breaklines=true,showstringspaces=false,backgroundcolor={\color{codeColour}},breakautoindent=true"
+inline false
+status open
+
+\begin_layout Plain Layout
+
+cd ~/SourceCode/fpc
+\end_layout
+
+\begin_layout Plain Layout
+
+svn diff --patch-compatible
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset listings
+lstparams "basicstyle={\ttfamily},breaklines=true,showstringspaces=false,backgroundcolor={\color{outputColour}},breakautoindent=true"
+inline false
+status open
+
+\begin_layout Plain Layout
+
+Hello FPC World!
+\end_layout
+
+\begin_layout Plain Layout
+
+Press any key to exit.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Once you have checked that it looks Ok on screen, you can write the changes
+ to a patch file, as follows:
+\end_layout
+
+\begin_layout Standard
+\begin_inset listings
+lstparams "language=bash,numbers=left,basicstyle={\ttfamily},breaklines=true,showstringspaces=false,backgroundcolor={\color{codeColour}},breakautoindent=true"
+inline false
+status open
+
+\begin_layout Plain Layout
+
+cd ~/SourceCode/fpc
+\end_layout
+
+\begin_layout Plain Layout
+
+svn diff --patch-compatible > ~/FPC.patch.txt
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+This command creates a patch file named 
+\begin_inset Flex FileName
+status open
+
+\begin_layout Plain Layout
+FPC.patch.txt
+\end_layout
+
+\end_inset
+
+ in the 
+\begin_inset Flex EnvVar
+status open
+
+\begin_layout Plain Layout
+$HOME
+\end_layout
+
+\end_inset
+
+ directory.
+ The file contains all changed made to the files in 
+\begin_inset Flex DirectoryName
+status open
+
+\begin_layout Plain Layout
+SourceCode/fpc
+\end_layout
+
+\end_inset
+
+ and all subdirectories, since the files were last downloaded or updated
+ using 
+\begin_inset Flex ApplicationName
+status open
+
+\begin_layout Plain Layout
+Subversion
+\end_layout
+
+\end_inset
+
+.
+ This file can be zipped up and distributed.
+\end_layout
+
+\begin_layout Standard
+At present, I simply upload my patch files to the 
+\begin_inset CommandInset href
+LatexCommand href
+name "QL Pascal"
+target "https://qlforum.co.uk/viewtopic.php?f=3&t=3057"
+literal "false"
+
+\end_inset
+
+ topic on the QL Forum.
+ One of the FPC maintainers, Chain-Q, picks my patches up there and runs
+ his careful eye over them before accepting or rejecting them for inclusion
+ in the main source tree.
+\end_layout
+
+\begin_layout Section
+Applying a Patch File
+\end_layout
+
+\begin_layout Standard
+If you also want my changes, you can grab the latest patch file, which may
+ be zipped, and apply it to your source as follows.
+ First, locate and unzip the patch file, if necessary:
+\end_layout
+
+\begin_layout Standard
+\begin_inset listings
+lstparams "language=bash,numbers=left,basicstyle={\ttfamily},breaklines=true,showstringspaces=false,backgroundcolor={\color{codeColour}},breakautoindent=true"
+inline false
+status open
+
+\begin_layout Plain Layout
+
+# Unzip the downloaded patch file.
+\end_layout
+
+\begin_layout Plain Layout
+
+cd ~/Downloads
+\end_layout
+
+\begin_layout Plain Layout
+
+unzip FPC.patch.zip
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset listings
+lstparams "language=bash,basicstyle={\ttfamily},breaklines=true,showstringspaces=false,backgroundcolor={\color{outputColour}},breakautoindent=true"
+inline false
+status open
+
+\begin_layout Plain Layout
+
+Archive:  FPC.patch.zip
+\end_layout
+
+\begin_layout Plain Layout
+
+  inflating: FPC.patch.txt     
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Now there are multiple options on applying the patch.
+ The first is to copy the unzipped patch file over top the top level of
+ your source tree and apply it from there:
+\end_layout
+
+\begin_layout Standard
+\begin_inset listings
+lstparams "language=bash,numbers=left,basicstyle={\ttfamily},breaklines=true,showstringspaces=false,backgroundcolor={\color{codeColour}},breakautoindent=true"
+inline false
+status open
+
+\begin_layout Plain Layout
+
+# Apply the patch file.
+ Method 1.
+\end_layout
+
+\begin_layout Plain Layout
+
+# Copy the patch file to the code tree.
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+cd ~/SourceCode/fpc
+\end_layout
+
+\begin_layout Plain Layout
+
+cp ~/Downloads/FPC.patch.txt ./
+\end_layout
+
+\begin_layout Plain Layout
+
+svn patch FPC.patch.txt
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The next common option is to leave the unzipped patch file where it is,
+ and apply it from within the source tree:
+\end_layout
+
+\begin_layout Standard
+\begin_inset listings
+lstparams "language=bash,numbers=left,basicstyle={\ttfamily},breaklines=true,showstringspaces=false,backgroundcolor={\color{codeColour}},breakautoindent=true"
+inline false
+status open
+
+\begin_layout Plain Layout
+
+# Apply the patch file.
+ Method 2.
+\end_layout
+
+\begin_layout Plain Layout
+
+# Doesn't copy the patch file to the code tree.
+\end_layout
+
+\begin_layout Plain Layout
+
+# Just patches it from the Downloads area where it was unzipped.
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+cd ~/SourceCode/fpc
+\end_layout
+
+\begin_layout Plain Layout
+
+svn patch ~/Downloads/FPC.patch.txt
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Finally, although there are other methods, simply apply the patch from the
+ download area but tell Subversion where the source code lives:
+\end_layout
+
+\begin_layout Standard
+\begin_inset listings
+lstparams "language=bash,numbers=left,basicstyle={\ttfamily},breaklines=true,showstringspaces=false,backgroundcolor={\color{codeColour}},breakautoindent=true"
+inline false
+status open
+
+\begin_layout Plain Layout
+
+# Apply the patch file.
+ Method 3.
+\end_layout
+
+\begin_layout Plain Layout
+
+# Out of tree patching from Downloads area.
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+cp ~/Downloads/FPC.patch.txt ./
+\end_layout
+
+\begin_layout Plain Layout
+
+svn patch FPC.patch.txt ~/SourceCode/fpc/
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Regardless of which method you decide to use, Subversion will bring the
+ code up to date with the changes in the patch file.
+ You should be aware that:
+\end_layout
+
+\begin_layout Itemize
+Next time you run the 
+\begin_inset Flex CommandName
+status open
+
+\begin_layout Plain Layout
+svn update
+\end_layout
+
+\end_inset
+
+ command in the source tree, the patches may be overwritten, or cause conflict;
+\end_layout
+
+\begin_layout Itemize
+Some of the patches may cause conflicts if they patch areas of the code
+ that you too are amending.
+\end_layout
+
+\begin_layout Standard
+As the patch is being applied, you will see various prompts advising you
+ on what has happened.
+ For each patched file a single line will be printed with characters reporting
+ the action taken.
+ These characters have the following meaning:
+\end_layout
+
+\begin_layout Itemize
+A = Added - this file has been added as a new file;
+\end_layout
+
+\begin_layout Itemize
+D = Deleted - this file is now deleted;
+\end_layout
+
+\begin_layout Itemize
+U = Updated - this file was successfully patched;
+\end_layout
+
+\begin_layout Itemize
+C = Conflict - this file has a conflict.
+ Both you and the path have updated the same part of the code.
+ You will be prompted for an action to ignore or resolve the conflict.
+\end_layout
+
+\begin_layout Itemize
+G = Merged (with local uncommitted changes) 
+\end_layout
+
+\begin_layout Standard
+Obviously, after patching the RTL, you will be required to rebuild and install
+ it.
+\end_layout
+
+\begin_layout Chapter
+Amending the QL Units 
+\end_layout
+
+\begin_layout Standard
+The source for the various QL Units lives in the 
+\begin_inset Flex DirectoryName
+status open
+
+\begin_layout Plain Layout
+packages/qlunits/src
+\end_layout
+
+\end_inset
+
+ directory which you will find beneath the 
+\begin_inset Flex DirectoryName
+status open
+
+\begin_layout Plain Layout
+fpc
+\end_layout
+
+\end_inset
+
+ directory created when you installed the source code previously.
+ In my case, 
+\begin_inset Flex DirectoryName
+status open
+
+\begin_layout Plain Layout
+SourceCode/fpc/packages/qlunits/src
+\end_layout
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Files of interest here are:
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Flex FileName
+status open
+
+\begin_layout Plain Layout
+qdos.pas
+\end_layout
+
+\end_inset
+
+ which contains the source code for the 
+\begin_inset Flex UnitName
+status open
+
+\begin_layout Plain Layout
+qdos
+\end_layout
+
+\end_inset
+
+ unit – a collection of useful QL specific routines.
+ Some of these are simply references to the code defined in the system unit
+ in the RTL.
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Flex FileName
+status open
+
+\begin_layout Plain Layout
+qlfloat.pas
+\end_layout
+
+\end_inset
+
+ contains some functions for converting to and from QL floating point numbers.
+ This file makes up the 
+\begin_inset Flex UnitName
+status open
+
+\begin_layout Plain Layout
+qlfloats
+\end_layout
+
+\end_inset
+
+ unit.
+\end_layout
+
+\begin_layout Standard
+There are, currently, only two units for the QL cross compiler.
+ We need a lot more.
+ We are missing 
+\begin_inset Flex UnitName
+status open
+
+\begin_layout Plain Layout
+sysutils
+\end_layout
+
+\end_inset
+
+, 
+\begin_inset Flex UnitName
+status open
+
+\begin_layout Plain Layout
+strings
+\end_layout
+
+\end_inset
+
+ and all the rest.
+ We have some work to do!
+\end_layout
+
+\begin_layout Standard
+The compiled units live in 
+\begin_inset Flex DirectoryName
+status open
+
+\begin_layout Plain Layout
+packages/qlunits/units/m68k-sinclairql/
+\end_layout
+
+\end_inset
+
+ beneath the source code's main directory.
+\end_layout
+
+\begin_layout Section
+A Worked Example
+\end_layout
+
+\begin_layout Standard
+This is a particularly silly example, but it shows what is required to add
+ new stuff to the QL Units, which in most cases means the 
+\begin_inset Flex UnitName
+status open
+
+\begin_layout Plain Layout
+qdos
+\end_layout
+
+\end_inset
+
+ unit.
+ Let's say that we want to add a new procedure, 
+\begin_inset Flex FunctionName
+status open
+
+\begin_layout Plain Layout
+HelloNorm
+\end_layout
+
+\end_inset
+
+, to the unit, what do we need to do?
+\end_layout
+
+\begin_layout Itemize
+Edit the 
+\begin_inset Flex FileName
+status open
+
+\begin_layout Plain Layout
+qdos.pas
+\end_layout
+
+\end_inset
+
+ file and add the new procedure details to the interface section;
+\end_layout
+
+\begin_layout Itemize
+Still editing the 
+\begin_inset Flex FileName
+status open
+
+\begin_layout Plain Layout
+qdos.pas
+\end_layout
+
+\end_inset
+
+ file, add the new procedure code to the implementation section;
+\end_layout
+
+\begin_layout Itemize
+Recompile all the QL Units;
+\end_layout
+
+\begin_layout Itemize
+Install the newly compiled QL Units;
+\end_layout
+
+\begin_layout Itemize
+Compile and test a program which uses the new procedure.
+\end_layout
+
+\begin_layout Standard
+The steps to compile and install the QL Unit files are described in detail
+ in the following sections.
+ The remainder of this section covers the editing of the unit source files,
+ and compiling a test program.
+ 
+\end_layout
+
+\begin_layout Subsection
+Edit the 
+\begin_inset Flex FileName
+status open
+
+\begin_layout Plain Layout
+Qdos.pas
+\end_layout
+
+\end_inset
+
+ Unit file
+\end_layout
+
+\begin_layout Standard
+In a Pascal unit file, there are normally two sections, the 
+\emph on
+interface
+\emph default
+ and the 
+\emph on
+implementation
+\emph default
+.
+ The interface describes the header of the procedure or functions – similar
+ to how a C++ header file does, and the implementation is the full source
+ code for the procedures and functions.
+ 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Flex FileName
+status open
+
+\begin_layout Plain Layout
+SourceCode/fpc/packages/qlunits/src/qdos.pas
+\end_layout
+
+\end_inset
+
+, is where the 
+\begin_inset Flex UnitName
+status open
+
+\begin_layout Plain Layout
+qdos
+\end_layout
+
+\end_inset
+
+ unit keeps its source code, so that's the file to edit.
+\end_layout
+
+\begin_layout Standard
+The first edit for our new 
+\begin_inset Flex FunctionName
+status open
+
+\begin_layout Plain Layout
+HelloNorm
+\end_layout
+
+\end_inset
+
+ procedure is to add it to the end of the interface section.
+ After this edit, my file looks like this:
+\end_layout
+
+\begin_layout Standard
+\begin_inset listings
+lstparams "basicstyle={\ttfamily},breaklines=true,showstringspaces=false,backgroundcolor={\color{textfileColour}},breakautoindent=true"
+inline false
+status open
+
+\begin_layout Plain Layout
+
+procedure sd_line(chan: Tchanid; timeout: Ttimeout; x_start: double; y_start:
+ double; x_end: double; y_end: double);
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+procedure HelloNorm;
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+implementation
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+You can see I added the procedure name just above the implementation.
+ I tend to add stuff at the end as it makes it easier to find later! Next
+ we need to add the source code for the new procedure, and again, I added
+ mine right at the bottom of the file, just above the final end.
+ (That's the end with a full stop in the source code – that line already
+ exists.)
+\end_layout
+
+\begin_layout Standard
+\begin_inset listings
+lstparams "basicstyle={\ttfamily},breaklines=true,showstringspaces=false,backgroundcolor={\color{textfileColour}},breakautoindent=true"
+inline false
+status open
+
+\begin_layout Plain Layout
+
+procedure HelloNorm;
+\end_layout
+
+\begin_layout Plain Layout
+
+begin
+\end_layout
+
+\begin_layout Plain Layout
+
+  writeln('Hello Norm!');
+\end_layout
+
+\begin_layout Plain Layout
+
+end;
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+end.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+You won't need to type in that final line, it's already there, but any new
+ code has to go above it.
+\end_layout
+
+\begin_layout Standard
+Save the file and exit.
+ We are now ready to compile the unit files.
+\end_layout
+
+\begin_layout Subsection
+Compile the QL units
+\end_layout
+
+\begin_layout Standard
+The full details of compiling the units is described below, for now a quick
+ couple of commands are all that is necessary:
+\end_layout
+
+\begin_layout Standard
+\begin_inset listings
+lstparams "language=bash,numbers=left,basicstyle={\ttfamily},breaklines=true,showstringspaces=false,backgroundcolor={\color{codeColour}},breakautoindent=true"
+inline false
+status open
+
+\begin_layout Plain Layout
+
+cd ~/SourceCode/fpc
+\end_layout
+
+\begin_layout Plain Layout
+
+make packages_clean OS_TARGET=sinclairql CPU_TARGET=m68k
+\end_layout
+
+\begin_layout Plain Layout
+
+make packages RELEASE=1 FPC=fpc-ql OS_TARGET=sinclairql CPU_TARGET=m68k
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Lots of messages will flash up the screen.
+ Don't worry about it, just review the messages looking for errors and warnings.
+ Once you have a clean recompile, it's installation time.
+\end_layout
+
+\begin_layout Subsection
+Install the QL Units
+\end_layout
+
+\begin_layout Standard
+The units are compiled into a holding location which is not where they are
+ actually found by the compiler.
+ This was defined in the config file we created way way back! Remember?
+\end_layout
+
+\begin_layout Standard
+\begin_inset listings
+lstparams "numbers=left,basicstyle={\ttfamily},breaklines=true,showstringspaces=false,backgroundcolor={\color{textfileColour}},breakautoindent=true"
+inline false
+status open
+
+\begin_layout Plain Layout
+
+#IFDEF CPUM68K
+\end_layout
+
+\begin_layout Plain Layout
+
+-Fu<path/to/install>/lib/fpc/$fpcversion/units/$fpccpu-$fpcos
+\end_layout
+
+\begin_layout Plain Layout
+
+-Fu<path/to/install>/lib/fpc/$fpcversion/units/$fpccpu-$fpcos/*
+\end_layout
+
+\begin_layout Plain Layout
+
+#IFDEF SINCLAIRQL
+\end_layout
+
+\begin_layout Plain Layout
+
+-FD</path/to/vasm-and-vlink>
+\end_layout
+
+\begin_layout Plain Layout
+
+-XPm68k-sinclairql-
+\end_layout
+
+\begin_layout Plain Layout
+
+#ENDIF
+\end_layout
+
+\begin_layout Plain Layout
+
+#ENDIF
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+This tells you where the units need to be placed for the compiler to find
+ them, As you can see, there are no hard coded version numbers, so when
+ we get a compiler update, we don;t have to change anything.
+\end_layout
+
+\begin_layout Standard
+To copy the newly compiled units to the correct location, we use the following
+ quickie:
+\end_layout
+
+\begin_layout Standard
+\begin_inset listings
+lstparams "language=bash,numbers=left,basicstyle={\ttfamily},breaklines=true,showstringspaces=false,backgroundcolor={\color{codeColour}},breakautoindent=true"
+inline false
+status open
+
+\begin_layout Plain Layout
+
+cd ~/bin/lib/fpc/3.3.1/units/m68k-sinclairql/qlunits/ 
+\end_layout
+
+\begin_layout Plain Layout
+
+cp ~/SourceCode/fpc/packages/qlunits/units/m68k-sinclairql/* ./
+\end_layout
+
+\begin_layout Plain Layout
+
+cd -
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Now we can compile and test the test program.
+\end_layout
+
+\begin_layout Subsection
+The Test Program
+\end_layout
+
+\begin_layout Standard
+We need a test program.
+ This is mine, it's called 
+\begin_inset Flex FileName
+status open
+
+\begin_layout Plain Layout
+hellonorm.pp
+\end_layout
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset listings
+lstparams "language=Pascal,numbers=left,basicstyle={\ttfamily},breaklines=true,showstringspaces=false,backgroundcolor={\color{textfileColour}},breakautoindent=true"
+inline false
+status open
+
+\begin_layout Plain Layout
+
+program helloMe;
+\end_layout
+
+\begin_layout Plain Layout
+
+uses
+\end_layout
+
+\begin_layout Plain Layout
+
+   qdos;
+\end_layout
+
+\begin_layout Plain Layout
+
+begin
+\end_layout
+
+\begin_layout Plain Layout
+
+   HelloNorm;
+\end_layout
+
+\begin_layout Plain Layout
+
+end.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+WARNING
+\series default
+: You cannot name the program with the same name as a procedure or function.
+ If you do, and I did, you get this:
+\end_layout
+
+\begin_layout Standard
+\begin_inset listings
+lstparams "basicstyle={\ttfamily},breaklines=true,showstringspaces=false,backgroundcolor={\color{outputColour}},breakautoindent=true"
+inline false
+status open
+
+\begin_layout Plain Layout
+
+hellonorm.pp(5,13) Fatal: Syntax error, "." expected but ";" found 
+\end_layout
+
+\begin_layout Plain Layout
+
+Fatal: Compilation aborted 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+First of all, we have to tell the compiler that we want to actually use
+ the 
+\begin_inset Flex UnitName
+status open
+
+\begin_layout Plain Layout
+qdos
+\end_layout
+
+\end_inset
+
+ unit.
+ That's the purpose of the 
+\family typewriter
+uses qdos;
+\family default
+ statement.
+ Once we have done that, the compiler will hopefully find the new procedure
+ and link it in to our executable.
+ 
+\end_layout
+
+\begin_layout Standard
+We need to compile the code:
+\end_layout
+
+\begin_layout Standard
+\begin_inset listings
+lstparams "language=bash,numbers=left,basicstyle={\ttfamily},breaklines=true,showstringspaces=false,backgroundcolor={\color{codeColour}},breakautoindent=true"
+inline false
+status open
+
+\begin_layout Plain Layout
+
+fpc-ql -Tsinclairql hellonorm.pp
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset listings
+lstparams "basicstyle={\ttfamily},breaklines=true,showstringspaces=false,backgroundcolor={\color{outputColour}},breakautoindent=true"
+inline false
+status open
+
+\begin_layout Plain Layout
+
+Warning 22: Attributes of section .text were changed from r-x- in Linker
+ Script <link15795.res> to rwx- in hellonorm.o.
+ 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Over on the QL, or in QPC in my case:
+\end_layout
+
+\begin_layout Standard
+\begin_inset listings
+lstparams "language=bash,numbers=left,basicstyle={\ttfamily},breaklines=true,showstringspaces=false,backgroundcolor={\color{codeColour}},breakautoindent=true"
+inline false
+status open
+
+\begin_layout Plain Layout
+
+ex dos1_hellonorm.exe
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset listings
+lstparams "basicstyle={\ttfamily},breaklines=true,showstringspaces=false,backgroundcolor={\color{outputColour}},breakautoindent=true"
+inline false
+status open
+
+\begin_layout Plain Layout
+
+Hello Norm!
+\end_layout
+
+\begin_layout Plain Layout
+
+Press any key to exit.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Easy peasy?
+\end_layout
+
+\begin_layout Standard
+Compiling and installing the unit files are described fully in the next
+ couple of sections.
+\end_layout
+
+\begin_layout Chapter
+Recompiling the QL Units
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+YOU ARE NOW HERE.
+ BEEF THIS UP A BIT.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+In a similar manner to the RTL, you cannot just compile a couple of code
+ files that you changed.
+ You have to make sure that all code files are recompiled any time you make
+ a change.
+ If you don't do this, you'll get warnings at program compilation times
+ that some unit files cannot be found.
+ So if you compile only the 
+\begin_inset Flex FunctionName
+status open
+
+\begin_layout Plain Layout
+qdos
+\end_layout
+
+\end_inset
+
+ unit, then recompile a program that uses it, you'll be told off because
+ the 
+\begin_inset Flex FunctionName
+status open
+
+\begin_layout Plain Layout
+qlfloats
+\end_layout
+
+\end_inset
+
+ unit cannot be used.
+\end_layout
+
+\begin_layout Section
+Building the QL Units
+\end_layout
+
+\begin_layout Standard
+\begin_inset listings
+lstparams "language=bash,numbers=left,basicstyle={\ttfamily},breaklines=true,showstringspaces=false,backgroundcolor={\color{codeColour}},breakautoindent=true"
+inline false
+status open
+
+\begin_layout Plain Layout
+
+cd ~/SourceCode/fpc
+\end_layout
+
+\begin_layout Plain Layout
+
+make packages_clean OS_TARGET=sinclairql CPU_TARGET=m68k
+\end_layout
+
+\begin_layout Plain Layout
+
+make packages RELEASE=1 FPC=fpc-ql OS_TARGET=sinclairql CPU_TARGET=m68k
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Installing the QL Units
+\end_layout
+
+\begin_layout Standard
+\begin_inset listings
+lstparams "language=bash,numbers=left,basicstyle={\ttfamily},breaklines=true,showstringspaces=false,backgroundcolor={\color{codeColour}},breakautoindent=true"
+inline false
+status open
+
+\begin_layout Plain Layout
+
+cd ~/bin/lib/fpc/3.3.1/units/m68k-sinclairql/qlunits/ 
+\end_layout
+
+\begin_layout Plain Layout
+
+cp ~/SourceCode/fpc/packages/qlunits/units/m68k-sinclairql/* 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_body
+\end_document
