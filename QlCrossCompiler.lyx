@@ -2807,6 +2807,269 @@ target "https://wiki.freepascal.org/Sinclair_QL#Job_Name"
 \end_layout
 
 \begin_layout Chapter
+Updating the Compiler Source Code
+\end_layout
+
+\begin_layout Standard
+From time to time there will be updates to the FPC code.
+ As we have used 
+\emph on
+Subversion
+\emph default
+ we can keep our local copy of the source up to date.
+ This is as simple as:
+\end_layout
+
+\begin_layout Standard
+\begin_inset listings
+lstparams "language=bash,numbers=left,basicstyle={\ttfamily},breaklines=true,showstringspaces=false,backgroundcolor={\color{codeColour}},breakautoindent=true"
+inline false
+status open
+
+\begin_layout Plain Layout
+
+cd ~/SourceCode/fpc
+\end_layout
+
+\begin_layout Plain Layout
+
+svn update
+\end_layout
+
+\begin_layout Plain Layout
+
+#Lots of changes scrolling on by...
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Please be aware that it is seriously advisable to rebuild the cross compiler
+ and reinstall it, any time that you do this.
+ I have found that the following steps are best followed:
+\end_layout
+
+\begin_layout Itemize
+If you have made any changes to the RTL or QL Units, then take a backup
+ as a patch file:
+\begin_inset listings
+lstparams "language=bash,numbers=left,basicstyle={\ttfamily},breaklines=true,showstringspaces=false,backgroundcolor={\color{codeColour}},breakautoindent=true"
+inline false
+status open
+
+\begin_layout Plain Layout
+
+cd ~/SourceCode/fpc
+\end_layout
+
+\begin_layout Plain Layout
+
+svn diff --patch-compatible > ~/FPC.patch.temp.txt
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Run the source code update:
+\begin_inset listings
+lstparams "language=bash,numbers=left,basicstyle={\ttfamily},breaklines=true,showstringspaces=false,backgroundcolor={\color{codeColour}},breakautoindent=true"
+inline false
+status open
+
+\begin_layout Plain Layout
+
+cd ~/SourceCode/fpc
+\end_layout
+
+\begin_layout Plain Layout
+
+svn update
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Clean, build and reinstall the compiler.
+ Obviously, replace my installation location with your own:
+\begin_inset listings
+lstparams "language=bash,numbers=left,basicstyle={\ttfamily},breaklines=true,showstringspaces=false,backgroundcolor={\color{codeColour}},breakautoindent=true"
+inline false
+status open
+
+\begin_layout Plain Layout
+
+make clean OS_TARGET=sinclairql CPU_TARGET=m68k
+\end_layout
+
+\begin_layout Plain Layout
+
+make crossall OS_TARGET=sinclairql CPU_TARGET=m68k
+\end_layout
+
+\begin_layout Plain Layout
+
+make crossinstall OS_TARGET=sinclairql CPU_TARGET=m68k INSTALL_PREFIX="/home/nor
+man/bin"
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+If you created a patch file, reapply your changes to the newly updated source
+ code:
+\begin_inset listings
+lstparams "language=bash,numbers=left,basicstyle={\ttfamily},breaklines=true,showstringspaces=false,backgroundcolor={\color{codeColour}},breakautoindent=true"
+inline false
+status open
+
+\begin_layout Plain Layout
+
+cd ~/SourceCode/fpc
+\end_layout
+
+\begin_layout Plain Layout
+
+svn patch ~/FPC.patch.temp.txt
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+And finally, if you did have a patch to apply, rebuild the RTL and/or the
+ QL Units as necessary:
+\begin_inset listings
+lstparams "language=bash,numbers=left,basicstyle={\ttfamily},breaklines=true,showstringspaces=false,backgroundcolor={\color{codeColour}},breakautoindent=true"
+inline false
+status open
+
+\begin_layout Plain Layout
+
+# Rebuild and install the RTL:
+\end_layout
+
+\begin_layout Plain Layout
+
+cd ~/SourceCode/fpc
+\end_layout
+
+\begin_layout Plain Layout
+
+make rtl_cleanall
+\end_layout
+
+\begin_layout Plain Layout
+
+make rtl_all RELEASE=1 FPC=fpc-ql OS_TARGET=sinclairql CPU_TARGET=m68k
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+cd ${FPC_INSTALL_DIR}/bin/lib/fpc/n.n.n/units/m68k-sinclairql/rtl
+\end_layout
+
+\begin_layout Plain Layout
+
+cp -v ${HOME}/SourceCode/fpc/rtl/units/m68k-sinclairql/* ./
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+# Rebuild and install the QL Units:
+\end_layout
+
+\begin_layout Plain Layout
+
+cd ~/SourceCode/fpc
+\end_layout
+
+\begin_layout Plain Layout
+
+make packages_clean OS_TARGET=sinclairql CPU_TARGET=m68k
+\end_layout
+
+\begin_layout Plain Layout
+
+make packages RELEASE=1 FPC=fpc-ql OS_TARGET=sinclairql CPU_TARGET=m68k
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+cd ~/bin/lib/fpc/3.3.1/units/m68k-sinclairql/qlunits/ 
+\end_layout
+
+\begin_layout Plain Layout
+
+cp ~/SourceCode/fpc/packages/qlunits/units/m68k-sinclairql/* ./
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+# Just in case:
+\end_layout
+
+\begin_layout Plain Layout
+
+cd ~/SourceCode/fpc
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The procedures for compiling and installing the RTL and Units is described
+ in detail below.
+\end_layout
+
+\begin_layout Standard
+And yes, I know, there's a lot of 
+\family typewriter
+cd
+\family default
+'ing back and forth and I could have used 
+\family typewriter
+cd -
+\family default
+ to swap back to where I came from, but it might get mistaken for 
+\family typewriter
+cd ~
+\family default
+ in some fonts, so I thought I better be explicit.
+\end_layout
+
+\begin_layout Chapter
 Compiling QL Pascal programs
 \end_layout
 
@@ -3299,7 +3562,17 @@ Press any key to exit.
 \end_layout
 
 \begin_layout Section
-Programs Compiled with -WQxtcc
+Programs Compiled with 
+\begin_inset Flex OptionName
+status open
+
+\begin_layout Plain Layout
+-WQxtcc
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -3483,7 +3756,7 @@ fpc
 status open
 
 \begin_layout Plain Layout
-SourceCode/fpc/rtl/sinclairql
+ ~/SourceCode/fpc/rtl/sinclairql
 \end_layout
 
 \end_inset
@@ -4161,6 +4434,15 @@ fs_posab
 \end_layout
 
 \begin_layout Standard
+
+\series bold
+NOTE
+\series default
+: Don't forget, after fixing the problems, go back and remove the trap #15
+ instructions from wherever you put them.
+\end_layout
+
+\begin_layout Standard
 It was through tracing this that I discovered that the 
 \family typewriter
 move.l chan,a0
@@ -4241,7 +4523,7 @@ Subversion
 status open
 
 \begin_layout Plain Layout
-SourceCode/fpc
+ ~/SourceCode/fpc
 \end_layout
 
 \end_inset
@@ -5510,8 +5792,21 @@ status open
 
 \begin_layout Standard
 This tells you where the units need to be placed for the compiler to find
- them, As you can see, there are no hard coded version numbers, so when
- we get a compiler update, we don;t have to change anything.
+ them, As you can see, there are no hard coded version numbers, CPU or OS
+ names, so when we get a compiler update, we don't have to change anything
+ and it all just works.
+ The two lines in the config file with the 
+\begin_inset Flex OptionName
+status open
+
+\begin_layout Plain Layout
+-Fu
+\end_layout
+
+\end_inset
+
+ options define where units will be searched for by the compiler.
+ We need to be sure we store our compiled units in the correct place.
 \end_layout
 
 \begin_layout Standard
@@ -5755,20 +6050,6 @@ Recompiling the QL Units
 \end_layout
 
 \begin_layout Standard
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-YOU ARE NOW HERE.
- BEEF THIS UP A BIT.
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
 In a similar manner to the RTL, you cannot just compile a couple of code
  files that you changed.
  You have to make sure that all code files are recompiled any time you make
@@ -5804,6 +6085,13 @@ Building the QL Units
 \end_layout
 
 \begin_layout Standard
+The various units for the QL cross compiler are compiled from the usual
+ top level source directory.
+ Because they must all be compiled at the same time, it's advised to clean
+ things out first.
+\end_layout
+
+\begin_layout Standard
 \begin_inset listings
 lstparams "language=bash,numbers=left,basicstyle={\ttfamily},breaklines=true,showstringspaces=false,backgroundcolor={\color{codeColour}},breakautoindent=true"
 inline false
@@ -5819,6 +6107,80 @@ cd ~/SourceCode/fpc
 make packages_clean OS_TARGET=sinclairql CPU_TARGET=m68k
 \end_layout
 
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset listings
+lstparams "breaklines=true,showstringspaces=false,backgroundcolor={\color{outputColour}},breakautoindent=true"
+inline false
+status open
+
+\begin_layout Plain Layout
+
+make -C packages clean
+\end_layout
+
+\begin_layout Plain Layout
+
+make[1]: Entering directory '/home/norman/SourceCode/fpc/packages'
+\end_layout
+
+\begin_layout Plain Layout
+
+make -C fpmkunit clean_bootstrap
+\end_layout
+
+\begin_layout Plain Layout
+
+make[2]: Entering directory '/home/norman/SourceCode/fpc/packages/fpmkunit'
+\end_layout
+
+\begin_layout Plain Layout
+
+/usr/bin/rm -rf units_bs
+\end_layout
+
+\begin_layout Plain Layout
+
+make[2]: Leaving directory '/home/norman/SourceCode/fpc/packages/fpmkunit'
+\end_layout
+
+\begin_layout Plain Layout
+
+./fpmake clean --localunitdir=..
+ --os=sinclairql --cpu=m68k -o -Tsinclairql -o -Pm68k -o -XPm68k-sinclairql-
+ -o -Ur -o -Xs -o -O2 -o -n -o -dm68k -o -dRELEASE --compiler=/home/norman/bin/p
+pcross68k -bu -scp
+\end_layout
+
+\begin_layout Plain Layout
+
+make[1]: Leaving directory '/home/norman/SourceCode/fpc/packages'
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+There should be no problems with the output, so we are now ready to rebuild
+ the units:
+\end_layout
+
+\begin_layout Standard
+\begin_inset listings
+lstparams "language=bash,numbers=left,basicstyle={\ttfamily},breaklines=true,showstringspaces=false,backgroundcolor={\color{codeColour}},breakautoindent=true"
+inline false
+status open
+
 \begin_layout Plain Layout
 
 make packages RELEASE=1 FPC=fpc-ql OS_TARGET=sinclairql CPU_TARGET=m68k
@@ -5829,8 +6191,278 @@ make packages RELEASE=1 FPC=fpc-ql OS_TARGET=sinclairql CPU_TARGET=m68k
 
 \end_layout
 
+\begin_layout Standard
+\begin_inset listings
+lstparams "breaklines=true,showstringspaces=false,backgroundcolor={\color{outputColour}},breakautoindent=true"
+inline false
+status open
+
+\begin_layout Plain Layout
+
+make -C packages all
+\end_layout
+
+\begin_layout Plain Layout
+
+make[1]: Entering directory '/home/norman/SourceCode/fpc/packages'
+\end_layout
+
+\begin_layout Plain Layout
+
+./fpmake compile --localunitdir=..
+ --os=sinclairql --cpu=m68k -o -Tsinclairql -o -Pm68k -o -XPm68k-sinclairql-
+ -o -Ur -o -Xs -o -O2 -o -n -o -dm68k -o -dRELEASE --compiler=fpc-ql -bu
+ -scp
+\end_layout
+
+\begin_layout Plain Layout
+
+Start compiling package rtl-unicode for target m68k-sinclairql.
+\end_layout
+
+\begin_layout Plain Layout
+
+       Compiling rtl-unicode/BuildUnit_rtl_unicode.pp
+\end_layout
+
+\begin_layout Plain Layout
+
+       Compiling ./rtl-unicode/src/inc/graphemebreakproperty.pp
+\end_layout
+
+\begin_layout Plain Layout
+
+       Compiling ./rtl-unicode/src/inc/eastasianwidth.pp
+\end_layout
+
+\begin_layout Plain Layout
+
+[ 77%] Compiled package rtl-unicode
+\end_layout
+
+\begin_layout Plain Layout
+
+Start compiling package tplylib for target m68k-sinclairql.
+\end_layout
+
+\begin_layout Plain Layout
+
+       Compiling tplylib/BuildUnit_tplylib.pp
+\end_layout
+
+\begin_layout Plain Layout
+
+       Compiling ./tplylib/src/lexlib.pas
+\end_layout
+
+\begin_layout Plain Layout
+
+       Compiling ./tplylib/src/yacclib.pas
+\end_layout
+
+\begin_layout Plain Layout
+
+[ 82%] Compiled package tplylib
+\end_layout
+
+\begin_layout Plain Layout
+
+Start compiling package qlunits for target m68k-sinclairql.
+\end_layout
+
+\begin_layout Plain Layout
+
+       Compiling qlunits/BuildUnit_qlunits.pp
+\end_layout
+
+\begin_layout Plain Layout
+
+       Compiling ./qlunits/src/qdos.pas
+\end_layout
+
+\begin_layout Plain Layout
+
+       Compiling ./qlunits/src/qlfloat.pas
+\end_layout
+
+\begin_layout Plain Layout
+
+       Compiling ./qlunits/src/qlutil.pas
+\end_layout
+
+\begin_layout Plain Layout
+
+       Compiling ./qlunits/src/sms.pas
+\end_layout
+
+\begin_layout Plain Layout
+
+[ 99%] Compiled package qlunits
+\end_layout
+
+\begin_layout Plain Layout
+
+make[1]: Leaving directory '/home/norman/SourceCode/fpc/packages'
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Check the compilation output for any errors or warnings, fix them as appropriate
+ and recompile.
+ Once you have a clean compilation, we are ready to install.
+\end_layout
+
 \begin_layout Section
 Installing the QL Units
+\end_layout
+
+\begin_layout Standard
+As with the RTL, it appears that the 
+\begin_inset Flex ApplicationName
+status open
+
+\begin_layout Plain Layout
+make
+\end_layout
+
+\end_inset
+
+ target which 
+\emph on
+should
+\emph default
+ install the units, fails miserably:
+\end_layout
+
+\begin_layout Standard
+\begin_inset listings
+lstparams "language=bash,numbers=left,basicstyle={\ttfamily},breaklines=true,showstringspaces=false,backgroundcolor={\color{codeColour}},breakautoindent=true"
+inline false
+status open
+
+\begin_layout Plain Layout
+
+make packages_install RELEASE=1 FPC=fpc-ql OS_TARGET=sinclairql CPU_TARGET=m68k
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Any time I've run the above command, I get this output:
+\begin_inset listings
+lstparams "language=bash,basicstyle={\ttfamily},breaklines=true,showstringspaces=false,backgroundcolor={\color{outputColour}},breakautoindent=true"
+inline false
+status open
+
+\begin_layout Plain Layout
+
+make -C packages install
+\end_layout
+
+\begin_layout Plain Layout
+
+make[1]: Entering directory '/home/norman/SourceCode/fpc/packages'
+\end_layout
+
+\begin_layout Plain Layout
+
+./fpmake install --localunitdir=..
+ --os=sinclairql --cpu=m68k -o -Tsinclairql -o -Pm68k -o -XPm68k-sinclairql-
+ -o -Ur -o -Xs -o -O2 -o -n -o -dm68k -o -dRELEASE --compiler=fpc-ql -bu
+ -scp --prefix=/usr/local --baseinstalldir=/usr/local/lib/fpc/3.3.1 
+\end_layout
+
+\begin_layout Plain Layout
+
+Installing package rtl-unicode
+\end_layout
+
+\begin_layout Plain Layout
+
+The installer encountered the following error:
+\end_layout
+
+\begin_layout Plain Layout
+
+Failed to create directory "/usr/local/lib/fpc/3.3.1/units/m68k-sinclairql/rtl-uni
+code/"
+\end_layout
+
+\begin_layout Plain Layout
+
+make[1]: *** [Makefile:1948: install] Error 1
+\end_layout
+
+\begin_layout Plain Layout
+
+make[1]: Leaving directory '/home/norman/SourceCode/fpc/packages'
+\end_layout
+
+\begin_layout Plain Layout
+
+make: *** [Makefile:3026: packages_install] Error 2
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Bear in mind that I only know the 
+\begin_inset Flex ApplicationName
+status open
+
+\begin_layout Plain Layout
+make
+\end_layout
+
+\end_inset
+
+ target name because I 
+\begin_inset Flex ApplicationName
+status open
+
+\begin_layout Plain Layout
+grep
+\end_layout
+
+\end_inset
+
+ped them all out of the top level 
+\begin_inset Flex FileName
+status open
+
+\begin_layout Plain Layout
+Makefile
+\end_layout
+
+\end_inset
+
+.
+ I am probably doing something incorrectly.
+\end_layout
+
+\begin_layout Standard
+Anyway, having extracted the desired unit location from the 
+\begin_inset Flex FileName
+status open
+
+\begin_layout Plain Layout
+fpc.cfg
+\end_layout
+
+\end_inset
+
+ configuration file, I have to run the following commands to copy the newly
+ compiled unit files over to the correct place:
 \end_layout
 
 \begin_layout Standard
@@ -5852,6 +6484,12 @@ cp ~/SourceCode/fpc/packages/qlunits/units/m68k-sinclairql/*
 \end_inset
 
 
+\end_layout
+
+\begin_layout Standard
+Once this has been done, you may be advised to recompile any existing Pascal
+ programs which use the units, just in case you've managed to introduce
+ a runtime bug which the compiler can't catch for you.
 \end_layout
 
 \end_body
