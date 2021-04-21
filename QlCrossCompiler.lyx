@@ -1184,12 +1184,12 @@ sudo
 status open
 
 \begin_layout Plain Layout
-/usr/loca
+/usr/local
 \end_layout
 
 \end_inset
 
-l as my install location, as follows:
+ as my install location, as follows:
 \end_layout
 
 \begin_layout Standard
@@ -2453,7 +2453,7 @@ If you are only interested in building Pascal programs for an
 actual
 \emph default
  QL, and have no intention of developing anything for Windows or Linux,
- then this config file is an excellent option:
+ then this configuration file is an excellent option:
 \end_layout
 
 \begin_layout Standard
@@ -2536,7 +2536,7 @@ status open
 status open
 
 \begin_layout Plain Layout
-Using my own excellent(!) utility, Xtcc_bin
+Using my own excellent(!) utility, XTcc_bin
 \begin_inset Flex FileName
 status open
 
@@ -2595,7 +2595,8 @@ status open
 \end_inset
 
  option to tell the compiler to compile for a QL.
- If you added the option to the config file, there's no need to use it here.
+ If you added the option to the configuration file, there's no need to use
+ it here.
 \end_layout
 
 \begin_layout Standard
@@ -2640,8 +2641,8 @@ Warning 22: Attributes of section .text were changed from r-x- in Linker
 \begin_layout Standard
 You can safely ignore the warning.
  On Linux it's easy to determine if the correct file has been created provided
- the option to use an XTcc trailer was specified in the config file, or
- at compile time with the 
+ the option to use an XTcc trailer was specified in the configuration file,
+ or at compile time with the 
 \begin_inset Flex OptionName
 status open
 
@@ -3238,7 +3239,7 @@ status open
 
 \end_inset
 
- option to the config file, you don't have to specify it here.
+ option to the configuration file, you don't have to specify it here.
  I need to compile code for both Linux and the QL.
  I test my dodgy Pascal code on Linux first to be sure it compiles and runs
  correctly, then I repeat the operation for the QL.
@@ -3274,7 +3275,7 @@ status open
 
 \end_inset
 
- option either on the command line or in the config file.
+ option either on the command line or in the configuration file.
  There are two options which control how the executable file for the QL
  gets it's data space information:
 \end_layout
@@ -3347,7 +3348,8 @@ status open
 
 \end_inset
 
- option is to be found in the config file, if not, it will fail to compile.
+ option is to be found in the configuration file, if not, it will fail to
+ compile.
  The executable will be created with header details embedded into the executable
  file ready for use on various QL Emulators.
 \end_layout
@@ -3376,7 +3378,7 @@ status open
 
 \end_inset
 
- option in the config file and force an embedded header to be used.
+ option in the configuration file and force an embedded header to be used.
 \end_layout
 
 \begin_layout Itemize
@@ -3403,7 +3405,7 @@ status open
 
 \end_inset
 
- option in the config file.
+ option in the configuration file.
  The executable will be created with header details embedded into the executable
  file ready for use on various QL Emulators.
 \end_layout
@@ -3432,7 +3434,7 @@ status open
 
 \end_inset
 
- option in the config file and force an embedded header to be used.
+ option in the configuration file and force an embedded header to be used.
 \end_layout
 
 \begin_layout Itemize
@@ -3448,7 +3450,7 @@ fpc-ql -WQxtcc hello.pp
 
 \end_inset
 
- The executable will be created with an XTCC trailer record holding dataspace
+ The executable will be created with an XTcc trailer record holding dataspace
  details.
  This variant is suitable for use on an actual QL after the executable has
  been processed by an XTcc utility.
@@ -3478,7 +3480,8 @@ status open
 
 \end_inset
 
- option in the config file and force an XTCC trailer record to be used.
+ option in the configuration file and force an XTcc trailer record to be
+ used.
 \end_layout
 
 \begin_layout Chapter
@@ -3501,7 +3504,7 @@ status open
 
 \begin_layout Standard
 These programs are best suited to the various QL emulators which know about
- the embedded header with the dataspace details.
+ the embedded header with the data space details.
  I use QPC and it copes happily with me executing these programs directly
  from the 
 \begin_inset Flex DirectoryName
@@ -3582,7 +3585,7 @@ The executable file which the cross compiler created can be copied over
 proper
 \emph default
  QDOS executable.
- In my case I can use my XTCC utility from my somewhat irregular Assembly
+ In my case I can use my XTcc utility from my somewhat irregular Assembly
  Language eMagazine, Issue 6 – available from 
 \begin_inset CommandInset href
 LatexCommand href
@@ -4080,7 +4083,7 @@ A0
 
 \end_inset
 
-- 
+-
 \begin_inset Flex RegisterName
 status open
 
@@ -5736,7 +5739,7 @@ Install the QL Units
 \begin_layout Standard
 The units are compiled into a holding location which is not where they are
  actually found by the compiler.
- This was defined in the config file we created way way back! Remember?
+ This was defined in the configuration file we created way way back! Remember?
 \end_layout
 
 \begin_layout Standard
@@ -5795,7 +5798,7 @@ This tells you where the units need to be placed for the compiler to find
  them, As you can see, there are no hard coded version numbers, CPU or OS
  names, so when we get a compiler update, we don't have to change anything
  and it all just works.
- The two lines in the config file with the 
+ The two lines in the configuration file with the 
 \begin_inset Flex OptionName
 status open
 
@@ -6478,7 +6481,7 @@ cd ~/bin/lib/fpc/3.3.1/units/m68k-sinclairql/qlunits/
 
 \begin_layout Plain Layout
 
-cp ~/SourceCode/fpc/packages/qlunits/units/m68k-sinclairql/* 
+cp ~/SourceCode/fpc/packages/qlunits/units/m68k-sinclairql/* ./
 \end_layout
 
 \end_inset
