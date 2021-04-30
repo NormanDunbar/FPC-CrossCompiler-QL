@@ -406,7 +406,7 @@ There are three main listing types in this document:
 \end_layout
 
 \begin_layout Itemize
-Commands typed at a prompt, either the system prompt or a application's
+Commands typed at a prompt, either the system prompt or an application's
  prompt;
 \end_layout
 
@@ -419,13 +419,13 @@ Text files, configuration files or source code files.
 \end_layout
 
 \begin_layout Standard
-In the document, listings showing commands lines will have line numbers.
+In the document, listings showing command lines will have line numbers.
  Hopefully you will see that the numbers are outside of the code block in
  the document, and you don't have to type in the numbers.
  Keep an eye out for long lines which have wrapped around.
  They will not have line numbers on the continuation lines and those will
  be indented to show that they are continued from above.
- This is a (contrived) example of a set of commands to be types at the prompt:
+ This is a (contrived) example of a set of commands to be typed at the prompt:
 \end_layout
 
 \begin_layout Standard
@@ -696,9 +696,29 @@ Build and install the QL version of FPC.
 That would, hopefully, give me a working cross compiler so that I could
  try and write QL programs, compile them under Linux, copy them to my QL
  then test them.
- Easy stuff, no? My own QL system is Marcel's excellent 
+ Easy stuff, no? My own QL system is Marcel Kilgus' excellent 
 \emph on
 QPC
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+
+\emph on
+\begin_inset CommandInset href
+LatexCommand href
+name "https://www.kilgus.net/qpc/"
+target "https://www.kilgus.net/qpc/"
+literal "false"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
 \emph default
  so I'm able to run the cross compiled programs without any problems.
  However, if you are using an actual QL, then you may need to compile the
@@ -713,7 +733,25 @@ XTcc_bin
 
 \end_inset
 
- utility to convert the files to executable on the QL.
+ utility
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+\begin_inset CommandInset href
+LatexCommand href
+name "Issue_6"
+target "https://github.com/NormanDunbar/QLAssemblyLanguageMagazine/releases/tag/Issue_6"
+literal "false"
+
+\end_inset
+
+ of my eMagazine has all the details you may need.
+\end_layout
+
+\end_inset
+
+ to convert the files to executable on the QL.
 \end_layout
 
 \begin_layout Standard
@@ -4949,28 +4987,7 @@ cd ~/SourceCode/fpc
 
 \begin_layout Plain Layout
 
-svn diff --patch-compatible
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset listings
-lstparams "basicstyle={\ttfamily},breaklines=true,showstringspaces=false,backgroundcolor={\color{outputColour}},breakautoindent=true"
-inline false
-status open
-
-\begin_layout Plain Layout
-
-Hello FPC World!
-\end_layout
-
-\begin_layout Plain Layout
-
-Press any key to exit.
+svn diff --patch-compatible | more
 \end_layout
 
 \end_inset
