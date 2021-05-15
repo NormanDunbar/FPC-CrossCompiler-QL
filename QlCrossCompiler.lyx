@@ -324,6 +324,15 @@ Norman Dunbar
 5th April 2021
 \end_layout
 
+\begin_layout Standard
+\begin_inset CommandInset toc
+LatexCommand tableofcontents
+
+\end_inset
+
+
+\end_layout
+
 \begin_layout Chapter
 Introduction
 \end_layout
@@ -2677,7 +2686,8 @@ Warning 22: Attributes of section .text were changed from r-x- in Linker
 \end_layout
 
 \begin_layout Standard
-You can safely ignore the warning.
+You can safely ignore the warning if it appears, later versions of the linker
+ no longer produce the message.
  On Linux it's easy to determine if the correct file has been created provided
  the option to use an XTcc trailer was specified in the configuration file,
  or at compile time with the 
@@ -3249,24 +3259,6 @@ fpc-ql -Tsinclairql hello.pp
 \end_layout
 
 \begin_layout Standard
-\begin_inset listings
-lstparams "basicstyle={\ttfamily},breaklines=true,showstringspaces=false,backgroundcolor={\color{outputColour}},breakautoindent=true"
-inline false
-status open
-
-\begin_layout Plain Layout
-
-Warning 22: Attributes of section .text were changed from r-x- in Linker
- Script <link15795.res> to rwx- in hello.o.
- 
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
 As mentioned, if you added the 
 \begin_inset Flex OptionName
 status open
@@ -3488,8 +3480,8 @@ fpc-ql -WQxtcc hello.pp
 
 \end_inset
 
- The executable will be created with an XTcc trailer record holding dataspace
- details.
+ The executable will be created with an XTcc trailer record holding data
+ space details.
  This variant is suitable for use on an actual QL after the executable has
  been processed by an XTcc utility.
 \end_layout
@@ -4947,6 +4939,13 @@ Distributing Changes to the RTL
 
 \begin_layout Section
 Creating a Patch File
+\begin_inset CommandInset label
+LatexCommand label
+name "sec:Creating-a-Patch-File"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -5998,24 +5997,6 @@ fpc-ql -Tsinclairql hellonorm.pp
 \end_layout
 
 \begin_layout Standard
-\begin_inset listings
-lstparams "basicstyle={\ttfamily},breaklines=true,showstringspaces=false,backgroundcolor={\color{outputColour}},breakautoindent=true"
-inline false
-status open
-
-\begin_layout Plain Layout
-
-Warning 22: Attributes of section .text were changed from r-x- in Linker
- Script <link15795.res> to rwx- in hellonorm.o.
- 
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
 Over on the QL, or in QPC in my case:
 \end_layout
 
@@ -6102,6 +6083,13 @@ qlfloats
 
 \begin_layout Section
 Building the QL Units
+\begin_inset CommandInset label
+LatexCommand label
+name "sec:Building-the-QL-units"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -6338,6 +6326,13 @@ Check the compilation output for any errors or warnings, fix them as appropriate
 
 \begin_layout Section
 Installing the QL Units
+\begin_inset CommandInset label
+LatexCommand label
+name "sec:Installing-the-QL-units"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -6510,6 +6505,1117 @@ cp ~/SourceCode/fpc/packages/qlunits/units/m68k-sinclairql/* ./
 Once this has been done, you may be advised to recompile any existing Pascal
  programs which use the units, just in case you've managed to introduce
  a runtime bug which the compiler can't catch for you.
+\end_layout
+
+\begin_layout Chapter
+Creating New Units
+\end_layout
+
+\begin_layout Standard
+The previous chapter introduced you to amending the existing QL Units.
+ In this chapter, we shall see how simple it is to add a new unit ready
+ for use by the programs developed for the QL.
+ The steps involved are:
+\end_layout
+
+\begin_layout Itemize
+Create the new unit's source file;
+\end_layout
+
+\begin_layout Itemize
+Add the new unit to the 
+\begin_inset Flex FileName
+status open
+
+\begin_layout Plain Layout
+fpmake.pp
+\end_layout
+
+\end_inset
+
+ file, or it will not be added as a unit;
+\end_layout
+
+\begin_layout Itemize
+Compile all the units;
+\end_layout
+
+\begin_layout Itemize
+Install the newly compiled units.
+\end_layout
+
+\begin_layout Standard
+Compiling and installing are already documented in Section 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Building-the-QL-units"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ 
+\begin_inset CommandInset ref
+LatexCommand nameref
+reference "sec:Building-the-QL-units"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ and Section 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Installing-the-QL-units"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ 
+\begin_inset CommandInset ref
+LatexCommand nameref
+reference "sec:Installing-the-QL-units"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ and will not require further explanation.
+\end_layout
+
+\begin_layout Section
+Creating the Unit
+\end_layout
+
+\begin_layout Subsection
+Unit Skeleton
+\end_layout
+
+\begin_layout Standard
+You create a new unit with the following skeleton layout:
+\end_layout
+
+\begin_layout Standard
+\begin_inset listings
+lstparams "language=Pascal,numbers=left,basicstyle={\ttfamily},breaklines=true,showstringspaces=false,backgroundcolor={\color{textfileColour}},breakautoindent=true"
+inline false
+status open
+
+\begin_layout Plain Layout
+
+unit UnitName;
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+interface
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+uses ...
+\end_layout
+
+\begin_layout Plain Layout
+
+const ...
+\end_layout
+
+\begin_layout Plain Layout
+
+type ...
+\end_layout
+
+\begin_layout Plain Layout
+
+...
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+implementation
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+uses ...
+\end_layout
+
+\begin_layout Plain Layout
+
+const ...
+\end_layout
+
+\begin_layout Plain Layout
+
+type ...
+\end_layout
+
+\begin_layout Plain Layout
+
+var ...
+\end_layout
+
+\begin_layout Plain Layout
+
+...
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+end.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Interface
+\end_layout
+
+\begin_layout Standard
+The interface section is where you will be making all your forward references
+ to procedures and such like which will be defined in this unit.
+ This is effectively the same as the header files (
+\begin_inset Flex FileName
+status open
+
+\begin_layout Plain Layout
+*.h
+\end_layout
+
+\end_inset
+
+) as used in C or C++ development, and defines the public parts of the unit
+ – the bits that programs or other units can use.
+\end_layout
+
+\begin_layout Standard
+All the consts, types etc mentioned in this section will be visible to programs
+ and other units which use this one.
+\end_layout
+
+\begin_layout Subsection
+Implementation
+\end_layout
+
+\begin_layout Standard
+The implementation section is where the meat and bones of the unit are to
+ be found.
+ Anything here which is not declared in the interface section, cannot be
+ seen outside of the unit.
+ Any of the uses, const, type, var etc clauses here are purely for use in
+ the unit itself.
+\end_layout
+
+\begin_layout Subsection
+An Example Unit
+\end_layout
+
+\begin_layout Standard
+Details of writing units can be found at 
+\begin_inset CommandInset href
+LatexCommand href
+target "https://wiki.lazarus.freepascal.org/Unit"
+
+\end_inset
+
+ so the following will be a brief overview.
+\end_layout
+
+\begin_layout Standard
+Unit source code lives in 
+\begin_inset Flex DirectoryName
+status open
+
+\begin_layout Plain Layout
+~/SourceCode/fpc/packages/qlunits/src
+\end_layout
+
+\end_inset
+
+ and must be saved to a file with the same name as the unit, with a '
+\begin_inset Flex FileName
+status open
+
+\begin_layout Plain Layout
+.pas
+\end_layout
+
+\end_inset
+
+' extension.
+ The 
+\begin_inset Flex UnitName
+status open
+
+\begin_layout Plain Layout
+qdos
+\end_layout
+
+\end_inset
+
+ unit is therefore named 
+\begin_inset Flex FileName
+status open
+
+\begin_layout Plain Layout
+qdos.pas
+\end_layout
+
+\end_inset
+
+, for example.
+ It is important that you follow this standard, or problems will arise.
+\end_layout
+
+\begin_layout Standard
+In the time honoured tradition of writing example code, I've created a simple
+ unit named 
+\begin_inset Flex UnitName
+status open
+
+\begin_layout Plain Layout
+hello
+\end_layout
+
+\end_inset
+
+, which lives in the source file, 
+\begin_inset Flex FileName
+status open
+
+\begin_layout Plain Layout
+hello.pas
+\end_layout
+
+\end_inset
+
+.
+ This is the code for the unit:
+\end_layout
+
+\begin_layout Standard
+\begin_inset listings
+lstparams "language=Pascal,numbers=left,basicstyle={\ttfamily},breaklines=true,showstringspaces=false,backgroundcolor={\color{textfileColour}},breakautoindent=true"
+inline false
+status open
+
+\begin_layout Plain Layout
+
+unit hello;
+\end_layout
+
+\begin_layout Plain Layout
+
+interface
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+procedure greet(prompt: pchar);
+\end_layout
+
+\begin_layout Plain Layout
+
+procedure helloWorld;
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+implementation
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+procedure greet(prompt: pchar);
+\end_layout
+
+\begin_layout Plain Layout
+
+begin
+\end_layout
+
+\begin_layout Plain Layout
+
+  writeln('Hello ', prompt);
+\end_layout
+
+\begin_layout Plain Layout
+
+end;
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+procedure helloWorld;
+\end_layout
+
+\begin_layout Plain Layout
+
+begin
+\end_layout
+
+\begin_layout Plain Layout
+
+  greet('World!');
+\end_layout
+
+\begin_layout Plain Layout
+
+end;
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+end.
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+As you can see from the interface section, this unit exposes only two procedures
+:
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Flex FunctionName
+status open
+
+\begin_layout Plain Layout
+Greet
+\end_layout
+
+\end_inset
+
+ which takes a single parameter;
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Flex FunctionName
+status open
+
+\begin_layout Plain Layout
+HelloWorld
+\end_layout
+
+\end_inset
+
+ which takes no parameters.
+\end_layout
+
+\begin_layout Section
+Update 
+\begin_inset Flex FileName
+status open
+
+\begin_layout Plain Layout
+fpmake.pp
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+This is the easy part! Once the hard work of writing the unit's code and
+ interface is done, you can easily add it to the full compiler build.
+ All you have to do is add the new unit to the file 
+\begin_inset Flex FileName
+status open
+
+\begin_layout Plain Layout
+fpmake.pp
+\end_layout
+
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Subsection
+Adding New Units
+\end_layout
+
+\begin_layout Standard
+The file, 
+\begin_inset Flex FileName
+status open
+
+\begin_layout Plain Layout
+fpmake.pp
+\end_layout
+
+\end_inset
+
+, lives one directory higher up than the source files you have been working
+ on.
+ You simply need to change up one level and edit the file.
+\end_layout
+
+\begin_layout Standard
+Somewhere in the file you will find the following lines of code:
+\end_layout
+
+\begin_layout Standard
+\begin_inset listings
+lstparams "language=Pascal,numbers=left,basicstyle={\ttfamily},breaklines=true,showstringspaces=false,backgroundcolor={\color{textfileColour}},breakautoindent=true"
+inline false
+status open
+
+\begin_layout Plain Layout
+
+...
+\end_layout
+
+\begin_layout Plain Layout
+
+T:=P.Targets.AddUnit('qdos.pas');
+\end_layout
+
+\begin_layout Plain Layout
+
+T:=P.Targets.AddUnit('qlfloat.pas');
+\end_layout
+
+\begin_layout Plain Layout
+
+T:=P.Targets.AddUnit('qlutil.pas');
+\end_layout
+
+\begin_layout Plain Layout
+
+T:=P.Targets.AddUnit('sms.pas');
+\end_layout
+
+\begin_layout Plain Layout
+
+...
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+All you now need to do is add another line, usually at the end, passing
+ in the name of your new unit:
+\end_layout
+
+\begin_layout Standard
+\begin_inset listings
+lstparams "language=Pascal,numbers=left,basicstyle={\ttfamily},breaklines=true,showstringspaces=false,backgroundcolor={\color{textfileColour}},breakautoindent=true"
+inline false
+status open
+
+\begin_layout Plain Layout
+
+...
+\end_layout
+
+\begin_layout Plain Layout
+
+T:=P.Targets.AddUnit('qdos.pas');
+\end_layout
+
+\begin_layout Plain Layout
+
+T:=P.Targets.AddUnit('qlfloat.pas');
+\end_layout
+
+\begin_layout Plain Layout
+
+T:=P.Targets.AddUnit('qlutil.pas');
+\end_layout
+
+\begin_layout Plain Layout
+
+T:=P.Targets.AddUnit('sms.pas');
+\end_layout
+
+\begin_layout Plain Layout
+
+T:=P.Targets.AddUnit('hello.pas');
+\end_layout
+
+\begin_layout Plain Layout
+
+...
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+As this is a cross compiler, please make sure that your unit file names
+ are case dependent – it's fine on Windows where case is ignored, but on
+ other (proper
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+Grins, ducks and runs!
+\end_layout
+
+\end_inset
+
+) systems, case is dependent and something that works on Windows may not
+ work on other systems.
+\end_layout
+
+\begin_layout Subsection
+Adding new Examples
+\end_layout
+
+\begin_layout Standard
+Adding example programs to demonstrate the new units is equally simple.
+ Source code for the examples lives in 
+\begin_inset Flex DirectoryName
+status open
+
+\begin_layout Plain Layout
+~/SourceCode/fpc/packages/qlunits/examples
+\end_layout
+
+\end_inset
+
+ and there's no difference from writing a normal Pascal program.
+ Just do it! Once compiled and tested in the usual manner, it can be added
+ to the system as an official example.
+ Once again, 
+\begin_inset Flex FileName
+status open
+
+\begin_layout Plain Layout
+fpmake.pp
+\end_layout
+
+\end_inset
+
+ is your friend.
+\end_layout
+
+\begin_layout Standard
+This is my simple example for the new 
+\begin_inset Flex UnitName
+status open
+
+\begin_layout Plain Layout
+hello
+\end_layout
+
+\end_inset
+
+ unit created above, it's called 
+\begin_inset Flex FileName
+status open
+
+\begin_layout Plain Layout
+helloEx.pas
+\end_layout
+
+\end_inset
+
+:
+\end_layout
+
+\begin_layout Standard
+\begin_inset listings
+lstparams "language=Pascal,numbers=left,basicstyle={\ttfamily},breaklines=true,showstringspaces=false,backgroundcolor={\color{textfileColour}},breakautoindent=true"
+inline false
+status open
+
+\begin_layout Plain Layout
+
+Program HelloNorm;
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+uses
+\end_layout
+
+\begin_layout Plain Layout
+
+  hello;
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+begin
+\end_layout
+
+\begin_layout Plain Layout
+
+  helloWorld;
+\end_layout
+
+\begin_layout Plain Layout
+
+  greet('Norm!');
+\end_layout
+
+\begin_layout Plain Layout
+
+end.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Once that compiled and executed happily in testing, I was able to add it
+ to 
+\begin_inset Flex FileName
+status open
+
+\begin_layout Plain Layout
+fpmake.pp
+\end_layout
+
+\end_inset
+
+.
+ It's a simple case of editing the file, again, and looking for the following
+ lines of code:
+\end_layout
+
+\begin_layout Standard
+\begin_inset listings
+lstparams "language=Pascal,numbers=left,basicstyle={\ttfamily},breaklines=true,showstringspaces=false,backgroundcolor={\color{textfileColour}},breakautoindent=true"
+inline false
+status open
+
+\begin_layout Plain Layout
+
+...
+\end_layout
+
+\begin_layout Plain Layout
+
+P.ExamplePath.Add('examples');
+\end_layout
+
+\begin_layout Plain Layout
+
+T:=P.Targets.AddExampleProgram('qlcube.pas');
+\end_layout
+
+\begin_layout Plain Layout
+
+T:=P.Targets.AddExampleProgram('mtinf.pas');
+\end_layout
+
+\begin_layout Plain Layout
+
+...
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+All that is required is to add another line, passing in the name of the
+ new example program's source file within the 
+\begin_inset Flex DirectoryName
+status open
+
+\begin_layout Plain Layout
+examples
+\end_layout
+
+\end_inset
+
+ directory.
+ In my case, I added my example 
+\begin_inset Flex FileName
+status open
+
+\begin_layout Plain Layout
+helloEx.pas
+\end_layout
+
+\end_inset
+
+, so here's what my change looks like:
+\end_layout
+
+\begin_layout Standard
+\begin_inset listings
+lstparams "language=Pascal,numbers=left,basicstyle={\ttfamily},breaklines=true,showstringspaces=false,backgroundcolor={\color{textfileColour}},breakautoindent=true"
+inline false
+status open
+
+\begin_layout Plain Layout
+
+...
+\end_layout
+
+\begin_layout Plain Layout
+
+P.ExamplePath.Add('examples');
+\end_layout
+
+\begin_layout Plain Layout
+
+T:=P.Targets.AddExampleProgram('qlcube.pas');
+\end_layout
+
+\begin_layout Plain Layout
+
+T:=P.Targets.AddExampleProgram('mtinf.pas');
+\end_layout
+
+\begin_layout Plain Layout
+
+T:=P.Targets.AddExampleProgram('helloEx.pas');
+\end_layout
+
+\begin_layout Plain Layout
+
+...
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Once again, please make sure that your example's file name is case sensitive.
+\end_layout
+
+\begin_layout Section
+The Build
+\end_layout
+
+\begin_layout Standard
+After adding a new unit, or an example program, you need to run a build
+ of the units and a reinstall of the compiled unit files.
+ This is covered above in Section 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Building-the-QL-units"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ 
+\begin_inset CommandInset ref
+LatexCommand nameref
+reference "sec:Building-the-QL-units"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ and Section 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Installing-the-QL-units"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ 
+\begin_inset CommandInset ref
+LatexCommand nameref
+reference "sec:Installing-the-QL-units"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Subsection
+Version Control
+\end_layout
+
+\begin_layout Standard
+Once the new unit has been tested to destruction, and the example program(s)
+ have been written and tested also, you 
+\emph on
+might
+\emph default
+ need to add the files to version control.
+ I say might because, like me, you probably don't have write access to the
+ main repository.
+ My changes to the QL Cross Compiler have all been done with patch files
+ created by 
+\begin_inset Flex ApplicationName
+status open
+
+\begin_layout Plain Layout
+Subversion
+\end_layout
+
+\end_inset
+
+ as described in Section 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Creating-a-Patch-File"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ 
+\begin_inset CommandInset ref
+LatexCommand nameref
+reference "sec:Creating-a-Patch-File"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Unfortunately, 
+\begin_inset Flex ApplicationName
+status open
+
+\begin_layout Plain Layout
+Subversion
+\end_layout
+
+\end_inset
+
+ doesn't know about your new files, so they need to be added to your local
+ copy of the repository.
+ This is simply done:
+\end_layout
+
+\begin_layout Standard
+\begin_inset listings
+lstparams "language=Pascal,numbers=left,basicstyle={\ttfamily},breaklines=true,showstringspaces=false,backgroundcolor={\color{codeColour}},breakautoindent=true"
+inline false
+status open
+
+\begin_layout Plain Layout
+
+cd ~/SourceCode/fpc/packages/qlunits/src
+\end_layout
+
+\begin_layout Plain Layout
+
+svn add hello.pas
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset listings
+lstparams "language=Pascal,numbers=left,basicstyle={\ttfamily},breaklines=true,showstringspaces=false,backgroundcolor={\color{outputColour}},breakautoindent=true"
+inline false
+status open
+
+\begin_layout Plain Layout
+
+A hello.pas
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Also, for the examples:
+\end_layout
+
+\begin_layout Standard
+\begin_inset listings
+lstparams "language=Pascal,numbers=left,basicstyle={\ttfamily},breaklines=true,showstringspaces=false,backgroundcolor={\color{codeColour}},breakautoindent=true"
+inline false
+status open
+
+\begin_layout Plain Layout
+
+cd ~/SourceCode/fpc/packages/qlunits/examples
+\end_layout
+
+\begin_layout Plain Layout
+
+svn add helloEx.pas
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset listings
+lstparams "language=Pascal,numbers=left,basicstyle={\ttfamily},breaklines=true,showstringspaces=false,backgroundcolor={\color{outputColour}},breakautoindent=true"
+inline false
+status open
+
+\begin_layout Plain Layout
+
+A helloEx.pas
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Update 
+\begin_inset Flex FileName
+status open
+
+\begin_layout Plain Layout
+README.txt
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+In the directory 
+\begin_inset Flex DirectoryName
+status open
+
+\begin_layout Plain Layout
+~/SourceCode/fpc/packages/qlunits
+\end_layout
+
+\end_inset
+
+, you will find the file 
+\begin_inset Flex FileName
+status open
+
+\begin_layout Plain Layout
+README.txt
+\end_layout
+
+\end_inset
+
+.
+ Please update this file with details of any new units and examples.
+\end_layout
+
+\begin_layout Subsection
+Create the Patch
+\end_layout
+
+\begin_layout Standard
+Now that subversion knows about your new files, and the readme has been
+ updated, running a patch creation will include the new files in the patch
+ output, ready for use by other QL developers, or even, by the Free Pascal
+ Project.
+ See Section 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Creating-a-Patch-File"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ 
+\begin_inset CommandInset ref
+LatexCommand nameref
+reference "sec:Creating-a-Patch-File"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ for details on creating a patch file.
 \end_layout
 
 \end_body
