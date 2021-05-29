@@ -247,7 +247,7 @@ End
 \paperfontsize 11
 \spacing single
 \use_hyperref true
-\pdf_title "QL Pascal Cross Compiler"
+\pdf_title "QL Pascal Cross Compiler 1.5"
 \pdf_author "Norman Dunbar"
 \pdf_subject "Building a Free Pascal Cross Compiler for the Sinclair QL"
 \pdf_keywords "Pascal, Sinclair, QL, QDOS, SMSQ"
@@ -335,6 +335,21 @@ LatexCommand tableofcontents
 
 \begin_layout Chapter
 Introduction
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+If you change the version number, amend Document->Settings->PDF Properties,
+ document title, to include the new version.
+ Don't forget to add the version number to the generated PDF as well.
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -1044,6 +1059,13 @@ To build the QL version, we also need to install the source code for the
 
 \begin_layout Chapter
 Installing the Host Compiler
+\begin_inset CommandInset label
+LatexCommand label
+name "chap:Installing-the-Host-Compiler"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -1627,6 +1649,47 @@ Hello FPC World!
 So far the host compiler is looking good and can at least compile a simple
  Pascal program.
  We are ready to use FPC to rebuild itself as a Sinclair QL cross compiler.
+\end_layout
+
+\begin_layout Section
+Upgrading the Host Compiler
+\end_layout
+
+\begin_layout Standard
+Form time to time, the host compiler will be updated by the Free Pascal
+ Project.
+ If you absolutely have to have the very latest version, then the instructions
+ in this section are the ones to follow to upgrade the compiler.
+\end_layout
+
+\begin_layout Standard
+You cannot upgrade using your distro's Package manager's commands – 
+\begin_inset Flex CommandName
+status open
+
+\begin_layout Plain Layout
+apt
+\end_layout
+
+\end_inset
+
+, 
+\begin_inset Flex CommandName
+status open
+
+\begin_layout Plain Layout
+yum
+\end_layout
+
+\end_inset
+
+ etc – as you didn't install from your package manager.
+ It must be upgraded manually.
+\end_layout
+
+\begin_layout Standard
+Reapplying the install instructions will overwrite the existing files and
+ upgrade the host compiler in place.
 \end_layout
 
 \begin_layout Chapter
@@ -2625,6 +2688,88 @@ status open
  option.
 \end_layout
 
+\begin_layout Standard
+There is an interesting foible here.
+ Whenever I ran the 
+\begin_inset Flex CommandName
+status open
+
+\begin_layout Plain Layout
+fpc-ql
+\end_layout
+
+\end_inset
+
+ command, I got a warning that it couldn't find the unit files used, specificall
+y, the 
+\begin_inset Flex UnitName
+status open
+
+\begin_layout Plain Layout
+system
+\end_layout
+
+\end_inset
+
+ unit.
+ Debugging the compilation command showed that it was looking for unit files
+ in a subdirectory named 
+\begin_inset Flex DirectoryName
+status open
+
+\begin_layout Plain Layout
+m68k/linux
+\end_layout
+
+\end_inset
+
+ instead of 
+\begin_inset Flex DirectoryName
+status open
+
+\begin_layout Plain Layout
+m68k/sinclairql
+\end_layout
+
+\end_inset
+
+.
+ I eventually tracked this down, with the help of the 
+\begin_inset Flex OptionName
+status open
+
+\begin_layout Plain Layout
+-vv
+\end_layout
+
+\end_inset
+
+ compilation option, to the presence of a rogue 
+\begin_inset Flex FileName
+status open
+
+\begin_layout Plain Layout
+.fpc.cfg
+\end_layout
+
+\end_inset
+
+ file in my 
+\begin_inset Flex EnvVar
+status open
+
+\begin_layout Plain Layout
+$HOME
+\end_layout
+
+\end_inset
+
+ directory.
+ When I renamed this file, the problems went away.
+ I have no idea how or why that file was present, it may have been there
+ for quite some time.
+\end_layout
+
 \begin_layout Section
 Building Your First QL Program
 \end_layout
@@ -2727,7 +2872,7 @@ status open
 
 \begin_layout Plain Layout
 
-hello.exe: QDOS executable 'FPC' 
+hello.exe: QDOS executable 'FPC_PROG' 
 \end_layout
 
 \end_inset
@@ -2750,11 +2895,11 @@ hello.exe
 \begin_inset Quotes eld
 \end_inset
 
-Program
+FPC_PROG
 \begin_inset Quotes erd
 \end_inset
 
- unless you give the code a 
+ unless you give the source code a 
 \begin_inset Quotes eld
 \end_inset
 
@@ -2770,42 +2915,25 @@ xxxx
 \begin_inset Quotes erd
 \end_inset
 
-
+.
+ You can change the job name on the fly
 \begin_inset Foot
-status collapsed
+status open
 
 \begin_layout Plain Layout
-Ok, confusion! In FPC you do not have to give a program a name unlike standard
- Pascal, so the 
-\begin_inset Quotes eld
+See 
+\begin_inset CommandInset href
+LatexCommand href
+target "https://wiki.freepascal.org/Sinclair_QL#Job_Name"
+
 \end_inset
 
-Program
-\begin_inset Quotes erd
+ for details.
+\end_layout
+
 \end_inset
 
- line can be left out.
- This gives the QL executables a default program name of 
-\begin_inset Quotes eld
-\end_inset
-
-Program
-\begin_inset Quotes erd
-\end_inset
-
-.
- If you do include the 
-\begin_inset Quotes eld
-\end_inset
-
-Program program_name
-\begin_inset Quotes erd
-\end_inset
-
- line in your source code, the QL executable gets the supplied program name
- as its job name.
- However, you can change the job name on the fly, if you wish, using the
- QL specific functions 
+, if you wish, using the QL specific functions 
 \begin_inset Flex FunctionName
 status open
 
@@ -2836,23 +2964,59 @@ GetQLJobNamePtr()
 \end_inset
 
  which returns a pointer.
+ All we have to do now is get it over to a QL and try it out.
+\end_layout
+
+\begin_layout Standard
+On the other hand, if you are using the default header option, 
+\begin_inset Flex OptionName
+status open
+
+\begin_layout Plain Layout
+-WQqhdr
+\end_layout
+
+\end_inset
+
+, explicitly or otherwise, then the following will show you that it is a
+ QDOS executable (for the various emulators that can handle it of course!)
+\end_layout
+
+\begin_layout Standard
+\begin_inset listings
+lstparams "language=bash,numbers=left,basicstyle={\ttfamily},breaklines=true,showstringspaces=false,backgroundcolor={\color{codeColour}},breakautoindent=true"
+inline false
+status open
+
+\begin_layout Plain Layout
+
+hexdump -c -n 18 hello.exe
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset listings
+lstparams "basicstyle={\ttfamily},breaklines=true,showstringspaces=false,backgroundcolor={\color{outputColour}},breakautoindent=true"
+inline false
+status open
+
+\begin_layout Plain Layout
+
+0000000   ] ! Q D O S    F i l e    H e a d 
 \end_layout
 
 \begin_layout Plain Layout
-See 
-\begin_inset CommandInset href
-LatexCommand href
-target "https://wiki.freepascal.org/Sinclair_QL#Job_Name"
 
-\end_inset
-
- for details.
+0000010   e r      
 \end_layout
 
 \end_inset
 
-.
- All we have to do now is get it over to a QL and try it out.
+
 \end_layout
 
 \begin_layout Chapter
@@ -3116,6 +3280,418 @@ cd -
 cd ~
 \family default
  in some fonts, so I thought I better be explicit.
+\end_layout
+
+\begin_layout Section
+When the Cross Compiler Version Changes
+\end_layout
+
+\begin_layout Standard
+From time to time the host compiler version may change.
+ This change is pretty much invisible to you and the instructions in Chapter
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "chap:Installing-the-Host-Compiler"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ 
+\begin_inset CommandInset ref
+LatexCommand nameref
+reference "chap:Installing-the-Host-Compiler"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+, cover that possibility.
+ However, just because the host compiler version has changed doesn't automatical
+ly mean that cross compiler versions change at the same time.
+ How do I know this?
+\end_layout
+
+\begin_layout Standard
+I was running with version 3.2.0 on my Linux host and version 3.3.1 for my cross
+ compiler for the Sinclair QL.
+ So my cross compiler is ahead of the host.
+ However, I eventually updated the Linux host compiler to version 3.2.2 but
+ the cross compiler is still ahead at version 3.3.1, even after I updated
+ the source and rebuilt it.
+\end_layout
+
+\begin_layout Standard
+Eventually, however, the cross compiler source will be brought up to date
+ with the host compiler versions (or indeed, vice versa!) and things will
+ start to go wrong for you after you run the 
+\begin_inset listings
+lstparams "basicstyle={\ttfamily},showstringspaces=false"
+inline true
+status open
+
+\begin_layout Plain Layout
+
+svn update
+\end_layout
+
+\end_inset
+
+ command.
+ This is because the cross compiler executables are always located in a
+ subdirectory which is named for the cross compiler version.
+ In my case it's 
+\begin_inset Flex DirectoryName
+status open
+
+\begin_layout Plain Layout
+/home/norman/bin/lib/fpc/3.3.1/
+\end_layout
+
+\end_inset
+
+ so when the version number changes to 3.3.2, for example, that will change
+ to
+\begin_inset Flex DirectoryName
+status open
+
+\begin_layout Plain Layout
+/home/norman/bin/lib/fpc/3.3.1/
+\end_layout
+
+\end_inset
+
+ but all my sym links will point at the old version.
+\end_layout
+
+\begin_layout Subsection
+Check Version After Updating
+\end_layout
+
+\begin_layout Standard
+The solution is simple.
+ After running the 
+\begin_inset listings
+lstparams "basicstyle={\ttfamily},showstringspaces=false"
+inline true
+status open
+
+\begin_layout Plain Layout
+
+svn update
+\end_layout
+
+\end_inset
+
+ command and rebuilding the cross compiler, check where the output has gone.
+ Have a look in your installation directory (set by 
+\begin_inset Flex EnvVar
+status open
+
+\begin_layout Plain Layout
+INSTALL_PREFIX
+\end_layout
+
+\end_inset
+
+ on the 
+\begin_inset Flex CommandName
+status open
+
+\begin_layout Plain Layout
+make crossinstall
+\end_layout
+
+\end_inset
+
+ command you used to install it), under 
+\begin_inset Flex DirectoryName
+status open
+
+\begin_layout Plain Layout
+lib/fpc
+\end_layout
+
+\end_inset
+
+ and see what, if any, new subdirectories have been created.
+\end_layout
+
+\begin_layout Standard
+\begin_inset listings
+lstparams "language=bash,numbers=left,basicstyle={\ttfamily},breaklines=true,showstringspaces=false,backgroundcolor={\color{codeColour}},breakautoindent=true"
+inline false
+status open
+
+\begin_layout Plain Layout
+
+cd ~/bin/lib/fpc
+\end_layout
+
+\begin_layout Plain Layout
+
+ls -l
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset listings
+lstparams "language=bash,numbers=left,basicstyle={\ttfamily},breaklines=true,showstringspaces=false,backgroundcolor={\color{outputColour}},breakautoindent=true"
+inline false
+status open
+
+\begin_layout Plain Layout
+
+drwxr-xr-x 4 norman norman 4096 May 29 11:09 3.3.1
+\end_layout
+
+\begin_layout Plain Layout
+
+drwxrwxr-x 2 norman norman 4096 May 29 11:24 etc
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+In this case, nothing new has been created, but let's say that there was
+ a new 
+\begin_inset Flex DirectoryName
+status open
+
+\begin_layout Plain Layout
+3.3.2
+\end_layout
+
+\end_inset
+
+ subdirectory found.
+ We need to update our sym-links.
+\end_layout
+
+\begin_layout Subsection
+Checking Current Sym-links
+\end_layout
+
+\begin_layout Standard
+\begin_inset listings
+lstparams "language=bash,numbers=left,basicstyle={\ttfamily},breaklines=true,showstringspaces=false,backgroundcolor={\color{codeColour}},breakautoindent=true"
+inline false
+status open
+
+\begin_layout Plain Layout
+
+cd ~/bin
+\end_layout
+
+\begin_layout Plain Layout
+
+ls -l fpc-ql
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset listings
+lstparams "language=bash,numbers=left,basicstyle={\ttfamily},breaklines=true,showstringspaces=false,backgroundcolor={\color{outputColour}},breakautoindent=true"
+inline false
+status open
+
+\begin_layout Plain Layout
+
+lrwxrwxrwx 1 norman norman 24 May 15 14:32 /home/norman/bin/fpc-ql -> lib/fpc/3.3.
+1/ppcross68k
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+So my cross compiler, which I wanted naming to 
+\begin_inset Flex ApplicationName
+status open
+
+\begin_layout Plain Layout
+fpc-ql
+\end_layout
+
+\end_inset
+
+, is obviously still using the old 
+\begin_inset Flex DirectoryName
+status open
+
+\begin_layout Plain Layout
+3.3.1
+\end_layout
+
+\end_inset
+
+ version of the cross compiler binary.
+\end_layout
+
+\begin_layout Subsection
+Update Symbolic Links
+\end_layout
+
+\begin_layout Standard
+Windows users would probably just copy the various files from the 3.3.2
+\begin_inset Flex DirectoryName
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+ subdirectory as opposed to changing sym-links.
+ Linux users will need to do the following changes.
+\end_layout
+
+\begin_layout Standard
+\begin_inset listings
+lstparams "language=bash,numbers=left,basicstyle={\ttfamily},breaklines=true,showstringspaces=false,backgroundcolor={\color{codeColour}},breakautoindent=true"
+inline false
+status open
+
+\begin_layout Plain Layout
+
+cd ~/bin
+\end_layout
+
+\begin_layout Plain Layout
+
+rm fpc-ql
+\end_layout
+
+\begin_layout Plain Layout
+
+ln -s lib/fpc/3.3.2/ppcross68k fpc-ql
+\end_layout
+
+\begin_layout Plain Layout
+
+ls -l fpc-ql
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset listings
+lstparams "language=bash,numbers=left,basicstyle={\ttfamily},breaklines=true,showstringspaces=false,backgroundcolor={\color{outputColour}},breakautoindent=true"
+inline false
+status open
+
+\begin_layout Plain Layout
+
+lrwxrwxrwx 1 norman norman 24 May 29 11:10 /home/norman/bin/fpc-ql -> lib/fpc/3.3.
+2/ppcross68k
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+So, I can now see that 
+\begin_inset Flex ApplicationName
+status open
+
+\begin_layout Plain Layout
+fpc-ql
+\end_layout
+
+\end_inset
+
+ will execute the newest version of the cross compiler.
+ This can be tested with:
+\end_layout
+
+\begin_layout Standard
+\begin_inset listings
+lstparams "language=bash,numbers=left,basicstyle={\ttfamily},breaklines=true,showstringspaces=false,backgroundcolor={\color{codeColour}},breakautoindent=true"
+inline false
+status open
+
+\begin_layout Plain Layout
+
+fpc-ql
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset listings
+lstparams "language=bash,numbers=left,basicstyle={\ttfamily},breaklines=true,showstringspaces=false,backgroundcolor={\color{outputColour}},breakautoindent=true"
+inline false
+status open
+
+\begin_layout Plain Layout
+
+Free Pascal Compiler version 3.3.2 [2021/05/29] for m68k
+\end_layout
+
+\begin_layout Plain Layout
+
+Copyright (c) 1993-2021 by Florian Klaempfl and others
+\end_layout
+
+\begin_layout Plain Layout
+
+/home/norman/bin/lib/fpc/3.3.1/ppcross68k [options] <inputfile> [options]
+\end_layout
+
+\begin_layout Plain Layout
+
+...
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Confirmed.
+ We have the latest version.
+\end_layout
+
+\begin_layout Standard
+Note: This section was only an example, the cross compiler, at the date
+ of writing
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+29th May 2021
+\end_layout
+
+\end_inset
+
+, is still at version 3.3.1.
+ Please don't go looking for 3.3.2 just yet!
 \end_layout
 
 \begin_layout Chapter
