@@ -226,16 +226,16 @@ End
 \language_package default
 \inputencoding auto
 \fontencoding global
-\font_roman "default" "default"
-\font_sans "default" "default"
-\font_typewriter "default" "default"
+\font_roman "beraserif" "default"
+\font_sans "berasans" "default"
+\font_typewriter "beramono" "default"
 \font_math "auto" "auto"
-\font_default_family default
+\font_default_family sfdefault
 \use_non_tex_fonts false
 \font_sc false
 \font_osf false
 \font_sf_scale 100 100
-\font_tt_scale 100 100
+\font_tt_scale 95 100
 \use_microtype false
 \use_dash_ligatures true
 \graphics default
@@ -244,10 +244,10 @@ End
 \bibtex_command default
 \index_command default
 \float_placement !h
-\paperfontsize 11
+\paperfontsize 10
 \spacing single
 \use_hyperref true
-\pdf_title "QL Pascal Cross Compiler 1.5"
+\pdf_title "QL Pascal Cross Compiler 1.6"
 \pdf_author "Norman Dunbar"
 \pdf_subject "Building a Free Pascal Cross Compiler for the Sinclair QL"
 \pdf_keywords "Pascal, Sinclair, QL, QDOS, SMSQ"
@@ -335,6 +335,79 @@ LatexCommand tableofcontents
 
 \begin_layout Chapter
 Introduction
+\end_layout
+
+\begin_layout Standard
+
+\emph on
+\begin_inset Box Shadowbox
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "100col%"
+special "none"
+height "1in"
+height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
+status open
+
+\begin_layout Plain Layout
+
+\series bold
+IMPORTANT:
+\series default
+ 
+\emph on
+Certain sections of this document are tagged with 
+\begin_inset Quotes eld
+\end_inset
+
+
+\series bold
+FIXME:
+\series default
+
+\begin_inset Quotes erd
+\end_inset
+
+.
+ This is to mark information which is no longer up to date due to the migration
+ from Subversion to Git for the various source code repositories.
+ With Subversion, a patch file was easy to create.
+ With Git, this is also the case, but equally, instead of creating patches,
+ a pull request could also be made.
+\end_layout
+
+\begin_layout Plain Layout
+
+\emph on
+I will update this document as and when I have more information on the desired
+ method of adding QL code to the FPC Repositories.
+ 
+\end_layout
+
+\begin_layout Plain Layout
+
+\emph on
+Norman Dunbar
+\end_layout
+
+\begin_layout Plain Layout
+
+\emph on
+16th December 2021.
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -800,6 +873,43 @@ Installing the Software
 \end_layout
 
 \begin_layout Standard
+
+\series bold
+Note
+\series default
+: Previously, the source code was held in a Subversion repository, but migrated
+ to Gitlab (and GitHub) on August 8th, 2021.
+ Details of the move are available at 
+\begin_inset CommandInset href
+LatexCommand href
+name "https://www.freepascal.org/"
+target "https://www.freepascal.org/"
+literal "false"
+
+\end_inset
+
+ with documentation about using Git and FPC at 
+\begin_inset CommandInset href
+LatexCommand href
+name "https://www.freepascal.org/develop.var"
+target "https://www.freepascal.org/develop.var"
+literal "false"
+
+\end_inset
+
+ and in the Wiki at 
+\begin_inset CommandInset href
+LatexCommand href
+name "https://wiki.freepascal.org/FPC_git"
+target "https://wiki.freepascal.org/FPC_git"
+literal "false"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
 The following software is the minimum required to build the cross compiler
  and build Pascal programs for the QL:
 \end_layout
@@ -807,7 +917,7 @@ The following software is the minimum required to build the cross compiler
 \begin_layout Itemize
 
 \emph on
-Subversion
+Git
 \emph default
 ; the version control system used by the FPC developers.
  We need this to be able to download the source code for the compiler, and
@@ -815,10 +925,11 @@ Subversion
  We could avoid this step and just download a zip file, if necessary.
  
 \emph on
-Subversion
+Git
 \emph default
  comes in handy when changing the RTL as it allows a patch kit to be created
  to update the source code for others to use.
+ 
 \end_layout
 
 \begin_layout Itemize
@@ -827,17 +938,7 @@ Subversion
 Build-essential
 \emph default
 ; a package on Mint that installs the various compiler tools and libraries
- necessary to compile stuff
-\begin_inset Foot
-status open
-
-\begin_layout Plain Layout
-Another technical term!
-\end_layout
-
-\end_inset
-
-.
+ necessary to compile stuff.
 \end_layout
 
 \begin_layout Itemize
@@ -847,16 +948,6 @@ ssh server
 \emph default
 ; to allow me to connect a terminal session from my laptop to the VM to
  do development work, and to copy down compiled programs.
-\end_layout
-
-\begin_layout Itemize
-
-\emph on
-Git
-\emph default
-; which is not strictly necessary, but I use it myself and I wanted it installed
-, just in case.
- Feel free to leave it off if you don't use it.
 \end_layout
 
 \begin_layout Standard
@@ -917,7 +1008,7 @@ sudo apt upgrade
 
 \begin_layout Plain Layout
 
-sudo apt install build-essential subversion git
+sudo apt install build-essential git
 \end_layout
 
 \begin_layout Plain Layout
@@ -1697,13 +1788,68 @@ Installing the Compiler Source Code
 \end_layout
 
 \begin_layout Standard
+From August 2021, the FPC source code repositories have been migrated to
+ GitLab and are mirrored at GitHub.
+ Previously, they were stored in a Subversion repository at svn.freepascal.org.
+ That is no longer accessible.
+ If you have already downloaded the subversion repository, either delete
+ it – when any changes you made have been accepted into the main source
+ tree by the project, or rename it.
+ I renamed mine to 
+\begin_inset Flex DirectoryName
+status open
+
+\begin_layout Plain Layout
+fpc.svn
+\end_layout
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset listings
+lstparams "language=bash,numbers=left,basicstyle={\ttfamily},breaklines=true,showstringspaces=false,backgroundcolor={\color{codeColour}},breakautoindent=true"
+inline false
+status open
+
+\begin_layout Plain Layout
+
+cd ~/SourceCode
+\end_layout
+
+\begin_layout Plain Layout
+
+mv fpc/ fpc.svn/
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Windows users can simply 
+\begin_inset Quotes eld
+\end_inset
+
+F2
+\begin_inset Quotes erd
+\end_inset
+
+ the directory name and type a new one, as required, in the File Explorer.
+ 
+\end_layout
+
+\begin_layout Standard
 Once we have the host compiler working, we can get hold of the compiler's
  own source code and use the host to build a cross compiler for the Sinclair
  QL.
  The first step is to grab the source code and to do this we need to use
  
 \emph on
-subversion
+git
 \emph default
 .
 \end_layout
@@ -1721,13 +1867,52 @@ cd ~/SourceCode
 
 \begin_layout Plain Layout
 
-svn checkout https://svn.freepascal.org/svn/fpc/trunk fpc 
+git clone https://gitlab.com/freepascal.org/fpc/source.git fpc  
 \end_layout
 
 \begin_layout Plain Layout
 
-...
- lots and lots of stuff scrolling past here!
+\end_layout
+
+\begin_layout Plain Layout
+
+Cloning into 'fpc'...
+\end_layout
+
+\begin_layout Plain Layout
+
+remote: Enumerating objects: 674310, done.
+\end_layout
+
+\begin_layout Plain Layout
+
+remote: Counting objects: 100% (7174/7174), done.
+\end_layout
+
+\begin_layout Plain Layout
+
+remote: Compressing objects: 100% (1187/1187), done.
+\end_layout
+
+\begin_layout Plain Layout
+
+remote: Total 674310 (delta 6057), reused 7050 (delta 5977), pack-reused
+ 667136
+\end_layout
+
+\begin_layout Plain Layout
+
+Receiving objects: 100% (674310/674310), 171.59 MiB | 3.72 MiB/s, done.
+\end_layout
+
+\begin_layout Plain Layout
+
+Resolving deltas: 100% (541703/541703), done.
+\end_layout
+
+\begin_layout Plain Layout
+
+Updating files: 100% (20231/20231), done.
 \end_layout
 
 \end_inset
@@ -1747,6 +1932,16 @@ SourceCode/fpc
 \end_inset
 
 , then checkout the main trunk of the FPC source code into the new directory.
+ This is quite a large download of 172 Mb (sorry, I'm too old to swap to
+ all that 
+\begin_inset Quotes eld
+\end_inset
+
+Mib
+\begin_inset Quotes erd
+\end_inset
+
+ stuff!) which expands to 532 Mb on disc.
 \end_layout
 
 \begin_layout Chapter
@@ -2364,7 +2559,7 @@ NOTE
 status open
 
 \begin_layout Plain Layout
-svn update
+git pull
 \end_layout
 
 \end_inset
@@ -3027,7 +3222,7 @@ Updating the Compiler Source Code
 From time to time there will be updates to the FPC code.
  As we have used 
 \emph on
-Subversion
+Git
 \emph default
  we can keep our local copy of the source up to date.
  This is as simple as:
@@ -3046,12 +3241,7 @@ cd ~/SourceCode/fpc
 
 \begin_layout Plain Layout
 
-svn update
-\end_layout
-
-\begin_layout Plain Layout
-
-#Lots of changes scrolling on by...
+git pull
 \end_layout
 
 \end_inset
@@ -3066,8 +3256,22 @@ Please be aware that it is seriously advisable to rebuild the cross compiler
 \end_layout
 
 \begin_layout Itemize
-If you have made any changes to the RTL or QL Units, then take a backup
+
+\series bold
+FIXME:
+\series default
+ If you have made any changes to the RTL or QL Units, then take a backup
  as a patch file:
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+FIXME
+\end_layout
+
+\end_inset
+
+
 \begin_inset listings
 lstparams "language=bash,numbers=left,basicstyle={\ttfamily},breaklines=true,showstringspaces=false,backgroundcolor={\color{codeColour}},breakautoindent=true"
 inline false
@@ -3102,7 +3306,7 @@ cd ~/SourceCode/fpc
 
 \begin_layout Plain Layout
 
-svn update
+git pull
 \end_layout
 
 \end_inset
@@ -3140,8 +3344,22 @@ man/bin"
 \end_layout
 
 \begin_layout Itemize
+
+\series bold
+FIXME:
+\series default
 If you created a patch file, reapply your changes to the newly updated source
  code:
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+FIXME
+\end_layout
+
+\end_inset
+
+
 \begin_inset listings
 lstparams "language=bash,numbers=left,basicstyle={\ttfamily},breaklines=true,showstringspaces=false,backgroundcolor={\color{codeColour}},breakautoindent=true"
 inline false
@@ -3163,8 +3381,22 @@ svn patch ~/FPC.patch.temp.txt
 \end_layout
 
 \begin_layout Itemize
+
+\series bold
+FIXME:
+\series default
 And finally, if you did have a patch to apply, rebuild the RTL and/or the
  QL Units as necessary:
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+FIXME
+\end_layout
+
+\end_inset
+
+
 \begin_inset listings
 lstparams "language=bash,numbers=left,basicstyle={\ttfamily},breaklines=true,showstringspaces=false,backgroundcolor={\color{codeColour}},breakautoindent=true"
 inline false
@@ -3268,16 +3500,48 @@ The procedures for compiling and installing the RTL and Units is described
 
 \begin_layout Standard
 And yes, I know, there's a lot of 
+\begin_inset Flex CommandName
+status open
+
+\begin_layout Plain Layout
+
 \family typewriter
 cd
-\family default
+\end_layout
+
+\end_inset
+
 'ing back and forth and I could have used 
 \family typewriter
+
+\begin_inset Flex CommandName
+status open
+
+\begin_layout Plain Layout
+
+\family typewriter
 cd -
+\end_layout
+
+\end_inset
+
+
 \family default
  to swap back to where I came from, but it might get mistaken for 
 \family typewriter
+
+\begin_inset Flex CommandName
+status open
+
+\begin_layout Plain Layout
+
+\family typewriter
 cd ~
+\end_layout
+
+\end_inset
+
+
 \family default
  in some fonts, so I thought I better be explicit.
 \end_layout
@@ -3335,7 +3599,7 @@ status open
 
 \begin_layout Plain Layout
 
-svn update
+git pull
 \end_layout
 
 \end_inset
@@ -3381,7 +3645,7 @@ status open
 
 \begin_layout Plain Layout
 
-svn update
+git pull
 \end_layout
 
 \end_inset
@@ -3685,7 +3949,7 @@ Note: This section was only an example, the cross compiler, at the date
 status open
 
 \begin_layout Plain Layout
-29th May 2021
+16th December 2021
 \end_layout
 
 \end_inset
@@ -4911,9 +5175,15 @@ Sometimes this is enough to give you a clue, other times may require debugging
 
 \begin_layout Standard
 Over on the QL, however, you can debug a compiled Pascal program using 
-\emph on
-QMON2
-\emph default
+\begin_inset Flex ApplicationName
+status open
+
+\begin_layout Plain Layout
+JMON
+\end_layout
+
+\end_inset
+
 .
  When I was debugging the 
 \begin_inset Flex FunctionName
@@ -4926,9 +5196,15 @@ fs_posab
 \end_inset
 
  function listed above, I needed to jump into 
-\emph on
-QMON2
-\emph default
+\begin_inset Flex ApplicationName
+status open
+
+\begin_layout Plain Layout
+JMON
+\end_layout
+
+\end_inset
+
  whenever I hit that particular section of code.
  I didn't want to have to trace through the entire program until I reached
  it, that would have been a nightmare as we (still) don't have a source
@@ -4964,12 +5240,12 @@ status open
 
 \begin_layout Plain Layout
 
-lrespr win1_qmon2_qmon_bin
+lrespr win1_qmon2_jmon_bin
 \end_layout
 
 \begin_layout Plain Layout
 
-qmon dos1_test.exe
+jmon dos1_test.exe
 \end_layout
 
 \end_inset
@@ -5018,7 +5294,7 @@ This neat pair of instructions says to
 status open
 
 \begin_layout Plain Layout
-QMON2
+JMON
 \end_layout
 
 \end_inset
@@ -5513,7 +5789,27 @@ cd -
 Distributing Changes to the RTL
 \end_layout
 
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+I suspect this section is defunct.
+ People should create a GitLab repository and upload their source code to
+ it.
+ Then raise a pull request to the main project?
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
 \begin_layout Section
+
+\series bold
+FIXME:
+\series default
 Creating a Patch File
 \begin_inset CommandInset label
 LatexCommand label
@@ -5537,16 +5833,29 @@ all and sundry
  so that they can take advantage of your hard work.
  How do you go about doing this? 
 \emph on
-Subversion
+Git
 \emph default
  to the rescue.
 \end_layout
 
 \begin_layout Standard
-It's a simple task to change into the top level directory and use Subversion
+It's a simple task to change into the top level directory and use 
+\emph on
+Git
+\emph default
  to create a patch file that others can apply, easily, to bring their code
  up to the same state as yours.
  The process is:
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+FIXME
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -5562,7 +5871,7 @@ cd ~/SourceCode/fpc
 
 \begin_layout Plain Layout
 
-svn diff --patch-compatible | more
+git diff -p | more
 \end_layout
 
 \end_inset
@@ -5573,6 +5882,16 @@ svn diff --patch-compatible | more
 \begin_layout Standard
 Once you have checked that it looks Ok on screen, you can write the changes
  to a patch file, as follows:
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+FIXME
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -5588,7 +5907,7 @@ cd ~/SourceCode/fpc
 
 \begin_layout Plain Layout
 
-svn diff --patch-compatible > ~/FPC.patch.txt
+git diff -p > ~/FPC.patch.txt
 \end_layout
 
 \end_inset
@@ -5634,7 +5953,7 @@ SourceCode/fpc
 status open
 
 \begin_layout Plain Layout
-Subversion
+Git
 \end_layout
 
 \end_inset
@@ -5660,6 +5979,10 @@ literal "false"
 \end_layout
 
 \begin_layout Section
+
+\series bold
+FIXME:
+\series default
 Applying a Patch File
 \end_layout
 
@@ -5720,6 +6043,16 @@ Archive:  FPC.patch.zip
 Now there are multiple options on applying the patch.
  The first is to copy the unzipped patch file over top the top level of
  your source tree and apply it from there:
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+FIXME
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -5766,6 +6099,16 @@ svn patch FPC.patch.txt
 \begin_layout Standard
 The next common option is to leave the unzipped patch file where it is,
  and apply it from within the source tree:
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+FIXME
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -5812,6 +6155,16 @@ svn patch ~/Downloads/FPC.patch.txt
 \begin_layout Standard
 Finally, although there are other methods, simply apply the patch from the
  download area but tell Subversion where the source code lives:
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+FIXME
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -5854,6 +6207,16 @@ svn patch FPC.patch.txt ~/SourceCode/fpc/
 Regardless of which method you decide to use, Subversion will bring the
  code up to date with the changes in the patch file.
  You should be aware that:
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+FIXME
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Itemize
@@ -5868,6 +6231,16 @@ svn update
 \end_inset
 
  command in the source tree, the patches may be overwritten, or cause conflict;
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+FIXME
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Itemize
@@ -5881,6 +6254,16 @@ As the patch is being applied, you will see various prompts advising you
  For each patched file a single line will be printed with characters reporting
  the action taken.
  These characters have the following meaning:
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+FIXME
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Itemize
@@ -7164,6 +7547,19 @@ noprefix "false"
  and will not require further explanation.
 \end_layout
 
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+FIXME - Git Add??
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
 \begin_layout Section
 Creating the Unit
 \end_layout
@@ -7995,13 +8391,17 @@ might
  need to add the files to version control.
  I say might because, like me, you probably don't have write access to the
  main repository.
- My changes to the QL Cross Compiler have all been done with patch files
+ 
+\series bold
+FIXME:
+\series default
+My changes to the QL Cross Compiler have all been done with patch files
  created by 
 \begin_inset Flex ApplicationName
 status open
 
 \begin_layout Plain Layout
-Subversion
+Git
 \end_layout
 
 \end_inset
@@ -8035,7 +8435,7 @@ Unfortunately,
 status open
 
 \begin_layout Plain Layout
-Subversion
+Git
 \end_layout
 
 \end_inset
@@ -8058,23 +8458,7 @@ cd ~/SourceCode/fpc/packages/qlunits/src
 
 \begin_layout Plain Layout
 
-svn add hello.pas
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset listings
-lstparams "language=Pascal,numbers=left,basicstyle={\ttfamily},breaklines=true,showstringspaces=false,backgroundcolor={\color{outputColour}},breakautoindent=true"
-inline false
-status open
-
-\begin_layout Plain Layout
-
-A hello.pas
+git add hello.pas
 \end_layout
 
 \end_inset
@@ -8099,23 +8483,7 @@ cd ~/SourceCode/fpc/packages/qlunits/examples
 
 \begin_layout Plain Layout
 
-svn add helloEx.pas
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset listings
-lstparams "language=Pascal,numbers=left,basicstyle={\ttfamily},breaklines=true,showstringspaces=false,backgroundcolor={\color{outputColour}},breakautoindent=true"
-inline false
-status open
-
-\begin_layout Plain Layout
-
-A helloEx.pas
+git add helloEx.pas
 \end_layout
 
 \end_inset
@@ -8163,7 +8531,21 @@ README.txt
 \end_layout
 
 \begin_layout Subsection
+
+\series bold
+FIXME:
+\series default
 Create the Patch
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+FIXME
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
