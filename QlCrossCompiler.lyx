@@ -8,18 +8,28 @@
 \begin_preamble
 % Required for the setup of the listings.
 \usepackage{xcolor}
+
+%------------------------------------------%
+% SEE https://latexcolor.com/ for colours. %
+%------------------------------------------%
+
 %\definecolor{ocre}{RGB}{243,102,25}
 %\definecolor{wwwDarkGreen}{HTML}{006400}
 %\definecolor{wwwDarkOrchid}{HTML}{9932CC}
 %\definecolor{wwwDarkOrange}{HTML}{FF8C00}
-\definecolor{mayablue}{rgb}{0.45, 0.76, 0.98}
-\definecolor{amber}{rgb}{1.0, 0.49, 0.0}
-\definecolor{mintgreen}{rgb}{0.6, 1.0, 0.6}
-\definecolor{mustard}{rgb}{1.0, 0.86, 0.35}
-\definecolor{periwinkle}{rgb}{0.8, 0.8, 1.0}
-\colorlet{codeColour}{mintgreen}
-\colorlet{outputColour}{mustard}
-\colorlet{textfileColour}{periwinkle}
+%\definecolor{mayablue}{rgb}{0.45, 0.76, 0.98}
+%\definecolor{amber}{rgb}{1.0, 0.49, 0.0}
+%\definecolor{mintgreen}{rgb}{0.6, 1.0, 0.6}
+%\definecolor{mustard}{rgb}{1.0, 0.86, 0.35}
+%\definecolor{periwinkle}{rgb}{0.8, 0.8, 1.0}
+
+\definecolor{bananamania}{rgb}{0.98, 0.91, 0.71}
+\definecolor{lavender(web)}{rgb}{0.9, 0.9, 0.98}
+\definecolor{mossgreen}{rgb}{0.68, 0.87, 0.68}
+
+\colorlet{codeColour}{mossgreen}
+\colorlet{outputColour}{bananamania}
+\colorlet{textfileColour}{lavender(web)}
 
 
 
@@ -31,7 +41,7 @@
 \newcommand{\warning}[1]{\warningbox{\vbox{#1}}}
 
 % IMPORTANT
-\definecolor{amber}{rgb}{1.0, 0.75, 0.0}
+\definecolor{amber}{rgb}{1.0, 0.75, 0.0} % Not a standard colour.
 \newtcbox{\importantbox}{colback=amber!5!white,colframe=amber!75!black,fonttitle=\bfseries,title=Important}
 \newcommand{\important}[1]{\importantbox{\vbox{#1}}}
 
@@ -247,7 +257,7 @@ End
 \paperfontsize 10
 \spacing single
 \use_hyperref true
-\pdf_title "QL Pascal Cross Compiler 1.6"
+\pdf_title "QL Pascal Cross Compiler 1.7.alpha"
 \pdf_author "Norman Dunbar"
 \pdf_subject "Building a Free Pascal Cross Compiler for the Sinclair QL"
 \pdf_keywords "Pascal, Sinclair, QL, QDOS, SMSQ"
@@ -439,7 +449,7 @@ Free Pascal Compiler
 \emph default
  I would set up a brand spanking new VM running the same Linux version as
  my laptop.
- This is Linux Mint 20.1, the 64 bit version.
+ 
 \end_layout
 
 \begin_layout Standard
@@ -1210,7 +1220,7 @@ On the next page, select a mirror – I used Source Forge – and click the
 amusing
 \emph default
  in that you have to choose your required version, again.
- There are quite a few and some are pre-build cross compilers, so be careful
+ There are quite a few and some are pre-built cross compilers, so be careful
  in what you choose.
  I required 
 \begin_inset Flex FileName
@@ -2043,12 +2053,7 @@ wget http://sun.hasenbraten.de/vasm/release/vasm.tar.gz
 
 \begin_layout Plain Layout
 
-...
-\end_layout
-
-\begin_layout Plain Layout
-
-tar -xvzf vasm.tar.gz
+tar -xzf vasm.tar.gz
 \end_layout
 
 \begin_layout Plain Layout
@@ -2062,12 +2067,7 @@ wget http://sun.hasenbraten.de/vlink/release/vlink.tar.gz
 
 \begin_layout Plain Layout
 
-...
-\end_layout
-
-\begin_layout Plain Layout
-
-tar -xvzf vlink.tar.gz
+tar -xzf vlink.tar.gz
 \end_layout
 
 \end_inset
@@ -2092,12 +2092,12 @@ status open
 
 \begin_layout Plain Layout
 
-tar -xzf vasm.tar.gz
+cd vasm
 \end_layout
 
 \begin_layout Plain Layout
 
-cd vasm
+make clean CPU=m68k SYNTAX=std
 \end_layout
 
 \begin_layout Plain Layout
@@ -2155,12 +2155,12 @@ status open
 
 \begin_layout Plain Layout
 
-tar -xzf vlink.tar.gz
+cd vlink
 \end_layout
 
 \begin_layout Plain Layout
 
-cd vlink
+make clean
 \end_layout
 
 \begin_layout Plain Layout
@@ -2488,7 +2488,13 @@ cd ~/bin
 
 \begin_layout Plain Layout
 
-ln -s /lib/fpc/n.n.n/ppcross68k fpc-ql
+rm fpc-ql    ### Might fail if this is the first time it has been done.
+ Ignore if so.
+\end_layout
+
+\begin_layout Plain Layout
+
+ln -s lib/fpc/n.n.n/ppcross68k fpc-ql
 \end_layout
 
 \end_inset
@@ -2499,7 +2505,23 @@ ln -s /lib/fpc/n.n.n/ppcross68k fpc-ql
 \begin_layout Standard
 I've got a sym-link set up but on Windows you can easily copy or rename
  it.
- Now we can test it.
+ If you do sym-link it like this, it's best to delete the previous 
+\begin_inset Flex FileName
+status open
+
+\begin_layout Plain Layout
+fpc-ql
+\end_layout
+
+\end_inset
+
+ first, that way you get to see the actual date and time that the cross
+ compiler was built rather than the date and time that the link was first
+ created.
+\end_layout
+
+\begin_layout Standard
+Now we can test it.
 \end_layout
 
 \begin_layout Standard
@@ -3110,8 +3132,25 @@ xxxx
 \begin_inset Quotes erd
 \end_inset
 
+ 
+\emph on
+but only after the job is executing
+\emph default
 .
- You can change the job name on the fly
+ Until then, the job name in the file on disc is still 
+\begin_inset Quotes eld
+\end_inset
+
+FPC_PROG
+\begin_inset Quotes erd
+\end_inset
+
+ – the job changs its own job name when executed.
+ 
+\end_layout
+
+\begin_layout Standard
+You can change the job name on the fly
 \begin_inset Foot
 status open
 
@@ -3316,7 +3355,20 @@ git pull
 
 \begin_layout Itemize
 Clean, build and reinstall the compiler.
- Obviously, replace my installation location with your own:
+ We need to do this to be sure that the plain vanilla compiler source will
+ compile, without errors, before we start making changes.
+ Obviously, replace my installation location, /home/norman/bin
+\begin_inset Flex DirectoryName
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+.
+ with your own:
 \begin_inset listings
 lstparams "language=bash,numbers=left,basicstyle={\ttfamily},breaklines=true,showstringspaces=false,backgroundcolor={\color{codeColour}},breakautoindent=true"
 inline false
@@ -3949,7 +4001,7 @@ Note: This section was only an example, the cross compiler, at the date
 status open
 
 \begin_layout Plain Layout
-16th December 2021
+April 2023
 \end_layout
 
 \end_inset
@@ -4000,12 +4052,15 @@ Program
 \end_inset
 
  line.
- If one is present, the job name will be as per the given program name,
- if that line is not present, the default job name will be 
+ If one is present, the job name will be as per the given program name 
+\emph on
+at run time
+\emph default
+, if that line is not present, the default job name will be 
 \begin_inset Quotes eld
 \end_inset
 
-Program
+FPC_PROG
 \begin_inset Quotes erd
 \end_inset
 
@@ -6366,6 +6421,39 @@ qdos
 status open
 
 \begin_layout Plain Layout
+sms.pas
+\end_layout
+
+\end_inset
+
+ which contains the source code for the 
+\begin_inset Flex UnitName
+status open
+
+\begin_layout Plain Layout
+sms
+\end_layout
+
+\end_inset
+
+ unit, similar to 
+\begin_inset Flex FileName
+status open
+
+\begin_layout Plain Layout
+qdos.pas
+\end_layout
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Flex FileName
+status open
+
+\begin_layout Plain Layout
 qlfloat.pas
 \end_layout
 
@@ -6385,8 +6473,21 @@ qlfloats
  unit.
 \end_layout
 
+\begin_layout Itemize
+\begin_inset Flex FileName
+status open
+
+\begin_layout Plain Layout
+qlutil.pas
+\end_layout
+
+\end_inset
+
+ which contains code to convert from Pascal strings to QL format strings.
+\end_layout
+
 \begin_layout Standard
-There are, currently, only two units for the QL cross compiler.
+There are, currently, only a few units for the QL cross compiler.
  We need a lot more.
  We are missing 
 \begin_inset Flex UnitName
