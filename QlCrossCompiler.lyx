@@ -1980,7 +1980,8 @@ vlink
 \begin_layout Itemize
 \begin_inset CommandInset href
 LatexCommand href
-target "http://sun.hasenbraten.de/vasm/index.php?view=relsrc"
+target "http://sun.hasenbraten.de/vasm/index.php?view=tagged"
+literal "false"
 
 \end_inset
 
@@ -1998,15 +1999,26 @@ target "http://sun.hasenbraten.de/vlink/index.php?view=relsrc"
 \end_layout
 
 \begin_layout Standard
-You need to get the latest sources and 
+You need to get the latest sources of 
 \emph on
 vasm
 \emph default
- version 1.8 or higher, and 
+ version 1.8 but no higher – version 1.9 will not work; and 
 \emph on
-vlink
+vlink,
 \emph default
- version 0.16h are required.
+ version 0.16h is required.
+ 
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+TODO: Remove when fixed.
+\end_layout
+
+\end_inset
+
+The 1.9 problem has been reported to the FPC mailing list.
 \end_layout
 
 \begin_layout Standard
@@ -2048,12 +2060,16 @@ cd ~/SourceCode
 
 \begin_layout Plain Layout
 
-wget http://sun.hasenbraten.de/vasm/release/vasm.tar.gz
 \end_layout
 
 \begin_layout Plain Layout
 
-tar -xzf vasm.tar.gz
+wget http://phoenix.owl.de/tags/vasm1_8l.tar.gz
+\end_layout
+
+\begin_layout Plain Layout
+
+tar -xzf vasm1_8l.tar.gz
 \end_layout
 
 \begin_layout Plain Layout
@@ -2068,6 +2084,29 @@ wget http://sun.hasenbraten.de/vlink/release/vlink.tar.gz
 \begin_layout Plain Layout
 
 tar -xzf vlink.tar.gz
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+warning{The assembler version 1.8l (ell, not 1.81!) is the absolute latest
+ that can be used to build a cross compiler for the QL.
+ Any of the 1.9 releases cause errors when assembling the 
+\backslash
+texttt{system.pp} file for the QL cross compiler.
+ The link above is to an archive of older versions for the 
+\backslash
+emph{vasm} assembler.}
 \end_layout
 
 \end_inset
@@ -2488,8 +2527,7 @@ cd ~/bin
 
 \begin_layout Plain Layout
 
-rm fpc-ql    ### Might fail if this is the first time it has been done.
- Ignore if so.
+rm fpc-ql    ### Will fail the first time, just ignore.
 \end_layout
 
 \begin_layout Plain Layout
@@ -2518,6 +2556,28 @@ fpc-ql
  first, that way you get to see the actual date and time that the cross
  compiler was built rather than the date and time that the link was first
  created.
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+tip{If, when running the 
+\backslash
+texttt{make crossall ...} command, you see lots of errors similar to 
+\backslash
+texttt{``Warning 1007 in line nn of ``/path/to/system.s'': scratch at end
+ of line''} then your version of the assembler is too recent.
+ You need to downgrade to 1.8l (ell!) instead.}
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
