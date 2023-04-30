@@ -3318,59 +3318,78 @@ Updating the Compiler Source Code
 \end_layout
 
 \begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+note{In the following descriptions, I will use the term 
+\backslash
+texttt{
+\backslash
+$
+\backslash
+{QLFPC
+\backslash
+_DIR
+\backslash
+}} wherever I need to specify the location where the cross compiler is installed.
+ In my case this is 
+\backslash
+texttt{/home/norman/bin} and the subdirectories beneath.
+ Please use the location appropriate to your own system.}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
 From time to time there will be updates to the FPC code.
  As we have used 
 \emph on
 Git
 \emph default
  we can keep our local copy of the source up to date.
- This is as simple as:
-\end_layout
-
-\begin_layout Standard
-\begin_inset listings
-lstparams "language=bash,numbers=left,basicstyle={\ttfamily},breaklines=true,showstringspaces=false,backgroundcolor={\color{codeColour}},breakautoindent=true"
-inline false
-status open
-
-\begin_layout Plain Layout
-
-cd ~/SourceCode/fpc
-\end_layout
-
-\begin_layout Plain Layout
-
-git pull
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-Please be aware that it is seriously advisable to rebuild the cross compiler
- and reinstall it, any time that you do this.
+ Please be aware that it is seriously advisable to rebuild the cross compiler
+ and reinstall it, any time that you update the source code.
  I have found that the following steps are best followed:
 \end_layout
 
 \begin_layout Itemize
+Set up the installation location for my system, yours should be as per your
+ system:
+\end_layout
 
-\series bold
-FIXME:
-\series default
- If you have made any changes to the RTL or QL Units, then take a backup
- as a patch file:
-\begin_inset Note Note
+\begin_deeper
+\begin_layout Standard
+\begin_inset listings
+lstparams "language=bash,numbers=left,basicstyle={\ttfamily},breaklines=true,showstringspaces=false,backgroundcolor={\color{codeColour}},breakautoindent=true"
+inline false
 status open
 
 \begin_layout Plain Layout
-FIXME
+
+# Set up the cross compiler install directory.
+\end_layout
+
+\begin_layout Plain Layout
+
+export QLFPC_DIR=/home/norman/bin
 \end_layout
 
 \end_inset
 
 
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+If you have made any changes to the RTL or QL Units, then take a backup
+ as a patch file:
 \begin_inset listings
 lstparams "language=bash,numbers=left,basicstyle={\ttfamily},breaklines=true,showstringspaces=false,backgroundcolor={\color{codeColour}},breakautoindent=true"
 inline false
@@ -3383,7 +3402,31 @@ cd ~/SourceCode/fpc
 
 \begin_layout Plain Layout
 
-svn diff --patch-compatible > ~/FPC.patch.temp.txt
+\end_layout
+
+\begin_layout Plain Layout
+
+## What has changed? Note the relevant commit identifiers.
+\end_layout
+
+\begin_layout Plain Layout
+
+git log
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+## Create a patch file.
+ NOTE, -one not -ell below!
+\end_layout
+
+\begin_layout Plain Layout
+
+git format-patch -1 <commit_id> >> your_patch_file_name.patch
 \end_layout
 
 \end_inset
@@ -3417,18 +3460,27 @@ git pull
 Clean, build and reinstall the compiler.
  We need to do this to be sure that the plain vanilla compiler source will
  compile, without errors, before we start making changes.
- Obviously, replace my installation location, /home/norman/bin
+ Obviously, replace my installation location, 
 \begin_inset Flex DirectoryName
 status open
 
 \begin_layout Plain Layout
-
+/home/norman/bin
 \end_layout
 
 \end_inset
 
-.
- with your own:
+, also known as the 
+\begin_inset Flex ConstantName
+status open
+
+\begin_layout Plain Layout
+FPC_INSTALL_DIR
+\end_layout
+
+\end_inset
+
+ later on in this document, with your own location:
 \begin_inset listings
 lstparams "language=bash,numbers=left,basicstyle={\ttfamily},breaklines=true,showstringspaces=false,backgroundcolor={\color{codeColour}},breakautoindent=true"
 inline false
@@ -3446,8 +3498,14 @@ make crossall OS_TARGET=sinclairql CPU_TARGET=m68k
 
 \begin_layout Plain Layout
 
-make crossinstall OS_TARGET=sinclairql CPU_TARGET=m68k INSTALL_PREFIX="/home/nor
-man/bin"
+make crossinstall OS_TARGET=sinclairql CPU_TARGET=m68k 
+\backslash
+
+\end_layout
+
+\begin_layout Plain Layout
+
+     INSTALL_PREFIX=${QLFPC_DIR}
 \end_layout
 
 \end_inset
@@ -3456,22 +3514,8 @@ man/bin"
 \end_layout
 
 \begin_layout Itemize
-
-\series bold
-FIXME:
-\series default
 If you created a patch file, reapply your changes to the newly updated source
  code:
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-FIXME
-\end_layout
-
-\end_inset
-
-
 \begin_inset listings
 lstparams "language=bash,numbers=left,basicstyle={\ttfamily},breaklines=true,showstringspaces=false,backgroundcolor={\color{codeColour}},breakautoindent=true"
 inline false
@@ -3484,7 +3528,7 @@ cd ~/SourceCode/fpc
 
 \begin_layout Plain Layout
 
-svn patch ~/FPC.patch.temp.txt
+git apply your_patch_file_name.patch 
 \end_layout
 
 \end_inset
@@ -3493,22 +3537,7 @@ svn patch ~/FPC.patch.temp.txt
 \end_layout
 
 \begin_layout Itemize
-
-\series bold
-FIXME:
-\series default
-And finally, if you did have a patch to apply, rebuild the RTL and/or the
- QL Units as necessary:
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-FIXME
-\end_layout
-
-\end_inset
-
-
+Rebuild the RTL:
 \begin_inset listings
 lstparams "language=bash,numbers=left,basicstyle={\ttfamily},breaklines=true,showstringspaces=false,backgroundcolor={\color{codeColour}},breakautoindent=true"
 inline false
@@ -3516,7 +3545,7 @@ status open
 
 \begin_layout Plain Layout
 
-# Rebuild and install the RTL:
+# Rebuild the RTL:
 \end_layout
 
 \begin_layout Plain Layout
@@ -3526,7 +3555,7 @@ cd ~/SourceCode/fpc
 
 \begin_layout Plain Layout
 
-make rtl_cleanall
+make rtl_cleanall OS_TARGET=sinclairql CPU_TARGET=m68k
 \end_layout
 
 \begin_layout Plain Layout
@@ -3540,7 +3569,12 @@ make rtl_all RELEASE=1 FPC=fpc-ql OS_TARGET=sinclairql CPU_TARGET=m68k
 
 \begin_layout Plain Layout
 
-cd ${FPC_INSTALL_DIR}/bin/lib/fpc/n.n.n/units/m68k-sinclairql/rtl
+# Install the RTL:
+\end_layout
+
+\begin_layout Plain Layout
+
+cd ${QLFPC_DIR}/lib/fpc/n.n.n/units/m68k-sinclairql/rtl
 \end_layout
 
 \begin_layout Plain Layout
@@ -3548,13 +3582,21 @@ cd ${FPC_INSTALL_DIR}/bin/lib/fpc/n.n.n/units/m68k-sinclairql/rtl
 cp -v ${HOME}/SourceCode/fpc/rtl/units/m68k-sinclairql/* ./
 \end_layout
 
-\begin_layout Plain Layout
+\end_inset
+
 
 \end_layout
 
+\begin_layout Itemize
+Rebuild the QL Units:
+\begin_inset listings
+lstparams "language=bash,numbers=left,basicstyle={\ttfamily},breaklines=true,showstringspaces=false,backgroundcolor={\color{codeColour}},breakautoindent=true"
+inline false
+status open
+
 \begin_layout Plain Layout
 
-# Rebuild and install the QL Units:
+# Rebuild the QL Units:
 \end_layout
 
 \begin_layout Plain Layout
@@ -3578,12 +3620,17 @@ make packages RELEASE=1 FPC=fpc-ql OS_TARGET=sinclairql CPU_TARGET=m68k
 
 \begin_layout Plain Layout
 
-cd ~/bin/lib/fpc/3.3.1/units/m68k-sinclairql/qlunits/ 
+# Install thje QL Units:
 \end_layout
 
 \begin_layout Plain Layout
 
-cp ~/SourceCode/fpc/packages/qlunits/units/m68k-sinclairql/* ./
+cd ${QLFPC_DIR}/lib/fpc/n.n.n/units/m68k-sinclairql/qlunits/ 
+\end_layout
+
+\begin_layout Plain Layout
+
+cp -v ~/SourceCode/fpc/packages/qlunits/units/m68k-sinclairql/* ./
 \end_layout
 
 \begin_layout Plain Layout
@@ -3592,7 +3639,7 @@ cp ~/SourceCode/fpc/packages/qlunits/units/m68k-sinclairql/* ./
 
 \begin_layout Plain Layout
 
-# Just in case:
+# Just in case, get back to the source:
 \end_layout
 
 \begin_layout Plain Layout
@@ -3735,7 +3782,7 @@ status open
 status open
 
 \begin_layout Plain Layout
-/home/norman/bin/lib/fpc/3.3.1/
+/home/norman/bin/lib/fpc/3.3.2/
 \end_layout
 
 \end_inset
@@ -3768,7 +3815,7 @@ git pull
 status open
 
 \begin_layout Plain Layout
-INSTALL_PREFIX
+${QLFPC_DIR}
 \end_layout
 
 \end_inset
@@ -3804,7 +3851,7 @@ status open
 
 \begin_layout Plain Layout
 
-cd ~/bin/lib/fpc
+cd ${QLFPC_DIR}/lib/fpc
 \end_layout
 
 \begin_layout Plain Layout
@@ -3866,7 +3913,7 @@ status open
 
 \begin_layout Plain Layout
 
-cd ~/bin
+cd ${QLFPC_DIR}/bin
 \end_layout
 
 \begin_layout Plain Layout
@@ -3947,7 +3994,7 @@ status open
 
 \begin_layout Plain Layout
 
-cd ~/bin
+cd ${QLFPC_DIR}/bin
 \end_layout
 
 \begin_layout Plain Layout
@@ -5562,7 +5609,7 @@ cd ~/SourceCode/fpc
 
 \begin_layout Plain Layout
 
-make rtl_cleanall
+make rtl_cleanall OS_TARGET=sinclairql CPU_TARGET=m68k
 \end_layout
 
 \begin_layout Plain Layout
@@ -5614,7 +5661,7 @@ status open
 
 \begin_layout Plain Layout
 
-export FPC_INSTALL_DIR=/home/norman/bin
+export QLFPC_DIR=/home/norman/bin
 \end_layout
 
 \end_inset
@@ -5635,12 +5682,12 @@ status open
 
 \begin_layout Plain Layout
 
-cd ${FPC_INSTALL_DIR}/bin/lib/fpc/n.n.n/units/m68k-sinclairql/rtl
+cd ${QLFPC_DIR}/bin/lib/fpc/n.n.n/units/m68k-sinclairql/rtl
 \end_layout
 
 \begin_layout Plain Layout
 
-cp -v ${HOME}/SourceCode/fpc/rtl/units/m68k-sinclairql/* ./
+cp -v ~/SourceCode/fpc/rtl/units/m68k-sinclairql/* ./
 \end_layout
 
 \end_inset
@@ -5829,7 +5876,7 @@ status open
 
 \begin_layout Plain Layout
 
-FPC_INSTALL_DIR=/home/norman/bin
+QLFPC_DIR=/home/norman/bin
 \end_layout
 
 \begin_layout Plain Layout
@@ -5853,7 +5900,7 @@ FPC_INSTALL_DIR=/home/norman/bin
 
 \begin_layout Plain Layout
 
-make rtl_cleanall
+make rtl_cleanall OS_TARGET=sinclairql CPU_TARGET=m68k
 \end_layout
 
 \begin_layout Plain Layout
@@ -5882,12 +5929,12 @@ make rtl_all RELEASE=1 FPC=fpc-ql OS_TARGET=sinclairql CPU_TARGET=m68k
 
 \begin_layout Plain Layout
 
-cd ${FPC_INSTALL_DIR}lib/fpc/3.3.1/units/m68k-sinclairql/rtl
+cd ${QLFPC_DIR}lib/fpc/3.3.1/units/m68k-sinclairql/rtl
 \end_layout
 
 \begin_layout Plain Layout
 
-cp -v ${HOME}/SourceCode/fpc/rtl/units/m68k-sinclairql/* ./
+cp -v ~/SourceCode/fpc/rtl/units/m68k-sinclairql/* ./
 \end_layout
 
 \begin_layout Plain Layout
@@ -5898,514 +5945,6 @@ cd -
 \end_inset
 
 
-\end_layout
-
-\begin_layout Section
-Distributing Changes to the RTL
-\end_layout
-
-\begin_layout Standard
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-I suspect this section is defunct.
- People should create a GitLab repository and upload their source code to
- it.
- Then raise a pull request to the main project?
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Section
-
-\series bold
-FIXME:
-\series default
-Creating a Patch File
-\begin_inset CommandInset label
-LatexCommand label
-name "sec:Creating-a-Patch-File"
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-So, you have done a lot of work in the RTL, and now you need to get this
- distributed to 
-\begin_inset Quotes eld
-\end_inset
-
-all and sundry
-\begin_inset Quotes erd
-\end_inset
-
- so that they can take advantage of your hard work.
- How do you go about doing this? 
-\emph on
-Git
-\emph default
- to the rescue.
-\end_layout
-
-\begin_layout Standard
-It's a simple task to change into the top level directory and use 
-\emph on
-Git
-\emph default
- to create a patch file that others can apply, easily, to bring their code
- up to the same state as yours.
- The process is:
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-FIXME
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset listings
-lstparams "language=bash,numbers=left,basicstyle={\ttfamily},breaklines=true,showstringspaces=false,backgroundcolor={\color{codeColour}},breakautoindent=true"
-inline false
-status open
-
-\begin_layout Plain Layout
-
-cd ~/SourceCode/fpc
-\end_layout
-
-\begin_layout Plain Layout
-
-git diff -p | more
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-Once you have checked that it looks Ok on screen, you can write the changes
- to a patch file, as follows:
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-FIXME
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset listings
-lstparams "language=bash,numbers=left,basicstyle={\ttfamily},breaklines=true,showstringspaces=false,backgroundcolor={\color{codeColour}},breakautoindent=true"
-inline false
-status open
-
-\begin_layout Plain Layout
-
-cd ~/SourceCode/fpc
-\end_layout
-
-\begin_layout Plain Layout
-
-git diff -p > ~/FPC.patch.txt
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-This command creates a patch file named 
-\begin_inset Flex FileName
-status open
-
-\begin_layout Plain Layout
-FPC.patch.txt
-\end_layout
-
-\end_inset
-
- in the 
-\begin_inset Flex EnvVar
-status open
-
-\begin_layout Plain Layout
-$HOME
-\end_layout
-
-\end_inset
-
- directory.
- The file contains all changed made to the files in 
-\begin_inset Flex DirectoryName
-status open
-
-\begin_layout Plain Layout
-SourceCode/fpc
-\end_layout
-
-\end_inset
-
- and all subdirectories, since the files were last downloaded or updated
- using 
-\begin_inset Flex ApplicationName
-status open
-
-\begin_layout Plain Layout
-Git
-\end_layout
-
-\end_inset
-
-.
- This file can be zipped up and distributed.
-\end_layout
-
-\begin_layout Standard
-At present, I simply upload my patch files to the 
-\begin_inset CommandInset href
-LatexCommand href
-name "QL Pascal"
-target "https://qlforum.co.uk/viewtopic.php?f=3&t=3057"
-literal "false"
-
-\end_inset
-
- topic on the QL Forum.
- One of the FPC maintainers, Chain-Q, picks my patches up there and runs
- his careful eye over them before accepting or rejecting them for inclusion
- in the main source tree.
-\end_layout
-
-\begin_layout Section
-
-\series bold
-FIXME:
-\series default
-Applying a Patch File
-\end_layout
-
-\begin_layout Standard
-If you also want my changes, you can grab the latest patch file, which may
- be zipped, and apply it to your source as follows.
- First, locate and unzip the patch file, if necessary:
-\end_layout
-
-\begin_layout Standard
-\begin_inset listings
-lstparams "language=bash,numbers=left,basicstyle={\ttfamily},breaklines=true,showstringspaces=false,backgroundcolor={\color{codeColour}},breakautoindent=true"
-inline false
-status open
-
-\begin_layout Plain Layout
-
-# Unzip the downloaded patch file.
-\end_layout
-
-\begin_layout Plain Layout
-
-cd ~/Downloads
-\end_layout
-
-\begin_layout Plain Layout
-
-unzip FPC.patch.zip
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset listings
-lstparams "language=bash,basicstyle={\ttfamily},breaklines=true,showstringspaces=false,backgroundcolor={\color{outputColour}},breakautoindent=true"
-inline false
-status open
-
-\begin_layout Plain Layout
-
-Archive:  FPC.patch.zip
-\end_layout
-
-\begin_layout Plain Layout
-
-  inflating: FPC.patch.txt     
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-Now there are multiple options on applying the patch.
- The first is to copy the unzipped patch file over top the top level of
- your source tree and apply it from there:
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-FIXME
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset listings
-lstparams "language=bash,numbers=left,basicstyle={\ttfamily},breaklines=true,showstringspaces=false,backgroundcolor={\color{codeColour}},breakautoindent=true"
-inline false
-status open
-
-\begin_layout Plain Layout
-
-# Apply the patch file.
- Method 1.
-\end_layout
-
-\begin_layout Plain Layout
-
-# Copy the patch file to the code tree.
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\begin_layout Plain Layout
-
-cd ~/SourceCode/fpc
-\end_layout
-
-\begin_layout Plain Layout
-
-cp ~/Downloads/FPC.patch.txt ./
-\end_layout
-
-\begin_layout Plain Layout
-
-svn patch FPC.patch.txt
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-The next common option is to leave the unzipped patch file where it is,
- and apply it from within the source tree:
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-FIXME
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset listings
-lstparams "language=bash,numbers=left,basicstyle={\ttfamily},breaklines=true,showstringspaces=false,backgroundcolor={\color{codeColour}},breakautoindent=true"
-inline false
-status open
-
-\begin_layout Plain Layout
-
-# Apply the patch file.
- Method 2.
-\end_layout
-
-\begin_layout Plain Layout
-
-# Doesn't copy the patch file to the code tree.
-\end_layout
-
-\begin_layout Plain Layout
-
-# Just patches it from the Downloads area where it was unzipped.
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\begin_layout Plain Layout
-
-cd ~/SourceCode/fpc
-\end_layout
-
-\begin_layout Plain Layout
-
-svn patch ~/Downloads/FPC.patch.txt
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-Finally, although there are other methods, simply apply the patch from the
- download area but tell Subversion where the source code lives:
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-FIXME
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset listings
-lstparams "language=bash,numbers=left,basicstyle={\ttfamily},breaklines=true,showstringspaces=false,backgroundcolor={\color{codeColour}},breakautoindent=true"
-inline false
-status open
-
-\begin_layout Plain Layout
-
-# Apply the patch file.
- Method 3.
-\end_layout
-
-\begin_layout Plain Layout
-
-# Out of tree patching from Downloads area.
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\begin_layout Plain Layout
-
-cp ~/Downloads/FPC.patch.txt ./
-\end_layout
-
-\begin_layout Plain Layout
-
-svn patch FPC.patch.txt ~/SourceCode/fpc/
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-Regardless of which method you decide to use, Subversion will bring the
- code up to date with the changes in the patch file.
- You should be aware that:
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-FIXME
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Itemize
-Next time you run the 
-\begin_inset Flex CommandName
-status open
-
-\begin_layout Plain Layout
-svn update
-\end_layout
-
-\end_inset
-
- command in the source tree, the patches may be overwritten, or cause conflict;
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-FIXME
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Itemize
-Some of the patches may cause conflicts if they patch areas of the code
- that you too are amending.
-\end_layout
-
-\begin_layout Standard
-As the patch is being applied, you will see various prompts advising you
- on what has happened.
- For each patched file a single line will be printed with characters reporting
- the action taken.
- These characters have the following meaning:
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-FIXME
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Itemize
-A = Added - this file has been added as a new file;
-\end_layout
-
-\begin_layout Itemize
-D = Deleted - this file is now deleted;
-\end_layout
-
-\begin_layout Itemize
-U = Updated - this file was successfully patched;
-\end_layout
-
-\begin_layout Itemize
-C = Conflict - this file has a conflict.
- Both you and the path have updated the same part of the code.
- You will be prompted for an action to ignore or resolve the conflict.
-\end_layout
-
-\begin_layout Itemize
-G = Merged (with local uncommitted changes) 
-\end_layout
-
-\begin_layout Standard
-Obviously, after patching the RTL, you will be required to rebuild and install
- it.
 \end_layout
 
 \begin_layout Chapter
@@ -6949,8 +6488,11 @@ status open
 \end_layout
 
 \begin_layout Standard
-To copy the newly compiled units to the correct location, we use the following
- quickie:
+To copy the newly compiled units to the correct location, we use the following:
+\end_layout
+
+\begin_layout Standard
+First, set the installation directory as before:
 \end_layout
 
 \begin_layout Standard
@@ -6961,7 +6503,27 @@ status open
 
 \begin_layout Plain Layout
 
-cd ~/bin/lib/fpc/3.3.1/units/m68k-sinclairql/qlunits/ 
+export QLFPC_DIR=/home/norman/bin
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Then install the QL units:
+\end_layout
+
+\begin_layout Standard
+\begin_inset listings
+lstparams "language=bash,numbers=left,basicstyle={\ttfamily},breaklines=true,showstringspaces=false,backgroundcolor={\color{codeColour}},breakautoindent=true"
+inline false
+status open
+
+\begin_layout Plain Layout
+
+cd ${QLFPC_DIR}/lib/fpc/3.3.1/units/m68k-sinclairql/qlunits/ 
 \end_layout
 
 \begin_layout Plain Layout
@@ -7044,28 +6606,18 @@ end.
 \end_layout
 
 \begin_layout Standard
-
-\series bold
-WARNING
-\series default
-: You cannot name the program with the same name as a procedure or function.
- If you do, and I did, you get this:
-\end_layout
-
-\begin_layout Standard
-\begin_inset listings
-lstparams "basicstyle={\ttfamily},breaklines=true,showstringspaces=false,backgroundcolor={\color{outputColour}},breakautoindent=true"
-inline false
+\begin_inset ERT
 status open
 
 \begin_layout Plain Layout
 
-hellonorm.pp(5,13) Fatal: Syntax error, "." expected but ";" found 
-\end_layout
 
-\begin_layout Plain Layout
-
-Fatal: Compilation aborted 
+\backslash
+warning{You cannot name the program with the same name as a procedure or
+ function.
+ If you do, and I did, you get this: 
+\backslash
+texttt{hellonorm.pp(5,13) Fatal: Syntax error, "." expected but ";" found}}
 \end_layout
 
 \end_inset
@@ -7597,7 +7149,11 @@ fpc.cfg
 \end_inset
 
  configuration file, I have to run the following commands to copy the newly
- compiled unit files over to the correct place:
+ compiled unit files over to the correct place.
+\end_layout
+
+\begin_layout Standard
+As before, we need the installation directory:
 \end_layout
 
 \begin_layout Standard
@@ -7608,7 +7164,23 @@ status open
 
 \begin_layout Plain Layout
 
-cd ~/bin/lib/fpc/3.3.1/units/m68k-sinclairql/qlunits/ 
+export QLFPC_DIR=/home/norman/bin
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset listings
+lstparams "language=bash,numbers=left,basicstyle={\ttfamily},breaklines=true,showstringspaces=false,backgroundcolor={\color{codeColour}},breakautoindent=true"
+inline false
+status open
+
+\begin_layout Plain Layout
+
+cd ${QLFPC_DIR}/lib/fpc/3.3.1/units/m68k-sinclairql/qlunits/ 
 \end_layout
 
 \begin_layout Plain Layout
@@ -7706,19 +7278,6 @@ noprefix "false"
 \end_inset
 
  and will not require further explanation.
-\end_layout
-
-\begin_layout Standard
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-FIXME - Git Add??
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Section
@@ -8545,53 +8104,17 @@ Version Control
 
 \begin_layout Standard
 Once the new unit has been tested to destruction, and the example program(s)
- have been written and tested also, you 
+ have been written and tested also, you will need to add the files to version
+ control 
 \emph on
-might
+in your local clone of the repository
 \emph default
- need to add the files to version control.
- I say might because, like me, you probably don't have write access to the
- main repository.
- 
-\series bold
-FIXME:
-\series default
-My changes to the QL Cross Compiler have all been done with patch files
- created by 
-\begin_inset Flex ApplicationName
-status open
-
-\begin_layout Plain Layout
-Git
-\end_layout
-
-\end_inset
-
- as described in Section 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "sec:Creating-a-Patch-File"
-plural "false"
-caps "false"
-noprefix "false"
-
-\end_inset
-
- 
-\begin_inset CommandInset ref
-LatexCommand nameref
-reference "sec:Creating-a-Patch-File"
-plural "false"
-caps "false"
-noprefix "false"
-
-\end_inset
-
 .
+ 
 \end_layout
 
 \begin_layout Standard
-Unfortunately, 
+Because 
 \begin_inset Flex ApplicationName
 status open
 
@@ -8601,8 +8124,8 @@ Git
 
 \end_inset
 
- doesn't know about your new files, so they need to be added to your local
- copy of the repository.
+ doesn't know about your new files and units, they need to be added to your
+ local copy of the repository.
  This is simply done:
 \end_layout
 
@@ -8691,50 +8214,166 @@ README.txt
  Please update this file with details of any new units and examples.
 \end_layout
 
-\begin_layout Subsection
+\begin_layout Chapter
+Updating the Official Repository
+\end_layout
 
-\series bold
-FIXME:
-\series default
-Create the Patch
+\begin_layout Standard
+None of us QLers have write access to the main Free Pascal Compiler repository,
+ and to this end, we should really be cloning the official repository, hosted
+ on GitLab, and then pulling that code down to our local system and working
+ on it there.
+ Once we are done, fully tested and so on, we can commit our changes and
+ push them back to our own repository on GitLab.
+ Once this has been done, we can raise a 
+\emph on
+Pull Request
+\emph default
+ so that the official repository maintainers can have a look at our changes
+ and decide which, if any, to include in the next release.
+\end_layout
+
+\begin_layout Standard
+The steps are as follows, when initially setting up your development system:
+\end_layout
+
+\begin_layout Itemize
+Create a GitLab clone of the official repository.
+ This only needs to be done once and requires a GitLab account.
+ 
+\end_layout
+
+\begin_layout Standard
+Once you have a clone of the official repository, you can use it to work
+ on:
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Flex CommandName
+status open
+
+\begin_layout Plain Layout
+git clone
+\end_layout
+
+\end_inset
+
+ your GitLap repository onto your local PC .
+ You would do this 
+\emph on
+instead
+\emph default
+ of cloning the official repository, as outlines way back at the start of
+ this document.
+ 
 \begin_inset Note Note
 status open
 
 \begin_layout Plain Layout
-FIXME
+TODO: Fix the document to allow for the new git repos etc.
 \end_layout
 
 \end_inset
 
 
+\end_layout
+
+\begin_layout Itemize
+Add a git remote location, pointing to the official repository.
+ This allows you to update your GitLab repository to stay up to date.
+\end_layout
+
+\begin_layout Itemize
+Do your work, make changes, add units, fix the RTL etc.
+\end_layout
+
+\begin_layout Itemize
+Commit your changes with 
+\emph on
+meaningful commit messages
+\emph default
+.
+\end_layout
+
+\begin_layout Itemize
+Push the changes back to your own repository on GitLab.
+\end_layout
+
+\begin_layout Itemize
+Raise a pull request to allow the official repository maintainers to merge
+ your changes.
 \end_layout
 
 \begin_layout Standard
-Now that subversion knows about your new files, and the readme has been
- updated, running a patch creation will include the new files in the patch
- output, ready for use by other QL developers, or even, by the Free Pascal
- Project.
- See Section 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "sec:Creating-a-Patch-File"
-plural "false"
-caps "false"
-noprefix "false"
+If you stop making changes and need to update your clone of the official
+ repository, then, on your PC:
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Flex CommandName
+status open
+
+\begin_layout Plain Layout
+git pull
+\end_layout
 
 \end_inset
 
- 
-\begin_inset CommandInset ref
-LatexCommand nameref
-reference "sec:Creating-a-Patch-File"
-plural "false"
-caps "false"
-noprefix "false"
+ from the remote location you added, which points at the official repository.
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Flex CommandName
+status open
+
+\begin_layout Plain Layout
+git push
+\end_layout
 
 \end_inset
 
- for details on creating a patch file.
+ the changes back to your repository.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+TODO: FIXME
+\end_layout
+
+\end_inset
+
+FIXME
+\end_layout
+
+\begin_layout Standard
+The remainder of this chapter describes each of the above steps in detail.
+\end_layout
+
+\begin_layout Section
+Clone the Official Repository
+\end_layout
+
+\begin_layout Section
+Add a Git Remote
+\end_layout
+
+\begin_layout Section
+Make Your Changes and Commit
+\end_layout
+
+\begin_layout Section
+Push Changes to Your Repository
+\end_layout
+
+\begin_layout Section
+Raise a Pull Request
+\end_layout
+
+\begin_layout Section
+Update Your Repository
 \end_layout
 
 \end_body
