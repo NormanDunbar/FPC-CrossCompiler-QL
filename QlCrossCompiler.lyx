@@ -1,5 +1,5 @@
-#LyX 2.3 created this file. For more info see http://www.lyx.org/
-\lyxformat 544
+#LyX 2.4 created this file. For more info see https://www.lyx.org/
+\lyxformat 620
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -52,6 +52,9 @@
 %TIP
 \newtcbox{\tipbox}{colback=green!5!white,colframe=green!75!black,fonttitle=\bfseries,title=Tip}
 \newcommand{\tip}[1]{\tipbox{\vbox{#1}}}
+% Added by lyx2lyx
+\setlength{\parskip}{\medskipamount}
+\setlength{\parindent}{0pt}
 \end_preamble
 \use_default_options true
 \begin_modules
@@ -60,7 +63,7 @@ eqs-within-sections
 figs-within-sections
 tcolorbox
 \end_modules
-\maintain_unincluded_children false
+\maintain_unincluded_children no
 \begin_local_layout
 Format 60
     InsetLayout Flex:RegisterName
@@ -234,8 +237,8 @@ End
 \end_local_layout
 \language british
 \language_package default
-\inputencoding auto
-\fontencoding global
+\inputencoding auto-legacy
+\fontencoding auto
 \font_roman "beraserif" "default"
 \font_sans "berasans" "default"
 \font_typewriter "beramono" "default"
@@ -243,7 +246,9 @@ End
 \font_default_family sfdefault
 \use_non_tex_fonts false
 \font_sc false
-\font_osf false
+\font_roman_osf false
+\font_sans_osf false
+\font_typewriter_osf false
 \font_sf_scale 100 100
 \font_tt_scale 95 100
 \use_microtype false
@@ -254,10 +259,11 @@ End
 \bibtex_command default
 \index_command default
 \float_placement !h
+\float_alignment class
 \paperfontsize 10
 \spacing single
 \use_hyperref true
-\pdf_title "QL Pascal Cross Compiler 1.7.alpha"
+\pdf_title "QL Pascal Cross Compiler 1.7"
 \pdf_author "Norman Dunbar"
 \pdf_subject "Building a Free Pascal Cross Compiler for the Sinclair QL"
 \pdf_keywords "Pascal, Sinclair, QL, QDOS, SMSQ"
@@ -270,7 +276,7 @@ End
 \pdf_colorlinks true
 \pdf_backref false
 \pdf_pdfusetitle true
-\papersize a4paper
+\papersize a4
 \use_geometry false
 \use_package amsmath 1
 \use_package amssymb 1
@@ -291,7 +297,9 @@ End
 \suppress_date false
 \justification false
 \use_refstyle 1
+\use_formatted_ref 0
 \use_minted 0
+\use_lineno 0
 \fontcolor #00007f
 \boxbgcolor #ff557f
 \index Index
@@ -300,8 +308,8 @@ End
 \end_index
 \secnumdepth 3
 \tocdepth 3
-\paragraph_separation skip
-\defskip medskip
+\paragraph_separation indent
+\paragraph_indentation default
 \is_math_indent 0
 \math_numbering_side default
 \quotes_style english
@@ -309,11 +317,16 @@ End
 \papercolumns 1
 \papersides 2
 \paperpagestyle default
+\tablestyle default
 \tracking_changes false
 \output_changes false
+\change_bars false
+\postpone_fragile_content false
 \html_math_output 0
 \html_css_as_file 0
 \html_be_strict false
+\docbook_table_output 0
+\docbook_mathml_prefix 1
 \end_header
 
 \begin_body
@@ -335,6 +348,45 @@ Norman Dunbar
 \end_layout
 
 \begin_layout Standard
+\align center
+Document last updated on 
+\series bold
+
+\begin_inset Info
+type  "moddate"
+arg   "loclong"
+\end_inset
+
+
+\series default
+ at 
+\series bold
+
+\begin_inset Info
+type  "modtime"
+arg   "long"
+\end_inset
+
+
+\series default
+ by 
+\end_layout
+
+\begin_layout Standard
+\align center
+
+\series bold
+\begin_inset Info
+type  "vcs"
+arg   "author"
+\end_inset
+
+
+\series default
+.
+\end_layout
+
+\begin_layout Standard
 \begin_inset CommandInset toc
 LatexCommand tableofcontents
 
@@ -348,85 +400,14 @@ Introduction
 \end_layout
 
 \begin_layout Standard
-
-\emph on
-\begin_inset Box Shadowbox
-position "t"
-hor_pos "c"
-has_inner_box 1
-inner_pos "t"
-use_parbox 0
-use_makebox 0
-width "100col%"
-special "none"
-height "1in"
-height_special "totalheight"
-thickness "0.4pt"
-separation "3pt"
-shadowsize "4pt"
-framecolor "black"
-backgroundcolor "none"
-status open
-
-\begin_layout Plain Layout
-
-\series bold
-IMPORTANT:
-\series default
- 
-\emph on
-Certain sections of this document are tagged with 
-\begin_inset Quotes eld
-\end_inset
-
-
-\series bold
-FIXME:
-\series default
-
-\begin_inset Quotes erd
-\end_inset
-
-.
- This is to mark information which is no longer up to date due to the migration
- from Subversion to Git for the various source code repositories.
- With Subversion, a patch file was easy to create.
- With Git, this is also the case, but equally, instead of creating patches,
- a pull request could also be made.
-\end_layout
-
-\begin_layout Plain Layout
-
-\emph on
-I will update this document as and when I have more information on the desired
- method of adding QL code to the FPC Repositories.
- 
-\end_layout
-
-\begin_layout Plain Layout
-
-\emph on
-Norman Dunbar
-\end_layout
-
-\begin_layout Plain Layout
-
-\emph on
-16th December 2021.
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
 \begin_inset Note Note
 status open
 
 \begin_layout Plain Layout
-If you change the version number, amend Document->Settings->PDF Properties,
- document title, to include the new version.
+If you change the version number,
+ amend Document->Settings->PDF Properties,
+ document title,
+ to include the new version.
  Don't forget to add the version number to the generated PDF as well.
 \end_layout
 
@@ -440,26 +421,24 @@ I already had the
 \emph on
 Free Pascal Compiler
 \emph default
- (FPC) installed on my Linux laptop, however, I don't use it that often
- – I'm not very good at remembering how to write Pascal code – so I decided
- that for this experiment in getting the bare bones of the Sinclair QL version
- of the 
+ (FPC) installed on my Linux laptop,
+ however,
+ I don't use it that often – I'm not very good at remembering how to write Pascal code – so I decided that for this experiment in getting the bare bones of the Sinclair QL version of the 
 \emph on
 Free Pascal Compiler
 \emph default
- I would set up a brand spanking new VM running the same Linux version as
- my laptop.
+ I would set up a brand spanking new VM running the same Linux version as my laptop.
  
 \end_layout
 
 \begin_layout Standard
-The process of setting up the VM will not be discussed here, normally I
- would have used 
+The process of setting up the VM will not be discussed here,
+ normally I would have used 
 \emph on
 VirtualBox
 \emph default
- but as I had just done my 10 yearly wipe and refresh of the laptop, I hadn't
- yet installed it and I wanted to try out the 
+ but as I had just done my 10 yearly wipe and refresh of the laptop,
+ I hadn't yet installed it and I wanted to try out the 
 \begin_inset Flex LibraryName
 status open
 
@@ -491,12 +470,14 @@ That's a technical term.
 \end_layout
 
 \begin_layout Standard
-The upshot of all this is, I had made things a little more complicated than
- they needed to be, but that's how I wanted it.
- If I messed things up really badly, I could easily wipe the VM and start
- again with little or no problem, whereas if I tried to do everything on
- the laptop, and messed up, I might need to be sorting things out for a
- while to get back to where I was.
+The upshot of all this is,
+ I had made things a little more complicated than they needed to be,
+ but that's how I wanted it.
+ If I messed things up really badly,
+ I could easily wipe the VM and start again with little or no problem,
+ whereas if I tried to do everything on the laptop,
+ and messed up,
+ I might need to be sorting things out for a while to get back to where I was.
  Experiments don't always work out fine!
 \end_layout
 
@@ -513,8 +494,8 @@ There are three main listing types in this document:
 \end_layout
 
 \begin_layout Itemize
-Commands typed at a prompt, either the system prompt or an application's
- prompt;
+Commands typed at a prompt,
+ either the system prompt or an application's prompt;
 \end_layout
 
 \begin_layout Itemize
@@ -522,16 +503,17 @@ Output from commands;
 \end_layout
 
 \begin_layout Itemize
-Text files, configuration files or source code files.
+Text files,
+ configuration files or source code files.
 \end_layout
 
 \begin_layout Standard
-In the document, listings showing command lines will have line numbers.
- Hopefully you will see that the numbers are outside of the code block in
- the document, and you don't have to type in the numbers.
+In the document,
+ listings showing command lines will have line numbers.
+ Hopefully you will see that the numbers are outside of the code block in the document,
+ and you don't have to type in the numbers.
  Keep an eye out for long lines which have wrapped around.
- They will not have line numbers on the continuation lines and those will
- be indented to show that they are continued from above.
+ They will not have line numbers on the continuation lines and those will be indented to show that they are continued from above.
  This is a (contrived) example of a set of commands to be typed at the prompt:
 \end_layout
 
@@ -607,12 +589,14 @@ Hello World!
 \end_layout
 
 \begin_layout Standard
-There will not be any line numbers, unless absolutely necessary, and long
- lines will be split and indented as before.
+There will not be any line numbers,
+ unless absolutely necessary,
+ and long lines will be split and indented as before.
 \end_layout
 
 \begin_layout Standard
-Source code, text or configuration files will be shown in this style:
+Source code,
+ text or configuration files will be shown in this style:
 \end_layout
 
 \begin_layout Standard
@@ -633,8 +617,7 @@ status open
 
 \begin_layout Plain Layout
 
--Fu/where/I/have/installed/the/compiler/lib/fpc/$fpcversion/units/$fpccpu-$fpcos
-/*
+-Fu/where/I/have/installed/the/compiler/lib/fpc/$fpcversion/units/$fpccpu-$fpcos/*
 \end_layout
 
 \begin_layout Plain Layout
@@ -668,8 +651,7 @@ status open
 \end_layout
 
 \begin_layout Standard
-Line numbering will usually be present and long lines will be split and
- indented.
+Line numbering will usually be present and long lines will be split and indented.
 \end_layout
 
 \begin_layout Subsection
@@ -677,17 +659,20 @@ Privileges
 \end_layout
 
 \begin_layout Standard
-Unless otherwise noted, all commands will be executed as my local user,
+Unless otherwise noted,
+ all commands will be executed as my local user,
  
 \emph on
 norman
 \emph default
-, and not as 
+,
+ and not as 
 \emph on
 root
 \emph default
 .
- I may need to obtain root privileges from time to time, and to do that,
+ I may need to obtain root privileges from time to time,
+ and to do that,
  I'll prefix the appropriate commands with 
 \family typewriter
 
@@ -715,9 +700,10 @@ sudo
 
 \end_inset
 
-, you are initially prompted for a password and that password will be cached
- for a short period of time.
- During this time, any other 
+,
+ you are initially prompted for a password and that password will be cached for a short period of time.
+ During this time,
+ any other 
 \begin_inset Flex CommandName
 status open
 
@@ -735,15 +721,17 @@ Free Pascal Compiler Versions
 \end_layout
 
 \begin_layout Standard
-As I worked on this document, there were many changes made to the sources
- of the 
+As I worked on this document,
+ there were many changes made to the sources of the 
 \emph on
 Free Pascal Compiler
 \emph default
-, this included the occasional version number change.
- I started at version 3.2.0 and at some point, it had risen to 3.3.1.
- To avoid confusion, I have avoided hard coding the version numbers into
- paths where it is included.
+,
+ this included the occasional version number change.
+ I started at version 3.2.0 and at some point,
+ it had risen to 3.3.1.
+ To avoid confusion,
+ I have avoided hard coding the version numbers into paths where it is included.
  Those file and directory names will be noted as 
 \begin_inset Quotes eld
 \end_inset
@@ -760,7 +748,9 @@ Building the Development VM
 \end_layout
 
 \begin_layout Standard
-The plan of action, after installing the VM and Linux, is to:
+The plan of action,
+ after installing the VM and Linux,
+ is to:
 \end_layout
 
 \begin_layout Itemize
@@ -780,7 +770,8 @@ Install the FPC Source Code.
 \end_layout
 
 \begin_layout Itemize
-Install and build the required assembler, 
+Install and build the required assembler,
+ 
 \emph on
 vasm
 \emph default
@@ -788,7 +779,8 @@ vasm
 \end_layout
 
 \begin_layout Itemize
-Install and build the required linker, 
+Install and build the required linker,
+ 
 \emph on
 vlink
 \emph default
@@ -800,10 +792,14 @@ Build and install the QL version of FPC.
 \end_layout
 
 \begin_layout Standard
-That would, hopefully, give me a working cross compiler so that I could
- try and write QL programs, compile them under Linux, copy them to my QL
- then test them.
- Easy stuff, no? My own QL system is Marcel Kilgus' excellent 
+That would,
+ hopefully,
+ give me a working cross compiler so that I could try and write QL programs,
+ compile them under Linux,
+ copy them to my QL then test them.
+ Easy stuff,
+ no?
+ My own QL system is Marcel Kilgus' excellent 
 \emph on
 QPC
 \begin_inset Foot
@@ -828,9 +824,10 @@ literal "false"
 
 \emph default
  so I'm able to run the cross compiled programs without any problems.
- However, if you are using an actual QL, then you may need to compile the
- Pascal programs using the option to add an XTcc trailer record, and use
- my little 
+ However,
+ if you are using an actual QL,
+ then you may need to compile the Pascal programs using the option to add an XTcc trailer record,
+ and use my little 
 \begin_inset Flex FileName
 status open
 
@@ -862,10 +859,11 @@ literal "false"
 \end_layout
 
 \begin_layout Standard
-As I worked through the experiment, it became obvious that some work would
- be needed on the existing, brief, system Unit for the QL, so I will also
- need to be able to edit and recompile the Sinclair QL Runtime Library (RTL)
- for FPC.
+As I worked through the experiment,
+ it became obvious that some work would be needed on the existing,
+ brief,
+ system Unit for the QL,
+ so I will also need to be able to edit and recompile the Sinclair QL Runtime Library (RTL) for FPC.
 \end_layout
 
 \begin_layout Chapter
@@ -873,9 +871,8 @@ Development Software
 \end_layout
 
 \begin_layout Standard
-Once the VM is created and Linux Mint installed, we need to install the
- software tools and packages which will allow us the ability to build the
- cross compiler.
+Once the VM is created and Linux Mint installed,
+ we need to install the software tools and packages which will allow us the ability to build the cross compiler.
 \end_layout
 
 \begin_layout Section
@@ -887,8 +884,11 @@ Installing the Software
 \series bold
 Note
 \series default
-: Previously, the source code was held in a Subversion repository, but migrated
- to Gitlab (and GitHub) on August 8th, 2021.
+:
+ Previously,
+ the source code was held in a Subversion repository,
+ but migrated to Gitlab (and GitHub) on August 8th,
+ 2021.
  Details of the move are available at 
 \begin_inset CommandInset href
 LatexCommand href
@@ -920,8 +920,7 @@ literal "false"
 \end_layout
 
 \begin_layout Standard
-The following software is the minimum required to build the cross compiler
- and build Pascal programs for the QL:
+The following software is the minimum required to build the cross compiler and build Pascal programs for the QL:
 \end_layout
 
 \begin_layout Itemize
@@ -929,16 +928,17 @@ The following software is the minimum required to build the cross compiler
 \emph on
 Git
 \emph default
-; the version control system used by the FPC developers.
- We need this to be able to download the source code for the compiler, and
- to keep the software up to date.
- We could avoid this step and just download a zip file, if necessary.
+;
+ the version control system used by the FPC developers.
+ We need this to be able to download the source code for the compiler,
+ and to keep the software up to date.
+ We could avoid this step and just download a zip file,
+ if necessary.
  
 \emph on
 Git
 \emph default
- comes in handy when changing the RTL as it allows a patch kit to be created
- to update the source code for others to use.
+ comes in handy when changing the RTL as it allows a patch kit to be created to update the source code for others to use.
  
 \end_layout
 
@@ -947,8 +947,8 @@ Git
 \emph on
 Build-essential
 \emph default
-; a package on Mint that installs the various compiler tools and libraries
- necessary to compile stuff.
+;
+ a package on Mint that installs the various compiler tools and libraries necessary to compile stuff.
 \end_layout
 
 \begin_layout Itemize
@@ -956,8 +956,20 @@ The
 \emph on
 ssh server
 \emph default
-; to allow me to connect a terminal session from my laptop to the VM to
- do development work, and to copy down compiled programs.
+;
+ to allow me to connect a terminal session from my laptop to the VM to do development work,
+ and to copy down compiled programs.
+\end_layout
+
+\begin_layout Itemize
+The 
+\shape italic
+spice-vdagent
+\shape default
+ package,
+ to allow me to copy and paste to and from the guest VMs.
+ The guest VM needs to be rebooted after installing this package,
+ to get the copying to work.
 \end_layout
 
 \begin_layout Standard
@@ -978,7 +990,8 @@ sudo apt update
 
 \begin_layout Plain Layout
 
-[sudo] password for norman: 
+[sudo] password for norman:
+ 
 \end_layout
 
 \begin_layout Plain Layout
@@ -1018,7 +1031,7 @@ sudo apt upgrade
 
 \begin_layout Plain Layout
 
-sudo apt install build-essential git
+sudo apt install build-essential git spice-vdagent
 \end_layout
 
 \begin_layout Plain Layout
@@ -1033,8 +1046,10 @@ sudo apt install build-essential git
 \end_layout
 
 \begin_layout Standard
-As I mentioned, I need to install and enable the ssh server, so that it
- runs now, and at startup:
+As I mentioned,
+ I need to install and enable the ssh server,
+ so that it runs now,
+ and at startup:
 \end_layout
 
 \begin_layout Standard
@@ -1103,7 +1118,8 @@ scp
 
 \end_inset
 
- to copy the file to my laptop from the VM, and upload it to QPC:
+ to copy the file to my laptop from the VM,
+ and upload it to QPC:
 \end_layout
 
 \begin_layout Standard
@@ -1129,13 +1145,13 @@ hostname -I
 
 \begin_layout Standard
 \begin_inset listings
-lstparams "basicstyle={\ttfamily},breaklines=true,showstringspaces=false,backgroundcolor={\color{outputColour}},breakautoindent=true"
+lstparams "basicstyle={\ttfamily},backgroundcolor={\color{outputColour}},breakautoindent=true"
 inline false
 status open
 
 \begin_layout Plain Layout
 
-192.168.2.225
+192.168.122.36
 \end_layout
 
 \end_inset
@@ -1145,17 +1161,19 @@ status open
 
 \begin_layout Standard
 The above list sets up the VM ready to compile code.
- In addition to the above, I also need:
+ In addition to the above,
+ I also need:
 \end_layout
 
 \begin_layout Itemize
-To install FPC for the Linux host; the compiler is used to compile a Sinclair
- QL cross compiler version of itself, so it is required to be present.
+To install FPC for the Linux host;
+ the compiler is used to compile a Sinclair QL cross compiler version of itself,
+ so it is required to be present.
 \end_layout
 
 \begin_layout Itemize
-To build the QL version, we also need to install the source code for the
- compiler.
+To build the QL version,
+ we also need to install the source code for the compiler.
 \end_layout
 
 \begin_layout Chapter
@@ -1179,10 +1197,9 @@ host
 \end_inset
 
  is my Linux VM.
- It requires that a version of FPC be installed to compile and run programs
- for Linux 64 bit systems.
- Once installed it will be used to build the QL specific version of FPC
- that will run on the host, but create executables for the 
+ It requires that a version of FPC be installed to compile and run programs for Linux 64 bit systems.
+ Once installed it will be used to build the QL specific version of FPC that will run on the host,
+ but create executables for the 
 \begin_inset Quotes eld
 \end_inset
 
@@ -1190,7 +1207,8 @@ target
 \begin_inset Quotes erd
 \end_inset
 
-, the QL.
+,
+ the QL.
  Cross compiling can get a little bit confusing at times.
 \end_layout
 
@@ -1206,23 +1224,16 @@ target "https://www.freepascal.org/download.html"
 
 \end_inset
 
- and on that page, scroll down to where you find your particular system.
- Mine is X86-64 Linux, so I clicked that link.
+ and on that page,
+ scroll down to where you find your particular system.
+ Mine is AMD64/Intel 64/x86_64 Linux,
+ so I clicked that link.
  
 \end_layout
 
 \begin_layout Standard
-On the next page, select a mirror – I used Source Forge – and click the
- link.
- If you click on one of the other mirrors, you get different options.
- Source Forge is 
-\emph on
-amusing
-\emph default
- in that you have to choose your required version, again.
- There are quite a few and some are pre-built cross compilers, so be careful
- in what you choose.
- I required 
+On the next page,
+ select a mirror – I used Hungary – and click the link to download everything in one big file named 
 \begin_inset Flex FileName
 status open
 
@@ -1232,8 +1243,34 @@ fpc-n.n.n-x86_64-linux.tar
 
 \end_inset
 
- and that just happens to be the version that Source Forge decided was ideal
- for me and selected it as the 
+.
+ If you click on one of the other mirrors,
+ you get different options.
+ Source Forge is 
+\emph on
+amusing
+\emph default
+ in that you have to choose your required version,
+ 
+\shape italic
+again
+\shape default
+.
+ There are quite a few downloads listed and some are pre-built cross compilers,
+ so be careful in what you choose.
+ Look for 
+\begin_inset Flex FileName
+status open
+
+\begin_layout Plain Layout
+fpc-n.n.n-x86_64-linux.tar
+\end_layout
+
+\end_inset
+
+ which,
+ in my case,
+ happens to be the version that Source Forge decided was ideal for me and selected it as the 
 \begin_inset Quotes eld
 \end_inset
 
@@ -1241,14 +1278,20 @@ Download Latest Version
 \begin_inset Quotes erd
 \end_inset
 
- option, right at the top in a big green box.
+ option,
+ right at the top in a big green box.
 \end_layout
 
 \begin_layout Standard
-Let the download run, it's about 85 Mb, and when completed, make a note
- of where you saved it, then in a file explorer session, navigate to the
- downloaded file, and extract it.
- Once extracted, it's a simple case of making sure that the file 
+Let the download run,
+ it's about 85–90 Mb,
+ and when completed,
+ make a note of where you saved it,
+ then in a file explorer session,
+ navigate to the downloaded file,
+ and extract it.
+ Once extracted,
+ it's a simple case of making sure that the file 
 \begin_inset Flex FileName
 status open
 
@@ -1258,7 +1301,8 @@ install.sh
 
 \end_inset
 
- is executable, and running it.
+ is executable,
+ and running it.
  The extraction process is as follows:
 \end_layout
 
@@ -1280,7 +1324,7 @@ cd ~/Downloads
 
 \begin_layout Plain Layout
 
-tar -xvf fpc-n.n.n-x86-64-linux.tar
+tar -xvf fpc-n.n.n-x86-64-linux.tar	# 3.2.2
 \end_layout
 
 \begin_layout Plain Layout
@@ -1311,7 +1355,7 @@ status open
 
 \begin_layout Plain Layout
 
-cd fpc-n.n.n-x86_64-linux
+cd fpc-n.n.n-x86_64-linux	# 3.2.2
 \end_layout
 
 \begin_layout Plain Layout
@@ -1330,15 +1374,15 @@ sudo ./install.sh
 
 \begin_layout Plain Layout
 
-[sudo] password for norman: 
+[sudo] password for norman:
+ 
 \end_layout
 
 \end_inset
 
-The first prompt from the installer is for a location to install FPC and
- the RTL.
- This location should be on your path which invariably means that you will
- need root privileges, which is why we need use 
+The first prompt from the installer is for a location to install FPC and the RTL.
+ This location should be on your path which invariably means that you will need root privileges,
+ which is why we need use 
 \begin_inset Flex CommandName
 status open
 
@@ -1359,7 +1403,8 @@ status open
 
 \end_inset
 
- as my install location, as follows:
+ as my install location,
+ as follows:
 \end_layout
 
 \begin_layout Standard
@@ -1375,7 +1420,7 @@ This shell script will attempt to install the Free Pascal Compiler
 
 \begin_layout Plain Layout
 
-version n.n.n with the items you select
+version 3.2.2 with the items you select
 \end_layout
 
 \begin_layout Plain Layout
@@ -1384,7 +1429,8 @@ version n.n.n with the items you select
 
 \begin_layout Plain Layout
 
-Install prefix (/usr or /usr/local) [/usr] :  /usr/local
+Install prefix (/usr or /usr/local) [/usr] :
+  /usr/local
 \end_layout
 
 \begin_layout Plain Layout
@@ -1406,6 +1452,91 @@ Installing compiler and RTL for x86_64-linux...
 \begin_layout Plain Layout
 
 \end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+After installing the compiler and RTL,
+ we are then prompted to install the documentation and demonstration files.
+ I chose to do so:
+\end_layout
+
+\begin_layout Standard
+\begin_inset listings
+lstparams "basicstyle={\ttfamily},breaklines=true,showstringspaces=false,backgroundcolor={\color{outputColour}},breakautoindent=true"
+inline false
+status open
+
+\begin_layout Plain Layout
+
+Install documentation (Y/n) ?
+ Y
+\end_layout
+
+\begin_layout Plain Layout
+
+Installing documentation in /usr/local/share/doc/fpc-3.2.2 ...
+\end_layout
+
+\begin_layout Plain Layout
+
+Done.
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+# For the demos location,
+ just press ENTER.
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+Install demos (Y/n) ?
+ Y
+\end_layout
+
+\begin_layout Plain Layout
+
+Install demos in [/usr/local/share/doc/fpc-3.2.2/examples] :
+ 
+\end_layout
+
+\begin_layout Plain Layout
+
+Installing demos in /usr/local/share/doc/fpc-3.2.2/examples ...
+\end_layout
+
+\begin_layout Plain Layout
+
+Done.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Finally,
+ a summary:
+\end_layout
+
+\begin_layout Standard
+\begin_inset listings
+lstparams "basicstyle={\ttfamily},breaklines=true,showstringspaces=false,backgroundcolor={\color{outputColour}},breakautoindent=true"
+inline false
+status open
 
 \begin_layout Plain Layout
 
@@ -1444,105 +1575,12 @@ Writing sample configuration file to /etc/fppkg/default
 
 \begin_layout Plain Layout
 
-\end_layout
-
-\begin_layout Plain Layout
-
 End of installation.
 \end_layout
 
 \begin_layout Plain Layout
 
-\end_layout
-
-\begin_layout Plain Layout
-
 Refer to the documentation for more information.
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-You may wish to make a note of those locations for the various configuration
- files, in case you need or want to change things.
- They should be fine for the host system – I didn't have to change mine.
-\end_layout
-
-\begin_layout Standard
-After installing the compiler, we are then prompted to install the documentation
- and demonstration files.
- I chose not to, but if you wish to do so:
-\end_layout
-
-\begin_layout Standard
-\begin_inset listings
-lstparams "basicstyle={\ttfamily},breaklines=true,showstringspaces=false,backgroundcolor={\color{outputColour}},breakautoindent=true"
-inline false
-status open
-
-\begin_layout Plain Layout
-
-Install documentation (Y/n) ? Y
-\end_layout
-
-\begin_layout Plain Layout
-
-Installing documentation in /usr/local/share/doc/fpc-n.n.n ...
-\end_layout
-
-\begin_layout Plain Layout
-
-Done.
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\begin_layout Plain Layout
-
-# For the demos location, just press ENTER.
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\begin_layout Plain Layout
-
-Install demos (Y/n) ? Y
-\end_layout
-
-\begin_layout Plain Layout
-
-Install demos in [/usr/local/share/doc/fpc-n.n.n/examples] : 
-\end_layout
-
-\begin_layout Plain Layout
-
-Installing demos in /usr/local/share/doc/fpc-n.n.n/examples ...
-\end_layout
-
-\begin_layout Plain Layout
-
-Done.
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\begin_layout Plain Layout
-
-...
- Lots of extra text here.
 \end_layout
 
 \end_inset
@@ -1566,7 +1604,8 @@ SourceCode
 
 \end_inset
 
- directory tree for all my source code, then changed into it ready for action:
+ directory tree for all my source code,
+ then changed into it ready for action:
 \end_layout
 
 \begin_layout Standard
@@ -1596,7 +1635,7 @@ Create the following
 status open
 
 \begin_layout Plain Layout
-hello.pp
+hello.pas
 \end_layout
 
 \end_inset
@@ -1661,7 +1700,7 @@ status open
 
 \begin_layout Plain Layout
 
-fpc hello.pp
+fpc hello.pas
 \end_layout
 
 \end_inset
@@ -1677,22 +1716,23 @@ status open
 
 \begin_layout Plain Layout
 
-Free Pascal Compiler version n.n.n [2020/06/09] for X86-64
+Free Pascal Compiler version 3.2.2 [2021/05/16] for x86_64
 \end_layout
 
 \begin_layout Plain Layout
 
-Copyright (c) 1993-2020 by Florian Klaempfl and others
+Copyright (c) 1993-2021 by Florian Klaempfl and others
 \end_layout
 
 \begin_layout Plain Layout
 
-Target OS: Linux for i386
+Target OS:
+ Linux for x86-64
 \end_layout
 
 \begin_layout Plain Layout
 
-Compiling hello.pp
+Compiling hello.pas
 \end_layout
 
 \begin_layout Plain Layout
@@ -1702,7 +1742,8 @@ Linking hello
 
 \begin_layout Plain Layout
 
-8 lines compiled, 0.2 sec
+9 lines compiled,
+ 0.0 sec
 \end_layout
 
 \end_inset
@@ -1711,7 +1752,8 @@ Linking hello
 \end_layout
 
 \begin_layout Standard
-Looks good, now test it:
+Looks good,
+ now test it:
 \end_layout
 
 \begin_layout Standard
@@ -1747,8 +1789,7 @@ Hello FPC World!
 \end_layout
 
 \begin_layout Standard
-So far the host compiler is looking good and can at least compile a simple
- Pascal program.
+So far the host compiler is looking good and can at least compile a simple Pascal program.
  We are ready to use FPC to rebuild itself as a Sinclair QL cross compiler.
 \end_layout
 
@@ -1757,10 +1798,10 @@ Upgrading the Host Compiler
 \end_layout
 
 \begin_layout Standard
-Form time to time, the host compiler will be updated by the Free Pascal
- Project.
- If you absolutely have to have the very latest version, then the instructions
- in this section are the ones to follow to upgrade the compiler.
+Form time to time,
+ the host compiler will be updated by the Free Pascal Project.
+ If you absolutely have to have the very latest version,
+ then the instructions in this section are the ones to follow to upgrade the compiler.
 \end_layout
 
 \begin_layout Standard
@@ -1774,7 +1815,8 @@ apt
 
 \end_inset
 
-, 
+,
+ 
 \begin_inset Flex CommandName
 status open
 
@@ -1789,8 +1831,7 @@ yum
 \end_layout
 
 \begin_layout Standard
-Reapplying the install instructions will overwrite the existing files and
- upgrade the host compiler in place.
+Reapplying the install instructions will overwrite the existing files and upgrade the host compiler in place.
 \end_layout
 
 \begin_layout Chapter
@@ -1798,13 +1839,48 @@ Installing the Compiler Source Code
 \end_layout
 
 \begin_layout Standard
-From August 2021, the FPC source code repositories have been migrated to
- GitLab and are mirrored at GitHub.
- Previously, they were stored in a Subversion repository at svn.freepascal.org.
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+note{Chapters 4 through 8 assume that you only want to crate a Free Pascal cross compiler for the QL.
+ This will allow you to create and compile QL programs,
+ in Pascal,
+ on your PC or Mac,
+ and run them on your QL.
+ The instruction in the afore mentioned chapters do not apply if you intend to help develop the compiler,
+ RTL or QL Units and have those changes added to the official Free Pascal GitLab Rpository.
+ For that,
+ you need Chapter 
+\backslash
+ref{chap:Updating-the-Official-repository},
+ where full instructions are given.}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+From August 2021,
+ the FPC source code repositories have been migrated to GitLab and are mirrored at GitHub.
+ Previously,
+ they were stored in a Subversion repository at 
+\begin_inset CommandInset href
+LatexCommand href
+target "https://svn.freepascal.org"
+
+\end_inset
+
+.
  That is no longer accessible.
- If you have already downloaded the subversion repository, either delete
- it – when any changes you made have been accepted into the main source
- tree by the project, or rename it.
+ If you have already downloaded the subversion repository,
+ either delete it – when any changes you made have been accepted into the main source tree by the project,
+ or rename it.
  I renamed mine to 
 \begin_inset Flex DirectoryName
 status open
@@ -1815,7 +1891,9 @@ fpc.svn
 
 \end_inset
 
-.
+,
+ just in case I needed it later.
+ (I won't!)
 \end_layout
 
 \begin_layout Standard
@@ -1848,16 +1926,16 @@ F2
 \begin_inset Quotes erd
 \end_inset
 
- the directory name and type a new one, as required, in the File Explorer.
+ the directory name and type a new one,
+ as required,
+ in the File Explorer.
  
 \end_layout
 
 \begin_layout Standard
-Once we have the host compiler working, we can get hold of the compiler's
- own source code and use the host to build a cross compiler for the Sinclair
- QL.
- The first step is to grab the source code and to do this we need to use
- 
+Once we have the host compiler working,
+ we can get hold of the compiler's own source code and use the host to build a cross compiler for the Sinclair QL.
+ The first step is to grab the source code and to do this we need to use 
 \emph on
 git
 \emph default
@@ -1877,7 +1955,31 @@ cd ~/SourceCode
 
 \begin_layout Plain Layout
 
-git clone https://gitlab.com/freepascal.org/fpc/source.git fpc  
+\end_layout
+
+\begin_layout Plain Layout
+
+# I use SSH to clone repositories.
+\end_layout
+
+\begin_layout Plain Layout
+
+git clone git@gitlab.com:freepascal.org/fpc/source.git --depth 1 fpc
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+# Alternatively,
+ use https.
+\end_layout
+
+\begin_layout Plain Layout
+
+#git clone https://gitlab.com/freepascal.org/fpc/source.git --depth 1 fpc  
 \end_layout
 
 \begin_layout Plain Layout
@@ -1891,38 +1993,49 @@ Cloning into 'fpc'...
 
 \begin_layout Plain Layout
 
-remote: Enumerating objects: 674310, done.
+remote:
+ Enumerating objects:
+ 27053,
+ done.
 \end_layout
 
 \begin_layout Plain Layout
 
-remote: Counting objects: 100% (7174/7174), done.
+remote:
+ Counting objects:
+ 100% (27053/27053),
+ done.
 \end_layout
 
 \begin_layout Plain Layout
 
-remote: Compressing objects: 100% (1187/1187), done.
+remote:
+ Compressing objects:
+ 100% (23149/23149),
+ done.
 \end_layout
 
 \begin_layout Plain Layout
 
-remote: Total 674310 (delta 6057), reused 7050 (delta 5977), pack-reused
- 667136
+remote:
+ Total 27053 (delta 4465),
+ reused 19104 (delta 3230),
+ pack-reused 0 (from 0)
 \end_layout
 
 \begin_layout Plain Layout
 
-Receiving objects: 100% (674310/674310), 171.59 MiB | 3.72 MiB/s, done.
+Receiving objects:
+ 100% (27053/27053),
+ 54.17 MiB | 10.53 MiB/s,
+ done.
 \end_layout
 
 \begin_layout Plain Layout
 
-Resolving deltas: 100% (541703/541703), done.
-\end_layout
-
-\begin_layout Plain Layout
-
-Updating files: 100% (20231/20231), done.
+Resolving deltas:
+ 100% (4465/4465),
+ done.
 \end_layout
 
 \end_inset
@@ -1931,7 +2044,8 @@ Updating files: 100% (20231/20231), done.
 \end_layout
 
 \begin_layout Standard
-These commands will create a new directory, 
+These commands will create a new directory,
+ 
 \begin_inset Flex DirectoryName
 status open
 
@@ -1941,9 +2055,12 @@ SourceCode/fpc
 
 \end_inset
 
-, then checkout the main trunk of the FPC source code into the new directory.
- This is quite a large download of 172 Mb (sorry, I'm too old to swap to
- all that 
+,
+ then checkout the main trunk of the FPC source code into the new directory.
+ Only the most recent commit is downloaded to save on time and disc space.
+ Even then,
+ this is quite a large download of 55 Mb (sorry,
+ I'm too old to swap to all that 
 \begin_inset Quotes eld
 \end_inset
 
@@ -1951,7 +2068,7 @@ Mib
 \begin_inset Quotes erd
 \end_inset
 
- stuff!) which expands to 532 Mb on disc.
+ stuff!) which expands to around 450 Mb on disc.
 \end_layout
 
 \begin_layout Chapter
@@ -1972,7 +2089,8 @@ vasm
 \emph on
 vlink
 \emph default
- linker, or things won't work.
+ linker,
+ or things won't work.
  The two URLs where the source code for these utilities is to be found,
  are:
 \end_layout
@@ -2003,26 +2121,17 @@ You need to get the latest sources of
 \emph on
 vasm
 \emph default
- version 1.8 but no higher – version 1.9 will not work; and 
+ and 
 \emph on
-vlink,
+vlink
 \emph default
- version 0.16h is required.
+.
  
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-TODO: Remove when fixed.
-\end_layout
-
-\end_inset
-
-The 1.9 problem has been reported to the FPC mailing list.
 \end_layout
 
 \begin_layout Standard
-In Linux, I was able to use the 
+In Linux,
+ I was able to use the 
 \begin_inset Flex CommandName
 status open
 
@@ -2032,9 +2141,11 @@ wget
 
 \end_inset
 
- command, but it's a simple task to open the two URLs above, and click the
- link to download the source files.
- However you do it, it's probably wise to save the files into your 
+ command,
+ but it's a simple task to open the two URLs above,
+ and click the link to download the source files.
+ However you do it,
+ it's probably wise to save the files into your 
 \begin_inset Flex DirectoryName
 status open
 
@@ -2064,12 +2175,12 @@ cd ~/SourceCode
 
 \begin_layout Plain Layout
 
-wget http://phoenix.owl.de/tags/vasm1_8l.tar.gz
+wget http://phoenix.owl.de/tags/vasm2_0e.tar.gz
 \end_layout
 
 \begin_layout Plain Layout
 
-tar -xzf vasm1_8l.tar.gz
+tar -xzf vasm2_0e.tar.gz
 \end_layout
 
 \begin_layout Plain Layout
@@ -2092,31 +2203,8 @@ tar -xzf vlink.tar.gz
 \end_layout
 
 \begin_layout Standard
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-warning{The assembler version 1.8l (ell, not 1.81!) is the absolute latest
- that can be used to build a cross compiler for the QL.
- Any of the 1.9 releases cause errors when assembling the 
-\backslash
-texttt{system.pp} file for the QL cross compiler.
- The link above is to an archive of older versions for the 
-\backslash
-emph{vasm} assembler.}
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-Now we need to extract and compile both utilities and copy the executable
- into a location on the path, first 
+Now we need to extract and compile both utilities and copy the executable into a location on the path,
+ first 
 \emph on
 vasm
 \emph default
@@ -2179,7 +2267,8 @@ vasmm68k_std
 \end_layout
 
 \begin_layout Standard
-Next, the 
+Next,
+ the 
 \emph on
 vlink
 \emph default
@@ -2232,8 +2321,8 @@ Rename the Assembler and Linker
 \end_layout
 
 \begin_layout Standard
-After this, both files must be either renamed or sym-linked (on Linux) as
- follows.
+After this,
+ both files must be either renamed or sym-linked (on Linux) as follows.
  If you are on Windows then a rename should be sufficient.
  
 \end_layout
@@ -2279,7 +2368,21 @@ cd /usr/local/bin
 
 \begin_layout Plain Layout
 
+sudo rm m68k-sinclairql-vlink
+\end_layout
+
+\begin_layout Plain Layout
+
 sudo ln -s vlink m68k-sinclairql-vlink
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+sudo rm m68k-sinclairql-vasmm68k_std
 \end_layout
 
 \begin_layout Plain Layout
@@ -2293,7 +2396,8 @@ sudo ln -s vasmm68k_std m68k-sinclairql-vasmm68k_std
 
 \begin_layout Plain Layout
 
-# Optional, just rename:
+# Optional,
+ just rename:
 \end_layout
 
 \begin_layout Plain Layout
@@ -2317,7 +2421,8 @@ Build the Sinclair QL Cross Compiler
 
 \begin_layout Standard
 Now we can build and install the cross compiler.
- I'm creating a new directory, named 
+ I'm creating a new directory,
+ named 
 \begin_inset Flex DirectoryName
 status open
 
@@ -2327,7 +2432,9 @@ bin
 
 \end_inset
 
-, in my home directory, for the installation.
+,
+ in my home directory,
+ for the installation.
  This will need to be added to my 
 \begin_inset Flex EnvVar
 status open
@@ -2343,11 +2450,14 @@ $PATH
 status collapsed
 
 \begin_layout Plain Layout
-On Linux Mint, and probably Ubuntu as well, when using the 
+On Linux Mint,
+ and probably Ubuntu as well,
+ when using the 
 \emph on
 bash
 \emph default
- shell, if a user's 
+ shell,
+ if a user's 
 \begin_inset Flex EnvVar
 status open
 
@@ -2367,7 +2477,8 @@ bin
 
 \end_inset
 
-, it is automatically added to 
+,
+ it is automatically added to 
 \begin_inset Flex EnvVar
 status open
 
@@ -2475,8 +2586,14 @@ make crossall OS_TARGET=sinclairql CPU_TARGET=m68k
 
 \begin_layout Plain Layout
 
-make crossinstall OS_TARGET=sinclairql CPU_TARGET=m68k INSTALL_PREFIX="/home/nor
-man/bin"
+make crossinstall OS_TARGET=sinclairql CPU_TARGET=m68k 
+\backslash
+
+\end_layout
+
+\begin_layout Plain Layout
+
+   INSTALL_PREFIX=/home/norman/bin
 \end_layout
 
 \begin_layout Plain Layout
@@ -2501,7 +2618,8 @@ status open
 
 \end_inset
 
-, but I prefer to call mine 
+,
+ but I prefer to call mine 
 \begin_inset Flex FileName
 status open
 
@@ -2511,7 +2629,8 @@ fpc-ql
 
 \end_inset
 
-, so:
+,
+ so:
 \end_layout
 
 \begin_layout Standard
@@ -2527,12 +2646,21 @@ cd ~/bin
 
 \begin_layout Plain Layout
 
-rm fpc-ql    ### Will fail the first time, just ignore.
+rm fpc-ql    ### Ignore errors.
 \end_layout
 
 \begin_layout Plain Layout
 
-ln -s lib/fpc/n.n.n/ppcross68k fpc-ql
+\end_layout
+
+\begin_layout Plain Layout
+
+# Note version 3.3.1 not 3.2.2 as per the host compiler!
+\end_layout
+
+\begin_layout Plain Layout
+
+ln -s lib/fpc/n.n.n/ppcross68k fpc-ql	
 \end_layout
 
 \end_inset
@@ -2541,9 +2669,9 @@ ln -s lib/fpc/n.n.n/ppcross68k fpc-ql
 \end_layout
 
 \begin_layout Standard
-I've got a sym-link set up but on Windows you can easily copy or rename
- it.
- If you do sym-link it like this, it's best to delete the previous 
+I've got a sym-link set up but on Windows you can easily copy or rename it.
+ If you do sym-link it like this,
+ it's best to delete the previous 
 \begin_inset Flex FileName
 status open
 
@@ -2553,35 +2681,9 @@ fpc-ql
 
 \end_inset
 
- first, that way you get to see the actual date and time that the cross
- compiler was built rather than the date and time that the link was first
- created.
-\end_layout
-
-\begin_layout Standard
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-tip{If, when running the 
-\backslash
-texttt{make crossall ...} command, you see lots of errors similar to 
-\backslash
-texttt{``Warning 1007 in line nn of ``/path/to/system.s'': scratch at end
- of line''} then your version of the assembler is too recent.
- You need to downgrade to 1.8l (ell!) instead.}
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-Now we can test it.
+ first,
+ that way you get to see the actual date and time that the cross compiler was built rather than the date and time that the link was first created.
+ Now we can test it.
 \end_layout
 
 \begin_layout Standard
@@ -2608,7 +2710,7 @@ status open
 
 \begin_layout Plain Layout
 
-Free Pascal Compiler version n.n.n [2021/04/05] for m68k
+Free Pascal Compiler version 3.3.1 [2026/04/14] for m68k
 \end_layout
 
 \begin_layout Plain Layout
@@ -2635,8 +2737,8 @@ We can see that we have a compiler for the M68K CPU.
 \series bold
 NOTE
 \series default
-: You should be aware that any time you update the source code by running
- 
+:
+ You should be aware that any time you update the source code by running 
 \begin_inset Flex CommandName
 status open
 
@@ -2646,11 +2748,16 @@ git pull
 
 \end_inset
 
-, there will be a need for you to clean and rebuild the cross compiler.
- When you do this, be aware that the version number may change.
- If, like me, you have sym-links to the complied cross compiler, then you
- will find those links becoming invalid.
- You will need to recreate them, pointing at the new version.
+,
+ there will be a need for you to clean and rebuild the cross compiler.
+ When you do this,
+ be aware that the version number may change.
+ If,
+ like me,
+ you have sym-links to the complied cross compiler,
+ then you will find those links becoming invalid.
+ You will need to recreate them,
+ pointing at the new version.
 \end_layout
 
 \begin_layout Section
@@ -2703,7 +2810,8 @@ etc
 
 \end_inset
 
- directory, I did.
+ directory,
+ I did.
  A file named 
 \begin_inset Flex FileName
 status open
@@ -2780,7 +2888,8 @@ bin
 
 \end_inset
 
- directory in my home folder, my file looks like this:
+ directory in my home folder,
+ my file looks like this:
 \end_layout
 
 \begin_layout Standard
@@ -2835,11 +2944,16 @@ status open
 \end_layout
 
 \begin_layout Standard
-If you are only interested in building Pascal programs for an 
+If you are 
+\shape italic
+only
+\shape default
+ interested in building Pascal programs for an 
 \emph on
 actual
 \emph default
- QL, and have no intention of developing anything for Windows or Linux,
+ QL,
+ and have no intention of developing anything for Windows or Linux,
  then this configuration file is an excellent option:
 \end_layout
 
@@ -2915,15 +3029,16 @@ status open
 
 \end_inset
 
- option? This is the option that tells the cross compiler to add an XTcc
- trailer record to the end of the compiled binary, this holds the data space
- required by the program.
+ option?
+ This is the option that tells the cross compiler to add an XTcc trailer record to the end of the compiled binary,
+ this holds the data space required by the program.
  You can use this on a normal QL to convert the file into an executable
 \begin_inset Foot
 status open
 
 \begin_layout Plain Layout
-Using my own excellent(!) utility, XTcc_bin
+Using my own excellent(!) utility,
+ XTcc_bin
 \begin_inset Flex FileName
 status open
 
@@ -2950,9 +3065,14 @@ literal "false"
 \end_inset
 
 .
- The default is to write a special header at the start of the file and most/all
- the QL emulators understand this and can execute the file directly.
- If you are running on an emulator, like me, then omit the 
+ 
+\end_layout
+
+\begin_layout Standard
+The default is to write a special header at the start of the file and most/all the QL emulators understand this and can execute the file directly.
+ If your QL system is using an emulator,
+ like me,
+ then omit the 
 \begin_inset Flex OptionName
 status open
 
@@ -2977,8 +3097,10 @@ fpc-ql
 
 \end_inset
 
- command, I got a warning that it couldn't find the unit files used, specificall
-y, the 
+ command,
+ I got a warning that it couldn't find the unit files used,
+ specifically,
+ the 
 \begin_inset Flex UnitName
 status open
 
@@ -2989,8 +3111,7 @@ system
 \end_inset
 
  unit.
- Debugging the compilation command showed that it was looking for unit files
- in a subdirectory named 
+ Debugging the compilation command showed that it was looking for unit files in a subdirectory named 
 \begin_inset Flex DirectoryName
 status open
 
@@ -3011,7 +3132,8 @@ m68k/sinclairql
 \end_inset
 
 .
- I eventually tracked this down, with the help of the 
+ I eventually tracked this down,
+ with the help of the 
 \begin_inset Flex OptionName
 status open
 
@@ -3021,7 +3143,8 @@ status open
 
 \end_inset
 
- compilation option, to the presence of a rogue 
+ compilation option,
+ to the presence of a rogue 
 \begin_inset Flex FileName
 status open
 
@@ -3042,9 +3165,10 @@ $HOME
 \end_inset
 
  directory.
- When I renamed this file, the problems went away.
- I have no idea how or why that file was present, it may have been there
- for quite some time.
+ When I renamed this file,
+ the problems went away.
+ I have no idea how or why that file was present,
+ it may have been there for quite some time.
 \end_layout
 
 \begin_layout Section
@@ -3052,8 +3176,10 @@ Building Your First QL Program
 \end_layout
 
 \begin_layout Standard
-Now, test the build.
- In the following, I've used the 
+Now,
+ test the build.
+ In the following,
+ I've used the 
 \begin_inset Flex OptionName
 status open
 
@@ -3064,8 +3190,8 @@ status open
 \end_inset
 
  option to tell the compiler to compile for a QL.
- If you added the option to the configuration file, there's no need to use
- it here.
+ If you added the option to the configuration file,
+ there's no need to use it here.
 \end_layout
 
 \begin_layout Standard
@@ -3081,12 +3207,55 @@ cd ~/SourceCode/Pascal
 
 \begin_layout Plain Layout
 
-fpc-ql -Tsinclairql hello.pp
+\end_layout
+
+\begin_layout Plain Layout
+
+## For emulators:
+\end_layout
+
+\begin_layout Plain Layout
+
+fpc-ql -Tsinclairql hello.pas
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+## For a normal QL.
+ You will need to convert hello.exe
+\end_layout
+
+\begin_layout Plain Layout
+
+## to an executable before running.
+\end_layout
+
+\begin_layout Plain Layout
+
+fpc-ql -Tsinclairql -WQxtcc hello.pas
+\end_layout
+
+\begin_layout Plain Layout
+
 \end_layout
 
 \end_inset
 
 
+\end_layout
+
+\begin_layout Standard
+You might,
+ if you have an older version of 
+\shape italic
+vlink
+\shape default
+,
+ see this warning message:
 \end_layout
 
 \begin_layout Standard
@@ -3097,8 +3266,8 @@ status open
 
 \begin_layout Plain Layout
 
-Warning 22: Attributes of section .text were changed from r-x- in Linker
- Script <link15795.res> to rwx- in hello.o.
+Warning 22:
+ Attributes of section .text were changed from r-x- in Linker Script <link15795.res> to rwx- in hello.o.
  
 \end_layout
 
@@ -3108,10 +3277,14 @@ Warning 22: Attributes of section .text were changed from r-x- in Linker
 \end_layout
 
 \begin_layout Standard
-You can safely ignore the warning if it appears, later versions of the linker
- no longer produce the message.
- On Linux it's easy to determine if the correct file has been created provided
- the option to use an XTcc trailer was specified in the configuration file,
+You can safely ignore the warning if it appears,
+ later versions of the linker no longer produce the message.
+ 
+\end_layout
+
+\begin_layout Standard
+On Linux it's easy to determine if the correct format of the executable file has been created.
+ If the option to use an XTcc trailer was specified in the configuration file,
  or at compile time with the 
 \begin_inset Flex OptionName
 status open
@@ -3122,7 +3295,8 @@ status open
 
 \end_inset
 
- option:
+ option,
+ you should see this:
 \end_layout
 
 \begin_layout Standard
@@ -3149,7 +3323,8 @@ status open
 
 \begin_layout Plain Layout
 
-hello.exe: QDOS executable 'FPC_PROG' 
+hello.exe:
+ QDOS executable 'FPC_PROG' 
 \end_layout
 
 \end_inset
@@ -3168,7 +3343,9 @@ hello.exe
 
 \end_inset
 
-, it's a QDOS executable and since FPC version 3.3.1, the job name is 
+,
+ it's a QDOS executable and since FPC version 3.3.1,
+ the job name is 
 \begin_inset Quotes eld
 \end_inset
 
@@ -3197,7 +3374,8 @@ xxxx
 but only after the job is executing
 \emph default
 .
- Until then, the job name in the file on disc is still 
+ Until then,
+ the job name in the file on disc is still 
 \begin_inset Quotes eld
 \end_inset
 
@@ -3227,7 +3405,9 @@ target "https://wiki.freepascal.org/Sinclair_QL#Job_Name"
 
 \end_inset
 
-, if you wish, using the QL specific functions 
+,
+ if you wish,
+ using the QL specific functions 
 \begin_inset Flex FunctionName
 status open
 
@@ -3237,7 +3417,8 @@ SetQLJobName()
 
 \end_inset
 
-, and retrieve the job name with 
+,
+ and retrieve the job name with 
 \begin_inset Flex FunctionName
 status open
 
@@ -3262,7 +3443,9 @@ GetQLJobNamePtr()
 \end_layout
 
 \begin_layout Standard
-On the other hand, if you are using the default header option, 
+On the other hand,
+ if you are using the default header option,
+ 
 \begin_inset Flex OptionName
 status open
 
@@ -3272,8 +3455,9 @@ status open
 
 \end_inset
 
-, explicitly or otherwise, then the following will show you that it is a
- QDOS executable (for the various emulators that can handle it of course!)
+,
+ explicitly or by default if omitted,
+ then the following will show you that it is a QDOS executable (for the various emulators that can handle it of course!)
 \end_layout
 
 \begin_layout Standard
@@ -3300,7 +3484,8 @@ status open
 
 \begin_layout Plain Layout
 
-0000000   ] ! Q D O S    F i l e    H e a d 
+0000000   ] !
+ Q D O S    F i l e    H e a d 
 \end_layout
 
 \begin_layout Plain Layout
@@ -3325,7 +3510,8 @@ status open
 
 
 \backslash
-note{In the following descriptions, I will use the term 
+note{In the following descriptions,
+ I will use the term 
 \backslash
 texttt{
 \backslash
@@ -3338,7 +3524,7 @@ _DIR
 }} wherever I need to specify the location where the cross compiler is installed.
  In my case this is 
 \backslash
-texttt{/home/norman/bin} and the subdirectories beneath.
+texttt{/home/norman} and the subdirectories beneath.
  Please use the location appropriate to your own system.}
 \end_layout
 
@@ -3354,14 +3540,14 @@ From time to time there will be updates to the FPC code.
 Git
 \emph default
  we can keep our local copy of the source up to date.
- Please be aware that it is seriously advisable to rebuild the cross compiler
- and reinstall it, any time that you update the source code.
+ Please be aware that it is seriously advisable to rebuild the cross compiler and reinstall it,
+ any time that you update the source code.
  I have found that the following steps are best followed:
 \end_layout
 
 \begin_layout Itemize
-Set up the installation location for my system, yours should be as per your
- system:
+Set up the installation location for my system,
+ yours should be as per your system:
 \end_layout
 
 \begin_deeper
@@ -3388,8 +3574,8 @@ export QLFPC_DIR=/home/norman/bin
 
 \end_deeper
 \begin_layout Itemize
-If you have made any changes to the RTL or QL Units, then take a backup
- as a patch file:
+If you have made any changes to the RTL or QL Units,
+ then take a backup as a patch file:
 \begin_inset listings
 lstparams "language=bash,numbers=left,basicstyle={\ttfamily},breaklines=true,showstringspaces=false,backgroundcolor={\color{codeColour}},breakautoindent=true"
 inline false
@@ -3406,7 +3592,8 @@ cd ~/SourceCode/fpc
 
 \begin_layout Plain Layout
 
-## What has changed? Note the relevant commit identifiers.
+## What has changed?
+ Note the relevant commit identifiers.
 \end_layout
 
 \begin_layout Plain Layout
@@ -3421,7 +3608,8 @@ git log
 \begin_layout Plain Layout
 
 ## Create a patch file.
- NOTE, -one not -ell below!
+ NOTE,
+ -one not -ell below!
 \end_layout
 
 \begin_layout Plain Layout
@@ -3457,10 +3645,14 @@ git pull
 \end_layout
 
 \begin_layout Itemize
-Clean, build and reinstall the compiler.
- We need to do this to be sure that the plain vanilla compiler source will
- compile, without errors, before we start making changes.
- Obviously, replace my installation location, 
+Clean,
+ build and reinstall the compiler.
+ We need to do this to be sure that the plain vanilla compiler source will compile,
+ without errors,
+ before we start making changes.
+ Obviously,
+ replace my installation location,
+ 
 \begin_inset Flex DirectoryName
 status open
 
@@ -3470,7 +3662,8 @@ status open
 
 \end_inset
 
-, also known as the 
+,
+ also known as the 
 \begin_inset Flex ConstantName
 status open
 
@@ -3480,7 +3673,8 @@ FPC_INSTALL_DIR
 
 \end_inset
 
- later on in this document, with your own location:
+ later on in this document,
+ with your own location:
 \begin_inset listings
 lstparams "language=bash,numbers=left,basicstyle={\ttfamily},breaklines=true,showstringspaces=false,backgroundcolor={\color{codeColour}},breakautoindent=true"
 inline false
@@ -3514,8 +3708,8 @@ make crossinstall OS_TARGET=sinclairql CPU_TARGET=m68k
 \end_layout
 
 \begin_layout Itemize
-If you created a patch file, reapply your changes to the newly updated source
- code:
+If you created a patch file,
+ reapply your changes to the newly updated source code:
 \begin_inset listings
 lstparams "language=bash,numbers=left,basicstyle={\ttfamily},breaklines=true,showstringspaces=false,backgroundcolor={\color{codeColour}},breakautoindent=true"
 inline false
@@ -3560,7 +3754,14 @@ make rtl_cleanall OS_TARGET=sinclairql CPU_TARGET=m68k
 
 \begin_layout Plain Layout
 
-make rtl_all RELEASE=1 FPC=fpc-ql OS_TARGET=sinclairql CPU_TARGET=m68k
+make rtl_all RELEASE=1 FPC=fpc-ql OS_TARGET=sinclairql 
+\backslash
+
+\end_layout
+
+\begin_layout Plain Layout
+
+     CPU_TARGET=m68k
 \end_layout
 
 \begin_layout Plain Layout
@@ -3574,7 +3775,7 @@ make rtl_all RELEASE=1 FPC=fpc-ql OS_TARGET=sinclairql CPU_TARGET=m68k
 
 \begin_layout Plain Layout
 
-cd ${QLFPC_DIR}/lib/fpc/n.n.n/units/m68k-sinclairql/rtl
+cd ${QLFPC_DIR}/lib/fpc/n.n.n/units/m68k-sinclairql/rtl 	# 3.3.1
 \end_layout
 
 \begin_layout Plain Layout
@@ -3611,7 +3812,14 @@ make packages_clean OS_TARGET=sinclairql CPU_TARGET=m68k
 
 \begin_layout Plain Layout
 
-make packages RELEASE=1 FPC=fpc-ql OS_TARGET=sinclairql CPU_TARGET=m68k
+make packages RELEASE=1 FPC=fpc-ql OS_TARGET=sinclairql 
+\backslash
+
+\end_layout
+
+\begin_layout Plain Layout
+
+    CPU_TARGET=m68k
 \end_layout
 
 \begin_layout Plain Layout
@@ -3625,7 +3833,7 @@ make packages RELEASE=1 FPC=fpc-ql OS_TARGET=sinclairql CPU_TARGET=m68k
 
 \begin_layout Plain Layout
 
-cd ${QLFPC_DIR}/lib/fpc/n.n.n/units/m68k-sinclairql/qlunits/ 
+cd ${QLFPC_DIR}/lib/fpc/n.n.n/units/m68k-sinclairql/qlunits/  	# 3.3.1
 \end_layout
 
 \begin_layout Plain Layout
@@ -3639,7 +3847,8 @@ cp -v ~/SourceCode/fpc/packages/qlunits/units/m68k-sinclairql/* ./
 
 \begin_layout Plain Layout
 
-# Just in case, get back to the source:
+# Just in case,
+ get back to the source:
 \end_layout
 
 \begin_layout Plain Layout
@@ -3653,12 +3862,13 @@ cd ~/SourceCode/fpc
 \end_layout
 
 \begin_layout Standard
-The procedures for compiling and installing the RTL and Units is described
- in detail below.
+The procedures for compiling and installing the RTL and Units is described in detail below.
 \end_layout
 
 \begin_layout Standard
-And yes, I know, there's a lot of 
+And yes,
+ I know,
+ there's a lot of 
 \begin_inset Flex CommandName
 status open
 
@@ -3686,7 +3896,8 @@ cd -
 
 
 \family default
- to swap back to where I came from, but it might get mistaken for 
+ to swap back to where I came from,
+ but it might get mistaken for 
 \family typewriter
 
 \begin_inset Flex CommandName
@@ -3702,7 +3913,8 @@ cd ~
 
 
 \family default
- in some fonts, so I thought I better be explicit.
+ in some fonts,
+ so I thought I better be explicit.
 \end_layout
 
 \begin_layout Section
@@ -3711,14 +3923,14 @@ When the Cross Compiler Version Changes
 
 \begin_layout Standard
 From time to time the host compiler version may change.
- This change is pretty much invisible to you and the instructions in Chapter
- 
+ This change is pretty much invisible to you and the instructions in Chapter 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "chap:Installing-the-Host-Compiler"
 plural "false"
 caps "false"
 noprefix "false"
+nolink "false"
 
 \end_inset
 
@@ -3729,28 +3941,30 @@ reference "chap:Installing-the-Host-Compiler"
 plural "false"
 caps "false"
 noprefix "false"
+nolink "false"
 
 \end_inset
 
-, cover that possibility.
- However, just because the host compiler version has changed doesn't automatical
-ly mean that cross compiler versions change at the same time.
+,
+ cover that possibility.
+ However,
+ just because the host compiler version has changed doesn't automatically mean that cross compiler versions change at the same time.
  How do I know this?
 \end_layout
 
 \begin_layout Standard
-I was running with version 3.2.0 on my Linux host and version 3.3.1 for my cross
- compiler for the Sinclair QL.
+I was running with version 3.2.0 on my Linux host and version 3.3.1 for my cross compiler for the Sinclair QL.
  So my cross compiler is ahead of the host.
- However, I eventually updated the Linux host compiler to version 3.2.2 but
- the cross compiler is still ahead at version 3.3.1, even after I updated
- the source and rebuilt it.
+ However,
+ I eventually updated the Linux host compiler to version 3.2.2 but the cross compiler is still ahead at version 3.3.1,
+ even after I updated the source and rebuilt it.
 \end_layout
 
 \begin_layout Standard
-Eventually, however, the cross compiler source will be brought up to date
- with the host compiler versions (or indeed, vice versa!) and things will
- start to go wrong for you after you run the 
+Eventually,
+ however,
+ the cross compiler source will be brought up to date with the host compiler versions (or indeed,
+ vice versa!) and things will start to go wrong for you after you run the 
 \begin_inset listings
 lstparams "basicstyle={\ttfamily},showstringspaces=false"
 inline true
@@ -3764,8 +3978,7 @@ git pull
 \end_inset
 
  command.
- This is because the cross compiler executables are always located in a
- subdirectory which is named for the cross compiler version.
+ This is because the cross compiler executables are always located in a subdirectory which is named for the cross compiler version.
  In my case it's 
 \begin_inset Flex DirectoryName
 status open
@@ -3776,8 +3989,9 @@ status open
 
 \end_inset
 
- so when the version number changes to 3.3.2, for example, that will change
- to
+ so when the version number changes to 3.3.2,
+ for example,
+ that will change to
 \begin_inset Flex DirectoryName
 status open
 
@@ -3809,7 +4023,8 @@ git pull
 
 \end_inset
 
- command and rebuilding the cross compiler, check where the output has gone.
+ command and rebuilding the cross compiler,
+ check where the output has gone.
  Have a look in your installation directory (set by 
 \begin_inset Flex EnvVar
 status open
@@ -3830,7 +4045,8 @@ make crossinstall
 
 \end_inset
 
- command you used to install it), under 
+ command you used to install it),
+ under 
 \begin_inset Flex DirectoryName
 status open
 
@@ -3840,7 +4056,9 @@ lib/fpc
 
 \end_inset
 
- and see what, if any, new subdirectories have been created.
+ and see what,
+ if any,
+ new subdirectories have been created.
 \end_layout
 
 \begin_layout Standard
@@ -3851,12 +4069,7 @@ status open
 
 \begin_layout Plain Layout
 
-cd ${QLFPC_DIR}/lib/fpc
-\end_layout
-
-\begin_layout Plain Layout
-
-ls -l
+ls -l ${QLFPC_DIR}/lib/fpc
 \end_layout
 
 \end_inset
@@ -3886,8 +4099,9 @@ drwxrwxr-x 2 norman norman 4096 May 29 11:24 etc
 \end_layout
 
 \begin_layout Standard
-In this case, nothing new has been created, but let's say that there was
- a new 
+In this case,
+ nothing new has been created,
+ but let's say that there was a new 
 \begin_inset Flex DirectoryName
 status open
 
@@ -3913,12 +4127,7 @@ status open
 
 \begin_layout Plain Layout
 
-cd ${QLFPC_DIR}/bin
-\end_layout
-
-\begin_layout Plain Layout
-
-ls -l fpc-ql
+ls -l ${QLFPC_DIR}/fpc-ql
 \end_layout
 
 \end_inset
@@ -3934,8 +4143,7 @@ status open
 
 \begin_layout Plain Layout
 
-lrwxrwxrwx 1 norman norman 24 May 15 14:32 /home/norman/bin/fpc-ql -> lib/fpc/3.3.
-1/ppcross68k
+lrwxrwxrwx 1 norman norman 24 May 15 14:32 /home/norman/bin/fpc-ql -> lib/fpc/3.3.1/ppcross68k
 \end_layout
 
 \end_inset
@@ -3944,7 +4152,8 @@ lrwxrwxrwx 1 norman norman 24 May 15 14:32 /home/norman/bin/fpc-ql -> lib/fpc/3.
 \end_layout
 
 \begin_layout Standard
-So my cross compiler, which I wanted naming to 
+So my cross compiler,
+ which I wanted naming to 
 \begin_inset Flex ApplicationName
 status open
 
@@ -3954,7 +4163,8 @@ fpc-ql
 
 \end_inset
 
-, is obviously still using the old 
+,
+ is obviously still using the old 
 \begin_inset Flex DirectoryName
 status open
 
@@ -3972,12 +4182,12 @@ Update Symbolic Links
 \end_layout
 
 \begin_layout Standard
-Windows users would probably just copy the various files from the 3.3.2
+Windows users would probably just copy the various files from the 
 \begin_inset Flex DirectoryName
 status open
 
 \begin_layout Plain Layout
-
+3.3.2
 \end_layout
 
 \end_inset
@@ -3994,7 +4204,7 @@ status open
 
 \begin_layout Plain Layout
 
-cd ${QLFPC_DIR}/bin
+cd ${QLFPC_DIR}
 \end_layout
 
 \begin_layout Plain Layout
@@ -4025,8 +4235,7 @@ status open
 
 \begin_layout Plain Layout
 
-lrwxrwxrwx 1 norman norman 24 May 29 11:10 /home/norman/bin/fpc-ql -> lib/fpc/3.3.
-2/ppcross68k
+lrwxrwxrwx 1 norman norman 24 May 29 11:10 /home/norman/bin/fpc-ql -> lib/fpc/3.3.2/ppcross68k
 \end_layout
 
 \end_inset
@@ -4035,7 +4244,8 @@ lrwxrwxrwx 1 norman norman 24 May 29 11:10 /home/norman/bin/fpc-ql -> lib/fpc/3.
 \end_layout
 
 \begin_layout Standard
-So, I can now see that 
+So,
+ I can now see that 
 \begin_inset Flex ApplicationName
 status open
 
@@ -4102,18 +4312,25 @@ Confirmed.
 \end_layout
 
 \begin_layout Standard
-Note: This section was only an example, the cross compiler, at the date
- of writing
+
+\series bold
+Note
+\series default
+:
+ This section was only an example,
+ the cross compiler,
+ at the date of writing
 \begin_inset Foot
 status open
 
 \begin_layout Plain Layout
-April 2023
+July 2026
 \end_layout
 
 \end_inset
 
-, is still at version 3.3.1.
+,
+ is still at version 3.3.1.
  Please don't go looking for 3.3.2 just yet!
 \end_layout
 
@@ -4122,7 +4339,8 @@ Compiling QL Pascal programs
 \end_layout
 
 \begin_layout Standard
-When writing your source code, standard Pascal requires that the first 
+When writing your source code,
+ standard Pascal requires that the first 
 \begin_inset Quotes eld
 \end_inset
 
@@ -4144,8 +4362,11 @@ Program ProgramName( ...
 
 \end_inset
 
-, however, FPC doesn't require you to have this line at all.
- On the QL, the executable's job name will be determined from the 
+,
+ however,
+ FPC doesn't require you to have this line at all.
+ On the QL,
+ the executable's job name will be determined from the 
 \begin_inset listings
 lstparams "language=bash,basicstyle={\ttfamily},showstringspaces=false,backgroundcolor={\color{mayablue}},breakautoindent=true"
 inline true
@@ -4159,11 +4380,14 @@ Program
 \end_inset
 
  line.
- If one is present, the job name will be as per the given program name 
+ If one is present,
+ the job name will be as per the given program name 
 \emph on
 at run time
 \emph default
-, if that line is not present, the default job name will be 
+,
+ if that line is not present,
+ the default job name will be 
 \begin_inset Quotes eld
 \end_inset
 
@@ -4172,11 +4396,11 @@ FPC_PROG
 \end_inset
 
 .
- There are some special QL functions that can be used to set or retrieve
- the job name.
+ There are some special QL functions that can be used to set or retrieve the job name.
  This may be useful if you are writing a file processing task of some kind,
  and you wish to add the current filename to the job's name.
- You are limited to 48 characters maximum though, so don't go too overboard!
+ You are limited to 48 characters maximum though,
+ so don't go too overboard!
 \end_layout
 
 \begin_layout Standard
@@ -4191,14 +4415,15 @@ status open
 
 \begin_layout Plain Layout
 
-Function SetQLJobName(const s: string): longint;
+Function SetQLJobName(const s:
+ string):
+ longint;
 \end_layout
 
 \end_inset
 
- This function sets the job's name from a Pascal string and returns the
- number of characters successfully set as the Job name, or -1 if there was
- an error.
+ This function sets the job's name from a Pascal string and returns the number of characters successfully set as the Job name,
+ or -1 if there was an error.
 \end_layout
 
 \begin_layout Itemize
@@ -4209,13 +4434,14 @@ status open
 
 \begin_layout Plain Layout
 
-Function GetQLJobName: string;
+Function GetQLJobName:
+ string;
 \end_layout
 
 \end_inset
 
- This function returns the current job name as a Pascal string, or empty
- string if there was an error.
+ This function returns the current job name as a Pascal string,
+ or empty string if there was an error.
 \end_layout
 
 \begin_layout Itemize
@@ -4226,17 +4452,19 @@ status open
 
 \begin_layout Plain Layout
 
-Function GetQLJobNamePtr: pointer;
+Function GetQLJobNamePtr:
+ pointer;
 \end_layout
 
 \end_inset
 
- This function returns a pointer to the Job name stored as a QL string (2
- byte length + series of characters), or nil if there was an error.
+ This function returns a pointer to the Job name stored as a QL string (2 byte length + series of characters),
+ or nil if there was an error.
 \end_layout
 
 \begin_layout Standard
-To compile a QL program, all you have to do is:
+To compile a QL program,
+ all you have to do is:
 \end_layout
 
 \begin_layout Standard
@@ -4252,7 +4480,7 @@ cd ~/SourceCode/Pascal
 
 \begin_layout Plain Layout
 
-fpc-ql -Tsinclairql hello.pp
+fpc-ql -Tsinclairql hello.pas
 \end_layout
 
 \end_inset
@@ -4261,7 +4489,8 @@ fpc-ql -Tsinclairql hello.pp
 \end_layout
 
 \begin_layout Standard
-As mentioned, if you added the 
+As mentioned,
+ if you added the 
 \begin_inset Flex OptionName
 status open
 
@@ -4271,17 +4500,17 @@ status open
 
 \end_inset
 
- option to the configuration file, you don't have to specify it here.
+ option to the configuration file,
+ you don't have to specify it here.
  I need to compile code for both Linux and the QL.
- I test my dodgy Pascal code on Linux first to be sure it compiles and runs
- correctly, then I repeat the operation for the QL.
+ I test my dodgy Pascal code on Linux first to be sure it compiles and runs correctly,
+ then I repeat the operation for the QL.
  At least then I know that if it worked on Linux but doesn't on the QL,
  then it's the QL RTL that's most likely to be the cause.
 \end_layout
 
 \begin_layout Standard
-You can safely ignore the warning about the attributes at the end of the
- compilation output.
+You can safely ignore the warning about the attributes at the end of the compilation output.
  
 \end_layout
 
@@ -4296,8 +4525,7 @@ hello.exe
 
 \end_inset
 
- and will have a built in file header with details of the data space required
- unless you specified the 
+ and will have a built in file header with details of the data space required unless you specified the 
 \begin_inset Flex OptionName
 status open
 
@@ -4308,8 +4536,7 @@ status open
 \end_inset
 
  option either on the command line or in the configuration file.
- There are two options which control how the executable file for the QL
- gets it's data space information:
+ There are two options which control how the executable file for the QL gets it's data space information:
 \end_layout
 
 \begin_layout Itemize
@@ -4323,8 +4550,8 @@ status open
 \end_inset
 
  Set metadata to QDOS File Header style.
- A header record will be added to the file and QPC or other emulators can
- use this to execute the file directly, even from a 
+ A header record will be added to the file and QPC or other emulators can use this to execute the file directly,
+ even from a 
 \begin_inset Flex DirectoryName
 status open
 
@@ -4349,12 +4576,12 @@ status open
 \end_inset
 
  Set metadata to XTcc style.
- This will be needed on an actual QL and you will need a utility to convert
- the file to an executable.
+ This will be needed on an actual QL and you will need a utility to convert the file to an executable.
 \end_layout
 
 \begin_layout Standard
-To compile the example program, there are a number of options:
+To compile the example program,
+ there are a number of options:
 \end_layout
 
 \begin_layout Itemize
@@ -4365,7 +4592,7 @@ status open
 
 \begin_layout Plain Layout
 
-fpc-ql hello.pp
+fpc-ql hello.pas
 \end_layout
 
 \end_inset
@@ -4380,10 +4607,10 @@ status open
 
 \end_inset
 
- option is to be found in the configuration file, if not, it will fail to
- compile.
- The executable will be created with header details embedded into the executable
- file ready for use on various QL Emulators.
+ option is to be found in the configuration file,
+ if not,
+ it will fail to compile.
+ The executable will be created with header details embedded into the executable file ready for use on various QL Emulators.
 \end_layout
 
 \begin_layout Itemize
@@ -4394,13 +4621,14 @@ status open
 
 \begin_layout Plain Layout
 
-fpc-ql -WQqhdr hello.pp
+fpc-ql -WQqhdr hello.pas
 \end_layout
 
 \end_inset
 
- This is exactly the same as the variant above, however, it will override
- any 
+ This is exactly the same as the variant above,
+ however,
+ it will override any 
 \begin_inset Flex OptionName
 status open
 
@@ -4421,13 +4649,12 @@ status open
 
 \begin_layout Plain Layout
 
-fpc-ql -Tsinclairql hello.pp
+fpc-ql -Tsinclairql hello.pas
 \end_layout
 
 \end_inset
 
- this variant explicitly specifies that the file must be compiled for the
- Sinclair QL and will overwrite any existing 
+ this variant explicitly specifies that the file must be compiled for the Sinclair QL and will overwrite any existing 
 \begin_inset Flex OptionName
 status open
 
@@ -4438,8 +4665,7 @@ status open
 \end_inset
 
  option in the configuration file.
- The executable will be created with header details embedded into the executable
- file ready for use on various QL Emulators.
+ The executable will be created with header details embedded into the executable file ready for use on various QL Emulators.
 \end_layout
 
 \begin_layout Itemize
@@ -4450,13 +4676,14 @@ status open
 
 \begin_layout Plain Layout
 
-fpc-ql -Tsinclairql -WQqhdr hello.pp
+fpc-ql -Tsinclairql -WQqhdr hello.pas
 \end_layout
 
 \end_inset
 
- This is exactly the same as the variant above, however, it will override
- any 
+ This is exactly the same as the variant above,
+ however,
+ it will override any 
 \begin_inset Flex OptionName
 status open
 
@@ -4477,15 +4704,13 @@ status open
 
 \begin_layout Plain Layout
 
-fpc-ql -WQxtcc hello.pp
+fpc-ql -WQxtcc hello.pas
 \end_layout
 
 \end_inset
 
- The executable will be created with an XTcc trailer record holding data
- space details.
- This variant is suitable for use on an actual QL after the executable has
- been processed by an XTcc utility.
+ The executable will be created with an XTcc trailer record holding data space details.
+ This variant is suitable for use on an actual QL after the executable has been processed by an XTcc utility.
 \end_layout
 
 \begin_layout Itemize
@@ -4496,13 +4721,14 @@ status open
 
 \begin_layout Plain Layout
 
-fpc-ql -Tsinclairql -WQxtcc hello.pp
+fpc-ql -Tsinclairql -WQxtcc hello.pas
 \end_layout
 
 \end_inset
 
- This is exactly the same as the variant above, however, it will override
- any 
+ This is exactly the same as the variant above,
+ however,
+ it will override any 
 \begin_inset Flex OptionName
 status open
 
@@ -4512,8 +4738,7 @@ status open
 
 \end_inset
 
- option in the configuration file and force an XTcc trailer record to be
- used.
+ option in the configuration file and force an XTcc trailer record to be used.
 \end_layout
 
 \begin_layout Chapter
@@ -4535,10 +4760,8 @@ status open
 \end_layout
 
 \begin_layout Standard
-These programs are best suited to the various QL emulators which know about
- the embedded header with the data space details.
- I use QPC and it copes happily with me executing these programs directly
- from the 
+These programs are best suited to the various QL emulators which know about the embedded header with the data space details.
+ I use QPC and it copes happily with me executing these programs directly from the 
 \begin_inset Flex DirectoryName
 status open
 
@@ -4549,8 +4772,9 @@ dos_
 \end_inset
 
  drive.
- I don't have to make any changes, or somehow tell QPC that although the
- file is executing from a non-QL device, it still works perfectly.
+ I don't have to make any changes,
+ or somehow tell QPC that although the file is executing from a non-QL device,
+ it still works perfectly.
  
 \end_layout
 
@@ -4571,8 +4795,8 @@ ex dos1_hello.exe
 \end_layout
 
 \begin_layout Standard
-And that's all there is to it! A 512 by 256 window will open and display
- the following:
+And that's all there is to it!
+ A 512 by 256 window will open and display the following:
 \end_layout
 
 \begin_layout Standard
@@ -4611,14 +4835,13 @@ status open
 \end_layout
 
 \begin_layout Standard
-The executable file which the cross compiler created can be copied over
- to a QL (or QPC or other emulator) and converted into a 
+The executable file which the cross compiler created can be copied over to a QL (or QPC or other emulator) and converted into a 
 \emph on
 proper
 \emph default
  QDOS executable.
- In my case I can use my XTcc utility from my somewhat irregular Assembly
- Language eMagazine, Issue 6 – available from 
+ In my case I can use my XTcc utility from my somewhat irregular Assembly Language eMagazine,
+ Issue 6 – available from 
 \begin_inset CommandInset href
 LatexCommand href
 name "My GitHub"
@@ -4643,7 +4866,8 @@ target "https://github.com/NormanDunbar/QLAssemblyLanguageMagazine/releases/tag/
 
 \end_inset
 
-, to read the details and write out an executable file.
+,
+ to read the details and write out an executable file.
 \end_layout
 
 \begin_layout Standard
@@ -4663,7 +4887,8 @@ ex win1_source_xtcc_xtcc_bin,ram1_hello.exe
 \end_layout
 
 \begin_layout Standard
-The file, 
+The file,
+ 
 \begin_inset Flex FileName
 status open
 
@@ -4722,16 +4947,1121 @@ Success!
 \end_layout
 
 \begin_layout Chapter
+Updating the Official Repository
+\begin_inset CommandInset label
+LatexCommand label
+name "chap:Updating-the-Official-repository"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+If all you want is to have a Free Pascal cross compiler to enable you to build QL programs,
+ in Pascal,
+ on your PC,
+ to run on your QL,
+ then you can safely ignore this chapter.
+ If,
+ on the other hand,
+ your intention is to help develop the Free Pascal cross compiler for the QL,
+ then read on.
+ 
+\end_layout
+
+\begin_layout Standard
+None of us QLers have write access to the main Free Pascal Compiler repository,
+ and to this end,
+ we should really be cloning the official repository,
+ hosted on GitLab,
+ and then pulling that code down to our local system and working on it there.
+ Once we are done,
+ fully tested and so on,
+ we can commit our changes and push them back to our own repository on GitLab.
+ Once this has been done,
+ we can raise a 
+\emph on
+Pull Request
+\emph default
+ so that the official repository maintainers can have a look at our changes and decide which,
+ if any,
+ to include in the next release.
+\end_layout
+
+\begin_layout Standard
+The steps are as follows,
+ when initially setting up your development system:
+\end_layout
+
+\begin_layout Itemize
+Create a GitLab fork of the official repository.
+ This only needs to be done once and requires a GitLab account.
+ 
+\end_layout
+
+\begin_layout Standard
+Once you have a fork of the official repository,
+ you can use it to work on:
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Flex CommandName
+status open
+
+\begin_layout Plain Layout
+git clone
+\end_layout
+
+\end_inset
+
+ your GitLab repository onto your local PC .
+ You would do this 
+\emph on
+instead
+\emph default
+ of cloning the official repository,
+ as outlined way back near the start of this document.
+ 
+\end_layout
+
+\begin_layout Itemize
+Update your identity and line ending settings to prevent problems with Windows/Mac/Linux line endings in the source files.
+\end_layout
+
+\begin_layout Itemize
+Do your work,
+ make changes,
+ add units,
+ fix the RTL etc.
+\end_layout
+
+\begin_layout Itemize
+Commit your changes with 
+\emph on
+meaningful commit messages
+\emph default
+.
+\end_layout
+
+\begin_layout Itemize
+Push the changes back to your own repository on GitLab.
+\end_layout
+
+\begin_layout Itemize
+Raise a pull request to allow the official repository maintainers to merge your changes.
+\end_layout
+
+\begin_layout Standard
+The remainder of this chapter describes each of the above steps in detail.
+\end_layout
+
+\begin_layout Section
+Fork the Official Repository
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+note{This section assumes that you already have a GitLab account.}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+In your browser,
+ go to 
+\begin_inset CommandInset href
+LatexCommand href
+target "https://gitlab.com/freepascal.org/fpc/source"
+
+\end_inset
+
+ and sign in to your own GitLab account as normal.
+ You might need to hit the back button if you get redirected off of the FPC repository page.
+ Over on the right side,
+ you will see 
+\begin_inset Quotes eld
+\end_inset
+
+Fork
+\begin_inset Quotes erd
+\end_inset
+
+ followed by a number,
+ click 
+\begin_inset Quotes eld
+\end_inset
+
+Fork
+\begin_inset Quotes erd
+\end_inset
+
+,
+ and on the screen that appears:
+\end_layout
+
+\begin_layout Itemize
+Leave 
+\begin_inset Quotes eld
+\end_inset
+
+Project Name
+\begin_inset Quotes erd
+\end_inset
+
+ unchanged.
+\end_layout
+
+\begin_layout Itemize
+Choose your own name in the "Namespace" drop down,
+ next to the 
+\begin_inset Quotes eld
+\end_inset
+
+Project URL
+\begin_inset Quotes erd
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+Change the 
+\begin_inset Quotes eld
+\end_inset
+
+Project Slug
+\begin_inset Quotes erd
+\end_inset
+
+ to 
+\begin_inset Quotes eld
+\end_inset
+
+FPC_Source
+\begin_inset Quotes erd
+\end_inset
+
+.
+ You cannot use a slug that is already used elsewhere,
+ it seems.
+ If you get a message that 
+\begin_inset Quotes eld
+\end_inset
+
+an error has occurred
+\begin_inset Quotes erd
+\end_inset
+
+,
+ try changing your slug.
+\end_layout
+
+\begin_layout Itemize
+Ensure the 
+\begin_inset Quotes eld
+\end_inset
+
+Visibility Level
+\begin_inset Quotes erd
+\end_inset
+
+ is set to 
+\begin_inset Quotes eld
+\end_inset
+
+Public
+\begin_inset Quotes erd
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+Click the 
+\begin_inset Quotes eld
+\end_inset
+
+Fork project
+\begin_inset Quotes erd
+\end_inset
+
+ button.
+\end_layout
+
+\begin_layout Standard
+If no errors occur,
+ and unfortunately,
+ the error messages appear to be of no help when they do,
+ the fork should take a couple of minutes.
+ There is,
+ at the time of writing,
+ 26 years of updates to clone!
+\end_layout
+
+\begin_layout Standard
+Once forked,
+ return to your own GitLab account again – click the fox head at the top left – and click on the newly created repository.
+ Use the blue 
+\begin_inset Quotes eld
+\end_inset
+
+clone
+\begin_inset Quotes erd
+\end_inset
+
+ button to clone the repository,
+ choose ssh or https,
+ as necessary,
+ and copy the URL supplied.
+\end_layout
+
+\begin_layout Standard
+On your PC,
+ change to where you want the clone of your repository to be created then type 
+\begin_inset Flex CommandName
+status open
+
+\begin_layout Plain Layout
+git clone
+\end_layout
+
+\end_inset
+
+ and paste in the copied URL.
+ The repository will be created with the slug name that you gave it when it was forked,
+ 
+\begin_inset Quotes eld
+\end_inset
+
+FPC_Source
+\begin_inset Quotes erd
+\end_inset
+
+ in my case.
+\end_layout
+
+\begin_layout Section
+Update Your Settings
+\end_layout
+
+\begin_layout Standard
+You need to properly identify yourself so that changes you make can be correctly attributed,
+ and traced.
+\end_layout
+
+\begin_layout Standard
+\begin_inset listings
+lstparams "numbers=left,basicstyle={\ttfamily},breaklines=true,showstringspaces=false,backgroundcolor={\color{codeColour}},breakautoindent=true"
+inline false
+status open
+
+\begin_layout Plain Layout
+
+git config --global user.email 
+\begin_inset Quotes eld
+\end_inset
+
+norman@example.com
+\begin_inset Quotes erd
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+This will cause git to use the same email address for 
+\emph on
+all
+\emph default
+ your git repositories.
+ If you wish to use a specific email address exclusively for the Free Pascal repository,
+ then:
+\end_layout
+
+\begin_layout Standard
+\begin_inset listings
+lstparams "numbers=left,basicstyle={\ttfamily},breaklines=true,showstringspaces=false,backgroundcolor={\color{codeColour}},breakautoindent=true"
+inline false
+status open
+
+\begin_layout Plain Layout
+
+cd ~/SourceCode/FPC_Source
+\end_layout
+
+\begin_layout Plain Layout
+
+git config --local user.email 
+\begin_inset Quotes eld
+\end_inset
+
+norman@example.com
+\begin_inset Quotes erd
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+You must be located in the FPC_Source directory before setting your mail address.
+ 
+\end_layout
+
+\begin_layout Standard
+You can,
+ if you wish,
+ set your name also.
+ Again,
+ for all your repositories:
+\end_layout
+
+\begin_layout Standard
+\begin_inset listings
+lstparams "numbers=left,basicstyle={\ttfamily},breaklines=true,showstringspaces=false,backgroundcolor={\color{codeColour}},breakautoindent=true"
+inline false
+status open
+
+\begin_layout Plain Layout
+
+git config --global user.name 
+\begin_inset Quotes eld
+\end_inset
+
+Norman Dunbar
+\begin_inset Quotes erd
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+If you wish to use another name exclusively for the Free Pascal repository,
+ then:
+\end_layout
+
+\begin_layout Standard
+\begin_inset listings
+lstparams "numbers=left,basicstyle={\ttfamily},breaklines=true,showstringspaces=false,backgroundcolor={\color{codeColour}},breakautoindent=true"
+inline false
+status open
+
+\begin_layout Plain Layout
+
+cd ~/SourceCode/FPC_Source
+\end_layout
+
+\begin_layout Plain Layout
+
+git config --local user.name 
+\begin_inset Quotes eld
+\end_inset
+
+Norman Dunbar
+\begin_inset Quotes erd
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Now,
+ adjust the source file line endings for your particular Operating System.
+\end_layout
+
+\begin_layout Standard
+\begin_inset listings
+lstparams "numbers=left,basicstyle={\ttfamily},breaklines=true,showstringspaces=false,backgroundcolor={\color{codeColour}},breakautoindent=true"
+inline false
+status open
+
+\begin_layout Plain Layout
+
+## Linux and MacOS:
+\end_layout
+
+\begin_layout Plain Layout
+
+git config --global core.autocrlf input
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+## Windows:
+\end_layout
+
+\begin_layout Plain Layout
+
+git config --global core.autocrlf true
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Make Your Changes and Commit
+\end_layout
+
+\begin_layout Standard
+You can follow the instructions in the following chapters of this document to update the compiler,
+ RTL and QL Units,
+ as necessary.
+ Just remember to clone your fork of the official repository,
+ rather than cloning the official repository itself.
+ You cannot 
+\begin_inset Flex CommandName
+status open
+
+\begin_layout Plain Layout
+git push
+\end_layout
+
+\end_inset
+
+ changes back to the official repository.
+ I would advise creating a new branch,
+ with a meaningful name,
+ in which to fix/update the code.
+ In my case this would be similar to:
+\end_layout
+
+\begin_layout Standard
+\begin_inset listings
+lstparams "numbers=left,basicstyle={\ttfamily},breaklines=true,showstringspaces=false,backgroundcolor={\color{codeColour}},breakautoindent=true"
+inline false
+status open
+
+\begin_layout Plain Layout
+
+cd ~/SourceCode/FPC_Source
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+## Which branch am I on?
+\end_layout
+
+\begin_layout Plain Layout
+
+git branch
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+* main
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+## Create a new branch called Fix_1.
+\end_layout
+
+\begin_layout Plain Layout
+
+git checkout -b Fix_1
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+Switched to a new branch 'Fix_1'
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+## Which branch am I on NOW?
+\end_layout
+
+\begin_layout Plain Layout
+
+git branch
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+* Fix_1
+\end_layout
+
+\begin_layout Plain Layout
+
+main
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The example shows me switching into my local clone of my fork of the official repository,
+ checking the current branch – main – then checking out a new branch names 
+\begin_inset Quotes eld
+\end_inset
+
+Fix_1
+\begin_inset Quotes erd
+\end_inset
+
+
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+Obviously,
+ 
+\begin_inset Quotes eld
+\end_inset
+
+Fix_1
+\begin_inset Quotes erd
+\end_inset
+
+ is 
+\shape italic
+not
+\shape default
+ a meaningful branch name!
+\end_layout
+
+\end_inset
+
+ to work on.
+\end_layout
+
+\begin_layout Standard
+When you are done making changes,
+ and wish to 
+\begin_inset Flex CommandName
+status open
+
+\begin_layout Plain Layout
+git push
+\end_layout
+
+\end_inset
+
+ the new work to your own repository on GitLab,
+ you will proceed as follows:
+\end_layout
+
+\begin_layout Standard
+\begin_inset listings
+lstparams "numbers=left,basicstyle={\ttfamily},breaklines=true,showstringspaces=false,backgroundcolor={\color{codeColour}},breakautoindent=true"
+inline false
+status open
+
+\begin_layout Plain Layout
+
+## Push committed changes back to my GitLab repository
+\end_layout
+
+\begin_layout Plain Layout
+
+git push
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+fatal:
+ The current branch Fix_1 has no upstream branch.
+ To push the current branch and set the remote as upstream,
+ use
+\end_layout
+
+\begin_layout Plain Layout
+
+    git push --set-upstream origin Fix_1 
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+## Follow the instructions!
+\end_layout
+
+\begin_layout Plain Layout
+
+git push --set-upstream origin Fix_1
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+Enumerating objects:
+ 2805,
+ done.
+\end_layout
+
+\begin_layout Plain Layout
+
+Counting objects:
+ 100% (2805/2805),
+ done.
+\end_layout
+
+\begin_layout Plain Layout
+
+...
+\end_layout
+
+\begin_layout Plain Layout
+
+ * [new branch]            Fix_1 -> Fix_1
+\end_layout
+
+\begin_layout Plain Layout
+
+Branch 'Fix_1' set up to track remote branch 'Fix_1' from 'origin'.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+You are now ready to raise a pull request to have your changes validated and possibly included in the official repository.
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset href
+LatexCommand href
+target "https://wiki.freepascal.org/FPC_git#Git_setup"
+
+\end_inset
+
+ has details of other settings that the Free Pascal project advises may need to be configured.
+\end_layout
+
+\begin_layout Section
+Raise a Pull Request
+\end_layout
+
+\begin_layout Standard
+Once your changes are committed and tested and have been 
+\begin_inset Flex CommandName
+status open
+
+\begin_layout Plain Layout
+git push
+\end_layout
+
+\end_inset
+
+ed back to your own repository,
+ you can raise a pull request to have your changes incorporated into the official repository.
+ You should still be logged in as yourself,
+ and connected to your fork of the FPC Source repository,
+ not the official one.
+\end_layout
+
+\begin_layout Itemize
+On the left side of the repository's home page,
+ click 
+\begin_inset Quotes eld
+\end_inset
+
+Merge Requests
+\begin_inset Quotes erd
+\end_inset
+
+.
+ If that option is not visible,
+ click the 
+\begin_inset Quotes eld
+\end_inset
+
+Pinned
+\begin_inset Quotes erd
+\end_inset
+
+ drop down and it will appear.
+\end_layout
+
+\begin_layout Itemize
+When the main page opens,
+ click the big blue button with the 
+\begin_inset Quotes eld
+\end_inset
+
+Create merge request
+\begin_inset Quotes erd
+\end_inset
+
+ on it.
+\end_layout
+
+\begin_layout Itemize
+On the 
+\begin_inset Quotes eld
+\end_inset
+
+New Merge Request
+\begin_inset Quotes erd
+\end_inset
+
+ page,:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Make sure your repository is named under the Source Branch.
+\end_layout
+
+\begin_layout Itemize
+Select your fix's branch from the drop down.
+\end_layout
+
+\begin_layout Itemize
+Click the 
+\begin_inset Quotes eld
+\end_inset
+
+Compare branches and continue
+\begin_inset Quotes erd
+\end_inset
+
+ button.
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+On the form that appears,
+ fill in the details:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Choose a template—
+are you fixing the compiler or the packages?
+\end_layout
+
+\begin_layout Itemize
+Write a good,
+ proper,
+ description.
+ Use markdown and/or the formatting buttons above the editor.
+\end_layout
+
+\begin_layout Itemize
+Optionally,
+ but apparently preferred,
+ tick the box to squash your commits.
+\end_layout
+
+\begin_layout Itemize
+Click 
+\begin_inset Quotes eld
+\end_inset
+
+Preview
+\begin_inset Quotes erd
+\end_inset
+
+ to make sure the descriptions is looking good.
+ Click 
+\begin_inset Quotes eld
+\end_inset
+
+Continue Editing
+\begin_inset Quotes erd
+\end_inset
+
+ to get back to the editor.
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Click the 
+\begin_inset Quotes eld
+\end_inset
+
+Create Merge Request
+\begin_inset Quotes erd
+\end_inset
+
+ button to finally,
+ create the merge request.
+ From now on,
+ it's up to the FPC team to take things from here.
+\end_layout
+
+\begin_layout Section
+Updating Your Repository
+\end_layout
+
+\begin_layout Standard
+The process to update a fork of a Git repository used to require you to add the official repository as a 
+\begin_inset Quotes eld
+\end_inset
+
+remote
+\begin_inset Quotes erd
+\end_inset
+
+,
+ 
+\begin_inset Flex CommandName
+status open
+
+\begin_layout Plain Layout
+git clone
+\end_layout
+
+\end_inset
+
+ your fork locally,
+ 
+\begin_inset Flex CommandName
+status open
+
+\begin_layout Plain Layout
+git fetch
+\end_layout
+
+\end_inset
+
+ from the remote and 
+\begin_inset Flex CommandName
+status open
+
+\begin_layout Plain Layout
+git merge
+\end_layout
+
+\end_inset
+
+ it,
+ then 
+\begin_inset Flex CommandName
+status open
+
+\begin_layout Plain Layout
+git push
+\end_layout
+
+\end_inset
+
+ it back to your fork.
+ This is much easier now on GitLab.
+ All you have to do is:
+\end_layout
+
+\begin_layout Itemize
+Login to your repository on GitLab.
+\end_layout
+
+\begin_layout Itemize
+Check if it is still up to date.
+ If you are behind,
+ there will be a banner telling you this and noting how many commits your repository is behind the official one.
+ If there is no banner then you are already up to date.
+\end_layout
+
+\begin_layout Itemize
+If there have been new commits since your last update,
+ click the 
+\begin_inset Quotes eld
+\end_inset
+
+update
+\begin_inset Quotes erd
+\end_inset
+
+ button.
+ After a few seconds,
+ depending on how far behind you are,
+ your repository will have the changes fetched and merged in the background.
+ A new banner will notify you of this.
+\end_layout
+
+\begin_layout Itemize
+You can click the link explaining how many commits behind the official repository your currently is,
+ if you want to see what's been changed.
+\end_layout
+
+\begin_layout Itemize
+Now you can go back to your local clone of this repository,
+ checkout the main branch,
+ and execute a 
+\begin_inset Flex CommandName
+status open
+
+\begin_layout Plain Layout
+git pull
+\end_layout
+
+\end_inset
+
+ command to apply the changes.
+ This will not be applied to your 
+\begin_inset Quotes eld
+\end_inset
+
+Fix_1
+\begin_inset Quotes erd
+\end_inset
+
+ branch though.
+\end_layout
+
+\begin_layout Itemize
+If you want/need to apply the changes to your 
+\begin_inset Quotes eld
+\end_inset
+
+Fix_1
+\begin_inset Quotes erd
+\end_inset
+
+ branch,
+ check it out,
+ then 
+\begin_inset Flex CommandName
+status open
+
+\begin_layout Plain Layout
+git merge main
+\end_layout
+
+\end_inset
+
+ to bring your fix branch up to date.
+ However,
+ it's best to do this when you have completed a fix,
+ not in the middle!
+\end_layout
+
+\begin_layout Chapter
 Amending the Run Time Library
 \end_layout
 
 \begin_layout Standard
-The system unit lives in the run time library and is responsible for all
- the various startup needs of a compiled Pascal program.
- It opens the standard files, sets the program name and so forth.
- Sometimes it may be necessary to edit and recompile the RTL especially
- as the ability to cross compile programs for the QL only recently arose
- as a fun exercise for the November 2020 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+note{This chapter assumes that you are working to help improve the cross platform Pascal compiler so that it can be used to compile QL programs.
+ 
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+For this reason,
+ I shall be assigning an environment variable,
+ 
+\backslash
+texttt{FPC},
+ to reference the correct source directory.
+ If you are intending to push changes back to the project,
+ then this will be set to 
+\begin_inset Quotes eld
+\end_inset
+
+FPC
+\backslash
+_Source
+\begin_inset Quotes erd
+\end_inset
+
+,
+ and if your intentions are for personal  use only,
+ this will be set to 
+\begin_inset Quotes eld
+\end_inset
+
+fpc
+\begin_inset Quotes erd
+\end_inset
+
+---assuming you cloned the live FPC Sources earlier in this document.}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The system unit lives in the run time library and is responsible for all the various startup needs of a compiled Pascal program.
+ It opens the standard files,
+ sets the program name and so forth.
+ Sometimes it may be necessary to edit and recompile the RTL especially as the ability to cross compile programs for the QL only recently arose as a fun exercise for the November 2020 
 \begin_inset Quotes eld
 \end_inset
 
@@ -4748,7 +6078,8 @@ QLvember
 status open
 
 \begin_layout Plain Layout
-I have no idea what it was actually called, so 
+I have no idea what it was actually called,
+ so 
 \emph on
 thingy
 \emph default
@@ -4765,7 +6096,47 @@ Editing Source Code
 \end_layout
 
 \begin_layout Standard
-The source for the RTL for the QL, lives in the 
+Create an environment variable to locate the correct source:
+\end_layout
+
+\begin_layout Standard
+\begin_inset listings
+lstparams "language=Pascal,numbers=left,basicstyle={\ttfamily},breaklines=true,showstringspaces=false,backgroundcolor={\color{codeColour}},breakautoindent=true"
+inline false
+status open
+
+\begin_layout Plain Layout
+
+## Only if using the live source for personal use.
+\end_layout
+
+\begin_layout Plain Layout
+
+export FPC=fpc
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+## Only if you forked the live repo and have cloned your fork.
+\end_layout
+
+\begin_layout Plain Layout
+
+export FPC=FPC_Source
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The source for the RTL for the QL,
+ lives in the 
 \begin_inset Flex DirectoryName
 status open
 
@@ -4780,18 +6151,19 @@ rtl/sinclairql
 status open
 
 \begin_layout Plain Layout
-fpc
+${FPC}
 \end_layout
 
 \end_inset
 
  directory created when you installed the source code previously.
- In my case, 
+ In my case,
+ 
 \begin_inset Flex DirectoryName
 status open
 
 \begin_layout Plain Layout
- ~/SourceCode/fpc/rtl/sinclairql
+ ~/SourceCode/${FPC}/rtl/sinclairql
 \end_layout
 
 \end_inset
@@ -4814,8 +6186,7 @@ System.pp
 \end_inset
 
  which contains the main system unit code.
- This unit is always included in all compiled programs and doesn't need
- to be specifically included with a 
+ This unit is always included in all compiled programs and doesn't need to be specifically included with a 
 \begin_inset listings
 lstparams "language=Pascal,basicstyle={\ttfamily},showstringspaces=false,backgroundcolor={\color{mayablue}},breakautoindent=true"
 inline true
@@ -4867,8 +6238,7 @@ qdosfuncs.inc
 
 \end_inset
 
- which contains various Pascal headers linking the QL specific code to the
- RTL.
+ which contains various Pascal headers linking the QL specific code to the RTL.
 \end_layout
 
 \begin_layout Itemize
@@ -4894,10 +6264,9 @@ sysos.inc
 
 \end_inset
 
- which contains an implementation of all the base types etc required for
- a minimal POSIX compliant subset required to port the compiler to a new
- OS.
- At present, it contains only the code to convert a QL error code to a,
+ which contains an implementation of all the base types etc required for a minimal POSIX compliant subset required to port the compiler to a new OS.
+ At present,
+ it contains only the code to convert a QL error code to a,
  FPC error code.
 \end_layout
 
@@ -4906,18 +6275,19 @@ Parameter Passing
 \end_layout
 
 \begin_layout Standard
-You really need to beware of this because it has risen up and bitten me
- a couple of times! The default method of passing parameters around in Pascal
- is named 
+You really need to beware of this because it has risen up and bitten me a couple of times!
+ The default method of passing parameters around in Pascal is named 
 \emph on
 register
 \emph default
 .
- This passed parameters using registers where it can, as follows:
+ This method passes parameters using registers where it can,
+ as follows:
 \end_layout
 
 \begin_layout Itemize
-The first ordinal number (ie, a numeric value) is passed in register 
+The first ordinal number (ie,
+ a numeric value) is passed in register 
 \begin_inset Flex RegisterName
 status open
 
@@ -4931,7 +6301,8 @@ D0
 \end_layout
 
 \begin_layout Itemize
-The second ordinal number (ie, a numeric value) is passed in register 
+The second ordinal number (ie,
+ a numeric value) is passed in register 
 \begin_inset Flex RegisterName
 status open
 
@@ -4973,8 +6344,8 @@ A1
 \end_layout
 
 \begin_layout Standard
-So, when you see a Pascal procedure or function header that looks like the
- 
+So,
+ when you see a Pascal procedure or function header that looks like the 
 \begin_inset Flex FunctionName
 status open
 
@@ -5005,8 +6376,11 @@ status open
 
 \begin_layout Plain Layout
 
-procedure mt_rechp(area: pointer); assembler; nostackframe; public name
- '_mt_rechp';
+procedure mt_rechp(area:
+ pointer);
+ assembler;
+ nostackframe;
+ public name '_mt_rechp';
 \end_layout
 
 \begin_layout Plain Layout
@@ -5060,7 +6434,9 @@ area
 
 \end_inset
 
- parameter, which is a pointer, will be passed in register 
+ parameter,
+ which is a pointer,
+ will be passed in register 
 \begin_inset Flex RegisterName
 status open
 
@@ -5079,13 +6455,20 @@ move.l area,a0
 \family typewriter
 move,l a0,a0
 \family default
- and may appear redundant, but there are options to change the way that
- parameters are passed, so don't miss the line out!
+ and may 
+\shape italic
+appear
+\shape default
+ redundant,
+ but there are options to change the way that parameters are passed,
+ so don't miss the line out!
 \end_layout
 
 \begin_layout Standard
-In addition, if you are anything like me, I tend to almost always set my
- registers up in order, 
+In addition,
+ if you are anything like me,
+ I tend to almost always set my registers up in order,
+ 
 \begin_inset Flex RegisterName
 status open
 
@@ -5125,7 +6508,8 @@ A7
 
 \end_inset
 
- as required when making calls to QDOSMSQ, that's fine in Assembly Language,
+ as required when making calls to QDOSMSQ,
+ that's fine in Assembly Language,
  but not so fine in Pascal when 
 \begin_inset Flex RegisterName
 status open
@@ -5158,8 +6542,13 @@ status open
 
 \begin_layout Plain Layout
 
-function fs_posab(chan: Tchanid; new_pos: dword):longint; assembler; nostackfram
-e; public name '_fs_posab';
+function fs_posab(chan:
+ Tchanid;
+ new_pos:
+ dword):longint;
+ assembler;
+ nostackframe;
+ public name '_fs_posab';
 \end_layout
 
 \begin_layout Plain Layout
@@ -5253,7 +6642,8 @@ D0
 
 \end_inset
 
-, but before we copy 
+,
+ but before we copy 
 \begin_inset Flex VariableName
 status open
 
@@ -5273,7 +6663,8 @@ A0
 
 \end_inset
 
-, we have already overwritten it with the value for 
+,
+ we have already overwritten it with the value for 
 \begin_inset Flex ConstantName
 status open
 
@@ -5284,7 +6675,9 @@ _FS_POSAB
 \end_inset
 
 .
- This, as you can imagine, caused various channel not open errors.
+ This,
+ as you can imagine,
+ caused various channel not open errors.
 \end_layout
 
 \begin_layout Subsection
@@ -5292,8 +6685,8 @@ Debugging
 \end_layout
 
 \begin_layout Standard
-When compiling, you can see the assembly language that is created by the
- compiler if you use the 
+When compiling,
+ you can see the assembly language that is created by the compiler if you use the 
 \begin_inset Flex OptionName
 status open
 
@@ -5303,9 +6696,9 @@ status open
 
 \end_inset
 
- (lower case 'a', lower case ell) command line option.
- This prevents FPC from deleting the Assembly Language source file(s) after
- the compilation is complete.
+ (lower case 'a',
+ lower case ell) command line option.
+ This prevents FPC from deleting the Assembly Language source file(s) after the compilation is complete.
  If you use this option with the source file 
 \begin_inset Flex FileName
 status open
@@ -5316,7 +6709,8 @@ hello.pas
 
 \end_inset
 
-, then your Assembly source will be found in the file 
+,
+ then your Assembly source will be found in the file 
 \begin_inset Flex FileName
 status open
 
@@ -5330,13 +6724,15 @@ hello.s
 \end_layout
 
 \begin_layout Standard
-Sometimes this is enough to give you a clue, other times may require debugging
- on the QL.
+Sometimes this is enough to give you a clue,
+ other times may require debugging on the QL.
  
 \end_layout
 
 \begin_layout Standard
-Over on the QL, however, you can debug a compiled Pascal program using 
+Over on the QL,
+ however,
+ you can debug a compiled Pascal program using 
 \begin_inset Flex ApplicationName
 status open
 
@@ -5357,7 +6753,8 @@ fs_posab
 
 \end_inset
 
- function listed above, I needed to jump into 
+ function listed above,
+ I needed to jump into 
 \begin_inset Flex ApplicationName
 status open
 
@@ -5368,10 +6765,10 @@ JMON
 \end_inset
 
  whenever I hit that particular section of code.
- I didn't want to have to trace through the entire program until I reached
- it, that would have been a nightmare as we (still) don't have a source
- level debugger for the QL.
- Yet! 
+ I didn't want to have to trace through the entire program until I reached it,
+ that would have been a nightmare as we (still) don't have a source level debugger for the QL.
+ Yet!
+ 
 \end_layout
 
 \begin_layout Standard
@@ -5386,12 +6783,14 @@ fs_posab
 
 \end_inset
 
-, I added a 
+,
+ I added a 
 \family typewriter
 trap #15
 \family default
  instruction and recompiled and reinstalled the RTL as described later.
- On the QL, it was this easy:
+ On the QL,
+ it was this easy:
 \end_layout
 
 \begin_layout Standard
@@ -5416,7 +6815,8 @@ jmon dos1_test.exe
 \end_layout
 
 \begin_layout Standard
-This loads up the executable, in my case from 
+This loads up the executable,
+ in my case from 
 \begin_inset Flex FileName
 status open
 
@@ -5426,7 +6826,8 @@ dos1_test.exe
 
 \end_inset
 
-, and then stops to allow me the ability to enter commands:
+,
+ and then stops to allow me the ability to enter commands:
 \end_layout
 
 \begin_layout Standard
@@ -5461,11 +6862,13 @@ JMON
 
 \end_inset
 
-, whenever you hit a trap higher than 
+,
+ whenever you hit a trap higher than 
 \family typewriter
 trap #14
 \family default
-, break at that point and jump into the monitor.
+,
+ break at that point and jump into the monitor.
  Now when the Pascal code reaches the 
 \begin_inset Flex FunctionName
 status open
@@ -5476,8 +6879,9 @@ fs_posab
 
 \end_inset
 
- function, I get the ability to trace it, or set breakpoints etc and see
- if I can track down what is happening to make things not work.
+ function,
+ I get the ability to trace it,
+ or set breakpoints etc and see if I can track down what is happening to make things not work.
 \end_layout
 
 \begin_layout Standard
@@ -5485,8 +6889,10 @@ fs_posab
 \series bold
 NOTE
 \series default
-: Don't forget, after fixing the problems, go back and remove the trap #15
- instructions from wherever you put them.
+:
+ Don't forget,
+ after fixing the problems,
+ go back and remove the trap #15 instructions from wherever you put them.
 \end_layout
 
 \begin_layout Standard
@@ -5518,7 +6924,8 @@ _FS_POSAB
 
 \end_inset
 
-, I could see what was wrong.
+,
+ I could see what was wrong.
  After reading up on FPC's default parameter passing methods of course!
 \end_layout
 
@@ -5527,12 +6934,11 @@ Building the Run Time Library
 \end_layout
 
 \begin_layout Standard
-In a similar manner to the Units (coming soon) , you cannot just compile
- a couple of code files that you changed.
- You have to make sure that all code files are recompiled any time you make
- a change.
- If you don't do this, you'll get warnings at program compilation times
- that some files cannot be found.
+In a similar manner to the Units (coming soon) ,
+ you cannot just compile a couple of code files that you changed.
+ You have to make sure that all code files are recompiled any time you make a change.
+ If you don't do this,
+ you'll get warnings at program compilation times that some files cannot be found.
  
 \end_layout
 
@@ -5541,36 +6947,33 @@ Compiling the RTL
 \end_layout
 
 \begin_layout Standard
-Once any amendments have been made to the RTL source files, the whole lot
- needs to be recompiled and relinked.
+Once any amendments have been made to the RTL source files,
+ the whole lot needs to be recompiled and relinked.
  I should point out that the following compilation invocation
 \begin_inset Foot
 status open
 
 \begin_layout Plain Layout
-Ie, magic spell!
+Ie,
+ magic spell!
 \end_layout
 
 \end_inset
 
- was extracted from the system by Marcel Kilgus when I was having troubles
- getting things to compile properly.
- I do not know if this is the official invocation or not, but it does seem
- to work.
+ was extracted from the system by Marcel Kilgus when I was having troubles getting things to compile properly.
+ I do not know if this is the official invocation or not,
+ but it does seem to work.
 \end_layout
 
 \begin_layout Standard
-The compilation should be done from the top level of the source tree, in
- my case this is the directory created by 
-\emph on
-Subversion
-\emph default
- when I first downloaded the code, 
+The compilation should be done from the top level of the source tree,
+ in my case this is the directory created by Git when I first cloned the code,
+ 
 \begin_inset Flex DirectoryName
 status open
 
 \begin_layout Plain Layout
- ~/SourceCode/fpc
+ ~/SourceCode/${FPC}
 \end_layout
 
 \end_inset
@@ -5592,8 +6995,7 @@ Install the newly compiled RTL.
 \end_layout
 
 \begin_layout Standard
-The last step is covered in the following section and the first two are
- as simple as executing the following:
+The last step is covered in the following section and the first two are as simple as executing the following:
 \end_layout
 
 \begin_layout Standard
@@ -5604,7 +7006,7 @@ status open
 
 \begin_layout Plain Layout
 
-cd ~/SourceCode/fpc
+cd ~/SourceCode/${FPC}
 \end_layout
 
 \begin_layout Plain Layout
@@ -5624,10 +7026,11 @@ make rtl_all RELEASE=1 FPC=fpc-ql OS_TARGET=sinclairql CPU_TARGET=m68k
 
 \begin_layout Standard
 You will need to watch out for error messages scrolling up the screen.
- On Linux, I have enough scrollback in my terminal session that I can review
- the entire compilation easily.
- If I remember correctly, on Windows, scrollback is limited unless yo set
- the properties for the command line session.
+ On Linux,
+ I have enough scrollback in my terminal session that I can review the entire compilation easily.
+ If I remember correctly,
+ on Windows,
+ scrollback is limited unless yo set the properties for the command line session.
 \end_layout
 
 \begin_layout Section
@@ -5635,11 +7038,11 @@ Installing the RTL
 \end_layout
 
 \begin_layout Standard
-Once we have a clean compilation, we can install the new RTL.
- This is where it gets slightly complicated as your RTL might not be installed
- where mine is.
- If you remember way back when we created and installed the cross compiler
- for the QL, I used an installation location of 
+Once we have a clean compilation,
+ we can install the new RTL.
+ This is where it gets slightly complicated as your RTL might not be installed where mine is.
+ If you remember way back when we created and installed the cross compiler for the QL,
+ I used an installation location of 
 \begin_inset Flex DirectoryName
 status open
 
@@ -5649,7 +7052,9 @@ status open
 
 \end_inset
 
-, that is my installation directory, yours will be whatever you used.
+,
+ that is my installation directory,
+ yours will be whatever you used.
  You might wish to export that as an environment variable:
 \end_layout
 
@@ -5670,8 +7075,7 @@ export QLFPC_DIR=/home/norman/bin
 \end_layout
 
 \begin_layout Standard
-Now you can use that in the code that follows to be sure you have the correct
- locations for the RTL.
+Now you can use that in the code that follows to be sure you have the correct locations for the RTL.
 \end_layout
 
 \begin_layout Standard
@@ -5682,7 +7086,7 @@ status open
 
 \begin_layout Plain Layout
 
-cd ${QLFPC_DIR}/bin/lib/fpc/n.n.n/units/m68k-sinclairql/rtl
+cd ${QLFPC_DIR}/lib/fpc/n.n.n/units/m68k-sinclairql/rtl	# 3.3.1
 \end_layout
 
 \begin_layout Plain Layout
@@ -5700,11 +7104,11 @@ That makes sure that everything is copied across to the correct location.
 \end_layout
 
 \begin_layout Standard
-Whenever you change the RTL, unless what you changed isn't used by any existing
- QL Pascal code that you have already cross compiled, you will be best to
- recompile and test the programs.
- Mistakes happen – even though the compiler doesn't catch them, ask me how
- I know this?
+Whenever you change the RTL,
+ unless what you changed isn't used by any existing QL Pascal code that you have already cross compiled,
+ you will be best to recompile and test the programs.
+ Mistakes happen – even though the compiler doesn't catch them,
+ ask me how I know this?
 \end_layout
 
 \begin_layout Standard
@@ -5712,7 +7116,8 @@ Whenever you change the RTL, unless what you changed isn't used by any existing
 \series bold
 NOTE
 \series default
-: You may be wondering why there isn't a 
+:
+ You may be wondering why there isn't a 
 \begin_inset Flex ApplicationName
 status open
 
@@ -5722,7 +7127,9 @@ make
 
 \end_inset
 
- target to install the RTL? Well, there appears to be a target 
+ target to install the RTL?
+ Well,
+ there appears to be a target 
 \begin_inset Flex OptionName
 status open
 
@@ -5732,7 +7139,9 @@ rtl_install
 
 \end_inset
 
-, and it appears to do what I want: 
+,
+ and it appears to do what I want:
+ 
 \begin_inset listings
 lstparams "language=bash,numbers=left,basicstyle={\ttfamily},breaklines=true,showstringspaces=false,backgroundcolor={\color{codeColour}},breakautoindent=true"
 inline false
@@ -5740,7 +7149,7 @@ status open
 
 \begin_layout Plain Layout
 
-cd ~/SourceCode/fpc
+cd ~/SourceCode/${FPC}
 \end_layout
 
 \begin_layout Plain Layout
@@ -5754,7 +7163,8 @@ make rtl_install OS_TARGET=sinclairql CPU_TARGET=m68k
 \end_layout
 
 \begin_layout Standard
-Unfortunately, it always errors out.
+Unfortunately,
+ it always errors out.
  I'll hopefully be looking into this at some point soon:
 \end_layout
 
@@ -5771,7 +7181,8 @@ make -C rtl install
 
 \begin_layout Plain Layout
 
-make[1]: Entering directory '/home/norman/SourceCode/fpc/rtl'
+make[1]:
+ Entering directory '/home/norman/SourceCode/FPC_Source/rtl'
 \end_layout
 
 \begin_layout Plain Layout
@@ -5781,12 +7192,14 @@ make -C sinclairql all
 
 \begin_layout Plain Layout
 
-make[2]: Entering directory '/home/norman/SourceCode/fpc/rtl/sinclairql'
+make[2]:
+ Entering directory '/home/norman/SourceCode/FPC_Source/rtl/sinclairql'
 \end_layout
 
 \begin_layout Plain Layout
 
-make[2]: Leaving directory '/home/norman/SourceCode/fpc/rtl/sinclairql'
+make[2]:
+ Leaving directory '/home/norman/SourceCode/FPC_Source/rtl/sinclairql'
 \end_layout
 
 \begin_layout Plain Layout
@@ -5801,22 +7214,28 @@ Processing Makefile.fpc
 
 \begin_layout Plain Layout
 
-Error: No targets set
+Error:
+ No targets set
 \end_layout
 
 \begin_layout Plain Layout
 
-make[1]: *** [Makefile:1649: fpc_install] Error 1
+make[1]:
+ *** [Makefile:1649:
+ fpc_install] Error 1
 \end_layout
 
 \begin_layout Plain Layout
 
-make[1]: Leaving directory '/home/norman/SourceCode/fpc/rtl'
+make[1]:
+ Leaving directory '/home/norman/SourceCode/FPC_Source/rtl'
 \end_layout
 
 \begin_layout Plain Layout
 
-make: *** [Makefile:2936: rtl_install] Error 2
+make:
+ *** [Makefile:2936:
+ rtl_install] Error 2
 \end_layout
 
 \end_inset
@@ -5829,8 +7248,9 @@ A Useful Build Script
 \end_layout
 
 \begin_layout Standard
-Rather than having to remember all those commands, I built myself a small
- script in the top level directory, 
+Rather than having to remember all those commands,
+ I built myself a small script in the top level directory,
+ 
 \begin_inset Flex DirectoryName
 status open
 
@@ -5840,7 +7260,8 @@ SourceCode/fpc
 
 \end_inset
 
-, and I use that to build and install everything as and when required.
+,
+ and I use that to build and install everything as and when required.
  The code is:
 \end_layout
 
@@ -5877,6 +7298,11 @@ status open
 \begin_layout Plain Layout
 
 QLFPC_DIR=/home/norman/bin
+\end_layout
+
+\begin_layout Plain Layout
+
+QLFPC_VERS=3.3.1
 \end_layout
 
 \begin_layout Plain Layout
@@ -5929,7 +7355,7 @@ make rtl_all RELEASE=1 FPC=fpc-ql OS_TARGET=sinclairql CPU_TARGET=m68k
 
 \begin_layout Plain Layout
 
-cd ${QLFPC_DIR}lib/fpc/3.3.1/units/m68k-sinclairql/rtl
+cd ${QLFPC_DIR}/lib/fpc/${QLFPC_VERS}/units/m68k-sinclairql/rtl
 \end_layout
 
 \begin_layout Plain Layout
@@ -5952,6 +7378,59 @@ Amending the QL Units
 \end_layout
 
 \begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+note{This chapter assumes that you are working to help improve the cross platform Pascal compiler so that it can be used to compile QL programs.
+ 
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+For this reason,
+ I shall be assigning an environment variable,
+ 
+\backslash
+texttt{FPC},
+ to reference the correct source directory.
+ If you are intending to push changes back to the project,
+ then this will be set to 
+\begin_inset Quotes eld
+\end_inset
+
+FPC
+\backslash
+_Source
+\begin_inset Quotes erd
+\end_inset
+
+,
+ and if your intentions are for personal  use only,
+ this will be set to 
+\begin_inset Quotes eld
+\end_inset
+
+fpc
+\begin_inset Quotes erd
+\end_inset
+
+---assuming you cloned the live FPC Sources earlier in this document.}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
 The source for the various QL Units lives in the 
 \begin_inset Flex DirectoryName
 status open
@@ -5967,27 +7446,30 @@ packages/qlunits/src
 status open
 
 \begin_layout Plain Layout
-fpc
+${FPC}
 \end_layout
 
 \end_inset
 
- directory created when you installed the source code previously.
- In my case, 
+ directory created when you cloned the source code previously.
+ 
+\end_layout
+
+\begin_layout Standard
+In my case,
+ this is,
+ 
 \begin_inset Flex DirectoryName
 status open
 
 \begin_layout Plain Layout
-SourceCode/fpc/packages/qlunits/src
+SourceCode/${FPC}/packages/qlunits/src
 \end_layout
 
 \end_inset
 
 .
-\end_layout
-
-\begin_layout Standard
-Files of interest here are:
+ Files of interest here are:
 \end_layout
 
 \begin_layout Itemize
@@ -6011,8 +7493,7 @@ qdos
 \end_inset
 
  unit – a collection of useful QL specific routines.
- Some of these are simply references to the code defined in the system unit
- in the RTL.
+ Some of these are simply references to the code defined in the system unit in the RTL.
 \end_layout
 
 \begin_layout Itemize
@@ -6035,7 +7516,8 @@ sms
 
 \end_inset
 
- unit, similar to 
+ unit,
+ similar to 
 \begin_inset Flex FileName
 status open
 
@@ -6086,7 +7568,9 @@ qlutil.pas
 \end_layout
 
 \begin_layout Standard
-There are, currently, only a few units for the QL cross compiler.
+There are,
+ currently,
+ only a few units for the QL cross compiler.
  We need a lot more.
  We are missing 
 \begin_inset Flex UnitName
@@ -6098,7 +7582,8 @@ sysutils
 
 \end_inset
 
-, 
+,
+ 
 \begin_inset Flex UnitName
 status open
 
@@ -6131,8 +7616,9 @@ A Worked Example
 \end_layout
 
 \begin_layout Standard
-This is a particularly silly example, but it shows what is required to add
- new stuff to the QL Units, which in most cases means the 
+This is a particularly silly example,
+ but it shows what is required to add new stuff to the QL Units,
+ which in most cases means the 
 \begin_inset Flex UnitName
 status open
 
@@ -6143,7 +7629,8 @@ qdos
 \end_inset
 
  unit.
- Let's say that we want to add a new procedure, 
+ Let's say that we want to add a new procedure,
+ 
 \begin_inset Flex FunctionName
 status open
 
@@ -6153,7 +7640,9 @@ HelloNorm
 
 \end_inset
 
-, to the unit, what do we need to do?
+,
+ to the unit,
+ what do we need to do?
 \end_layout
 
 \begin_layout Itemize
@@ -6181,7 +7670,8 @@ qdos.pas
 
 \end_inset
 
- file, add the new procedure code to the implementation section;
+ file,
+ add the new procedure code to the implementation section;
 \end_layout
 
 \begin_layout Itemize
@@ -6197,8 +7687,7 @@ Compile and test a program which uses the new procedure.
 \end_layout
 
 \begin_layout Standard
-The steps to compile and install the QL Unit files are described in detail
- in the following sections.
+The steps to compile and install the QL Unit files are described in detail in the following sections.
  The remainder of this section covers the editing of the unit source files,
  and compiling a test program.
  
@@ -6219,7 +7708,9 @@ Qdos.pas
 \end_layout
 
 \begin_layout Standard
-In a Pascal unit file, there are normally two sections, the 
+In a Pascal unit file,
+ there are normally two sections,
+ the 
 \emph on
 interface
 \emph default
@@ -6228,9 +7719,8 @@ interface
 implementation
 \emph default
 .
- The interface describes the header of the procedure or functions – similar
- to how a C++ header file does, and the implementation is the full source
- code for the procedures and functions.
+ The interface describes the header of the procedure or functions – similar to how a C++ header file does,
+ and the implementation is the full source code for the procedures and functions.
  
 \end_layout
 
@@ -6239,12 +7729,13 @@ implementation
 status open
 
 \begin_layout Plain Layout
-SourceCode/fpc/packages/qlunits/src/qdos.pas
+SourceCode/${FPC}/packages/qlunits/src/qdos.pas
 \end_layout
 
 \end_inset
 
-, is where the 
+,
+ is where the 
 \begin_inset Flex UnitName
 status open
 
@@ -6254,7 +7745,8 @@ qdos
 
 \end_inset
 
- unit keeps its source code, so that's the file to edit.
+ unit keeps its source code,
+ so that's the file to edit.
 \end_layout
 
 \begin_layout Standard
@@ -6269,7 +7761,8 @@ HelloNorm
 \end_inset
 
  procedure is to add it to the end of the interface section.
- After this edit, my file looks like this:
+ After this edit,
+ my file looks like this:
 \end_layout
 
 \begin_layout Standard
@@ -6280,8 +7773,18 @@ status open
 
 \begin_layout Plain Layout
 
-procedure sd_line(chan: Tchanid; timeout: Ttimeout; x_start: double; y_start:
- double; x_end: double; y_end: double);
+procedure sd_line(chan:
+ Tchanid;
+ timeout:
+ Ttimeout;
+ x_start:
+ double;
+ y_start:
+ double;
+ x_end:
+ double;
+ y_end:
+ double);
 \end_layout
 
 \begin_layout Plain Layout
@@ -6309,11 +7812,12 @@ implementation
 
 \begin_layout Standard
 You can see I added the procedure name just above the implementation.
- I tend to add stuff at the end as it makes it easier to find later! Next
- we need to add the source code for the new procedure, and again, I added
- mine right at the bottom of the file, just above the final end.
- (That's the end with a full stop in the source code – that line already
- exists.)
+ I tend to add stuff at the end as it makes it easier to find later!
+ Next we need to add the source code for the new procedure,
+ and again,
+ I added mine right at the bottom of the file,
+ just above the final end.
+ (That's the end with a full stop in the source code – that line already exists.)
 \end_layout
 
 \begin_layout Standard
@@ -6357,8 +7861,9 @@ end.
 \end_layout
 
 \begin_layout Standard
-You won't need to type in that final line, it's already there, but any new
- code has to go above it.
+You won't need to type in that final line,
+ it's already there,
+ but any new code has to go above it.
 \end_layout
 
 \begin_layout Standard
@@ -6371,8 +7876,8 @@ Compile the QL units
 \end_layout
 
 \begin_layout Standard
-The full details of compiling the units is described below, for now a quick
- couple of commands are all that is necessary:
+The full details of compiling the units is described below,
+ for now a quick couple of commands are all that is necessary:
 \end_layout
 
 \begin_layout Standard
@@ -6383,7 +7888,7 @@ status open
 
 \begin_layout Plain Layout
 
-cd ~/SourceCode/fpc
+cd ~/SourceCode/${FPC}
 \end_layout
 
 \begin_layout Plain Layout
@@ -6403,8 +7908,10 @@ make packages RELEASE=1 FPC=fpc-ql OS_TARGET=sinclairql CPU_TARGET=m68k
 
 \begin_layout Standard
 Lots of messages will flash up the screen.
- Don't worry about it, just review the messages looking for errors and warnings.
- Once you have a clean recompile, it's installation time.
+ Don't worry about it,
+ just review the messages looking for errors and warnings.
+ Once you have a clean recompile,
+ it's installation time.
 \end_layout
 
 \begin_layout Subsection
@@ -6412,9 +7919,9 @@ Install the QL Units
 \end_layout
 
 \begin_layout Standard
-The units are compiled into a holding location which is not where they are
- actually found by the compiler.
- This was defined in the configuration file we created way way back! Remember?
+The units are compiled into a holding location which is not where they are actually found by the compiler.
+ This was defined in the configuration file we created way way back!
+ Remember?
 \end_layout
 
 \begin_layout Standard
@@ -6469,10 +7976,12 @@ status open
 \end_layout
 
 \begin_layout Standard
-This tells you where the units need to be placed for the compiler to find
- them, As you can see, there are no hard coded version numbers, CPU or OS
- names, so when we get a compiler update, we don't have to change anything
- and it all just works.
+This tells you where the units need to be placed for the compiler to find them,
+ As you can see,
+ there are no hard coded version numbers,
+ CPU or OS names,
+ so when we get a compiler update,
+ we don't have to change anything and it all just works.
  The two lines in the configuration file with the 
 \begin_inset Flex OptionName
 status open
@@ -6488,11 +7997,13 @@ status open
 \end_layout
 
 \begin_layout Standard
-To copy the newly compiled units to the correct location, we use the following:
+To copy the newly compiled units to the correct location,
+ we use the following:
 \end_layout
 
 \begin_layout Standard
-First, set the installation directory as before:
+First,
+ set the installation directory as before:
 \end_layout
 
 \begin_layout Standard
@@ -6523,12 +8034,12 @@ status open
 
 \begin_layout Plain Layout
 
-cd ${QLFPC_DIR}/lib/fpc/3.3.1/units/m68k-sinclairql/qlunits/ 
+cd ${QLFPC_DIR}/lib/fpc/n.n.n/units/m68k-sinclairql/qlunits/  
 \end_layout
 
 \begin_layout Plain Layout
 
-cp ~/SourceCode/fpc/packages/qlunits/units/m68k-sinclairql/* ./
+cp ~/SourceCode/${FPC}/packages/qlunits/units/m68k-sinclairql/* ./
 \end_layout
 
 \begin_layout Plain Layout
@@ -6551,7 +8062,8 @@ The Test Program
 
 \begin_layout Standard
 We need a test program.
- This is mine, it's called 
+ This is mine,
+ it's called 
 \begin_inset Flex FileName
 status open
 
@@ -6613,11 +8125,15 @@ status open
 
 
 \backslash
-warning{You cannot name the program with the same name as a procedure or
- function.
- If you do, and I did, you get this: 
+warning{You cannot name the program with the same name as a procedure or function.
+ If you do,
+ and I did,
+ you get this:
+ 
 \backslash
-texttt{hellonorm.pp(5,13) Fatal: Syntax error, "." expected but ";" found}}
+texttt{hellonorm.pp(5,13) Fatal:
+ Syntax error,
+ "." expected but ";" found}}
 \end_layout
 
 \end_inset
@@ -6626,8 +8142,8 @@ texttt{hellonorm.pp(5,13) Fatal: Syntax error, "." expected but ";" found}}
 \end_layout
 
 \begin_layout Standard
-First of all, we have to tell the compiler that we want to actually use
- the 
+First of all,
+ we have to tell the compiler that we want to actually use the 
 \begin_inset Flex UnitName
 status open
 
@@ -6641,10 +8157,11 @@ qdos
  That's the purpose of the 
 \family typewriter
 uses qdos;
+
 \family default
  statement.
- Once we have done that, the compiler will hopefully find the new procedure
- and link it in to our executable.
+ Once we have done that,
+ the compiler will hopefully find the new procedure and link it in to our executable.
  
 \end_layout
 
@@ -6669,7 +8186,8 @@ fpc-ql -Tsinclairql hellonorm.pp
 \end_layout
 
 \begin_layout Standard
-Over on the QL, or in QPC in my case:
+Over on the QL,
+ or in QPC in my case:
 \end_layout
 
 \begin_layout Standard
@@ -6714,8 +8232,7 @@ Easy peasy?
 \end_layout
 
 \begin_layout Standard
-Compiling and installing the unit files are described fully in the next
- couple of sections.
+Compiling and installing the unit files are described fully in the next couple of sections.
 \end_layout
 
 \begin_layout Chapter
@@ -6723,12 +8240,11 @@ Recompiling the QL Units
 \end_layout
 
 \begin_layout Standard
-In a similar manner to the RTL, you cannot just compile a couple of code
- files that you changed.
- You have to make sure that all code files are recompiled any time you make
- a change.
- If you don't do this, you'll get warnings at program compilation times
- that some unit files cannot be found.
+In a similar manner to the RTL,
+ you cannot just compile a couple of code files that you changed.
+ You have to make sure that all code files are recompiled any time you make a change.
+ If you don't do this,
+ you'll get warnings at program compilation times that some unit files cannot be found.
  So if you compile only the 
 \begin_inset Flex FunctionName
 status open
@@ -6739,8 +8255,9 @@ qdos
 
 \end_inset
 
- unit, then recompile a program that uses it, you'll be told off because
- the 
+ unit,
+ then recompile a program that uses it,
+ you'll be told off because the 
 \begin_inset Flex FunctionName
 status open
 
@@ -6765,10 +8282,9 @@ name "sec:Building-the-QL-units"
 \end_layout
 
 \begin_layout Standard
-The various units for the QL cross compiler are compiled from the usual
- top level source directory.
- Because they must all be compiled at the same time, it's advised to clean
- things out first.
+The various units for the QL cross compiler are compiled from the usual top level source directory.
+ Because they must all be compiled at the same time,
+ it's advised to clean things out first.
 \end_layout
 
 \begin_layout Standard
@@ -6779,7 +8295,7 @@ status open
 
 \begin_layout Plain Layout
 
-cd ~/SourceCode/fpc
+cd ~/SourceCode/${FPC}
 \end_layout
 
 \begin_layout Plain Layout
@@ -6805,7 +8321,8 @@ make -C packages clean
 
 \begin_layout Plain Layout
 
-make[1]: Entering directory '/home/norman/SourceCode/fpc/packages'
+make[1]:
+ Entering directory '/home/norman/SourceCode/FPC_Source/packages'
 \end_layout
 
 \begin_layout Plain Layout
@@ -6815,7 +8332,8 @@ make -C fpmkunit clean_bootstrap
 
 \begin_layout Plain Layout
 
-make[2]: Entering directory '/home/norman/SourceCode/fpc/packages/fpmkunit'
+make[2]:
+ Entering directory '/home/norman/SourceCode/FPC_Source/packages/fpmkunit'
 \end_layout
 
 \begin_layout Plain Layout
@@ -6825,20 +8343,25 @@ make[2]: Entering directory '/home/norman/SourceCode/fpc/packages/fpmkunit'
 
 \begin_layout Plain Layout
 
-make[2]: Leaving directory '/home/norman/SourceCode/fpc/packages/fpmkunit'
+make[2]:
+ Leaving directory '/home/norman/SourceCode/FPC_Source/packages/fpmkunit'
 \end_layout
 
 \begin_layout Plain Layout
 
 ./fpmake clean --localunitdir=..
- --os=sinclairql --cpu=m68k -o -Tsinclairql -o -Pm68k -o -XPm68k-sinclairql-
- -o -Ur -o -Xs -o -O2 -o -n -o -dm68k -o -dRELEASE --compiler=/home/norman/bin/p
-pcross68k -bu -scp
+ --os=sinclairql --cpu=m68k -o -Tsinclairql -o -Pm68k -o -XPm68k-sinclairql- -o -Ur -o -Xs -o -O2 -o -n -o -dm68k -o -dRELEASE --compiler=/home/norman/bin/ppcross68k -bu -scp
 \end_layout
 
 \begin_layout Plain Layout
 
-make[1]: Leaving directory '/home/norman/SourceCode/fpc/packages'
+make[1]:
+ Leaving directory '/home/norman/SourceCode/FPC_S
+\end_layout
+
+\begin_layout Plain Layout
+
+ource/packages'
 \end_layout
 
 \begin_layout Plain Layout
@@ -6851,8 +8374,8 @@ make[1]: Leaving directory '/home/norman/SourceCode/fpc/packages'
 \end_layout
 
 \begin_layout Standard
-There should be no problems with the output, so we are now ready to rebuild
- the units:
+There should be no problems with the output,
+ so we are now ready to rebuild the units:
 \end_layout
 
 \begin_layout Standard
@@ -6884,15 +8407,19 @@ make -C packages all
 
 \begin_layout Plain Layout
 
-make[1]: Entering directory '/home/norman/SourceCode/fpc/packages'
+make[1]:
+ Entering directory '/home/norman/SourceCode/FPC_S
+\end_layout
+
+\begin_layout Plain Layout
+
+ource/packages'
 \end_layout
 
 \begin_layout Plain Layout
 
 ./fpmake compile --localunitdir=..
- --os=sinclairql --cpu=m68k -o -Tsinclairql -o -Pm68k -o -XPm68k-sinclairql-
- -o -Ur -o -Xs -o -O2 -o -n -o -dm68k -o -dRELEASE --compiler=fpc-ql -bu
- -scp
+ --os=sinclairql --cpu=m68k -o -Tsinclairql -o -Pm68k -o -XPm68k-sinclairql- -o -Ur -o -Xs -o -O2 -o -n -o -dm68k -o -dRELEASE --compiler=fpc-ql -bu -scp
 \end_layout
 
 \begin_layout Plain Layout
@@ -6982,7 +8509,13 @@ Start compiling package qlunits for target m68k-sinclairql.
 
 \begin_layout Plain Layout
 
-make[1]: Leaving directory '/home/norman/SourceCode/fpc/packages'
+make[1]:
+ Leaving directory '/home/norman/SourceCode/FPC_S
+\end_layout
+
+\begin_layout Plain Layout
+
+ource/packages'
 \end_layout
 
 \end_inset
@@ -6991,9 +8524,10 @@ make[1]: Leaving directory '/home/norman/SourceCode/fpc/packages'
 \end_layout
 
 \begin_layout Standard
-Check the compilation output for any errors or warnings, fix them as appropriate
- and recompile.
- Once you have a clean compilation, we are ready to install.
+Check the compilation output for any errors or warnings,
+ fix them as appropriate and recompile.
+ Once you have a clean compilation,
+ we are ready to install.
 \end_layout
 
 \begin_layout Section
@@ -7008,7 +8542,8 @@ name "sec:Installing-the-QL-units"
 \end_layout
 
 \begin_layout Standard
-As with the RTL, it appears that the 
+As with the RTL,
+ it appears that the 
 \begin_inset Flex ApplicationName
 status open
 
@@ -7022,7 +8557,8 @@ make
 \emph on
 should
 \emph default
- install the units, fails miserably:
+ install the units,
+ fails miserably:
 \end_layout
 
 \begin_layout Standard
@@ -7042,7 +8578,8 @@ make packages_install RELEASE=1 FPC=fpc-ql OS_TARGET=sinclairql CPU_TARGET=m68k
 \end_layout
 
 \begin_layout Standard
-Any time I've run the above command, I get this output:
+Any time I've run the above command,
+ I get this output:
 \begin_inset listings
 lstparams "language=bash,basicstyle={\ttfamily},breaklines=true,showstringspaces=false,backgroundcolor={\color{outputColour}},breakautoindent=true"
 inline false
@@ -7055,15 +8592,14 @@ make -C packages install
 
 \begin_layout Plain Layout
 
-make[1]: Entering directory '/home/norman/SourceCode/fpc/packages'
+make[1]:
+ Entering directory '/home/norman/SourceCode/FPC_Source/packages'
 \end_layout
 
 \begin_layout Plain Layout
 
 ./fpmake install --localunitdir=..
- --os=sinclairql --cpu=m68k -o -Tsinclairql -o -Pm68k -o -XPm68k-sinclairql-
- -o -Ur -o -Xs -o -O2 -o -n -o -dm68k -o -dRELEASE --compiler=fpc-ql -bu
- -scp --prefix=/usr/local --baseinstalldir=/usr/local/lib/fpc/3.3.1 
+ --os=sinclairql --cpu=m68k -o -Tsinclairql -o -Pm68k -o -XPm68k-sinclairql- -o -Ur -o -Xs -o -O2 -o -n -o -dm68k -o -dRELEASE --compiler=fpc-ql -bu -scp --prefix=/usr/local --baseinstalldir=/usr/local/lib/fpc/3.3.1 
 \end_layout
 
 \begin_layout Plain Layout
@@ -7078,23 +8614,32 @@ The installer encountered the following error:
 
 \begin_layout Plain Layout
 
-Failed to create directory "/usr/local/lib/fpc/3.3.1/units/m68k-sinclairql/rtl-uni
-code/"
+Failed to create directory "/usr/local/lib/fpc/3.3.1/units/m68k-sinclairql/rtl-unicode/"
 \end_layout
 
 \begin_layout Plain Layout
 
-make[1]: *** [Makefile:1948: install] Error 1
+make[1]:
+ *** [Makefile:1948:
+ install] Error 1
 \end_layout
 
 \begin_layout Plain Layout
 
-make[1]: Leaving directory '/home/norman/SourceCode/fpc/packages'
+make[1]:
+ Leaving directory '/home/norman/SourceCode/FPC_S
 \end_layout
 
 \begin_layout Plain Layout
 
-make: *** [Makefile:3026: packages_install] Error 2
+ource/packages'
+\end_layout
+
+\begin_layout Plain Layout
+
+make:
+ *** [Makefile:3026:
+ packages_install] Error 2
 \end_layout
 
 \end_inset
@@ -7138,7 +8683,8 @@ Makefile
 \end_layout
 
 \begin_layout Standard
-Anyway, having extracted the desired unit location from the 
+Anyway,
+ having extracted the desired unit location from the 
 \begin_inset Flex FileName
 status open
 
@@ -7148,12 +8694,13 @@ fpc.cfg
 
 \end_inset
 
- configuration file, I have to run the following commands to copy the newly
- compiled unit files over to the correct place.
+ configuration file,
+ I have to run the following commands to copy the newly compiled unit files over to the correct place.
 \end_layout
 
 \begin_layout Standard
-As before, we need the installation directory:
+As before,
+ we need the installation directory:
 \end_layout
 
 \begin_layout Standard
@@ -7194,9 +8741,9 @@ cp ~/SourceCode/fpc/packages/qlunits/units/m68k-sinclairql/* ./
 \end_layout
 
 \begin_layout Standard
-Once this has been done, you may be advised to recompile any existing Pascal
- programs which use the units, just in case you've managed to introduce
- a runtime bug which the compiler can't catch for you.
+Once this has been done,
+ you may be advised to recompile any existing Pascal programs which use the units,
+ just in case you've managed to introduce a runtime bug which the compiler can't catch for you.
 \end_layout
 
 \begin_layout Chapter
@@ -7205,8 +8752,8 @@ Creating New Units
 
 \begin_layout Standard
 The previous chapter introduced you to amending the existing QL Units.
- In this chapter, we shall see how simple it is to add a new unit ready
- for use by the programs developed for the QL.
+ In this chapter,
+ we shall see how simple it is to add a new unit ready for use by the programs developed for the QL.
  The steps involved are:
 \end_layout
 
@@ -7225,7 +8772,8 @@ fpmake.pp
 
 \end_inset
 
- file, or it will not be added as a unit;
+ file,
+ or it will not be added as a unit;
 \end_layout
 
 \begin_layout Itemize
@@ -7244,6 +8792,7 @@ reference "sec:Building-the-QL-units"
 plural "false"
 caps "false"
 noprefix "false"
+nolink "false"
 
 \end_inset
 
@@ -7254,6 +8803,7 @@ reference "sec:Building-the-QL-units"
 plural "false"
 caps "false"
 noprefix "false"
+nolink "false"
 
 \end_inset
 
@@ -7264,6 +8814,7 @@ reference "sec:Installing-the-QL-units"
 plural "false"
 caps "false"
 noprefix "false"
+nolink "false"
 
 \end_inset
 
@@ -7274,6 +8825,7 @@ reference "sec:Installing-the-QL-units"
 plural "false"
 caps "false"
 noprefix "false"
+nolink "false"
 
 \end_inset
 
@@ -7393,8 +8945,7 @@ Interface
 \end_layout
 
 \begin_layout Standard
-The interface section is where you will be making all your forward references
- to procedures and such like which will be defined in this unit.
+The interface section is where you will be making all your forward references to procedures and such like which will be defined in this unit.
  This is effectively the same as the header files (
 \begin_inset Flex FileName
 status open
@@ -7405,13 +8956,13 @@ status open
 
 \end_inset
 
-) as used in C or C++ development, and defines the public parts of the unit
- – the bits that programs or other units can use.
+) as used in C or C++ development,
+ and defines the public parts of the unit – the bits that programs or other units can use.
 \end_layout
 
 \begin_layout Standard
-All the consts, types etc mentioned in this section will be visible to programs
- and other units which use this one.
+All the consts,
+ types etc mentioned in this section will be visible to programs and other units which use this one.
 \end_layout
 
 \begin_layout Subsection
@@ -7419,12 +8970,13 @@ Implementation
 \end_layout
 
 \begin_layout Standard
-The implementation section is where the meat and bones of the unit are to
- be found.
- Anything here which is not declared in the interface section, cannot be
- seen outside of the unit.
- Any of the uses, const, type, var etc clauses here are purely for use in
- the unit itself.
+The implementation section is where the meat and bones of the unit are to be found.
+ Anything here which is not declared in the interface section,
+ cannot be seen outside of the unit.
+ Any of the uses,
+ const,
+ type,
+ var etc clauses here are purely for use in the unit itself.
 \end_layout
 
 \begin_layout Subsection
@@ -7448,12 +9000,13 @@ Unit source code lives in
 status open
 
 \begin_layout Plain Layout
-~/SourceCode/fpc/packages/qlunits/src
+~/SourceCode/${FPC}/packages/qlunits/src
 \end_layout
 
 \end_inset
 
- and must be saved to a file with the same name as the unit, with a '
+ and must be saved to a file with the same name as the unit,
+ with a '
 \begin_inset Flex FileName
 status open
 
@@ -7484,13 +9037,15 @@ qdos.pas
 
 \end_inset
 
-, for example.
- It is important that you follow this standard, or problems will arise.
+,
+ for example.
+ It is important that you follow this standard,
+ or problems will arise.
 \end_layout
 
 \begin_layout Standard
-In the time honoured tradition of writing example code, I've created a simple
- unit named 
+In the time honoured tradition of writing example code,
+ I've created a simple unit named 
 \begin_inset Flex UnitName
 status open
 
@@ -7500,7 +9055,9 @@ hello
 
 \end_inset
 
-, which lives in the source file, 
+,
+ which lives in the source file,
+ 
 \begin_inset Flex FileName
 status open
 
@@ -7536,7 +9093,8 @@ interface
 
 \begin_layout Plain Layout
 
-procedure greet(prompt: pchar);
+procedure greet(prompt:
+ pchar);
 \end_layout
 
 \begin_layout Plain Layout
@@ -7559,7 +9117,8 @@ implementation
 
 \begin_layout Plain Layout
 
-procedure greet(prompt: pchar);
+procedure greet(prompt:
+ pchar);
 \end_layout
 
 \begin_layout Plain Layout
@@ -7569,7 +9128,8 @@ begin
 
 \begin_layout Plain Layout
 
-  writeln('Hello ', prompt);
+  writeln('Hello ',
+ prompt);
 \end_layout
 
 \begin_layout Plain Layout
@@ -7620,8 +9180,8 @@ end.
 \end_layout
 
 \begin_layout Standard
-As you can see from the interface section, this unit exposes only two procedures
-:
+As you can see from the interface section,
+ this unit exposes only two procedures:
 \end_layout
 
 \begin_layout Itemize
@@ -7665,8 +9225,9 @@ fpmake.pp
 \end_layout
 
 \begin_layout Standard
-This is the easy part! Once the hard work of writing the unit's code and
- interface is done, you can easily add it to the full compiler build.
+This is the easy part!
+ Once the hard work of writing the unit's code and interface is done,
+ you can easily add it to the full compiler build.
  All you have to do is add the new unit to the file 
 \begin_inset Flex FileName
 status open
@@ -7686,7 +9247,8 @@ Adding New Units
 \end_layout
 
 \begin_layout Standard
-The file, 
+The file,
+ 
 \begin_inset Flex FileName
 status open
 
@@ -7696,8 +9258,8 @@ fpmake.pp
 
 \end_inset
 
-, lives one directory higher up than the source files you have been working
- on.
+,
+ lives one directory higher up than the source files you have been working on.
  You simply need to change up one level and edit the file.
 \end_layout
 
@@ -7747,8 +9309,9 @@ T:=P.Targets.AddUnit('sms.pas');
 \end_layout
 
 \begin_layout Standard
-All you now need to do is add another line, usually at the end, passing
- in the name of your new unit:
+All you now need to do is add another line,
+ usually at the end,
+ passing in the name of your new unit:
 \end_layout
 
 \begin_layout Standard
@@ -7798,20 +9361,21 @@ T:=P.Targets.AddUnit('hello.pas');
 \end_layout
 
 \begin_layout Standard
-As this is a cross compiler, please make sure that your unit file names
- are case dependent – it's fine on Windows where case is ignored, but on
- other (proper
+As this is a cross compiler,
+ please make sure that your unit file names are case dependent – it's fine on Windows where case is ignored,
+ but on other (proper
 \begin_inset Foot
 status open
 
 \begin_layout Plain Layout
-Grins, ducks and runs!
+Grins,
+ ducks and runs!
 \end_layout
 
 \end_inset
 
-) systems, case is dependent and something that works on Windows may not
- work on other systems.
+) systems,
+ case is dependent and something that works on Windows may not work on other systems.
 \end_layout
 
 \begin_layout Subsection
@@ -7825,15 +9389,17 @@ Adding example programs to demonstrate the new units is equally simple.
 status open
 
 \begin_layout Plain Layout
-~/SourceCode/fpc/packages/qlunits/examples
+~/SourceCode/${FPC}/packages/qlunits/examples
 \end_layout
 
 \end_inset
 
  and there's no difference from writing a normal Pascal program.
- Just do it! Once compiled and tested in the usual manner, it can be added
- to the system as an official example.
- Once again, 
+ Just do it!
+ Once compiled and tested in the usual manner,
+ it can be added to the system as an official example.
+ Once again,
+ 
 \begin_inset Flex FileName
 status open
 
@@ -7857,7 +9423,8 @@ hello
 
 \end_inset
 
- unit created above, it's called 
+ unit created above,
+ it's called 
 \begin_inset Flex FileName
 status open
 
@@ -7925,8 +9492,8 @@ end.
 \end_layout
 
 \begin_layout Standard
-Once that compiled and executed happily in testing, I was able to add it
- to 
+Once that compiled and executed happily in testing,
+ I was able to add it to 
 \begin_inset Flex FileName
 status open
 
@@ -7937,8 +9504,9 @@ fpmake.pp
 \end_inset
 
 .
- It's a simple case of editing the file, again, and looking for the following
- lines of code:
+ It's a simple case of editing the file,
+ again,
+ and looking for the following lines of code:
 \end_layout
 
 \begin_layout Standard
@@ -7978,8 +9546,8 @@ T:=P.Targets.AddExampleProgram('mtinf.pas');
 \end_layout
 
 \begin_layout Standard
-All that is required is to add another line, passing in the name of the
- new example program's source file within the 
+All that is required is to add another line,
+ passing in the name of the new example program's source file within the 
 \begin_inset Flex DirectoryName
 status open
 
@@ -7990,7 +9558,8 @@ examples
 \end_inset
 
  directory.
- In my case, I added my example 
+ In my case,
+ I added my example 
 \begin_inset Flex FileName
 status open
 
@@ -8000,7 +9569,8 @@ helloEx.pas
 
 \end_inset
 
-, so here's what my change looks like:
+,
+ so here's what my change looks like:
 \end_layout
 
 \begin_layout Standard
@@ -8045,7 +9615,8 @@ T:=P.Targets.AddExampleProgram('helloEx.pas');
 \end_layout
 
 \begin_layout Standard
-Once again, please make sure that your example's file name is case sensitive.
+Once again,
+ please make sure that your example's file name is case sensitive.
 \end_layout
 
 \begin_layout Section
@@ -8053,8 +9624,9 @@ The Build
 \end_layout
 
 \begin_layout Standard
-After adding a new unit, or an example program, you need to run a build
- of the units and a reinstall of the compiled unit files.
+After adding a new unit,
+ or an example program,
+ you need to run a build of the units and a reinstall of the compiled unit files.
  This is covered above in Section 
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -8062,6 +9634,7 @@ reference "sec:Building-the-QL-units"
 plural "false"
 caps "false"
 noprefix "false"
+nolink "false"
 
 \end_inset
 
@@ -8072,6 +9645,7 @@ reference "sec:Building-the-QL-units"
 plural "false"
 caps "false"
 noprefix "false"
+nolink "false"
 
 \end_inset
 
@@ -8082,6 +9656,7 @@ reference "sec:Installing-the-QL-units"
 plural "false"
 caps "false"
 noprefix "false"
+nolink "false"
 
 \end_inset
 
@@ -8092,6 +9667,7 @@ reference "sec:Installing-the-QL-units"
 plural "false"
 caps "false"
 noprefix "false"
+nolink "false"
 
 \end_inset
 
@@ -8103,9 +9679,9 @@ Version Control
 \end_layout
 
 \begin_layout Standard
-Once the new unit has been tested to destruction, and the example program(s)
- have been written and tested also, you will need to add the files to version
- control 
+Once the new unit has been tested to destruction,
+ and the example program(s) have been written and tested also,
+ you will need to add the files to version control 
 \emph on
 in your local clone of the repository
 \emph default
@@ -8124,20 +9700,20 @@ Git
 
 \end_inset
 
- doesn't know about your new files and units, they need to be added to your
- local copy of the repository.
+ doesn't know about your new files and units,
+ they need to be added to your local copy of the repository.
  This is simply done:
 \end_layout
 
 \begin_layout Standard
 \begin_inset listings
-lstparams "language=Pascal,numbers=left,basicstyle={\ttfamily},breaklines=true,showstringspaces=false,backgroundcolor={\color{codeColour}},breakautoindent=true"
+lstparams "numbers=left,basicstyle={\ttfamily},breaklines=true,showstringspaces=false,backgroundcolor={\color{codeColour}},breakautoindent=true"
 inline false
 status open
 
 \begin_layout Plain Layout
 
-cd ~/SourceCode/fpc/packages/qlunits/src
+cd ~/SourceCode/${FPC}/packages/qlunits/src
 \end_layout
 
 \begin_layout Plain Layout
@@ -8151,18 +9727,19 @@ git add hello.pas
 \end_layout
 
 \begin_layout Standard
-Also, for the examples:
+Also,
+ for the examples:
 \end_layout
 
 \begin_layout Standard
 \begin_inset listings
-lstparams "language=Pascal,numbers=left,basicstyle={\ttfamily},breaklines=true,showstringspaces=false,backgroundcolor={\color{codeColour}},breakautoindent=true"
+lstparams "numbers=left,basicstyle={\ttfamily},breaklines=true,showstringspaces=false,backgroundcolor={\color{codeColour}},breakautoindent=true"
 inline false
 status open
 
 \begin_layout Plain Layout
 
-cd ~/SourceCode/fpc/packages/qlunits/examples
+cd ~/SourceCode/${FPC}/packages/qlunits/examples
 \end_layout
 
 \begin_layout Plain Layout
@@ -8195,12 +9772,13 @@ In the directory
 status open
 
 \begin_layout Plain Layout
-~/SourceCode/fpc/packages/qlunits
+~/SourceCode/${FPC}/packages/qlunits
 \end_layout
 
 \end_inset
 
-, you will find the file 
+,
+ you will find the file 
 \begin_inset Flex FileName
 status open
 
@@ -8212,168 +9790,6 @@ README.txt
 
 .
  Please update this file with details of any new units and examples.
-\end_layout
-
-\begin_layout Chapter
-Updating the Official Repository
-\end_layout
-
-\begin_layout Standard
-None of us QLers have write access to the main Free Pascal Compiler repository,
- and to this end, we should really be cloning the official repository, hosted
- on GitLab, and then pulling that code down to our local system and working
- on it there.
- Once we are done, fully tested and so on, we can commit our changes and
- push them back to our own repository on GitLab.
- Once this has been done, we can raise a 
-\emph on
-Pull Request
-\emph default
- so that the official repository maintainers can have a look at our changes
- and decide which, if any, to include in the next release.
-\end_layout
-
-\begin_layout Standard
-The steps are as follows, when initially setting up your development system:
-\end_layout
-
-\begin_layout Itemize
-Create a GitLab clone of the official repository.
- This only needs to be done once and requires a GitLab account.
- 
-\end_layout
-
-\begin_layout Standard
-Once you have a clone of the official repository, you can use it to work
- on:
-\end_layout
-
-\begin_layout Itemize
-\begin_inset Flex CommandName
-status open
-
-\begin_layout Plain Layout
-git clone
-\end_layout
-
-\end_inset
-
- your GitLap repository onto your local PC .
- You would do this 
-\emph on
-instead
-\emph default
- of cloning the official repository, as outlines way back at the start of
- this document.
- 
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-TODO: Fix the document to allow for the new git repos etc.
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Itemize
-Add a git remote location, pointing to the official repository.
- This allows you to update your GitLab repository to stay up to date.
-\end_layout
-
-\begin_layout Itemize
-Do your work, make changes, add units, fix the RTL etc.
-\end_layout
-
-\begin_layout Itemize
-Commit your changes with 
-\emph on
-meaningful commit messages
-\emph default
-.
-\end_layout
-
-\begin_layout Itemize
-Push the changes back to your own repository on GitLab.
-\end_layout
-
-\begin_layout Itemize
-Raise a pull request to allow the official repository maintainers to merge
- your changes.
-\end_layout
-
-\begin_layout Standard
-If you stop making changes and need to update your clone of the official
- repository, then, on your PC:
-\end_layout
-
-\begin_layout Itemize
-\begin_inset Flex CommandName
-status open
-
-\begin_layout Plain Layout
-git pull
-\end_layout
-
-\end_inset
-
- from the remote location you added, which points at the official repository.
-\end_layout
-
-\begin_layout Itemize
-\begin_inset Flex CommandName
-status open
-
-\begin_layout Plain Layout
-git push
-\end_layout
-
-\end_inset
-
- the changes back to your repository.
-\end_layout
-
-\begin_layout Standard
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-TODO: FIXME
-\end_layout
-
-\end_inset
-
-FIXME
-\end_layout
-
-\begin_layout Standard
-The remainder of this chapter describes each of the above steps in detail.
-\end_layout
-
-\begin_layout Section
-Clone the Official Repository
-\end_layout
-
-\begin_layout Section
-Add a Git Remote
-\end_layout
-
-\begin_layout Section
-Make Your Changes and Commit
-\end_layout
-
-\begin_layout Section
-Push Changes to Your Repository
-\end_layout
-
-\begin_layout Section
-Raise a Pull Request
-\end_layout
-
-\begin_layout Section
-Update Your Repository
 \end_layout
 
 \end_body
