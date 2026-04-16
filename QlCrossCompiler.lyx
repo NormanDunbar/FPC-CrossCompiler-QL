@@ -263,7 +263,7 @@ End
 \paperfontsize 10
 \spacing single
 \use_hyperref true
-\pdf_title "QL Pascal Cross Compiler 1.7"
+\pdf_title "QL Pascal Cross Compiler 1.8"
 \pdf_author "Norman Dunbar"
 \pdf_subject "Building a Free Pascal Cross Compiler for the Sinclair QL"
 \pdf_keywords "Pascal, Sinclair, QL, QDOS, SMSQ"
@@ -6157,18 +6157,20 @@ ${FPC}
 \end_inset
 
  directory created when you installed the source code previously.
- In my case,
  
+\end_layout
+
+\begin_layout Standard
 \begin_inset Flex DirectoryName
 status open
 
 \begin_layout Plain Layout
- ~/SourceCode/${FPC}/rtl/sinclairql
+~/SourceCode/${FPC}/rtl/sinclairql
 \end_layout
 
 \end_inset
 
-.
+ is the location on my laptop.
 \end_layout
 
 \begin_layout Standard
@@ -6270,6 +6272,30 @@ sysos.inc
  FPC error code.
 \end_layout
 
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+warning{When changing either the QL Units,
+ or the QL RTL,
+ the files 
+\backslash
+path{qdosfuncs.inc} and 
+\backslash
+path{smsfuncs.inc} 
+\backslash
+emph{must} be identical in both locations.}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
 \begin_layout Subsection
 Parameter Passing
 \end_layout
@@ -6298,6 +6324,7 @@ D0
 \end_inset
 
 ;
+ A function result value will be returned in this register.
 \end_layout
 
 \begin_layout Itemize
@@ -6341,6 +6368,18 @@ A1
 \end_inset
 
 ;
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The registers above are scratch registers and do not need to be preserved within our assembly language functions,
+ all other registers should be preserved if they are used.
 \end_layout
 
 \begin_layout Standard
@@ -6934,12 +6973,166 @@ Building the Run Time Library
 \end_layout
 
 \begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+note{This chapter assumes that you are working to help improve the cross platform Pascal compiler so that it can be used to compile QL programs.
+ 
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+For this reason,
+ I shall be assigning an environment variable,
+ 
+\backslash
+texttt{FPC},
+ to reference the correct source directory.
+ If you are intending to push changes back to the project,
+ then this will be set to 
+\begin_inset Quotes eld
+\end_inset
+
+FPC
+\backslash
+_Source
+\begin_inset Quotes erd
+\end_inset
+
+,
+ and if your intentions are for personal  use only,
+ this will be set to 
+\begin_inset Quotes eld
+\end_inset
+
+fpc
+\begin_inset Quotes erd
+\end_inset
+
+---assuming you cloned the live FPC Sources earlier in this document.}
+\end_layout
+
+\end_inset
+
 In a similar manner to the Units (coming soon) ,
  you cannot just compile a couple of code files that you changed.
  You have to make sure that all code files are recompiled any time you make a change.
  If you don't do this,
  you'll get warnings at program compilation times that some files cannot be found.
  
+\end_layout
+
+\begin_layout Section
+Editing the RTL
+\end_layout
+
+\begin_layout Standard
+Create an environment variable to locate the correct source:
+\end_layout
+
+\begin_layout Standard
+\begin_inset listings
+lstparams "language=Pascal,numbers=left,basicstyle={\ttfamily},breaklines=true,showstringspaces=false,backgroundcolor={\color{codeColour}},breakautoindent=true"
+inline false
+status open
+
+\begin_layout Plain Layout
+
+## Only if using the live source for personal use.
+\end_layout
+
+\begin_layout Plain Layout
+
+export FPC=fpc
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+## Only if you forked the live repo and have cloned your fork.
+\end_layout
+
+\begin_layout Plain Layout
+
+export FPC=FPC_Source
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The source for the RTL for the QL,
+ lives in the 
+\begin_inset Flex DirectoryName
+status open
+
+\begin_layout Plain Layout
+packages/qlunits/src
+\end_layout
+
+\end_inset
+
+ directory which you will find beneath the 
+\begin_inset Flex DirectoryName
+status open
+
+\begin_layout Plain Layout
+${FPC}
+\end_layout
+
+\end_inset
+
+ directory created when you installed the source code previously.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Flex DirectoryName
+status open
+
+\begin_layout Plain Layout
+~/SourceCode/${FPC}/packages/qlunits/src
+\end_layout
+
+\end_inset
+
+ is the location on my laptop.
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+warning{When changing either the QL Units,
+ or the QL RTL,
+ the files 
+\backslash
+path{qdosfuncs.inc} and 
+\backslash
+path{smsfuncs.inc} 
+\backslash
+emph{must} be identical in both locations.}
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Section
@@ -6973,7 +7166,7 @@ The compilation should be done from the top level of the source tree,
 status open
 
 \begin_layout Plain Layout
- ~/SourceCode/${FPC}
+ ~/SourceCode/FPC_Source
 \end_layout
 
 \end_inset
@@ -7091,7 +7284,7 @@ cd ${QLFPC_DIR}/lib/fpc/n.n.n/units/m68k-sinclairql/rtl	# 3.3.1
 
 \begin_layout Plain Layout
 
-cp -v ~/SourceCode/fpc/rtl/units/m68k-sinclairql/* ./
+cp -v ~/SourceCode/${FPC}/rtl/units/m68k-sinclairql/* ./
 \end_layout
 
 \end_inset
@@ -7249,13 +7442,23 @@ A Useful Build Script
 
 \begin_layout Standard
 Rather than having to remember all those commands,
- I built myself a small script in the top level directory,
+ I built myself a small script in a directory on my 
+\begin_inset Flex EnvVar
+status open
+
+\begin_layout Plain Layout
+${PATH}
+\end_layout
+
+\end_inset
+
+,
  
 \begin_inset Flex DirectoryName
 status open
 
 \begin_layout Plain Layout
-SourceCode/fpc
+/home/norman/bin
 \end_layout
 
 \end_inset
@@ -7273,11 +7476,32 @@ status open
 
 \begin_layout Plain Layout
 
-#!/bin/bash
+#!/usr/bin/bash
 \end_layout
 
 \begin_layout Plain Layout
 
+\end_layout
+
+\begin_layout Plain Layout
+
+# Fpc_build_rtl.sh
+\end_layout
+
+\begin_layout Plain Layout
+
+#
+\end_layout
+
+\begin_layout Plain Layout
+
+# A script to clean,
+ compile and install the QL RTL files for
+\end_layout
+
+\begin_layout Plain Layout
+
+# the Free Pascal Cross Compiler.
 \end_layout
 
 \begin_layout Plain Layout
@@ -7287,12 +7511,71 @@ status open
 
 \begin_layout Plain Layout
 
-# Variables:
+# EXECUTION:
 \end_layout
 
 \begin_layout Plain Layout
 
 #
+\end_layout
+
+\begin_layout Plain Layout
+
+#       Fpc_build_rtl.sh > ~/Fpc_build_rtl.log
+\end_layout
+
+\begin_layout Plain Layout
+
+#
+\end_layout
+
+\begin_layout Plain Layout
+
+# The cross compiler is installed in ~/bin.
+\end_layout
+
+\begin_layout Plain Layout
+
+# The source code is in ~/SourceCode/FPC_Source.
+\end_layout
+
+\begin_layout Plain Layout
+
+# Current cross compiler version is 3.3.1.
+\end_layout
+
+\begin_layout Plain Layout
+
+#
+\end_layout
+
+\begin_layout Plain Layout
+
+# Norman Dunbar.
+\end_layout
+
+\begin_layout Plain Layout
+
+# April 2021.
+\end_layout
+
+\begin_layout Plain Layout
+
+#
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+FPC_SOURCE=FPC_Source
+\end_layout
+
+\begin_layout Plain Layout
+
+FPC_VERSION=3.3.1
 \end_layout
 
 \begin_layout Plain Layout
@@ -7302,7 +7585,12 @@ QLFPC_DIR=/home/norman/bin
 
 \begin_layout Plain Layout
 
-QLFPC_VERS=3.3.1
+RTL_SOURCE=/home/norman/SourceCode/${FPC_SOURCE}/rtl/units/m68k-sinclairql
+\end_layout
+
+\begin_layout Plain Layout
+
+RTL_DEST=${QLFPC_DIR}/lib/fpc/${FPC_VERSION}/units/m68k-sinclairql/rtl
 \end_layout
 
 \begin_layout Plain Layout
@@ -7311,22 +7599,54 @@ QLFPC_VERS=3.3.1
 
 \begin_layout Plain Layout
 
-#
+# Clean existing RTL files.
 \end_layout
 
 \begin_layout Plain Layout
 
-# Builds the sinclair ql RTL for free pascal.
+clear
 \end_layout
 
 \begin_layout Plain Layout
 
-#
+echo "Cleaning RTL files in ~/SourceCode/${FPC_SOURCE}..."
+\end_layout
+
+\begin_layout Plain Layout
+
+cd ~/SourceCode/${FPC_SOURCE}
+\end_layout
+
+\begin_layout Plain Layout
+
+pwd
+\end_layout
+
+\begin_layout Plain Layout
+
 \end_layout
 
 \begin_layout Plain Layout
 
 make rtl_cleanall OS_TARGET=sinclairql CPU_TARGET=m68k
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+# Build RTL files.
+\end_layout
+
+\begin_layout Plain Layout
+
+echo "Building RTL files in ~/SourceCode/${FPC_SOURCE}..."
 \end_layout
 
 \begin_layout Plain Layout
@@ -7340,32 +7660,44 @@ make rtl_all RELEASE=1 FPC=fpc-ql OS_TARGET=sinclairql CPU_TARGET=m68k
 
 \begin_layout Plain Layout
 
-#
+# Install new RTL files.
 \end_layout
 
 \begin_layout Plain Layout
 
-# Wipe out the existing stuff and copy the new stuff over.
+echo "Installing new RTL files into ${RTL_DEST}..."
 \end_layout
 
 \begin_layout Plain Layout
 
-#
+cp -v ${RTL_SOURCE}/* ${RTL_DEST}/
 \end_layout
 
 \begin_layout Plain Layout
 
-cd ${QLFPC_DIR}/lib/fpc/${QLFPC_VERS}/units/m68k-sinclairql/rtl
 \end_layout
 
 \begin_layout Plain Layout
 
-cp -v ~/SourceCode/fpc/rtl/units/m68k-sinclairql/* ./
+echo "Done."
 \end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
 
 \begin_layout Plain Layout
 
-cd -
+
+\backslash
+warning{Do not use a variable or envionment variable named ``FPC'' or compilations will fail with ``Compiler FPC
+\backslash
+_Source not found''.}
 \end_layout
 
 \end_inset
@@ -7609,6 +7941,55 @@ packages/qlunits/units/m68k-sinclairql/
 \end_inset
 
  beneath the source code's main directory.
+\end_layout
+
+\begin_layout Standard
+The source for the various QL Units lives in the 
+\begin_inset Flex DirectoryName
+status open
+
+\begin_layout Plain Layout
+packages/qlunits/src
+\end_layout
+
+\end_inset
+
+ directory which you will find beneath the 
+\begin_inset Flex DirectoryName
+status open
+
+\begin_layout Plain Layout
+${FPC}
+\end_layout
+
+\end_inset
+
+ directory created when you cloned the source code previously.
+ 
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+warning{When changing either the QL Units,
+ or the QL RTL,
+ the files 
+\backslash
+path{qdosfuncs.inc} and 
+\backslash
+path{smsfuncs.inc} 
+\backslash
+emph{must} be identical in both locations.}
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Section
@@ -7885,6 +8266,16 @@ The full details of compiling the units is described below,
 lstparams "language=bash,numbers=left,basicstyle={\ttfamily},breaklines=true,showstringspaces=false,backgroundcolor={\color{codeColour}},breakautoindent=true"
 inline false
 status open
+
+\begin_layout Plain Layout
+
+export FPC=FPC_Source 	# OR,
+ fpc if only for personal use.
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
 
 \begin_layout Plain Layout
 
