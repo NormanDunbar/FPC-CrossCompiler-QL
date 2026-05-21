@@ -263,7 +263,7 @@ End
 \paperfontsize 10
 \spacing single
 \use_hyperref true
-\pdf_title "QL Pascal Cross Compiler 1.9"
+\pdf_title "QL Pascal Cross Compiler 2.0"
 \pdf_author "Norman Dunbar"
 \pdf_subject "Building a Free Pascal Cross Compiler for the Sinclair QL"
 \pdf_keywords "Pascal, Sinclair, QL, QDOS, SMSQ"
