@@ -1353,30 +1353,20 @@ status open
 note{If you have already installed Lazarus,
  then the FPC compiler is already installed into 
 \backslash
-path{
-\backslash
-usr}.
+path{/usr}.
  If you intend to install standalone FPC,
  but 
 \backslash
 emph{might} upgrade to Lazarus later,
  then install into 
 \backslash
-path{
-\backslash
-usr} as in this section.
+path{/usr} as in this section.
  Trust me,
  there will be problems if you have FPC in 
 \backslash
-path{
+path{/usr} and also in 
 \backslash
-usr} and also in 
-\backslash
-path{
-\backslash
-usr
-\backslash
-local}.}
+path{/usr/local}.}
 \end_layout
 
 \end_inset
